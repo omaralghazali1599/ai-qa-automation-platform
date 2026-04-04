@@ -4,6 +4,7 @@ import re
 import streamlit as st
 from openai import OpenAI
 from dotenv import load_dotenv
+from core.schemas import TestSuite
 
 
 
@@ -73,7 +74,9 @@ def generate_test_cases(user_story):
         )
 
         result_text = response.choices[0].message.content
-        return json.loads(clean_json_response(result_text))
+        raw = json.loads(clean_json_response(result_text))
+        validated = TestSuite(**raw)
+        return validated.model_dump()
 
     except Exception as e:
         st.error(f"❌ Error generating test cases: {e}")
@@ -130,12 +133,6 @@ if st.button("Generate Test Cases", type="primary"):
 
                 with tab4:
                     st.json(result)
-
-
-                # Save locally
-                filename = sanitize_filename(user_story)
-                save_json_locally(result, filename)
-                st.info(f"📁 Saved locally in project folder as: {filename}")
 
                 # Download Button
                 json_data = json.dumps(result, indent=4)
