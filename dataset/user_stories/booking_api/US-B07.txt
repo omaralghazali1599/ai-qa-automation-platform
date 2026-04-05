@@ -1,0 +1,1 @@
+As a guest, I want the system to reject a booking where check-out is before check-in so that invalid date ranges are prevented.

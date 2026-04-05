@@ -1,0 +1,1 @@
+As a user, I want task creation to fail when an invalid category is provided so that data stays consistent.

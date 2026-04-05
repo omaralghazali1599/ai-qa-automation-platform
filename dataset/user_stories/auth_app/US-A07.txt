@@ -1,0 +1,1 @@
+As a user, I want to be prevented from registering with an already-used email so that duplicate accounts are avoided.

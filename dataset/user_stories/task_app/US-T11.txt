@@ -1,0 +1,1 @@
+As a user, I want task creation to fail when the title is empty so that all tasks have a meaningful name.

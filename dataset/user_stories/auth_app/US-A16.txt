@@ -1,0 +1,1 @@
+As a user, I want the profile endpoint to return unauthorized when I am not logged in so that private data is protected.

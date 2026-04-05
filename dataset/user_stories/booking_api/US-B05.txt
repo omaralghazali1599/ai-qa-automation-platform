@@ -1,0 +1,1 @@
+As a guest, I want to cancel my booking so that I can free up the reservation.

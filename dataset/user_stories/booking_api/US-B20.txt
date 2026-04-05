@@ -1,0 +1,1 @@
+As a guest, I want to create a booking with a very long guest name so that the system handles long string inputs gracefully.

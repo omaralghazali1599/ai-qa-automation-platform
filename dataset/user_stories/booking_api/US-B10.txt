@@ -1,0 +1,1 @@
+As a guest, I want the system to reject an invalid date format so that only correctly formatted dates are accepted.

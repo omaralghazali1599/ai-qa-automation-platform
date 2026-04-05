@@ -1,0 +1,1 @@
+As a user, I want deleting a non-existent task to return a clear error so that I know the operation failed.

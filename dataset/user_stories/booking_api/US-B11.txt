@@ -1,0 +1,1 @@
+As a staff member, I want confirming an already-cancelled booking to return an error so that invalid state transitions are blocked.

@@ -1,0 +1,1 @@
+As a user, I want to be blocked from logging in if my account is locked so that security is enforced.

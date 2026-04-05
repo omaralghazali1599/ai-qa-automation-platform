@@ -1,0 +1,1 @@
+As a guest, I want to create a booking with my name, room type, and dates so that I can reserve a room.

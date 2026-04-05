@@ -1,0 +1,1 @@
+As a user, I want the forgot-password endpoint to require the email field so that incomplete requests are rejected.

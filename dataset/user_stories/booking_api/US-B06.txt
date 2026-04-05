@@ -1,0 +1,1 @@
+As a staff member, I want to delete a pending booking so that cancelled or invalid bookings are removed.

@@ -1,0 +1,1 @@
+As a user, I want to register with the maximum allowed name length so that long names are handled correctly.

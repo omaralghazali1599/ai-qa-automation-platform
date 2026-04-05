@@ -1,0 +1,1 @@
+As a user, I want the login endpoint to return an error when the email field is empty so that I provide all required credentials.

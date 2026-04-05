@@ -1,0 +1,1 @@
+As a guest, I want to create a booking where check-in and check-out are the same date to be rejected so that same-day bookings are not allowed.

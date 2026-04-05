@@ -1,0 +1,1 @@
+As a user, I want the system to reject a new password shorter than 8 characters during reset so that security standards are maintained.

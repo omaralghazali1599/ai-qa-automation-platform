@@ -1,0 +1,1 @@
+As a user, I want the system to handle an email with special characters correctly during registration so that valid edge-case emails are accepted.

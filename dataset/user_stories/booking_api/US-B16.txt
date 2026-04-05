@@ -1,0 +1,1 @@
+As a guest, I want to retrieve a booking that does not exist to return a not-found error so that I know the ID is invalid.

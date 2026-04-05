@@ -1,0 +1,1 @@
+As a user, I want registration to fail if I leave any field empty so that incomplete accounts are not created.

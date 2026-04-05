@@ -1,0 +1,1 @@
+As a guest, I want the system to reject more than 10 guests per booking so that room capacity is respected.

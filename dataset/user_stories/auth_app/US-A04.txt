@@ -1,0 +1,1 @@
+As a user, I want to reset my password via email so that I can regain access if I forget it.

@@ -1,0 +1,1 @@
+As a logged-in user, I want to log out so that my session is ended securely.

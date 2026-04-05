@@ -1,0 +1,1 @@
+As a staff member, I want deleting a confirmed booking to return an error so that active reservations are protected.

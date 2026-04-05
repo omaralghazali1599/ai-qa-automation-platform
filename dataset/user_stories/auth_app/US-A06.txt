@@ -1,0 +1,1 @@
+As a user, I want to receive an error when my password is shorter than 8 characters so that I use a secure password.

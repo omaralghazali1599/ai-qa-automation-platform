@@ -1,0 +1,1 @@
+As a staff member, I want to confirm a booking so that the guest knows their reservation is secured.

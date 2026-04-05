@@ -1,0 +1,1 @@
+As a guest, I want cancelling an already-cancelled booking to return a clear error so that duplicate cancellations are handled.

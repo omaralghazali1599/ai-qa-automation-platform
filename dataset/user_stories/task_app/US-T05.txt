@@ -1,0 +1,1 @@
+As a user, I want to filter tasks by category so that I can focus on a specific area.

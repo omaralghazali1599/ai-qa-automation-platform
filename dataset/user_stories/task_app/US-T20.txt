@@ -1,0 +1,1 @@
+As a user, I want to update multiple fields of a task in a single request so that I can edit efficiently.

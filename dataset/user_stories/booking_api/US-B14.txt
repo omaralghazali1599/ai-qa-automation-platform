@@ -1,0 +1,1 @@
+As a guest, I want the system to reject a booking with 0 guests so that only valid guest counts are accepted.

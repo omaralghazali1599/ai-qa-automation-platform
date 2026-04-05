@@ -1,0 +1,1 @@
+As a user, I want to create a task with only a title and no optional fields so that minimal input is sufficient.

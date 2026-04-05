@@ -1,0 +1,1 @@
+As a user, I want logging out twice in a row to not cause an error so that the logout action is idempotent.

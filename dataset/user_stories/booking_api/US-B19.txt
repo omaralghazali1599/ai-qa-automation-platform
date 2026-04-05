@@ -1,0 +1,1 @@
+As a guest, I want to create a booking with the maximum allowed guests (10) so that boundary values are handled correctly.

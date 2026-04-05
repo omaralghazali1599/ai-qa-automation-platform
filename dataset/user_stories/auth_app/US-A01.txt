@@ -1,0 +1,1 @@
+As a new user, I want to register with my name, email, and password so that I can create an account.

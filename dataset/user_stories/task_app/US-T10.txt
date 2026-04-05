@@ -1,0 +1,1 @@
+As a user, I want to retrieve a single task by its ID so that I can view its full details.

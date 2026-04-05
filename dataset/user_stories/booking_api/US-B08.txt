@@ -1,0 +1,1 @@
+As a guest, I want booking creation to fail if any required field is missing so that incomplete bookings are not saved.

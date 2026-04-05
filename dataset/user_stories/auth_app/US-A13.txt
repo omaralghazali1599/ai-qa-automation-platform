@@ -1,0 +1,1 @@
+As a user, I want my password reset token to be invalidated after use so that it cannot be reused.

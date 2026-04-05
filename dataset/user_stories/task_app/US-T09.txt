@@ -1,0 +1,1 @@
+As a user, I want to delete a task so that I can remove items I no longer need.

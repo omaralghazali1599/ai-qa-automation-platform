@@ -1,0 +1,1 @@
+As a staff member, I want to filter bookings by an invalid status to return an error so that only valid filter values are accepted.
