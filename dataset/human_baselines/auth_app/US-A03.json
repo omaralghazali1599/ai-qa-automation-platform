@@ -1,0 +1,61 @@
+{
+  "story_id": "US-A03",
+  "story_text": "As a logged-in user, I want to log out so that my session is ended securely.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Log out successfully from an active session",
+      "steps": ["1. Log in with valid email and password.",
+                "2. Click the 'Logout' button."],
+      "expected_result": "User is successfully logged out and redirected to the login page."
+    },
+    {
+        "id": "TC-P02",
+        "title": "Log out from multiple devices simultaneously",
+        "steps": ["1. Log in to the account on Device A with valid email and password.",
+                    "2. Log in to the same account on Device B with valid email and password.",
+                    "3. Click the 'Logout' button on Device A."],
+        "expected_result": "User is logged out from Device A but remains logged in on Device B."
+    },
+    {
+        "id": "TC-P03",
+        "title": "Log out and ensure session token invalidated",
+        "steps": ["1. Log in with valid email and password.",
+                    "2. Click the 'Logout' button.",
+                    "3. Attempt to access a protected page (e.g., dashboard) after logging out."],
+        "expected_result": "User is redirected to the login page when trying to access the protected page after logging out."
+    },
+    {
+        "id": "TC-P04",
+        "title": "Log out and verify the redirection to the login page",
+        "steps": ["1. Log in with valid email and password.",
+                    "2. Click the 'Logout' button."],   
+        "expected_result": "User is successfully logged out and redirected to the login page."
+    },
+    {
+        "id": "TC-P05",
+        "title": "Log out and login again with the same credentials",
+        "steps": ["1. Log in with valid email and password.",
+                    "2. Click the 'Logout' button.",
+                    "3. Log in again with the same email and password."],
+        "expected_result": "User is successfully logged in again with the same credentials."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "",
+      "steps": [],
+      "expected_result": ""
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "",
+      "steps": [],
+      "expected_result": ""
+    }
+  ]
+}

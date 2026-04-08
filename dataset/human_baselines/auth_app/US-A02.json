@@ -1,0 +1,197 @@
+{
+  "story_id": "US-A02",
+  "story_text": "As a registered user, I want to log in with my email and password so that I can access my account.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Log in with valid email and password",
+      "steps": ["1. Navigate to the login page.",
+                "2. Enter a valid email and the correct password.",
+                "3. Click the 'Login' button."],
+      "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id": "TC-P02",
+        "title": "Log in with valid email including subdomain and correct password",
+        "steps": ["1. Navigate to the login page.",
+                  "2. Enter a valid email with a subdomain (e.g., 'user@subdomain.example.com') and the correct password.",
+                  "3. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id":"TC-P03",
+        "title":"Log in with valid email in UPPERCASE and correct password",
+        "steps": ["1. Navigate to the login page.",
+                  "2. Enter a valid email in UPPERCASE and the correct password.",
+                  "3. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id":"TC-P04",
+        "title":"Log in with valid email and valid password that includes special characters and numbers",
+        "steps": ["1. Navigate to the login page.",
+                  "2. Enter a valid email and a valid password that includes special characters and numbers (e.g., 'P@ssw0rd123').",
+                  "3. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id":"TC-P05",
+        "title":"Log in with valid email and valid password that is the maximum length (e.g., 128 characters)",
+        "steps": ["1. Navigate to the login page.",
+                  "2. Enter a valid email and a valid password that is the maximum length (e.g., 'P@ssw0rd1234567890').",
+                  "3. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id":"TC-P06",
+        "title":"Log in directly after registering a new account with valid email and password",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Fill in the required fields to create a new account.",
+                  "3. Click the 'Register' button.",
+                  "4. Once registered, navigate to the login page.",
+                  "5. Enter the same email and password used for registration.",
+                  "6. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id":"TC-P07",
+        "title":"Log in with valid email and password after logging out from a previous session",
+        "steps": ["1. Log in with valid email and password.",
+                  "2. Click the 'Logout' button to end the session.",
+                  "3. Navigate back to the login page.",
+                  "4. Enter the same valid email and password used for the previous login.",
+                  "5. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id":"TC-P09",
+        "title":"Log in with valid email and password after a failed login attempt",
+        "steps": ["1. Navigate to the login page.",
+                  "2. Enter a valid email and an incorrect password.",
+                  "3. Click the 'Login' button and observe the error message.",
+                  "4. Re-enter the same valid email and the correct password.",
+                  "5. Click the 'Login' button again."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard after correcting the password."
+    },
+    {
+        "id":"TC-P10",
+        "title":"Log in with multiple registered accounts using valid email and password for each account",
+        "steps": ["1. Register multiple accounts with different valid emails and passwords.",
+                  "2. For each registered account, navigate to the login page.",
+                  "3. Enter the valid email and corresponding password for that account.",
+                  "4. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    }
+  ],
+  "negative": [
+    {
+        "id": "TC-N01",
+        "title": "Log in with empty email and password fields",
+        "steps": ["1. Navigate to the login page.",
+                    "2. Leave both email and password fields empty.",
+                    "3. Click the 'Login' button."],
+        "expected_result": "Error message displayed for empty email and password fields."
+    },
+    {
+        "id": "TC-N02",
+        "title": "Log in with empty email field",
+        "steps": ["1. Navigate to the login page.",
+                    "2. Leave the email field empty and enter a valid password.",
+                    "3. Click the 'Login' button."],   
+        "expected_result": "Error message displayed for empty email field."
+    },
+    {
+        "id": "TC-N03",
+        "title": "Log in with empty password field",
+        "steps": ["1. Navigate to the login page.",
+                    "2. Enter a valid email and leave the password field empty.",
+                    "3. Click the 'Login' button."],
+        "expected_result": "Error message displayed for empty password field."
+    },
+    {
+        "id": "TC-N04",
+        "title": "Log in with unregistered email",
+        "steps": ["1. Navigate to the login page.",
+                    "2. Enter an email that has not been registered and a valid password.",
+                    "3. Click the 'Login' button."],
+        "expected_result": "Error message displayed for unregistered email."
+    },
+    {
+      "id": "TC-N05",
+      "title": "Log in with invalid email format",
+      "steps": ["1. Navigate to the login page.",
+                "2. Enter an invalid email format (e.g., 'userexample.com') and a valid password.",
+                "3. Click the 'Login' button."],
+      "expected_result": "Error message displayed for invalid email format."
+    },
+        {
+        "id": "TC-N06",
+        "title": "Login with password that is case-sensitive and entered in the wrong case",
+        "steps": ["1. Navigate to the login page.",
+                    "2. Enter a valid email and a password that is correct but entered in the wrong case (e.g., 'p@ssw0rd' instead of 'P@ssw0rd').",
+                    "3. Click the 'Login' button."],
+        "expected_result": "Error message displayed for invalid password."
+    }
+    
+  ],
+
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Login with the email minimum valid length",
+      "steps": ["1. Navigate to the login page.",
+                "2. Enter a valid email that is the minimum valid length (e.g., 'a@b.c') and a valid password.",
+                "3. Click the 'Login' button."],
+      "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id": "TC-E02",
+        "title": "Login with the email maximum valid length",
+        "steps": ["1. Navigate to the login page.",
+                    "2. Enter a valid email that is the maximum valid length (e.g., 254 characters) and a valid password.",
+                    "3. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id": "TC-E03",
+        "title": "Login with the password minimum valid length",
+        "steps": ["1. Navigate to the login page.",
+                    "2. Enter a valid email and a password that is the minimum valid length (e.g., 8 characters).",
+                    "3. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id": "TC-E04",
+        "title": "Login with the password maximum valid length",
+        "steps": ["1. Navigate to the login page.",
+                    "2. Enter a valid email and a password that is the maximum valid length (e.g., 128 characters).",
+                    "3. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id": "TC-E05",
+        "title": "Login with email that has leading and trailing spaces",
+        "steps": ["1. Navigate to the login page.",
+                    "2. Enter a valid email that has leading and trailing spaces and a valid password.",
+                    "3. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id": "TC-E06",
+        "title": "Login with password that has leading and trailing spaces",
+        "steps": ["1. Navigate to the login page.",
+                    "2. Enter a valid email and a password that has leading and trailing spaces.",
+                    "3. Click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    },
+    {
+        "id": "TC-E08",
+        "title": "Login with the same account from multiple devices simultaneously",
+        "steps": ["1. Log in to the account on Device A with valid email and password.",
+                  "2. While still logged in on Device A, navigate to the login page on Device B.",
+                  "3. Enter the same valid email and password on Device B and click the 'Login' button."],
+        "expected_result": "User is successfully logged in and redirected to their dashboard."
+    }
+  ]
+}

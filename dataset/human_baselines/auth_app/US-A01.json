@@ -1,0 +1,302 @@
+{
+  "story_id": "US-A01",
+  "story_text": "As a new user, I want to register with my name, email, and password so that I can create an account.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Register with valid data",
+      "steps": ["1. Navigate to the registration page.",
+                "2. Enter a valid name, email, and password.",
+                "3. Click the 'Register' button."],
+      "expected_result": "Account created successfully and user is redirected to the welcome page. "
+    },
+    {
+      "id": "TC-P02",
+      "title": "Register with valid data and optional fields",
+      "steps": ["1. Navigate to the registration page.",
+                "2. Enter a valid name, email, password, and fill in phone number field",
+                "3. Click the 'Register' button."],
+      "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id": "TC-P03",
+        "title": "Register with the same user name but different email",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, password, and a different email than the one used in TC-P01.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+
+    },
+    {
+        "id":"TC-P04",
+        "title": "Register with a name including Special Characters(e.g., /, *, &, etc.)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name with special characters, email, and password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-P05",
+        "title": "Register with a name including Non-English Characters(e.g., Chinese, Arabic, etc.)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name with non-English characters, email, and password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id": "TC-P06",
+        "title": "Register with a name including numeric characters",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name with numeric characters, email, and password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id": "TC-P07",
+        "title": "Register with a password that is exactly the minimum required length",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, email, and a password that is exactly the minimum required length (e.g., '12345678').",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-P08",
+        "title": "Register with a all fields except the optional phone number field filled with valid data",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, email, and password, and leave the optional phone number field empty.",
+                  "3. Click the 'Register' button."],  
+        "expected_result": "Account created successfully and user is redirected to the welcome page." 
+    },
+    {
+        "id":"TC-P09",
+        "title": "Register with password including special characters",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, email, and password that includes special characters (e.g., 'P@ssw0rd!').",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-P10",
+        "title": "Register with password including numeric characters",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, email, and password that includes numeric characters (e.g., 'Password123').",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-P11",
+        "title": "Register with password including mixed case characters",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, email, and password that includes mixed case characters (e.g., 'PPassword').",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    }
+
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Register with invalid email format",
+      "steps": ["1. Navigate to the registration page.",
+                "2. Enter a valid name, an invalid email format (e.g., 'userexample.com'), and a valid password.",
+                "3. Click the 'Register' button."],
+      "expected_result": "Error message displayed for invalid email format."
+    },
+    { 
+        "id": "TC-N02",
+        "title":"Register with a pre-registered email",
+        "steps": ["1. Navigate to the registration page.",
+                    "2. Enter a valid name, a valid password, and an email that has already been registered.",
+                    "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for pre-registered email."
+    },
+    {
+        "id": "TC-N03",
+        "title": "Register with empty name field",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid email and a valid password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for empty name field."
+    },  
+    {
+        "id":"TC-N04",
+        "title":"Register with name field containing only spaces",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a name field containing only spaces, a valid email, and a valid password.",
+                  "3. Click the 'Register' button."],   
+        "expected_result": "Error message displayed for name field containing only spaces."
+    },
+    {
+        "id": "TC-N05",
+        "title": "Register with empty password field",
+        "steps": ["1. Navigate to the registration page.",  
+                  "2. Enter a valid name and a valid email.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for empty password field."
+    },
+    {
+        "id":"TC-N06",
+        "title":"Register with all fields empty",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Leave all fields empty.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error messages displayed for all required fields being empty."
+    }
+
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Register with 1 character in the name field",
+      "steps": ["1. Navigate to the registration page.",
+                "2. Enter a name with only 1 character, a valid email, and a valid password.",
+                "3. Click the 'Register' button."],
+      "expected_result": "Error message displayed for name field containing only 1 character."
+    },
+    {
+        "id": "TC-E02",
+        "title": "Register with 2 characters in the name field",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a name with only 2 characters, a valid email, and a valid password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-E03",
+        "title":"Register with 255 characters in the name field",
+        "steps": ["1. Navigate to the registration page.",  
+                  "2. Enter a name with 255 characters, a valid email, and a valid password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-E04",
+        "title":"Register with 256 characters in the name field",
+        "steps": ["1. Navigate to the registration page.",  
+                  "2. Enter a name with 256 characters, a valid email, and a valid password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for name exceeding maximum character limit."
+    },
+    {
+        "id":"TC-E05",
+        "title":"Register with a space before the name field",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a name with a space before it, a valid email, and a valid password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for name field containing leading space."
+    },
+    {
+        "id":"TC-E06",
+        "title":"Register with a the shortest email address (e.g., a@b.c)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, the shortest email address (e.g., 'a@b.c'), and a valid password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-E07",
+        "title":"Register with an email address that is exactly the maximum allowed length (e.g., 255 characters)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, an email address that is exactly the maximum allowed length (e.g., 255 characters), and a valid password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-E08",
+        "title":"Register with an email adress that exceeds the maximum allowed length (e.g., 256 characters)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, an email address that exceeds the maximum allowed length (e.g., 256 characters), and a valid password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for email address exceeding maximum length."
+    },
+    {
+        "id":"TC-E09",
+        "title":"Register with an email adress that includes deep subdomains (e.g., @sub.sub.sub.domain.com)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, an email address that includes deep subdomains (e.g., @sub.sub.sub.domain.com), and a valid password.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-E10",
+        "title":"Register with a password that is exactly 7 characters long (the minimum required length is 8 characters)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, an email address, and a password that is exactly 7 characters long.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for password not meeting minimum length requirement."
+    },
+    {
+        "id":"TC-E11",
+        "title":"Register with a password that is exactly 8 characters long (the minimum required length)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, an email address, and a password that is exactly 8 characters long.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-E12",
+        "title":"Register with a password that is exactly 128 characters long (the maximum allowed length)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, an email address, and a password that is exactly 128 characters long.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-E13",
+        "title":"Register with a password that exceeds the maximum allowed length (e.g., 129 characters)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, an email address, and a password that exceeds the maximum allowed length (e.g., 129 characters).",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for password exceeding maximum length."
+    },
+    {
+        "id":"TC-E14",
+        "title":"Register with a password that includes a space",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, an email address, and a password that includes a space.",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for password field containing a space."
+    },
+    {
+        "id":"TC-E15",
+        "title":"Register with the minimum valid length for phone number in the optional phone number field (e.g., 7 digits)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, email, password, and a phone number that is the minimum valid length (e.g., 7 digits).",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for phone number not meeting minimum length requirement."
+    },
+    {
+        "id":"TC-E16",
+        "title":"Register with the maximum valid length for phone number in the optional phone number field (e.g., 15 digits)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, email, password, and a phone number that is the maximum valid length (e.g., 15 digits).",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Account created successfully and user is redirected to the welcome page."
+    },
+    {
+        "id":"TC-E17",
+        "title":"Register with a phone number that exceeds the maximum valid length in the optional phone number field (e.g., 16 digits)",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, email, password, and a phone number that exceeds the maximum valid length (e.g., 16 digits).",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for phone number exceeding maximum length."
+    },
+    {
+        "id":"TC-E18",
+        "title":"Register with a phone number that includes special characters in the optional phone number field (e.g., '+1 (123) 456-7890')",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, email, password, and a phone number that includes special characters (e.g., '+1 (123) 456-7890').",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for phone number containing invalid characters."
+    },
+    {
+        "id":"TC-E19",
+        "title":"Register with a phone number that includes spaces in the optional phone number field (e.g., '123 456 7890')",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Enter a valid name, email, password, and a phone number that includes spaces (e.g., '123 456 7890').",
+                  "3. Click the 'Register' button."],
+        "expected_result": "Error message displayed for phone number containing invalid characters."
+    }
+  ]
+}

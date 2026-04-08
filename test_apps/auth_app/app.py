@@ -18,6 +18,7 @@ def register():
     email = data.get("email", "").strip().lower()
     password = data.get("password", "")
     name = data.get("name", "").strip()
+    phone = data.get("phone", "").strip()   
 
     if not email or not password or not name:
         return jsonify({"error": "All fields are required"}), 400
@@ -30,6 +31,7 @@ def register():
 
     users[email] = {
         "name": name,
+        "phone": phone,
         "password": generate_password_hash(password),
         "locked": False
     }
@@ -97,7 +99,7 @@ def profile():
     if "user" not in session:
         return jsonify({"error": "Unauthorized"}), 401
     email = session["user"]
-    return jsonify({"email": email, "name": users[email]["name"]}), 200
+    return jsonify({"email": email, "name": users[email]["name"], "phone": users[email]["phone"]}), 200
 
 
 if __name__ == "__main__":
