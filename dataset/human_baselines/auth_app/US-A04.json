@@ -1,0 +1,29 @@
+{
+  "story_id": "US-A04",
+  "story_text": "As a user, I want to reset my password via email so that I can regain access if I forget it.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "",
+      "steps": [],
+      "expected_result": ""
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "",
+      "steps": [],
+      "expected_result": ""
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "",
+      "steps": [],
+      "expected_result": ""
+    }
+  ]
+}
