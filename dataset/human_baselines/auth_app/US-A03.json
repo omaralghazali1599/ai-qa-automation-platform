@@ -45,17 +45,60 @@
   "negative": [
     {
       "id": "TC-N01",
-      "title": "",
-      "steps": [],
-      "expected_result": ""
+      "title": "Log out without logging in using the API endpoint",
+      "steps": ["1. Send a logout request to the API endpoint without being logged in."],
+      "expected_result": "User is redirected to the login page or receives an error message."
+    },
+    {
+        "id": "TC-N02",
+        "title": "Log out with an expired session token",
+        "steps": ["1. Log in with valid email and password.",
+                    "2. Wait for the session token to expire.",
+                    "3. Click the 'Logout' button."],
+        "expected_result": "User is redirected to the login page or receives an error message."
+    },
+    {
+        "id": "TC-N03",
+        "title": "Log out several times in a row",
+        "steps": ["1. Log in with valid email and password.",
+                    "2. Click the 'Logout' button.",
+                    "3. Click the 'Logout' button again."],
+        "expected_result": "User is successfully logged out and redirected to the login page."
     }
+
   ],
   "edge": [
     {
       "id": "TC-E01",
-      "title": "",
-      "steps": [],
-      "expected_result": ""
+      "title": "Log out after a long period of inactivity",
+      "steps": ["1. Log in with valid email and password.",
+                  "2. Wait for a long period of inactivity (e.g., 30 minutes).",
+                  "3. Click the 'Logout' button."],
+      "expected_result": "User is successfully logged out and redirected to the login page."
+    },
+    {
+        "id": "TC-E02",
+        "title": "Log out while the network connection is unstable",
+        "steps": ["1. Log in with valid email and password.",
+                    "2. Simulate an unstable network connection (e.g., by disconnecting and reconnecting to the internet).",
+                    "3. Click the 'Logout' button during the unstable connection."],
+        "expected_result": "User is successfully logged out and redirected to the login page."
+    },
+    {
+        "id": "TC-E03",
+        "title": "Log out and try logging in again with the session token",
+        "steps": ["1. Log in with valid email and password.",
+                    "2. Click the 'Logout' button.",
+                    "3. Attempt to log in again using the same session token."],
+        "expected_result": "User is not able to log in with the expired session token and is redirected to the login page."
+    },
+    {
+         "id": "TC-E04",
+         "title": "Login with the same user account from multiple devices and log out from one device",
+            "steps": ["1. Log in to the account on Device A with valid email and password.",
+                        "2. Log in to the same account on Device B with valid email and password.",
+                        "3. Click the 'Logout' button on Device A."],
+        "expected_result": "User is logged out from Device A and Device B."
     }
   ]
 }
