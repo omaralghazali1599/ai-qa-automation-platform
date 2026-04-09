@@ -9,3 +9,6 @@ Generated Automation Scripts/
 allure-results/
 evaluation/results/
 .pytest_cache/
+test_pilot.py/
+test_smoke.py/
+test.py/
