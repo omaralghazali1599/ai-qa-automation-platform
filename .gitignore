@@ -6,3 +6,6 @@ generated_tests/
 data/
 Generated test cases data/
 Generated Automation Scripts/
+allure-results/
+evaluation/results/
+.pytest_cache/
