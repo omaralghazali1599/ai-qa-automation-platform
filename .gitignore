@@ -12,3 +12,4 @@ evaluation/results/
 test_pilot.py/
 test_smoke.py/
 test.py/
+evaluation_tests/
