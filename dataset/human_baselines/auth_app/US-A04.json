@@ -5,25 +5,117 @@
   "positive": [
     {
       "id": "TC-P01",
-      "title": "",
-      "steps": [],
-      "expected_result": ""
+      "title": "Reset password using valid email",
+      "steps": [ "1. Navigate to the password reset page.",
+                "2. Enter a registered email address in the email field.",
+                "3. Click the 'Reset Password' button."],
+      "expected_result": "A password reset link is sent to the registered email address."
+    },
+    {
+      "id": "TC-P02",
+      "title": "Reset password using valid email and validate the reset link",
+      "steps": [ "1. Navigate to the password reset page.",
+                "2. Enter a registered email address in the email field.",
+                "3. Click the 'Reset Password' button.",
+                "4. Check the email for the reset link and click on it."],
+      "expected_result": "The user is directed to the password reset page where they can enter a new password."
+    },
+    {
+      "id": "TC-P03",
+      "title": "Successfully logging in with the new password after resetting it",
+      "steps": [ "1. Reset the password using a valid email and validate the reset link as described in TC-P02.",
+                "2. Enter a new password in the password reset page and submit it.",
+                "3. Navigate to the login page.",
+                "4. Enter the registered email address and the new password.",
+                "5. Click the 'Login' button."],
+      "expected_result": "The user is successfully logged in with the new password."
+    },
+    {
+      "id": "TC-P04",
+      "title": "Reset password multiple times using the same email and validate the latest reset link",
+      "steps": [ "1. Navigate to the password reset page.",
+                "2. Enter a registered email address in the email field.",
+                "3. Click the 'Reset Password' button.",
+                "4. Request another password reset by repeating steps 1-3.",
+                "5. Check the email for the latest reset link and click on it."],
+      "expected_result": "The user is directed to the password reset page where they can enter a new password."
+    },
+    {
+      "id": "TC-P05",
+      "title": "Reset password and validate that the previous reset link is invalidated",
+      "steps": [ "1. Navigate to the password reset page.",
+                "2. Enter a registered email address in the email field.",
+                "3. Click the 'Reset Password' button.",
+                "4. Request another password reset by repeating steps 1-3.",
+                "5. Attempt to use the first reset link received."],
+      "expected_result": "The previous reset link is no longer valid and cannot be used to reset the password."
     }
   ],
   "negative": [
     {
       "id": "TC-N01",
-      "title": "",
-      "steps": [],
-      "expected_result": ""
+      "title": "Reset password with an invalid email format",
+      "steps": ["1. Navigate to the password reset page.",
+                "2. Enter an invalid email format (e.g., 'userexample.com') in the email field.",
+                "3. Click the 'Reset Password' button."],
+      "expected_result": "An error message is displayed indicating that the email format is invalid."
+    },
+    {
+      "id": "TC-N02",
+      "title": "Reset password with an email that is not registered",
+      "steps": ["1. Navigate to the password reset page.",
+                "2. Enter an unregistered email address in the email field.",
+                "3. Click the 'Reset Password' button."],
+      "expected_result": "An error message is displayed indicating that the email is not registered."
+    },
+    {
+      "id": "TC-N03",
+      "title": "Reset password with an empty email field",
+      "steps": ["1. Navigate to the password reset page.",
+                "2. Leave the email field empty.",
+                "3. Click the 'Reset Password' button."],
+      "expected_result": "An error message is displayed indicating that the email field is required. "
+    },
+    {
+      "id": "TC-N04",
+      "title": "Reset password and make sure the old password is no longer valid",
+      "steps": [ "1. Reset the password using a valid email and validate the reset link as described in TC-P02.",
+                "2. Enter a new password in the password reset page and submit it.",
+                "3. Navigate to the login page.",
+                "4. Enter the registered email address and the old password.",
+                "5. Click the 'Login' button."],
+      "expected_result": "The old password is no longer valid for logging in."
+    },  
+    {
+      "id": "TC-N05",
+      "title":  "Reset password with a short password that does not meet the minimum length requirement",
+      "steps": ["1. Navigate to the password reset page.",
+                "2. Enter a registered email address in the email field.",
+                "3. Click the 'Reset Password' button.",
+                "4. Check the email for the reset link and click on it.",
+                "5. Enter a new password that is shorter than the minimum length requirement and submit it."],
+      "expected_result": "An error message is displayed indicating that the password does not meet the minimum length requirement."
     }
+
   ],
   "edge": [
+  
     {
       "id": "TC-E01",
-      "title": "",
-      "steps": [],
-      "expected_result": ""
+      "title": "Reset password with a password that is the same as the previous password",
+      "steps": ["1. Reset the password using a valid email and validate the reset link as described in TC-P02.",
+                "2. Enter the same password as the previous one in the password reset page and submit it."],
+      "expected_result": "the password was reser successfully reset, but the user is prompted to choose a different password since it cannot be the same as the previous one."
+    },
+    {
+      "id": "TC-E02",
+      "title": "Reset password in low internet connectivity and validate the reset link",
+      "steps": [ "1. Navigate to the password reset page.",
+                "2. Enter a registered email address in the email field.",
+                "3. Click the 'Reset Password' button.",
+                "4. Simulate low internet connectivity during the password reset process.",
+                "5. Check the email for the reset link and attempt to use it."],
+      "expected_result": "The reset link is received and can be used successfully to reset the password, even with low internet connectivity."
     }
   ]
 }

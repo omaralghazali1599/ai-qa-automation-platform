@@ -1,0 +1,59 @@
+{
+  "story_id": "US-A07",
+  "story_text": "As a user, I want to be prevented from registering with an already-used email so that duplicate accounts are avoided.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Prevent registration with an already registered email",
+      "steps": ["1. Navigate to the registration page.",
+                "2. Enter a name, an email that is already registered, and a password.",
+                "3. Click the 'Register' button."],
+      "expected_result": "An error message is displayed indicating that the email is already in use, and the registration is not successful."
+    },
+    {
+        "id": "TC-P02",
+        "title": "Allow registration with a unique email",
+        "steps": ["1. Navigate to the registration page.",
+                    "2. Enter a name, a unique email that is not registered, and a password.",
+                    "3. Click the 'Register' button."],
+        "expected_result": "The registration is successful, and the user is redirected to the welcome page."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Incorrect error message displayed for duplicate email",
+      "steps": ["1. Navigate to the registration page.",
+                "2. Enter a name, an email that is already registered, and a password.",
+                "3. Click the 'Register' button."],
+      "expected_result": " An incorrect error message is displayed (e.g., 'Password is too weak') instead of indicating that the email is already in use, leading to confusion for the user."
+    },
+    {
+        "id": "TC-N02",
+        "title": "System treats email as unique due to case sensitivity (e.g., USER vs user)",
+        "steps": ["1. Navigate to the registration page.",
+                    "2. Enter a name, an email that is already registered but with different case (e.g., 'USER@EXAMPLE.COM'), and a password.",
+                    "3. Click the 'Register' button."],
+        "expected_result": "An error message is displayed indicating that the email is already in use, and the registration is not successful."
+    },
+    {
+        "id": "TC-N03",
+        "title": "Backend fails to check for duplicate emails, allowing multiple accounts with the same email",
+        "steps": ["1. Navigate to the registration page.",
+            "2. Enter a name, an email that is already registered, and a password.",
+            "3. Click the 'Register' button."],
+        "expected_result": "An error message is displayed indicating that the email is already in use, and the registration is not successful."
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Register with duplicate email concurrently from multiple requests",
+      "steps": ["1. Open multiple browser tabs or use a tool to send concurrent registration requests.",
+                "2. In each tab or request, enter a name, the same email that is already registered, and a password.",
+                "3. Click the 'Register' button in all tabs or send all requests simultaneously."],
+      "expected_result": "An error message is displayed indicating that the email is already in use, and the registration is not successful."
+    }
+  ]
+}

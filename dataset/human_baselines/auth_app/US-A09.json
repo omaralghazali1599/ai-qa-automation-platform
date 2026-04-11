@@ -1,0 +1,100 @@
+{
+  "story_id": "US-A09",
+  "story_text": "As a user, I want to be blocked from logging in if my account is locked so that security is enforced.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Validate Blocked login attempt when account is locked",
+      "steps": ["1. Navigate to the login page.", 
+                "2. Enter valid credentials for a locked account.", 
+                "3. Click on the login button."],
+      "expected_result": "User is blocked from logging in and an appropriate error message is displayed."
+    },
+    {
+        "id": "TC-P02",
+        "title": "Ensure account lockout after multiple failed login attempts",
+        "steps": ["1. Navigate to the login page.", 
+                    "2. Enter invalid credentials multiple times (e.g., 5 times).", 
+                    "3. Attempt to log in with valid credentials after lockout."],
+        "expected_result": "After multiple failed attempts, the account is locked and the user is blocked from logging in even with valid credentials."
+    },
+    {
+        "id": "TC-P03",
+        "title": "Display account locked error message on login attempt",
+        "steps": ["1. Navigate to the login page.", 
+                "2. Enter valid credentials for a locked account.", 
+                "3. Click on the login button."],
+        "expected_result": "An error message is displayed indicating that the account is locked."
+    },
+    {
+        "id": "TC-P04",
+        "title": "Redirect locked user to account recovery or support page",
+        "steps": ["1. Navigate to the login page.", 
+                "2. Enter valid credentials for a locked account.", 
+                "3. Click on the login button."],
+        "expected_result": "The user is redirected to the account recovery or support page."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Allow login for a locked account",
+      "steps": ["1. Navigate to the login page.", 
+                "2. Enter valid credentials for a locked account.", 
+                "3. Click on the login button."],
+      "expected_result": "User is allowed to log in successfully, which indicates a failure in enforcing account lockout."
+    },
+    {
+      "id": "TC-N02",
+      "title": "Fail to lock account after multiple failed login attempts",
+      "steps": ["1. Navigate to the login page.", 
+                "2. Enter invalid credentials multiple times (e.g., 5 times).", 
+                "3. Attempt to log in with valid credentials after supposed lockout."],
+      "expected_result": "The account is not locked, and the user is allowed to log in with valid credentials."
+    },
+    {
+      "id": "TC-N03",
+      "title": "No error message displayed for locked account login attempt",
+      "steps": ["1. Navigate to the login page.", 
+                "2. Enter valid credentials for a locked account.", 
+                "3. Click on the login button."],
+      "expected_result": "No error message is displayed, indicating a failure in providing feedback about the locked account."
+    },
+    {
+      "id": "TC-N04",
+      "title": "Locked user is not redirected to account recovery or support page",
+      "steps": ["1. Navigate to the login page.", 
+                "2. Enter valid credentials for a locked account.", 
+                "3. Click on the login button."],
+      "expected_result": "The user is not redirected to the account recovery or support page."
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Attempt Login directly after account lockout",
+      "steps": ["1. Navigate to the login page immediately after triggering account lockout.", 
+                "2. Enter valid credentials for the locked account.", 
+                "3. Click on the login button."],
+      "expected_result": "User is blocked from logging in and an appropriate error message is displayed, even immediately after lockout."
+    },
+    {
+      "id": "TC-E02",
+      "title": "Attempt Login with recently unlocked account",
+      "steps": ["1. Navigate to the login page after an account has been unlocked.", 
+                "2. Enter valid credentials for the recently unlocked account.", 
+                "3. Click on the login button."],
+      "expected_result": "User is allowed to log in with valid credentials for the recently unlocked account."
+    },
+    {
+        "id": "TC-E03",
+        "title": "Attempt Login with account locked during active session login attempt",
+        "steps": ["1. Navigate to the login page.", 
+                  "2. Enter valid credentials for an account that gets locked during the login attempt.", 
+                  "3. Click on the login button."],
+        "expected_result": "User is logged out and blocked from logging in, with an appropriate error message displayed."
+    }
+    
+  ]
+}

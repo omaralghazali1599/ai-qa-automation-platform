@@ -1,0 +1,63 @@
+{
+  "story_id": "US-A06",
+  "story_text": "As a user, I want to receive an error when my password is shorter than 8 characters so that I use a secure password.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Display error message when password is shorter than 8 characters",
+      "steps": [ "1. Navigate to the registration page.",
+                "2. Enter a name in the name field.",
+                "3. Enter an email address in the email field.",
+                "4. Enter a password that is shorter than 8 characters in the password field.",
+                "5. Click the 'Register' button."],
+      "expected_result": "An error message is displayed indicating that the password is too short."
+    },
+    {
+      "id": "TC-P02",
+      "title": "Prevent registration with password shorter than 8 characters",
+      "steps": [ "1. Navigate to the registration page.",
+                "2. Enter a name in the name field.",
+                "3. Enter an email address in the email field.",
+                "4. Enter a password that is shorter than 8 characters in the password field.",
+                "5. Click the 'Register' button."],
+      "expected_result": "User is prevented from registering with a password that is shorter than 8 characters."
+    },
+    {
+        "id": "TC-P03",
+        "title": "Remove error message after correcting password to valid length",
+        "steps": [ "1. Navigate to the registration page.",
+                  "2. Enter a name in the name field.",
+                  "3. Enter an email address in the email field.",
+                  "4. Enter a password that is shorter than 8 characters in the password field.",
+                  "5. Click the 'Register' button.",
+                  "6. After receiving the error message, enter a password that is 8 characters or longer in the password field.",
+                  "7. Click the 'Register' button again."],
+        "expected_result": "User is able to register with a valid password."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Register with empty password field",
+      "steps": [ "1. Navigate to the registration page.",
+                "2. Enter a name in the name field.",
+                "3. Enter an email address in the email field.",
+                "4. Leave the password field empty.",
+                "5. Click the 'Register' button."],
+      "expected_result": "An error message is displayed indicating that the password field is required."
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Register with password at maximum length boundary (e.g., 7 characters)",
+      "steps": [ "1. Navigate to the registration page.",
+                "2. Enter a name in the name field.",
+                "3. Enter an email address in the email field.",
+                "4. Enter a password that is exactly 7 characters long in the password field.",
+                "5. Click the 'Register' button."],
+      "expected_result": "An error message is displayed indicating that the password is too short."
+    }
+  ]
+}

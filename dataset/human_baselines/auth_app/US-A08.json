@@ -1,0 +1,95 @@
+{
+  "story_id": "US-A08",
+  "story_text": "As a user, I want to see an error when I try to log in with a wrong password so that I know my credentials are incorrect.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Allow login after correcting previously incorrect password",
+      "steps": ["1. Navigate to the login page.",
+                "2. Enter a valid email address in the email field.",
+                "3. Enter an incorrect password in the password field.",
+                "4. Click the 'Login' button.",
+                "5. After receiving the error message, enter the correct password in the password field.",
+                "6. Click the 'Login' button again."],
+      "expected_result": "User receives an error message for the incorrect password and is able to log in successfully after entering the correct password."
+    },
+    {
+      "id": "TC-P02",
+      "title": "Display error message for incorrect password",
+      "steps": ["1. Navigate to the login page.",
+                "2. Enter a valid email address in the email field.",
+                "3. Enter an incorrect password in the password field.",
+                "4. Click the 'Login' button."],
+      "expected_result": "User receives an error message indicating that the password is incorrect."
+    },
+    {
+        "id": "TC-P03   ",
+        "title": "Allow password reset after multiple failed login attempts",
+        "steps": ["1. Navigate to the login page.",
+                  "2. Enter a valid email address in the email field.",
+                  "3. Enter an incorrect password in the password field.",
+                  "4. Click the 'Login' button.",
+                  "5. Repeat steps 3-4 multiple times."],
+        "expected_result": "User is prompted to reset their password after multiple failed login attempts."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Display generic error message for incorrect password",
+      "steps": ["1. Navigate to the login page.",
+                "2. Enter a valid email address in the email field.",
+                "3. Enter an incorrect password in the password field.",
+                "4. Click the 'Login' button."],
+      "expected_result": "User receives a generic error message."
+    },
+    {
+      "id": "TC-N02",
+      "title": "Allow login with incorrect password",
+      "steps": ["1. Navigate to the login page.",
+                "2. Enter a valid email address in the email field.",
+                "3. Enter an incorrect password in the password field.",
+                "4. Click the 'Login' button."],
+      "expected_result": "User is allowed to log in with an incorrect password."
+    },
+    {
+        "id": "TC-N03",
+        "title": "Error message displayed for correct password",
+        "steps": ["1. Navigate to the login page.",
+                  "2. Enter a valid email address in the email field.",
+                  "3. Enter the correct password in the password field.",
+                  "4. Click the 'Login' button."],
+        "expected_result": "User receives an error message indicating that the password is incorrect."
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Login with password different only in case sensitivity",
+      "steps": ["1. Navigate to the login page.",
+                "2. Enter a valid email address in the email field.",
+                "3. Enter a password that differs only in case sensitivity from the correct password in the password field.",
+                "4. Click the 'Login' button."],
+      "expected_result": "User is prevented from logging in with a password that differs only in case."
+    },
+    {
+      "id": "TC-E02",
+      "title": "Login with password that has leading or trailing spaces",
+      "steps": ["1. Navigate to the login page.",
+                "2. Enter a valid email address in the email field.",
+                "3. Enter a password that has leading or trailing spaces in the password field.",
+                "4. Click the 'Login' button."],
+      "expected_result": "User is prevented from logging in with a password that has leading or trailing spaces."
+    },
+    {
+        "id": "TC-E03",
+        "title": "Login with password that contains special characters",
+        "steps": ["1. Navigate to the login page.",
+                  "2. Enter a valid email address in the email field.",
+                  "3. Enter a password that contains special characters in the password field.",
+                  "4. Click the 'Login' button."],
+        "expected_result": "User is prevented from logging in with a password that contains special characters if the original password does not contain them."
+    }
+  ]
+}
