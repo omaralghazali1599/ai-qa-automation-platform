@@ -1,0 +1,50 @@
+{
+  "story_id": "US-A19",
+  "story_text": "As a user, I want logging out twice in a row to not cause an error so that the logout action is idempotent.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Return success response for repeated logout requests",
+      "steps": ["1. Log in to the system with valid credentials.",
+        "2. Click on the logout button.",
+        "3. Click on the logout button again."],
+      "expected_result": "The system should return a success response for the second logout request without causing an error."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Return error on second logout attempt",
+      "steps": ["1. Log in to the system with valid credentials.",
+        "2. Click on the logout button.",
+        "3. Click on the logout button again."],
+      "expected_result": "The system should return an error message indicating that the user is already logged out."
+    }
+],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Logout twice rapidly in succession",
+      "steps": ["1. Log in to the system with valid credentials.",
+        "2. Click on the logout button twice rapidly."],
+      "expected_result": "The system should handle the rapid successive logout requests without causing an error."
+    },
+    {
+        "id": "TC-E02",
+        "title": "Logout after session already expired",
+        "steps": ["1. Log in to the system with valid credentials.",
+          "2. Wait for the session to expire.",
+          "3. Click on the logout button."],
+        "expected_result": "The system should handle the logout request gracefully even though the session has expired."
+    },
+    {
+        "id": "TC-E03",
+        "title": "Logout under unstable network conditions",
+        "steps": ["1. Log in to the system with valid credentials.",
+          "2. Simulate unstable network conditions.",
+          "3. Click on the logout button."],
+        "expected_result": "The system should handle the logout request gracefully under unstable network conditions."
+    }
+  ]
+}

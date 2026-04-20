@@ -1,0 +1,61 @@
+{
+  "story_id": "US-A15",
+  "story_text": "As a user, I want the login endpoint to return an error when the email field is empty so that I provide all required credentials.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Return error when email field is empty during login request",
+      "steps": ["1. Send a login request with an empty email field",
+                "2. Provide a valid password."],
+      "expected_result": "The login endpoint returns an error message indicating that the email field is required, and the user is not authenticated."
+    },
+    {
+      "id": "TC-P02",
+      "title": "Display appropriate validation message for empty email field during login",
+      "steps": ["1. Send a login request with an empty email field",
+                "2. Provide a valid password."],
+      "expected_result": "The system displays a validation message indicating that the email field is required."
+    }
+  ],
+  "negative": [
+    {
+        "id": "TC-N01   ",
+        "title": "System accepts empty email as valid input",
+        "steps": ["1. Send a login request with an empty email field",
+                  "2. Provide a valid password."],
+        "expected_result": "The system should return an error message indicating that the email field is required."
+    },
+    {
+        "id": "TC-N02",
+        "title": "API returns success response despite empty email field",
+        "steps": ["1. Send a login request with an empty email field",
+                  "2. Provide a valid password."  ],
+        "expected_result": "The API should return an error message indicating that the email field is required."
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Submit login request with email field containing only spaces",
+      "steps": ["1. Send a login request with the email field containing only whitespace characters",
+                "2. Provide a valid password."],
+      "expected_result": "The system should return an error message indicating that the email field is required and cannot contain only whitespace."
+    },
+    {
+        "id": "TC-E02",
+        "title": "Submit login request with empty email and empty password",
+        "steps": ["1. Send a login request with an empty email field",
+                  "2. Provide an empty password."],
+        "expected_result": "The system should return an error message indicating that both the email and password fields are required."
+    },
+    {
+        "id": "TC-E03",
+        "title": "Submit login request with empty email field multiple times rapidly",
+        "steps": ["1. Send a login request with an empty email field",
+                  "2. Provide a valid password.",
+                  "3. Repeat the login request with an empty email field multiple times in quick succession."],
+        "expected_result": "The system should return an error message indicating that the email field is required."
+    }
+  ]
+}

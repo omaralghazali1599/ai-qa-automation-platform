@@ -1,0 +1,132 @@
+{
+  "story_id": "US-A13",
+  "story_text": "As a user, I want my password reset token to be invalidated after use so that it cannot be reused.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Invalidate password reset token after successful password reset",
+      "steps": ["1. Request a password reset to receive a token.",
+                "2. Use the token to reset the password successfully.",
+                "3. Attempt to reuse the same token for another password reset."],
+      "expected_result": "The token is invalidated after the first successful password reset, and any subsequent attempts to use the same token should fail with an appropriate error message indicating that the token is no longer valid."
+    },
+    {
+        "id": "TC-P02",
+        "title": "Generate a new valid token after requesting password reset again",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to reset the password successfully.",
+                    "3. Request another password reset to receive a new token."],
+        "expected_result": "A new valid token is generated and sent to the user upon requesting another password reset."
+    },
+    {
+        "id": "TC-P03",
+        "title": "Ensure expired tokens cannot be used for password reset",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Wait for the token to expire (if applicable).",
+                    "3. Attempt to use the expired token for password reset."],
+        "expected_result": "Expired tokens should be rejected with an appropriate error message indicating that the token is no longer valid."
+    },
+    {
+        "id": "TC-P04",
+        "title": "Verify that the user receives a notification when the token is invalidated",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to reset the password successfully.",
+                    "3. Check for any notifications sent to the user regarding the token invalidation."],
+        "expected_result": "The user should receive a notification indicating that the token has been invalidated."
+    },
+    {
+        "id": "TC-P05",
+        "title": "Check that the system logs the invalidation of the token for security auditing",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to reset the password successfully.",
+                    "3. Check the system logs for an entry indicating that the token has been invalidated."],
+        "expected_result": "The system should log the invalidation of the token for security auditing purposes."
+    },
+    {
+        "id": "TC-P06",
+        "title": "Allow login with new password after token is used and invalidated",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to reset the password successfully.",
+                    "3. Attempt to log in with the new password."],
+        "expected_result": "The user should be able to log in with the new password after the token is used and invalidated."
+    },
+    {
+        "id": "TC-P07",
+        "title": "Ensure old password no longer works after token usage",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to reset the password successfully.",
+                    "3. Attempt to log in with the old password."],
+        "expected_result": "The user should not be able to log in with the old password after the token is used and invalidated."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "System crashes when reused token is submitted",
+      "steps": ["1. Request a password reset to receive a token.",
+                "2. Use the token to reset the password successfully.",
+                "3. Attempt to reuse the same token for another password reset."],
+      "expected_result": "The system should reject the reused token with an appropriate error message."
+    },
+    {
+        "id": "TC-N02",
+        "title": "Token remains valid indefinitely if not used",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Wait for an extended period of time without using the token.",
+                    "3. Attempt to use the token for password reset."],
+        "expected_result": "The system should reject the expired token with an appropriate error message."
+    },
+    {
+        "id": "TC-N03",
+        "title": "User does not receive notification when token is invalidated",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to reset the password successfully.",
+                    "3. Check for any notifications sent to the user regarding the token invalidation."],
+        "expected_result": "The user should receive a notification indicating that the token has been invalidated."
+    },
+    {
+        "id": "TC-N04",
+        "title": "User cannot log in with new password after token is used and invalidated",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to reset the password successfully.",
+                    "3. Attempt to log in with the new password."  ],
+        "expected_result": "The user should be able to log in with the new password after the token is used and invalidated."
+    },
+    {
+        "id": "TC-N05",
+        "title": "Old password still works after token usage and supposed invalidation",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to reset the password successfully.",
+                    "3. Attempt to log in with the old password."],
+        "expected_result": "The user should not be able to log in with the old password after the token is used and invalidated."
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Attempt to reuse token immediately after successful password reset",
+      "steps": ["1. Request a password reset to receive a token.",
+                "2. Use the token to reset the password successfully.",
+                "3. Immediately attempt to reuse the same token for another password reset."    ],
+      "expected_result": "The system should reject the reused token with an appropriate error message"
+    },
+    {
+        "id": "TC-E02",
+        "title": "Use token from different device after it has been used",
+        "steps": ["1. Request a password reset to receive a token on Device A.",
+                    "2. Use the token to reset the password successfully on Device A.",
+                    "3. Attempt to reuse the same token for another password reset on Device B."],
+        "expected_result": "The system should reject the reused token with an appropriate error message."
+    },
+    {
+        "id": "TC-E03",
+        "title": "Test token invalidation under high load conditions to ensure system stability",
+        "steps": ["1. Simulate high load conditions on the system.",
+                    "2. Request a password reset to receive a token.",
+                    "3. Use the token to reset the password successfully.",
+                    "4. Attempt to reuse the same token for another password reset under high load conditions."],
+        "expected_result": "The system should reject the reused token with an appropriate error message."
+    }
+  ]
+}

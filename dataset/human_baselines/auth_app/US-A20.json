@@ -1,0 +1,52 @@
+{
+  "story_id": "US-A20",
+  "story_text": "As a user, I want the forgot-password endpoint to require the email field so that incomplete requests are rejected.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Accept forgot-password request when email field is provided",
+      "steps": ["1. Send a forgot-password request to the endpoint.",
+                "2. Include a valid registered email in the request payload.",
+                "3. Submit the request."],
+      "expected_result": "The system accepts the request and proceeds with the password reset process."
+    },
+    {
+      "id": "TC-P02",
+      "title": "Send password reset link when valid email is submitted",
+      "steps": ["1. Send a forgot-password request to the endpoint.",
+                "2. Provide a valid registered email address.",
+                "3. Submit the request.",
+                "4. Check the email inbox for the reset link."],
+      "expected_result": "A password reset link is sent to the provided email address."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Reject request with invalid email",
+      "steps": ["1. Send a forgot-password request to the endpoint.",
+                "2. Provide an invalid email format (e.g., userexample.com).",
+                "3. Submit the request."],
+      "expected_result": "The system rejects the request and returns an error indicating invalid email format."
+    },
+    {
+      "id": "TC-N02",
+      "title": "Return incorrect error message for missing email field",
+      "steps": ["1. Send a forgot-password request to the endpoint.",
+                "2. Omit the email field from the request payload.",
+                "3. Submit the request."],
+      "expected_result": "The system returns an error indicating that the email field is required."
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Submit forgot-password request with email field as empty string via API",
+      "steps": ["1. Send a forgot-password request to the endpoint via API.",
+                "2. Set the email field to an empty string (\"\").",
+                "3. Submit the request."],
+      "expected_result": "The system rejects the request and returns an error indicating that the email field cannot be empty."
+    }
+  ]
+}

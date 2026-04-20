@@ -1,0 +1,102 @@
+{
+  "story_id": "US-A10",
+  "story_text": "As a user, I want to see my profile information after logging in so that I can confirm my account details.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Getting Profile Information",
+      "steps": ["1. Log in with valid credentials.",
+                "2. Navigate to the profile page. "],
+      "expected_result": "The user's profile information is displayed correctly, including name, email, and other relevant details."
+    },
+    {
+      "id": "TC-P02",
+      "title": "Validating Profile Information Display",
+      "steps": ["1. Log in with valid credentials.",
+                "2. Navigate to the profile page.",
+                "3. Observe the profile information displayed.(e.g., name, email, and other relevant details)"],
+      "expected_result": "The user's profile information is displayed correctly, including name, email, and other relevant details."
+    },
+    {
+        "id": "TC-P03",
+        "title": "Profile Information Display with Updated Details",
+        "steps": ["1. Log in with valid credentials.",
+                    "2. Navigate to the profile page.",
+                    "3. Update profile information (e.g., change name or email).",
+                    "4. Save the changes and refresh the profile page."],
+        "expected_result": "The updated profile information is displayed correctly, reflecting the changes made by the user."
+    },
+    {
+        "id": "TC-P04",
+        "title": "Profile Information Display with Incomplete Details",
+        "steps": ["1. Log in with valid credentials.",
+                    "2. Navigate to the profile page.",
+                    "3. Observe the profile information displayed when some details are missing (e.g., Phone number)."],
+        "expected_result": "The profile page handles incomplete details gracefully, displaying available information and indicating missing details appropriately."
+    },
+    {
+        "id": "TC-P05",
+        "title": "Profile Information Display across Different devices",
+        "steps": ["1. Log in with valid credentials.",
+                    "2. Navigate to the profile page.",
+                    "3. Observe the profile information displayed on different devices (e.g., desktop, mobile, tablet)."],
+        "expected_result": "The profile information is displayed correctly and is responsive across different devices, ensuring a consistent user experience regardless of the device used to access the profile page."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Profile Information Not Displayed After Login",
+      "steps": ["1. Log in with valid credentials.",
+                "2. Navigate to the profile page.",
+                "3. Observe the profile information displayed.(e.g., name, email, and other relevant details)"],
+      "expected_result": "The user's profile information is displayed correctly, including name, email, and other relevant details."
+    },
+    {
+        "id": "TC-N02",
+        "title": "Profile Information Display with Incorrect Details",
+        "steps": ["1. Log in with valid credentials.",
+                    "2. Navigate to the profile page.",
+                    "3. Observe the profile information displayed.(e.g., name, email, and other relevant details)"],
+        "expected_result": "The user's profile information is displayed correctly, including name, email, and other relevant details."
+    },
+    {
+        "id": "TC-N03",
+        "title": "Profile Information Display with Incomplete Details",
+        "steps": ["1. Log in with valid credentials.",
+                    "2. Navigate to the profile page.",
+                    "3. Observe the profile information displayed when some details are missing (e.g., Phone number)."],
+        "expected_result": "The profile page handles incomplete details gracefully, displaying available information and indicating missing details appropriately."
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Display profile with maximum length field values",
+      "steps": ["1. Log in with valid credentials.",
+                "2. Navigate to the profile page.",
+                "3. Update profile information with maximum length field values (e.g., name with 255 characters, email with 255 characters).",
+                "4. Save the changes and refresh the profile page."],
+      "expected_result": "The profile information is displayed correctly, even when field values reach their maximum length limits."
+    },
+    {
+        "id": "TC-E02",
+        "title": "Display profile immediately after login under slow network conditions",
+        "steps": ["1. Log in with valid credentials under simulated slow network conditions.",
+                    "2. Navigate to the profile page immediately after logging in.",
+                    "3. Observe the profile information displayed.(e.g., name, email, and other relevant details)"],
+        "expected_result": "The profile information is displayed correctly, even under slow network conditions, ensuring that users can access their profile details without significant delays."
+    },
+    {
+        "id": "TC-E03",
+        "title": "Display profile after session timeout and re-login",
+        "steps": ["1. Log in with valid credentials.",
+                    "2. Wait for the session to timeout.",
+                    "3. Re-login with valid credentials.",
+                    "4. Navigate to the profile page.",
+                    "5. Observe the profile information displayed."],
+        "expected_result": "The profile information is displayed correctly after re-login, ensuring that users can access their profile details even after a session timeout."
+    }
+  ]
+}

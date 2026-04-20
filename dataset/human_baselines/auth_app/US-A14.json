@@ -1,0 +1,70 @@
+{
+  "story_id": "US-A14",
+  "story_text": "As a user, I want the system to reject a new password shorter than 8 characters during reset so that security standards are maintained.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Prevent password reset submission with password shorter than 8 characters",
+      "steps": ["1. Request a password reset to receive a token.",
+                "2. Use the token to attempt to reset the password with a new password that is shorter than 8 characters."],
+      "expected_result": "The system should reject the password reset attempt and display an appropriate error message indicating that the password must be at least 8 characters long."
+    },
+    {
+        "id": "TC-P02",
+        "title": "Remove error message after entering valid password length during reset",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to attempt to reset the password with a new password that is shorter than 8 characters.",
+                    "3. Observe the error message displayed.",
+                    "4. Enter a new password that is at least 8 characters long and attempt to reset the password again."],
+        "expected_result": "The system should display a success message indicating that the password has been reset successfully."
+    },
+    {
+        "id": "TC-P03",
+        "title": "Allow successful login after resetting password with valid length",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to reset the password with a new password that is at least 8 characters long.",
+                    "3. Attempt to log in with the new password."],
+        "expected_result": "The system should allow the user to log in with the new password."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Backend accepts short password via API despite frontend validation",
+      "steps": ["1. Request a password reset to receive a token.",
+                "2. Use the token to attempt to reset the password with a new password that is shorter than 8 characters via API call."],
+      "expected_result": "The system should reject the password reset attempt and display an appropriate error message indicating that the password must be at least 8 characters long."
+    },
+    {
+        "id": "TC-N02",
+        "title": "System does not display an error message when a short password is entered during reset",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to attempt to reset the password with a new password that is shorter than 8 characters."],
+        "expected_result": "The system should display an appropriate error message indicating that the password must be at least 8 characters long."
+    }
+  ],
+  "edge": [
+    {
+        "id": "TC-E01",
+        "title": "Test that the system correctly handles attempts to reset the password with invalid input (e.g., empty password, only spaces)",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to attempt to reset the password with an empty string or a string of only spaces."],
+        "expected_result": "The system should display an appropriate error message indicating that the password is invalid."
+    },
+    {
+        "id": "TC-E02",
+        "title": "Reset password with rapid repeated submissions of short passwords",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to attempt to reset the password with a new password that is shorter than 8 characters multiple times in quick succession."],
+        "expected_result": "The system should display an appropriate error message indicating that the password must be at least 8 characters long."
+    },
+    {
+        "id": "TC-E03",
+        "title": "Reset password with short password under slow network conditions",
+        "steps": ["1. Request a password reset to receive a token.",
+                    "2. Use the token to attempt to reset the password with a new password that is shorter than 8 characters while experiencing slow network conditions."],
+        "expected_result": "The system should display an appropriate error message indicating that the password must be at least 8 characters long."
+    }
+  ]
+}

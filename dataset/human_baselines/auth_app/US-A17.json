@@ -1,0 +1,59 @@
+{
+  "story_id": "US-A17",
+  "story_text": "As a user, I want to register with the maximum allowed name length so that long names are handled correctly.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Register successfully with name at maximum allowed length",
+      "steps": ["1. Attempt to register with a name that is exactly at the maximum allowed length."],
+      "expected_result": "The registration is successful, and the system accepts the name without any errors."
+    },
+    {
+        "id": "TC-P02",
+        "title": "Store and display name at maximum length correctly",
+        "steps": ["1. Attempt to register with a name that is exactly at the maximum allowed length."],
+        "expected_result": "The system stores and displays the name correctly without any issues."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Accept name exceeding maximum length (validation failure)",
+      "steps": ["1. Attempt to register with a name that exceeds the maximum allowed length."],
+      "expected_result": "The system rejects the registration attempt and displays an appropriate error message."
+    },
+    {
+        "id": "TC-N02",
+        "title": "System truncates name exceeding maximum length without error",
+        "steps": ["1. Attempt to register with a name that exceeds the maximum allowed length."],
+        "expected_result": "The system truncates the name without displaying an error message."
+    },
+    {
+        "id": "TC-N03",
+        "title": "Return incorrect error message for name exceeding maximum length",
+        "steps": ["1. Attempt to register with a name that exceeds the maximum allowed length."],
+        "expected_result": "The system displays an incorrect or misleading error message."
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Register with name exactly one character less than maximum length",
+      "steps": ["1. Attempt to register with a name that is exactly one character less than the maximum allowed length."],
+      "expected_result": "The registration is successful, and the system accepts the name without any errors."
+    },
+    {
+        "id": "TC-E02",
+        "title": "Register with name exactly one character more than maximum length",
+        "steps": ["1. Attempt to register with a name that is exactly one character more than the maximum allowed length."],
+        "expected_result": "The system rejects the registration attempt and displays an appropriate error message."
+    },
+    {
+        "id": "TC-E03",
+        "title": "Register with maximum length name via API without frontend validation",
+        "steps": ["1. Attempt to register with a name that is exactly at the maximum allowed length using the API, bypassing frontend validation."],
+        "expected_result": "The system accepts the name and completes the registration successfully."
+    }
+  ]
+}

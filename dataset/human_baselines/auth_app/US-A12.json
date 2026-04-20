@@ -1,0 +1,112 @@
+{
+  "story_id": "US-A12",
+  "story_text": "As a user, I want to receive an error when I try to reset the password with an unregistered email so that I know the email is not in the system.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Display error message when password reset is requested with an unregistered email",
+       "steps": ["1. Navigate to the password reset page.",
+                 "2. Enter an unregistered email address.",
+                 "3. Submit the password reset request."],
+      "expected_result": "The system should display an error message indicating that the email is not registered."
+    },
+    {
+        "id": "TC-P02",
+        "title": "Display consistent error message for different unregistered email inputs during password reset",
+        "steps": ["1. Navigate to the password reset page.",
+                  "2. Enter various unregistered email addresses (e.g., invalid format, non-existent domain).",
+                  "3. Submit the password reset request for each input."],
+        "expected_result": "The system should display a consistent error message indicating that the email is not registered for all unregistered email inputs."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Incorrect error message displayed for unregistered email during password reset",
+       "steps": ["1. Navigate to the password reset page.",
+                 "2. Enter an unregistered email address.",
+                 "3. Submit the password reset request."],
+      "expected_result": "The system should display an incorrect error message indicating that the email is not registered."
+    },
+    {
+        "id": "TC-N02",
+        "title": "No error message displayed when password reset is requested with an unregistered email",
+        "steps": ["1. Navigate to the password reset page.",
+                  "2. Enter an unregistered email address.",
+                  "3. Submit the password reset request."],
+        "expected_result": "The system should not display any error message, leaving the user unaware that the email is not registered."
+    },
+    {
+        "id": "TC-N03",
+        "title": "Error message does not disappear after entering valid email during password reset",
+        "steps": ["1. Navigate to the password reset page.",
+                  "2. Enter an unregistered email address.",
+                  "3. Submit the password reset request.",
+                  "4. Enter a registered email address.",
+                  "5. Submit the password reset request again."],
+        "expected_result": "The system should continue to display the error message from the previous unregistered email attempt, even after entering a valid registered email."
+    },
+    {
+        "id": "TC-N04",
+        "title": "Error message displayed for registered email during password reset",
+        "steps": ["1. Navigate to the password reset page.",
+                  "2. Enter a registered email address.",
+                  "3. Submit the password reset request."],
+        "expected_result": "The system should incorrectly display an error message indicating that the email is not registered, even though it is."
+     }
+    
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Reset password with unregistered email containing uppercase characters",
+      "steps": ["1. Navigate to the password reset page.",
+                "2. Enter an unregistered email address with uppercase characters (e.g., JOHN@EXAMPLE.COM).",
+                "3. Submit the password reset request."],
+      "expected_result": "The system should display an error message indicating that the email is not registered, regardless of the case sensitivity of the email input."
+    },
+    {
+        "id": "TC-E02",
+        "title": "Reset password with unregistered email containing special characters",
+        "steps": ["1. Navigate to the password reset page.",
+                  "2. Enter an unregistered email address with special characters (e.g., john+test@example.com).",
+                  "3. Submit the password reset request."],
+        "expected_result": "The system should display an error message indicating that the email is not registered, regardless of the presence of special characters in the email input."
+    },
+    {
+        "id": "TC-E03",
+        "title": "Reset password with unregistered email submitted multiple times rapidly",
+        "steps": ["1. Navigate to the password reset page.",
+                  "2. Enter an unregistered email address.",
+                  "3. Submit the password reset request multiple times in quick succession."],
+        "expected_result": "The system should display an error message indicating that the email is not registered, even if the request is submitted multiple times in quick succession."
+    },
+    {
+        "id": "TC-E04",
+        "title": "Reset password with unregistered email while offline",
+        "steps": ["1. Navigate to the password reset page.",
+                  "2. Enter an unregistered email address.",
+                  "3. Submit the password reset request while the device is offline."],
+        "expected_result": "The system should display an error message indicating that the email is not registered, even while offline. Alternatively, the system may display a message indicating that the request cannot be processed due to lack of connectivity, but should not indicate that the email is registered."
+     },
+     {
+        "id": "TC-E05",
+        "title": "Reset password with unregistered email and observe system's response under high server load",
+        "steps": ["1. Navigate to the password reset page.",
+                  "2. Enter an unregistered email address.",
+                  "3. Submit the password reset request while the server is under high load."],
+        "expected_result": "The system should display an error message indicating that the email is not registered, even under high server load.    "
+     },
+     {
+        "id":"TC-E06",
+        "title": "Reset password with unregistered email after previous successful reset attempt",
+        "steps": ["1. Navigate to the password reset page.",
+                  "2. Enter a registered email address and successfully reset the password.",
+                  "3. After the successful reset, enter an unregistered email address.",
+                  "4. Submit the password reset request."],
+        "expected_result": "The system should display an error message indicating that the email is not registered, even after a previous successful reset attempt."
+     }
+    
+  ]
+}

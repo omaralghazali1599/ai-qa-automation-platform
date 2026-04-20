@@ -1,0 +1,47 @@
+{
+  "story_id": "US-A11",
+  "story_text": "As a user, I want registration to fail if I leave any field empty so that incomplete accounts are not created.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Validate Registration with Empty Fields is not allowed",
+      "steps": ["1. Navigate to the registration page.",
+                "2. Attempt to submit the registration form with all fields empty. "],
+      "expected_result": "The system should prevent registration and display an appropriate error message indicating that all fields are required."
+    },
+    {
+     "id": "TC-P02",
+      "title": "Validate no incomplete accounts are created when fields are left empty during registration",
+      "steps": ["1. Navigate to the registration page.",
+                "2. Attempt to submit the registration form with some fields empty."],
+      "expected_result": "The system should prevent registration and display an appropriate error message indicating that all fields are required."   
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Validate the system's behavior when some fields are empty during registration from the API",
+      "steps": ["1. Go to the API endpoint for registration.",
+                "2. Attempt to submit the registration request with some fields empty."],
+      "expected_result": "The system should prevent registration and display an appropriate error message indicating that all fields are required."
+    }
+  ],
+  "edge": [
+
+    {
+      "id": "TC-E01",
+      "title": "Attempt to Register with spaces in the fields and Observe System's Response",
+      "steps": ["1. Navigate to the registration page.",
+                "2. Attempt to submit the registration form with spaces in the fields."],
+      "expected_result": "The system should prevent registration and display an appropriate error message indicating that all fields are required."
+    },
+    {
+        "id": "TC-E02",
+        "title": "Attempt registering with rapid repeated submissions with empty fields and observe system's response",
+        "steps": ["1. Navigate to the registration page.",
+                  "2. Attempt to submit the registration form with empty fields multiple times in quick succession."],
+        "expected_result": "The system should prevent registration and display an appropriate error message indicating that all fields are required."  
+    }
+  ]
+}

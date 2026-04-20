@@ -1,0 +1,67 @@
+{
+  "story_id": "US-A18",
+  "story_text": "As a user, I want the system to handle an email with special characters correctly during registration so that valid edge-case emails are accepted.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Register successfully with email containing valid special characters",
+      "steps": ["1. Navigate to the registration page.",
+        "2. Enter a valid email address with special characters (e.g., john.doe+newsletter@example.com).",
+        "3. Fill in the other required registration fields."],
+      "expected_result": "The system should accept the email and complete the registration process successfully."
+    },
+    {
+      "id": "TC-P02",
+      "title": "Register successfully with email containing subdomain and special characters",
+      "steps": ["1. Navigate to the registration page.",
+        "2. Enter a valid email address with a subdomain and special characters (e.g., john.doe+newsletter@sub.example.com).",
+        "3. Fill in the other required registration fields."],
+      "expected_result": "The system should accept the email and complete the registration process successfully."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Reject email with invalid format",
+      "steps": ["1. Navigate to the registration page.",
+        "2. Enter an invalid email address with special characters (e.g., john..doe@example..com).",
+        "3. Fill in the other required registration fields."],
+      "expected_result": "The system should reject the email and display an error message."
+    },
+    {
+        "id": "TC-N02",
+        "title": "Reject email with unsupported special characters",
+        "steps": ["1. Navigate to the registration page.",
+          "2. Enter an email address with unsupported special characters (e.g., john$doe@example.com).",
+          "3. Fill in the other required registration fields."],
+        "expected_result": "The system should reject the email and display an error message."
+    },
+    {
+        "id": "TC-N03",
+        "title": "Reject email with misplaced special characters (e.g., starting/ending with dot)",
+        "steps": ["1. Navigate to the registration page.",
+          "2. Enter an email address with misplaced special characters (e.g., .john.doe@example.com).",
+          "3. Fill in the other required registration fields."],
+        "expected_result": "The system should reject the email and display an error message."
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Register with email containing special characters at boundary positions",
+      "steps": ["1. Navigate to the registration page.",
+        "2. Enter a valid email address with special characters at boundary positions (e.g., .john.doe.@example.com).",
+        "3. Fill in the other required registration fields."],
+      "expected_result": "The system should accept the email and complete the registration process successfully."
+    },
+    {
+      "id": "TC-E02",
+      "title": "Register with email containing uppercase and special characters combination",
+      "steps": ["1. Navigate to the registration page.",
+        "2. Enter a valid email address with uppercase and special characters (e.g., JOHN.DOE+NEWSLETTER@EXAMPLE.COM).",
+        "3. Fill in the other required registration fields."],
+      "expected_result": "The system should accept the email and complete the registration process successfully."
+    }
+  ]
+}

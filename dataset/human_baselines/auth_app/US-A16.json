@@ -1,0 +1,47 @@
+{
+  "story_id": "US-A16",
+  "story_text": "As a user, I want the profile endpoint to return unauthorized when I am not logged in so that private data is protected.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Return unauthorized error when accessing profile endpoint without authentication",
+      "steps": ["1. Attempt to access the profile endpoint without providing authentication credentials."],
+      "expected_result": "The system returns an unauthorized error message."
+    },
+    {
+        "id": "TC-P02",
+        "title": "Return 401 status code for unauthenticated profile request",
+        "steps": ["1. Attempt to access the profile endpoint without providing authentication credentials."],
+        "expected_result": "The system returns a 401 status code."
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Allow access to profile endpoint without authentication",
+      "steps": ["1. Attempt to access the profile endpoint without providing authentication credentials."],
+      "expected_result": "The system allows access to the profile endpoint without requiring authentication."
+    },
+    {
+        "id": "TC-N02",
+        "title": "Return incorrect status code (e.g., 200 or 500) instead of unauthorized",
+        "steps": ["1. Attempt to access the profile endpoint without providing authentication credentials."],
+        "expected_result": "The system returns an incorrect status code."
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Access profile endpoint with expired authentication token",
+      "steps": ["1. Attempt to access the profile endpoint with an expired authentication token."],
+      "expected_result": "The system returns an unauthorized error message."
+    },
+    {
+        "id": "TC-E02",
+        "title": "Access profile endpoint under high request frequency without authentication",
+        "steps": ["1. Attempt to access the profile endpoint without providing authentication credentials."],
+        "expected_result": "The system returns an unauthorized error message."
+    }
+  ]
+}
