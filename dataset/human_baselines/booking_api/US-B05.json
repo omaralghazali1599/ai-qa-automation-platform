@@ -1,0 +1,89 @@
+{
+  "story_id": "US-B05",
+"story_text" : "As a guest, I want to cancel my booking so that I can free up the reservation.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Cancel an existing booking with a valid ID",
+      "steps": ["1. Navigate to the cancel booking endpoint",
+                "2. Add a booking ID",
+                "3. Click submit"],
+      "expected_result": "Booking cancelled successfully"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Cancelled booking no longer appears as active",
+      "steps": ["1. Navigate to the cancel booking endpoint",
+                "2. Add a booking ID",
+                "3. Navigate to the get specific booking endpoint",
+                "4. Add the same booking ID",
+                "5. Click submit"],
+      "expected_result": "Cancelled booking appears as inactive"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Cancel a booking with a non-existent ID",
+      "steps": ["1. Navigate to the cancel booking endpoint",
+                "2. Add a non-existent booking ID",
+                "3. Click submit"],
+      "expected_result": "User gets an error stating that no booking for this ID "
+    },
+    {
+      "id": "TC-N02",
+      "title": "Cancel a booking with an invalid ID format",
+      "steps": ["1. Navigate to the cancel booking endpoint",
+                "2. Add an invalid booking ID format",
+                "3. Click submit"],
+      "expected_result": "User gets an error stating that no booking for this ID "
+    },
+    {
+      "id": "TC-N03",
+      "title": "Cancel a booking belonging to another guest",
+      "steps": ["1. Navigate to the cancel booking endpoint",
+                "2. Add another guest's booking ID",
+                "3. Click submit"],
+      "expected_result": "An unauthorized error"
+    },
+    {
+      "id": "TC-N04",
+      "title": "Cancel a booking without authentication",
+      "steps": ["1. Navigate to the cancel booking endpoint",
+                "2. Add a booking ID",
+                "3. Click submit"],
+      "expected_result": "An unauthorized error"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Cancel an already cancelled booking",
+      "steps": ["1. Navigate to the cancel booking endpoint",
+                "2. Add a booking ID",
+                "3. Navigate to the cancel booking endpoint",
+                "4. Add the same booking ID again",
+                "5. Click submit"],
+      "expected_result": "The system to prompt usr that the booking is already deleted"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Cancel a confirmed booking",
+      "steps": ["1. Navigate to the confirm booking endpoint",
+                "2. Add a booking ID",
+                "3. Navigate to the cancel booking endpoint",
+                "4. Add the same booking ID again",
+                "5. Click submit"],
+      "expected_result": "Booking cancelled successfully"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Cancel a booking whose check-in date is today   ",
+      "steps": ["1. Navigate to the cancel booking endpoint",
+                "2. Add a booking ID ",
+                "3. Click submit"],
+      "expected_result": "Booking cancelled successfully"
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "story_id": "US-B01",
+  "story_text": "As a guest, I want to create a booking with my name, room type, and dates so that I can reserve a room.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Create a booking with all valid fields (name, room type, dates)",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Click submit"],
+      "expected_result": "The booking is created successfully"
+    },
+        {
+      "id": "TC-P02",
+      "title": "Create a booking for the earliest available date and the latest available date",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Create a booking with today's date",
+                "4. Click submit"],
+      "expected_result": "The booking is created successfully"
+    },
+    {
+      "id": "TC-P03",
+      "title": "Create a booking with a single night stay and multi-night stay",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Fill the date fields with a sing night date stay",
+                "4. Click submit"],
+      "expected_result": "The booking is created successfully"
+    },
+    {
+      "id": "TC-P04",
+      "title": "Create a booking with guests",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Fill the guest field with number of guests",
+                "4. Click submit"],
+      "expected_result": "The booking is created successfully"
+    },
+    {
+      "id": "TC-P05",
+      "title": "Create a booking without guests",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Keep the guests field empty ",
+                "4. Click submit"],
+      "expected_result": "The booking is created successfully"
+    }
+    
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Create a booking with missing name",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Keep the name field empty",
+                "4. Click submit"],
+      "expected_result": "User is prompted that the name field is required"
+    },
+        {
+      "id": "TC-N02",
+      "title": "Create a booking with missing room type",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Keep the room type field empty",
+                "4. Click submit"],
+      "expected_result": "User is prompted that the room type field is required"
+    },
+        {
+      "id": "TC-N03",
+      "title": "Create a booking with missing check-in date",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Keep the check in field empty",
+                "4. Click submit"],
+      "expected_result": "User is prompted that the check-in date field is required"
+    },
+        {
+      "id": "TC-N04",
+      "title": "Create a booking with missing check-out date",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Keep the check out field empty",
+                "4. Click submit"],
+      "expected_result": "User is prompted that the check-out date field is required"
+    },
+    {
+      "id": "TC-N05",
+      "title": "Create a booking with a room type that does not exist",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Fill the room type field with Triple or Quadriple",
+                "4. Click submit"],
+      "expected_result": "User should be prompted with an error stating only single and double are the options"
+    },
+    {
+      "id": "TC-N06",
+      "title": "Create a booking with check-out date before check-in date",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Fill the check-out date with an earlier date than the oe in the check-in date",
+                "4. Click submit"],
+      "expected_result": "User is prompted that the check-in date can't be after check-out date"
+    },
+    {
+      "id": "TC-N07",
+      "title": "Create a booking on previous dates",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Fill the check-in with a date that has passed",
+                "4. Click submit"],
+      "expected_result": "User is prompted that the check-in date can't be on an old date"
+    },
+    {
+        "id" : "TC-N08",
+        "title" : "create a booking with invalid date format",
+        "steps" : ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Enter DD/MM/YYYY date format",
+                "4. Click submit"],
+        "expected_result" : "User is prompted with an error"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Create a booking where check-in and check-out are the same day",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Fill the check-in and the check-out dates with the same date",
+                "4. Click submit"],
+      "expected_result": "The booking is created successfully"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Create a booking with a very long guest name",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Fill the name field with 255 characters",
+                "4. Click submit"],
+      "expected_result": "The booking is created successfully"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Create a booking with special characters in guest name",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Fill the name field with special characters",
+                "4. Click submit"],
+      "expected_result": "The booking is created successfully"
+    },
+    {
+      "id": "TC-E04",
+      "title": "Create a booking for dates far in the future",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Add a check-out date that is in the far future (e.g. A year from now)",
+                "4. Click submit"],
+      "expected_result": "User is prompted that the check-out date is incorrect"
+    },
+    {
+      "id": "TC-E05",
+      "title": "Create a booking with two room types ",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Choose multiple room types",
+                "4. Click submit"],
+      "expected_result": "User is prompted that only one type of room is allowed"
+    }
+  ]
+}

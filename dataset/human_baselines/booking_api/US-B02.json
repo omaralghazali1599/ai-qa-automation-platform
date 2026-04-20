@@ -1,0 +1,67 @@
+{
+  "story_id": "US-B02",
+  "story_text": "As a guest, I want to see all my bookings so that I can review my reservations.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Retrieve all bookings when multiple bookings exist",
+      "steps": ["1. Navigate to the get bookings endpoint",
+                "2. Provide the required Token", 
+                "3. Get the profile's bookings"],
+      "expected_result": "All bookings are displayed"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Retrieve bookings returns correct booking fields",
+      "steps": ["1. Navigate to the get bookings endpoint",
+                "2. Provide the required Token", 
+                "3. Get the profile's bookings"],
+      "expected_result": "All booking's fields are displayed correctly"
+    },
+    {
+      "id": "TC-P03",
+      "title": "Retrieve a specific booking",
+      "steps": ["1. Navigate to the get bookings endpoint",
+                "2. Provide the required Token",
+                "3. Add the specific booking's number in the endpoint",
+                "4. Get the profile's bookings"],
+      "expected_result": "The booking is displayed"
+    },
+    {
+      "id": "TC-P04",
+      "title": "Retrieve all bookings with different states (Pending, Confirmed, Cancelled)" ,
+      "steps": ["1. Navigate to the get bookings endpoint",
+                "2. Provide the required Token", 
+                "3. Get the profile's bookings"],
+      "expected_result": "Different bookings with different states are displayed"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Retrieve all bookings as an unauthenticated guest",
+      "steps": ["1. Navigate to the get bookings endpoint", 
+                "2. Get the profile's booking"],
+      "expected_result": "Status code '401' or '403' "
+    },
+    {
+      "id": "TC-N02",
+      "title": "Retrieve bookings when none exist returns empty list",
+      "steps": ["1. Navigate to the get bookings endpoint",
+                "2. Provide the required Token", 
+                "3. Get an empty profile's bookings"],
+      "expected_result": "An empty list to be displayed"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Retrieve all bookings when a large number of bookings exist",
+      "steps": ["1. Navigate to the get bookings endpoint",
+                "2. Provide the required Token", 
+                "3. Get the profile's bookings"],
+      "expected_result": "All bookings are displayed"
+    }
+  ]
+}

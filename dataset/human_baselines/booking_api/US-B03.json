@@ -1,0 +1,83 @@
+{
+  "story_id": "US-B03",
+  "story_text": "As a guest, I want to retrieve a booking by its ID so that I can see its details.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Retrieve a booking by a valid existing ID",
+      "steps": ["1. Navigate to the Get booking by ID endpoint",
+                "2. Type the ID in the endpoint",
+                "3. Send the request"],
+      "expected_result": "The Booking details are retrieved successfully"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Retrieved booking contains all expected fields",
+      "steps": ["1. Navigate to the Get booking by ID endpoint",
+                "2. Type the ID in the endpoint",
+                "3. Send the request"],
+      "expected_result": "The Booking details are retrieved successfully"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Retrieve a booking with a non-existent ID",
+      "steps": ["1. Navigate to the Get booking by ID endpoint",
+                "2. Type a non-existent ID in the endpoint",
+                "3. Send the request"],
+      "expected_result": "An error prompting the user no available booking for this ID"
+    },
+     {
+      "id": "TC-N02",
+      "title": "Retrieve a booking with an invalid ID format",
+      "steps": ["1. Navigate to the Get booking by ID endpoint",
+                "2. Type an invalid ID format in the endpoint",
+                "3. Send the request"],
+      "expected_result": "An error prompting the user no available booking for this ID"
+    },
+    {
+      "id": "TC-N03",
+      "title": "Retrieve a booking with a missing ID",
+      "steps": ["1. Navigate to the Get booking by ID endpoint",
+                "2. Don't type the ID in the endpoint",
+                "3. Send the request"],
+      "expected_result": "An error prompting the user no available booking for this ID"
+    },
+    {
+      "id": "TC-N04",
+      "title": "Retrieve another client's booking",
+      "steps": ["1. Navigate to the Get booking by ID endpoint",
+                "2. Type the ID of a booking that is not yours in the endpoint",
+                "3. Send the request"],
+      "expected_result": "An authorization error with staus code '401' or'403' "
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Retrieve a booking using the ID of a cancelled booking",
+      "steps": ["1. Navigate to the Get booking by ID endpoint",
+                "2. Type the cancelled booking ID in the endpoint",
+                "3. Send the request"],
+      "expected_result": "The Booking details are retrieved successfully"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Retrieve a booking using the ID of a confirmed booking",
+      "steps": ["1. Navigate to the Get booking by ID endpoint",
+                "2. Type the confirmed booking ID in the endpoint",
+                "3. Send the request"],
+      "expected_result": "The Booking details are retrieved successfully"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Retrieve a booking using the ID of a pending booking",
+      "steps": ["1. Navigate to the Get booking by ID endpoint",
+                "2. Type the pending booking ID in the endpoint",
+                "3. Send the request"],
+      "expected_result": "The Booking details are retrieved successfully"
+    }
+  ]
+}

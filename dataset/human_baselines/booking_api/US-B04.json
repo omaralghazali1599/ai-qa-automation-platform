@@ -1,0 +1,77 @@
+{
+    "story_id": "US-B04",
+    "story_text": "As a staff member, I want to confirm a booking so that the guest knows their reservation is secured.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Confirm a booking with a valid booking ID as staff",
+            "steps": ["1. Navigate to the confirm booking endpoint",
+                      "2. Using the staff's token, add a booking ID to the edpoint",
+                      "3. Clcik submit"],
+            "expected_result": "The booking's status is changed successfully"
+        },  {
+            "id": "TC-P02",
+            "title": "Confirmed booking status reflects the change",
+            "steps": ["1. Navigate to the get specific booking endpoint",
+                      "2. Using the staff's token, add a booking ID to the edpoint",
+                      "3. Clcik submit"],
+            "expected_result": "The booking's status is changed successfully"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Confirm a booking as a guest (unauthorized)",
+            "steps": ["1. Navigate to the confirm booking endpoint",
+                      "2. Using the user's token, add a booking ID to the edpoint",
+                      "3. Clcik submit"],
+            "expected_result": "An Unauthorized error prompt"
+        },
+        {
+            "id": "TC-N02",
+            "title": "Confirm a booking with a non-existent ID",
+            "steps": ["1. Navigate to the confirm booking endpoint",
+                      "2. Using the staff's token, add a booking ID of an non-existent booking to the edpoint",
+                      "3. Clcik submit"],
+            "expected_result": "An error message stating that no booking found for this ID"
+        }, 
+        {
+            "id": "TC-N03",
+            "title": "Confirm a booking with an invalid ID format",
+            "steps": ["1. Navigate to the confirm booking endpoint",
+                      "2. Using the staff's token, add an invalid booking ID format to the edpoint",
+                      "3. Clcik submit"],
+            "expected_result": "An error message stating that no booking found for this ID"
+        }, 
+        {
+            "id": "TC-N04",
+            "title": "Confirm an already confirmed booking",
+            "steps": ["1. Navigate to the confirm booking endpoint",
+                      "2. Using the staff's token, add a booking ID to the edpoint",
+                      "4. Click submit",
+                      "3. Clcik submit again"],
+            "expected_result": "An error message stating that no booking found for this ID"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Confirm a booking that has already been cancelled",
+            "steps": ["1. Navigate to the cancel booking endpoint",
+                      "2. Using the staff's token, add a booking ID to the edpoint",
+                      "3. Navigate to the confirm booking endpoint",
+                      "4. Using the staff's token, add the same booking ID to the edpoint",
+                      "5. Clcik submit"],
+            "expected_result": "An error message stating that no booking found for this ID"
+        },
+        {
+            "id": "TC-E02",
+            "title": "Confirm a booking whose check-in date is today",
+            "steps": ["1. Navigate to the confirm booking endpoint",
+                      "2. Using the staff's token, add a booking ID to the edpoint",
+                      "3. Clcik submit"],
+            "expected_result": "The booking's status is changed successfully"
+        }
+    ]
+}
