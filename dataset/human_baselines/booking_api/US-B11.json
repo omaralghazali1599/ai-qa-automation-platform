@@ -1,0 +1,55 @@
+{
+    "story_id": "US-B11",
+    "story_text": "As a staff member, I want confirming an already-cancelled booking to return an error so that invalid state transitions are blocked.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Confirm a cancelled booking",
+            "steps": [
+                "1. Navigate to the confirm booking endpoint",
+                "2. Fill in with a cancelled booking ID",
+                "3. Click submit"
+            ],
+            "expected_result": "An error message stating that state of this booking can't change"
+        },
+        {
+            "id": "TC-P01",
+            "title": "Validate the error message clearly states the booking is already cancelled",
+            "steps": [
+                "1. Navigate to the confirm booking endpoint",
+                "2. Fill in with a cancelled booking ID",
+                "3. Click submit",
+                "4. Validate the error message"
+            ],
+            "expected_result": "An error message stating that state of this booking can't change"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Confirm an already confirmed booking",
+            "steps": [
+                "1. Navigate to the confirm booking endpoint",
+                "2. Fill in with a confirmed booking ID",
+                "3. Click submit"
+            ],
+            "expected_result": "An error message stating that state of this booking can't change"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Confirming a booking that was confirmed, then cancelled, then confirmed again",
+            "steps": [
+                "1. Navigate to the cancel booking endpoint",
+                "2. Fill in with a confirmed booking ID",
+                "3. Click submit",
+                "4. Navigate to the confirm booking endpoint",
+                "5. Fill in with the recenlty cancelled booking ID",
+                "6. Click submit"
+            ],
+            "expected_result": "An error message stating that state of this booking can't change"
+        }
+    ]
+}

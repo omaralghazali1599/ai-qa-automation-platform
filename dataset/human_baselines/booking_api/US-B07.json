@@ -1,0 +1,56 @@
+{
+  "story_id": "US-B07",
+  "story_text": "As a guest, I want the system to reject a booking where check-out is before check-in so that invalid date ranges are prevented.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Create a booking with the check-in date is later than the check-out date",
+      "steps": ["1. Navigate to the endpoint",
+                "2. Fill all the fields with valid data",
+                "3. At the date fields switch the dates",   
+                "4. Click submit"],
+      "expected_result": "An error message prompting user this action can't be done"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Correct error message is returned for invalid date range",
+      "steps": ["1. Navigate to the endpoint",
+                "2. Fill all the fields with valid data",
+                "3. At the date fields switch the dates",   
+                "4. Click submit"],
+      "expected_result": "Correct error message is displayed"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Booking with check-out after check-in is accepted normally",
+      "steps": ["1. Navigate to the endpoint",
+                "2. Fill all the fields with valid data",
+                "3. At the date fields switch the dates",   
+                "4. Click submit"],
+      "expected_result": "An error message prompting user this action can't be done"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Booking is rejected when check-out and check-in are the same date",
+      "steps": ["1. Navigate to the endpoint",
+                "2. Fill all the fields with valid data",
+                "3. Set the date fields on the dates",   
+                "4. Click submit"],
+      "expected_result": "An error message prompting user this action can't be done"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Booking with check-out one day before check-in is rejected",
+      "steps": ["1. Navigate to the endpoint",
+                "2. Fill all the fields with valid data",
+                "3. At the date fields switch the dates",   
+                "4. Click submit"],
+      "expected_result": "An error message prompting user this action can't be done"
+    }
+  ]
+}

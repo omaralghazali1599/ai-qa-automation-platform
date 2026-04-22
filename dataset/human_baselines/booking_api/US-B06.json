@@ -1,0 +1,96 @@
+{
+  "story_id": "US-B06",
+  "story_text": "As a staff member, I want to delete a pending booking so that cancelled or invalid bookings are removed.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Delete a pending booking with a valid ID as staff",
+      "steps": ["1. Navigate to the delete booking endpoint",
+                "2. Add the ID of the pending booking",
+                "3. Click submit"],
+      "expected_result": "Booking is deleted successfully"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Delete a cancelled booking with a valid ID as staff",
+      "steps": ["1. Navigate to the delete booking endpoint",
+                "2. Add the ID of the cancelled booking",
+                "3. Click submit"],
+      "expected_result": "Booking is deleted successfully"
+    },
+    {
+      "id": "TC-P03",
+      "title": "Delete an invalid booking booking with a valid ID as staff",
+      "steps": ["1. Navigate to the delete booking endpoint",
+                "2. Add the ID of the invalid booking",
+                "3. Click submit"],
+      "expected_result": "Booking is deleted successfully"
+    },
+    {
+      "id": "TC-P04",
+      "title": "Validate that Deleted booking is no longer retrievable by ID",
+      "steps": ["1. Navigate to the delete booking endpoint",
+                "2. Add the ID of the pending booking",
+                "3. Click submit",
+                "4. Navigate to get specific booking endpoint",
+                "5. click submit"],
+      "expected_result": "Booking is deleted successfully and is no longer retrievable"
+    }
+
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Delete a booking as a guest (unauthorized)",
+      "steps": ["1. Navigate to the delete booking endpoint as a guest",
+                "2. Add the ID of the pending booking",
+                "3. Click submit"],
+      "expected_result": "An Authorization arror"
+    },
+    {
+      "id": "TC-N02",
+      "title": "Delete a booking with a non-existent ID",
+      "steps": ["1. Navigate to the delete booking endpoint",
+                "2. Add the ID of the non-existent booking",
+                "3. Click submit"],
+      "expected_result": "A prompt error stating tht the ID is incorrect"
+    },
+    {
+      "id": "TC-N03",
+      "title": "Delete a booking with an invalid ID format",
+      "steps": ["1. Navigate to the delete booking endpoint",
+                "2. Add the invalid ID format of the pending booking",
+                "3. Click submit"],
+      "expected_result": "A prompt error stating tht the ID is incorrect"
+    },
+    {
+      "id": "TC-N04",
+      "title": "Delete a confirmed booking",
+      "steps": ["1. Navigate to the delete booking endpoint",
+                "2. Add the ID of the confirmed booking",
+                "3. Click submit"],
+      "expected_result": "An error stating that confirmed bookings can't be deleted"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Delete a booking whose check-in date is today",
+      "steps": ["1. Navigate to the delete booking endpoint",
+                "2. Add the ID of the booking whose check-in is today",
+                "3. Click submit"],
+      "expected_result": "Booking is deleted successfully"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Delete an already deleted booking",
+      "steps": ["1. Navigate to the delete booking endpoint",
+                "2. Add the ID of the pending booking",
+                "3. Click submit",
+                "4. Add the ID of the deleted booking again",
+                "5. Click submit"],
+      "expected_result": "A prompt error stating tht the ID is incorrect"
+    }
+  ]
+}

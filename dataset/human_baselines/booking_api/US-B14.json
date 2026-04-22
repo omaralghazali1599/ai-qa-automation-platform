@@ -1,0 +1,67 @@
+{
+    "story_id": "US-B14",
+    "story_text": "As a guest, I want the system to reject a booking with 0 guests so that only valid guest counts are accepted.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": " TC-P01",
+            "title": "Book with 0 guests",
+            "steps": [
+                "1. Navigate to the create booking API",
+                "2. fill in all fields with valid data",
+                "3. Fill the guests field with 0",
+                "4. Click submit"
+            ],
+            "expected_result": "Error message clearly states guest count must be greater than zero"
+        },
+        {
+            "id": " TC-P01",
+            "title": "Validate booking with 0 guests error message to be precise",
+            "steps": [
+                "1. Navigate to the create booking API",
+                "2. fill in all fields with valid data",
+                "3. Fill the guests field with 0",
+                "4. Click submit",
+                "5. Check the error message"
+            ],
+            "expected_result": "Error message clearly states guest count must be greater than zero"
+        }
+    ],
+    "negative": [
+        {
+            "id": " TC-N01",
+            "title": "Book with negative number of guests",
+            "steps": [
+                "1. Navigate to the create booking API",
+                "2. fill in all fields with valid data",
+                "3. Fill the guests field with negative number",
+                "4. Click submit"
+            ],
+            "expected_result": "Error message clearly states guest count must be greater than zero"
+        }
+    ],
+    "edge": [
+        {
+            "id": " TC-E01",
+            "title": "Booking with 0 guests submitted as a string '0' is rejected",
+            "steps": [
+                "1. Navigate to the create booking API",
+                "2. fill in all fields with valid data",
+                "3. Fill the guests field with '0'",
+                "4. Click submit"
+            ],
+            "expected_result": "Error message clearly states guest count must be greater than zero"
+        },
+        {
+            "id": " TC-E01",
+            "title": "Booking with [null] guest count is rejected",
+            "steps": [
+                "1. Navigate to the create booking API",
+                "2. fill in all fields with valid data",
+                "3. Fill the guests field with null",
+                "4. Click submit"
+            ],
+            "expected_result": "Error message clearly states guest count must be greater than zero"
+        }
+    ]
+}

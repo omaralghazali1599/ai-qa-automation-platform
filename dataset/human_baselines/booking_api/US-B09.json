@@ -1,0 +1,83 @@
+{
+  "story_id": "US-B09",
+  "story_text": "As a guest, I want the system to reject more than 10 guests per booking so that room capacity is respected.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Booking with exactly 10 guests",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Create a new booking",
+                "3. Fill the guest number field with '10'",
+                "4. Click submit"],
+      "expected_result": "Booking is successful"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Booking with exactly 1 guests",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Create a new booking",
+                "3. Fill the guest number field with '1'",
+                "4. Click submit"],
+      "expected_result": "Booking is successful"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Booking with exactly 11 guests",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Create a new booking",
+                "3. Fill the guest number field with '11'",
+                "4. Click submit"],
+      "expected_result": "Booking error and user being prompted that the maximum amount are 10 guests"
+    },
+    {
+      "id": "TC-N02",
+      "title": "Booking with more than 11 guests",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Create a new booking",
+                "3. Fill the guest number field with '12+'",
+                "4. Click submit"],
+      "expected_result": "Booking error and user being prompted that the maximum amount are 10 guests"
+    },
+    {
+      "id": "TC-N03",
+      "title": "Error message is returned for exceeding capacity",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Create a new booking",
+                "3. Fill the guest number field with '11'",
+                "4. Click submit"],
+      "expected_result": "Booking error and user being prompted that the maximum amount are 10 guests"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Booking with 0 guests",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Create a new booking",
+                "3. Fill the guest number field with '0'",
+                "4. Click submit"],
+      "expected_result": "Booking error and user being prompted that the minimum amount is 1 guest"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Booking with a negative guest count",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Create a new booking",
+                "3. Fill the guest number field with '-1'",
+                "4. Click submit"],
+      "expected_result": "Booking error and user being prompted that the minimum amount is 1 guest"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Booking with a non-numeric guest count",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Create a new booking",
+                "3. Fill the guest number field with 'names'",
+                "4. Click submit"],
+      "expected_result": "An error stating that this field requires number input"
+    } 
+  ]
+}

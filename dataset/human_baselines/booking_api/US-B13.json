@@ -1,0 +1,88 @@
+{
+    "story_id": "US-B13",
+    "story_text": "As a guest, I want to filter bookings by status so that I can see only pending, confirmed, or cancelled reservations.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Filter bookings by status 'pending'",
+            "steps": [
+                "1. Navigate to the get bookings endpoint",
+                "2. Add the status as parameter key",
+                "3. Add pending as parametr value",
+                "4. Click submit"
+            ],
+            "expected_result": "Only bookings with pending status are shown"
+        },
+        {
+            "id": "TC-P02",
+            "title": "Filter bookings by status 'confirmed'",
+            "steps": [
+                "1. Navigate to the get bookings endpoint",
+                "2. Add the status as parameter key",
+                "3. Add confirmed as parametr value",
+                "4. Click submit"
+            ],
+            "expected_result": "Only bookings with confirmed status are shown"
+        },
+        {
+            "id": "TC-P03",
+            "title": "Filter bookings by status 'cancelled'",
+            "steps": [
+                "1. Navigate to the get bookings endpoint",
+                "2. Add the status as parameter key",
+                "3. Add cancelled as parametr value",
+                "4. Click submit"
+            ],
+            "expected_result": "Only bookings with cancelled status are shown"
+        },
+        {
+            "id": "TC-P04",
+            "title": "Filter bookings with a missing status parameter",
+            "steps": [
+                "1. Navigate to the get bookings endpoint",
+                "2. Add the status as parameter key",
+                "3. Leave the value empty",
+                "4. Click submit"
+            ],
+            "expected_result": "All bookings available are displayed"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Filter bookings by an invalid status value returns an error",
+            "steps": [
+                "1. Navigate to the get bookings endpoint",
+                "2. Add the status as parameter key",
+                "3. Add 'waiting' or any other status as parametr value",
+                "4. Click submit"
+            ],
+            "expected_result": "An error stating only 3 statuses are available"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Filter bookings by status with mixed case",
+            "steps": [
+                "1. Navigate to the get bookings endpoint",
+                "2. Add the status as parameter key",
+                "3. Add pending as parametr value but in mixed case writing",
+                "4. Click submit"
+            ],
+            "expected_result": "An error stating only 3 statuses are available"
+        },
+        {
+            "id": "TC-E02",
+            "title": "Filter bookings by a valid status when no bookings match",
+            "steps": [
+                "1. Navigate to the get bookings endpoint",
+                "2. Add the status as parameter key",
+                "3. Add pending as parametr value",
+                "4. Click submit"
+            ],
+            "expected_result": "An Empty list to be displayed"
+        }
+    ]
+}

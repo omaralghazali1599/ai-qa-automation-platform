@@ -1,0 +1,56 @@
+{
+    "story_id": "US-B15",
+    "story_text": "As a guest, I want cancelling an already-cancelled booking to return a clear error so that duplicate cancellations are handled.    ",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": " TC-P01",
+            "title": "Cancel an already cancelled booking",
+            "steps": [
+                "1. Navigate to the cancel booking endpoint",
+                "2. Add a booking ID of a cancelled booking",
+                "3. Click submit"
+            ],
+            "expected_result": "Error stating this booking has already been cancelled"
+        },
+        {
+            "id": " TC-P02",
+            "title": "Validate Cancel an already cancelled booking error message",
+            "steps": [
+                "1. Navigate to the cancel booking endpoint",
+                "2. Add a booking ID of a cancelled booking",
+                "3. Click submit",
+                "4. Check the error message"
+            ],
+            "expected_result": "Error stating this booking has already been cancelled"
+        }
+    ],
+    "negative": [
+        {
+            "id": " TC-N01",
+            "title": "Cancel a deleted booking",
+            "steps": [
+                "1. Navigate to the cancel booking endpoint",
+                "2. Add a booking ID of a deleeted booking",
+                "3. Click submit"
+            ],
+            "expected_result": "Error stating this booking is non-existent"
+        }
+    ],
+    "edge": [
+        {
+            "id": " TC-E01",
+            "title": "Cancelling a booking that was confirmed then cancelled",
+            "steps": [
+                "1. Navigate to the confirm booking endpoint",
+                "2. Add a booking ID of a pending booking",
+                "3. Click submit",
+                "4. Navigate to the cancel booking endpoint",
+                "5. Add a booking ID of a cancelled booking",
+                "6. Click submit",
+                "7. Click submit again"
+            ],
+            "expected_result": "Error stating this booking has already been cancelled"
+        }
+    ]
+}

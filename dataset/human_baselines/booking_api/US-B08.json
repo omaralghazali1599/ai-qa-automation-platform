@@ -1,0 +1,75 @@
+{
+  "story_id": "US-B08",
+  "story_text": "As a guest, I want booking creation to fail if any required field is missing so that incomplete bookings are not saved.    ",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Booking fails when name is missing",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields except the name field",
+                "3. Click submit"],
+      "expected_result": "An error prompt stating that the name field is required"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Booking fails when room type is missing",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields except the room type field",
+                "3. Click submit"],
+      "expected_result": "An error prompt stating that the room type field is required"
+    },
+    {
+      "id": "TC-P03",
+      "title": "Booking fails when check-in date is missing",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields except the check-in date field",
+                "3. Click submit"],
+      "expected_result": "An error prompt stating that the check-in field is required"
+    },
+    {
+      "id": "TC-P04",
+      "title": "Booking fails when check-out date is missing",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields except the check-out date field",
+                "3. Click submit"],
+      "expected_result": "An error prompt stating that the check-out field is required"
+    },
+    {
+      "id": "TC-P05",
+      "title": "Each missing field returns a descriptive error message",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Each time before submission keep a different field empty",
+                "3. Click submit"],
+      "expected_result": "All message to return descriptive error messages"
+    }
+  ],
+  "negative": [
+     {
+      "id": "TC-n01",
+      "title": "Booking fails when all required fields are missing simultaneously",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Keep all fields empty",
+                "3. Click submit"],
+      "expected_result": "An error message prompting the user that required fields are missing"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E02",
+      "title": "Booking fails when a required field is present but empty string",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields except the name field keep as empty string",
+                "3. Click submit"],
+      "expected_result": "An error prompt stating that the name field is required"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Booking fails when a required field contains only whitespace",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill all the fields except the name field add spaces only",
+                "3. Click submit"],
+      "expected_result": "An error prompt stating that the name field is required"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "story_id": "US-B10",
+  "story_text": "As a guest, I want the system to reject an invalid date format so that only correctly formatted dates are accepted.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Booking with correctly formatted check-in and check-out dates",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill All the Required fields with valid data",
+                "3. Click submit"],
+      "expected_result": "Booking is created successfully"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Booking with check-in date uses an invalid format",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill All the Required fields with valid data",
+                "3. Fill the check-in date field with an invalid format",
+                "4. Click submit"],
+      "expected_result": "An error message regarding an incorrect date format"
+    },
+    {
+      "id": "TC-N02",
+      "title": "Booking with check-out date uses an invalid format",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill All the Required fields with valid data",
+                "3. Fill the check-out date field with an invalid format",
+                "4. Click submit"],
+      "expected_result": "An error message regarding an incorrect date format"
+    },
+    {
+      "id": "TC-N03",
+      "title": "Correct error message is returned for invalid date format",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill All the Required fields with valid data",
+                "3. Fill the check-in date field with an invalid format",
+                "4. Click submit",
+                "5. Validate the error message"],
+      "expected_result": "An error message regarding an incorrect date format"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Booking with date as a plain text string",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill All the Required fields with valid data",
+                "3. Fill the date fields with plain strings",
+                "4. Click submit"],
+      "expected_result": "An error message regarding an incorrect date format"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Booking with date field containing numbers only",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill All the Required fields with valid data",
+                "3. Fill the date fields with numbers only",
+                "4. Click submit"],
+      "expected_result": "An error message regarding an incorrect date format"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Booking with date using correct values but wrong separator",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill All the Required fields with valid data",
+                "3. Fill the date fields with correct values but different separators",
+                "4. Click submit"],
+      "expected_result": "An error message regarding an incorrect date format"
+    },
+    {
+      "id": "TC-E04",
+      "title": "Booking with date field as null",
+      "steps": ["1. Navigate to the create booking endpoint",
+                "2. Fill All the Required fields with valid data",
+                "3. Leave the date fields empty",
+                "4. Click submit"],
+      "expected_result": "An error message regarding an incorrect date format"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+    "story_id": "US-B12",
+    "story_text": "As a staff member, I want deleting a confirmed booking to return an error so that active reservations are protected.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Deleting a confirmed booking",
+            "steps": [
+                "1. Navigate to the delete booking endpoint",
+                "2. Add a booking Id of a confirmed booking",
+                "3. Click submit"
+            ],
+            "expected_result": "An error message stating that confirmed bookings can't be deleted"
+        },
+        {
+            "id": "TC-P02",
+            "title": "Message clearly states the booking cannot be deleted",
+            "steps": [
+                "1. Navigate to the delete booking endpoint",
+                "2. Add a booking Id of a confirmed booking",
+                "3. Click submit",
+                "4. Validate the error message"
+            ],
+            "expected_result": "An error message stating that confirmed bookings can't be deleted"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Delete a deleted booking",
+            "steps": [
+                "1. Navigate to the delete booking endpoint",
+                "2. Add a booking Id of a deleted booking",
+                "3. Click submit"
+            ],
+            "expected_result": "An error message stating that thid booking is already deleted"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Deleting a booking that was pending, then confirmed, then deleted",
+            "steps": [
+                "1. Navigate to the create booking endpoint",
+                "2. Fill all the fields with valid information",
+                "3. Navigate to the confirm booking endpoint",
+                "4. Add a booking Id of the created booking",
+                "5. Click submit",
+                "6. Navigate to the delete booking endpoint",
+                "7. Add a booking Id of a confirmed booking",
+                "8. Click submit"
+            ],
+            "expected_result": "An error message stating that confirmed bookings can't be deleted"
+        }
+    ]
+}
