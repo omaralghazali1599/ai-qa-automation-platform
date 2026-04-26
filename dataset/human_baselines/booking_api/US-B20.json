@@ -1,0 +1,60 @@
+{
+  "story_id": "US-B20",
+  "story_text": "As a guest, I want to create a booking with a very long guest name so that the system handles long string inputs gracefully.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Create booking with a name at the defined maximum length (0-255)",
+      "steps": ["1. Submit a booking request with a guest name at the maximum allowed length (e.g., 255 characters).",
+                "2. Verify the response status code and message."],
+      "expected_result": "201 Created · full name stored and returned without truncation"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Verify long name is stored and retrieved without truncation",
+      "steps": ["1. Submit a booking request with a guest name at the maximum allowed length (e.g., 255 characters).",
+                "2. Verify the response status code and message."],
+      "expected_result": "201 Created · full name stored and returned without truncation"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Create booking with a name one character above the maximum",
+      "steps": ["1. Submit a booking request with a guest name exceeding the maximum allowed length.",
+                "2. Verify the response status code and message."],
+      "expected_result": "400 Bad Request · message states max character length"
+    },
+    {
+      "id": "TC-N02",
+      "title": "Create booking with an empty string as guest name",
+      "steps": ["1. Submit a booking request with an empty string as the guest name.",
+                "2. Verify the response status code and message."],
+      "expected_result": "400 Bad Request · empty string rejected"
+    },
+    {
+      "id": "TC-N03",
+      "title": "Create booking with guest name as null",
+      "steps": ["1. Submit a booking request with a null value for the guest name.",
+                "2. Verify the response status code and message."],
+      "expected_result": "400 Bad Request · null value rejected"
+    }   
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Create booking with guest name containing Unicode and special characters",
+      "steps": ["1. Submit a booking request with a guest name containing Unicode and special characters.",
+                "2. Verify the response status code and message."],
+      "expected_result": "201 Created · name stored and returned exactly as submitted (UTF-8 support)"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Create booking with guest name containing SQL injection payload",
+      "steps": ["1. Submit a booking request with a guest name containing SQL injection payload.",
+                "2. Verify the response status code and message."],
+      "expected_result": "400 Bad Request or safely stored as literal string · no DB error, no data loss"
+    }
+  ]
+}

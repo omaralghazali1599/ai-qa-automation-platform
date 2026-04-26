@@ -1,0 +1,54 @@
+{
+  "story_id": "US-B17",
+  "story_text": "As a guest, I want to create a booking where check-in and check-out are the same date to be rejected so that same-day bookings are not allowed.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Create booking with identical check-in and check-out dates",
+      "steps": ["1. Send POST request to /bookings with check-in and check-out dates set to the same value",
+                "2. Observe the response"],
+      "expected_result": "400 Bad Request · message explicitly states same-day bookings are not allowed"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Create booking with check-out one day after check-in (minimum valid stay)",
+      "steps": ["1. Send POST request to /bookings with check-in and check-out dates set one day apart",
+                "2. Observe the response"],
+      "expected_result": "201 Created · booking persisted successfully"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Create booking with check-out before check-in",
+      "steps": ["1. Send POST request to /bookings with check-out date before check-in date",
+                "2. Observe the response"],
+      "expected_result": "400 Bad Request · message states check-out must be after check-in"
+    },
+    {
+      "id": "TC-N02",
+      "title": "Create booking with check-in date in the past",
+      "steps": ["1. Send POST request to /bookings with check-in date in the past",
+                "2. Observe the response"],
+      "expected_result": "400 Bad Request · past dates rejected"
+    },
+    {
+      "id": "TC-N03",
+      "title": " Create booking with dates in wrong format (dd-mm-yyyy instead of yyyy-mm-dd)",
+      "steps": ["1. Send POST request to /bookings with check-in and check-out dates set to the same value",
+                "2. Observe the response"],
+      "expected_result": "400 Bad Request · format validation error, not a date-logic error"
+    }
+
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Create booking with check-in = today (boundary — same-day arrival)",
+      "steps": ["1. Send POST request to /bookings with check-in date set to today",
+                "2. Observe the response"],
+      "expected_result": "Accepted booking"
+    }
+  ]
+}

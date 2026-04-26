@@ -1,0 +1,54 @@
+{
+  "story_id": "US-B18",
+  "story_text": "As a staff member, I want to filter bookings by an invalid status to return an error so that only valid filter values are accepted.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": " Filter bookings by a completely invalid status string",
+      "steps": ["1. Send GET request to /bookings with query parameter status=INVALID_STATUS",
+                "2. Check the response status code and message"],
+      "expected_result": "400 Bad Request · message lists accepted status values"
+    },
+    {
+      "id": "TC-P02",
+      "title": " Filter bookings by each valid status value",
+      "steps": ["1. Send GET request to /bookings with query parameter status=CONFIRMED",
+                "2. Check the response status code and message",
+                "3. Repeat for status=CANCELLED and status=PENDING"],
+      "expected_result": "200 OK · results contain only bookings matching that status"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": " Filter with numeric status value",
+      "steps": ["1. Send GET request to /bookings with query parameter status=123",
+                "2. Check the response status code and message"],
+      "expected_result": "400 Bad Request · numeric values not accepted as status"
+    },
+    {
+      "id": "TC-N02",
+      "title": " Filter as unauthenticated user",
+      "steps": ["1. Send GET request to /bookings with unauthenticated user",
+                "2. Check the response status code and message"],
+      "expected_result": "401 Unauthorized · staff-only endpoint enforced"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Filter with status value in wrong case (e.g. confirmed instead of CONFIRMED)",
+      "steps": ["1. Send GET request to /bookings with query parameter status=confirmed",
+                "2. Check the response status code and message"],
+      "expected_result": "200 OK with case-insensitive match"   
+    },
+    {
+      "id": "TC-E02",
+      "title": "Filter with empty status value",
+      "steps": ["1. Send GET request to /bookings with query parameter status=",
+                "2. Check the response status code and message"],
+      "expected_result": "200 OK with all bookings related to the user are displayed"
+    }
+  ]
+}

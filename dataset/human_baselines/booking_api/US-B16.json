@@ -1,0 +1,53 @@
+{
+  "story_id": "US-B16",
+  "story_text": "As a guest, I want to retrieve a booking that does not exist to return a not-found error so that I know the ID is invalid.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Retrieve booking with a valid-format but non-existent ID",
+      "steps": ["1. Send GET request to /bookings/{id} with an ID that is well-formed but does not exist in the system (e.g., 9999)",
+                "2. Observe the response"],
+      "expected_result": "404 Not Found · response body contains error code and descriptive message"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Retrieve booking with a non-numeric / wrong-type ID",
+      "steps": ["1. Send GET request to /bookings/{id} with an ID that is not numeric (e.g., abc)",
+                "2. Observe the response"],
+      "expected_result": "400 Bad Request · message indicates ID must be numeric"
+    },
+      {
+      "id": "TC-N02",
+      "title": "Retrieve booking with a UUID-format ID when system uses integers",
+      "steps": ["1. Send GET request to /bookings/{id} with a UUID-format ID",
+                "2. Observe the response"],
+      "expected_result": "400 Bad Request · format mismatch handled gracefully"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Retrieve booking with ID = 0",
+      "steps": ["1. Send GET request to /bookings/{id} with an ID of 0",
+                "2. Observe the response"],
+      "expected_result": "400 Bad Request or 404 Not Found · no 500 error"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Retrieve booking with SQL injection in the ID",
+      "steps": ["1. Send GET request to /bookings/{id} with a malicious SQL injection payload in the ID",
+                "2. Observe the response"],
+      "expected_result": "400 Bad Request · no data leak, no 500"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Retrieve booking with blank / empty ID segment",
+      "steps": ["1. Send GET request to /bookings/{id} with a blank or empty ID",
+                "2. Observe the response"],
+      "expected_result": "404 route-not-found or 400 · not a 500"
+    }
+  ]
+}

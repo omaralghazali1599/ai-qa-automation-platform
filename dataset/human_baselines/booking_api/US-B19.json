@@ -1,0 +1,74 @@
+{
+  "story_id": "US-B19",
+  "story_text": "As a guest, I want to create a booking with the maximum allowed guests (10) so that boundary values are handled correctly.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Create booking with 1 guest (lower boundary — valid)",
+      "steps": ["1. Send POST request to /bookings with guests = 10",
+                "2. Verify response status and content"],
+      "expected_result": "201 Created"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Create booking with exactly 10 guests (upper boundary — valid)",
+      "steps": ["1. Send POST request to /bookings with guests = 10",
+                "2. Verify response status and content"],
+      "expected_result": "201 Created · booking persisted with guests = 10 confirmed in response"
+    },
+    {
+      "id": "TC-P03",
+      "title": "Create booking with 9 guests (upper boundary − 1)",
+      "steps": ["1. Send POST request to /bookings with guests = 9",
+                "2. Verify response status and content"],
+      "expected_result": "201 Created"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Create booking with 11 guests (upper boundary + 1 — invalid)",
+      "steps": ["1. Send POST request to /bookings with guests = 11",
+                "2. Verify response status and content"],
+      "expected_result": "400 Bad Request · message states maximum is 10 guests"
+    },
+    {
+      "id": "TC-N02",
+      "title": "Create booking with 0 guests (lower boundary − 1 — invalid)",
+      "steps": ["1. Send POST request to /bookings with guests = 0",
+                "2. Verify response status and content"],
+      "expected_result": "400 Bad Request · at least 1 guest required"
+    },
+    {
+      "id": "TC-N03",
+      "title": "Create booking with negative guest count",
+      "steps": ["1. Send POST request to /bookings with guests = -5",
+                "2. Verify response status and content"],
+      "expected_result": "400 Bad Request · negative values rejected"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Create booking with a decimal guest count",
+      "steps": ["1. Send POST request to /bookings with guests = 5.5",
+                "2. Verify response status and content"],
+      "expected_result": "400 Bad Request · non-integer rejected, or value truncated per defined behaviour"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Create booking with guest count as a string",
+      "steps": ["1. Send POST request to /bookings with guests = \"5\"",
+                "2. Verify response status and content"],
+      "expected_result": "400 Bad Request · type validation enforced, or coerced per API contract"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Create booking with guests field missing",
+      "steps": ["1. Send POST request to /bookings without guests field",
+                "2. Verify response status and content"],
+      "expected_result": "400 Bad Request · required field validation"
+    }
+  ]
+}
