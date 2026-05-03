@@ -1,6 +1,6 @@
 Dimension,H-statistic,p-value,Significant
 Format Compliance,,,NO
-Redundancy,2.34,0.505,NO
-Functional Coverage,1.009,0.7992,NO
-Edge Case Coverage,10.297,0.0162,YES ***
-Overall,2.325,0.5078,NO
+Redundancy,2.601,0.4574,NO
+Functional Coverage,3.675,0.2987,NO
+Edge Case Coverage,5.766,0.1235,NO
+Overall,4.629,0.2011,NO
