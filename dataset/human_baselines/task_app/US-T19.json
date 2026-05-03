@@ -1,0 +1,59 @@
+{
+  "story_id": "US-T19",
+  "story_text": "As a user, I want deleting a non-existent task to return a clear error so that I know the operation failed.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Delete a task with a valid-format but non-existent ID",
+      "steps": ["1. Send a DELETE request to /tasks/{id} with a valid-format ID that does not exist in the system.",
+                "2. Observe the response status code and body."],
+      "expected_result": "404 Not Found · error body includes descriptive message"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Delete with non-numeric ID",
+      "steps": ["1. Send a DELETE request to /tasks/{id} with a non-numeric ID (e.g., 'abc').",
+                "2. Observe the response status code and body."],
+      "expected_result": "400 Bad Request · error body includes descriptive message"
+    },
+    {
+      "id": "TC-N02",
+      "title": "Error response body schema on failed delete",
+      "steps": ["1. Send a DELETE request to /tasks/{id} with a valid-format ID that does not exist in the system.",
+                "2. Observe the response status code and body."],
+      "expected_result": "400 Bad Request · error body includes descriptive message"
+    } ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Delete with null ID",
+      "steps": ["1. Send a DELETE request to /tasks/{id} with a null ID.",
+                "2. Observe the response status code and body."],
+      "expected_result": "400 Bad Request · error body includes descriptive message"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Delete with 0 = ID",
+      "steps": ["1. Send a DELETE request to /tasks/{id} with an ID of 0.",
+                "2. Observe the response status code and body."],
+      "expected_result": "400 Bad Request · error body includes descriptive message"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Delete with SQL injection in the ID",
+      "steps": ["1. Send a DELETE request to /tasks/{id} with a malicious SQL injection payload in the ID.",
+                "2. Observe the response status code and body."],
+      "expected_result": "400 Bad Request · error body includes descriptive message"
+    },
+    {
+      "id": "TC-E04",
+      "title": "Delete with negative ID",
+      "steps": ["1. Send a DELETE request to /tasks/{id} with a negative ID.",
+                "2. Observe the response status code and body."],
+      "expected_result": "400 Bad Request · error body includes descriptive message"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "story_id": "US-T18",
+  "story_text": "As a user, I want to create a task with only a title and no optional fields so that minimal input is sufficient.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Create task with only a title — all optional fields omitted",
+      "steps": ["1. Send a POST request to the /tasks endpoint with a JSON body containing only the title field."],
+      "expected_result": "201 Created (defaults applied for omitted optional fields)"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Verify defaults are applied for omitted optional fields",
+      "steps": ["1. Send a POST request to the /tasks endpoint with a JSON body containing only the title field.",
+                "2. Verify that the response status code is 201 Created.",
+                "3. Verify that the response body contains the default values for the omitted optional fields."],
+      "expected_result": "201 Created (defaults applied for omitted optional fields)"
+    },
+    {
+      "id": "TC-P03",
+      "title": "Create task with title and one optional field",
+      "steps": ["1. Send a POST request to the /tasks endpoint with a JSON body containing the title and one optional field.",
+                "2. Verify that the response status code is 201 Created.",
+                "3. Verify that the response body contains the value for the specified optional field."],
+      "expected_result": "201 Created (optional field value used)"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Create task without a title — title is a required field",
+      "steps": ["1. Send a POST request to the /tasks endpoint with a JSON body containing no title field.",
+                "2. Verify that the response status code is 400 Bad Request.",
+                "3. Verify that the response body contains a descriptive error message."],
+      "expected_result": "400 Bad Request (title is a required field)"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": " Create task with extra/unknown fields in the body",
+      "steps": ["1. Send a POST request to the /tasks endpoint with a JSON body containing the title field and additional unknown fields.",
+                "2. Verify that the response status code is 201 Created.",
+                "3. Verify that the response body contains the created task with the title field and ignores the unknown fields."],
+      "expected_result": "201 Created (unknown fields ignored)"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Create task with title that is the maximum allowed length",
+      "steps": ["1. Send a POST request to the /tasks endpoint with a JSON body containing the title field with the maximum allowed length.",
+                "2. Verify that the response status code is 201 Created.",
+                "3. Verify that the response body contains the created task with the title field."],
+      "expected_result": "201 Created (defaults applied for all optional fields)"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Create task with title that exceeds maximum allowed length",
+      "steps": ["1. Send a POST request to the /tasks endpoint with a JSON body containing the title field with a length that exceeds the maximum allowed.",
+                "2. Verify that the response status code is 400 Bad Request.",
+                "3. Verify that the response body contains a descriptive error message."],
+      "expected_result": "400 Bad Request (title exceeds maximum length)"
+    }
+  ]
+}

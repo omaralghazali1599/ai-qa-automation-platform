@@ -1,0 +1,96 @@
+{
+  "story_id": "US-T20",
+  "story_text": "As a user, I want to update multiple fields of a task in a single request so that I can edit efficiently.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Update title, priority, and category simultaneously",
+      "steps": ["1. Send PATCH request to /tasks/{task_id} with valid title, priority, and category fields in the body.",
+                "2. Verify response status code and body."],
+      "expected_result": "200 OK · all three fields updated in response"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Verify updated fields persist via GET request",
+      "steps": ["1. Send GET request to /tasks/{task_id}.",
+                "2. Verify response reflects all updated fields."],
+      "expected_result": "200 OK · response reflects all updated fields"
+    },
+    {
+      "id": "TC-P03",
+      "title": "Update with valid fields and verify response structure",
+      "steps": ["1. Send PATCH request to /tasks/{task_id} with valid fields in the body.",
+                "2. Verify response status code and body."],
+      "expected_result": "200 OK · response includes updated task object with correct field values"
+    },
+    {
+      "id": "TC-P04",
+      "title": "Update all fields including description and status",
+      "steps": ["1. Send PATCH request to /tasks/{task_id} with all fields in the body.",
+                "2. Verify response status code and body."],
+      "expected_result": "200 OK · all fields updated in response"
+    },
+    {
+      "id": "TC-P05",
+      "title": "Update title and priority, leaving category unchanged",
+      "steps": ["1. Send PATCH request to /tasks/{task_id} with title and priority fields in the body.",
+                "2. Verify response status code and body."],
+      "expected_result": "200 OK · title and priority updated, category remains unchanged"
+    }
+
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Update with invalid field names",
+      "steps": ["1. Send PATCH request to /tasks/{task_id} with invalid field names in the body.",
+                "2. Verify response status code and body."],
+      "expected_result": "400 Bad Request · error body includes descriptive message"
+    },
+    {
+      "id": "TC-N02",
+      "title": "Update with one valid field and one invalid field",
+      "steps": ["1. Send PATCH request to /tasks/{task_id} with one valid and one invalid field in the body.",
+                "2. Verify response status code and body."],
+      "expected_result": "400 Bad Request · neither field updated (atomic behaviour)"
+    },
+    {
+      "id": "TC-N03",
+      "title": "Update multiple fields on a non-existent task",
+      "steps": ["1. Send PATCH request to /tasks/{task_id} with multiple fields in the body.",
+                "2. Verify response status code and body."],
+      "expected_result": "404 Not Found · error body includes descriptive message"
+    },
+    {
+      "id": "TC-N04",
+      "title": "Update fields without Authentication",
+      "steps": ["1. Send PATCH request to /tasks/{task_id} with valid fields in the body.",
+                "2. Verify response status code and body."],
+      "expected_result": "401 Unauthorized · error body includes descriptive message"
+    },
+    {
+      "id": "TC-N05",
+      "title": "Update other user's task",
+      "steps": ["1. Send PATCH request to /tasks/{task_id} with valid fields in the body.",
+                "2. Verify response status code and body."],
+      "expected_result": "403 Forbidden · error body includes descriptive message"
+    } 
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Update with null values for valid fields",
+      "steps": ["1. Send PATCH request to /tasks/{task_id} with valid field names but null values in the body.",
+                "2. Verify response status code and body."],
+      "expected_result": "200 OK with no changes — must be defined behaviour for null values"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Update with empty request body",
+      "steps": ["1. Send PATCH request to /tasks/{task_id} with an empty body.",
+                "2. Verify response status code and body."],
+      "expected_result": "400 Bad Request · error body includes descriptive message"
+    }
+  ]
+}

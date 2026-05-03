@@ -1,0 +1,65 @@
+{
+    "story_id": "US-T16",
+    "story_text": "As a user, I want the system to return an error when I try to get a task with a non-existent ID so that I know the task does not exist.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Get task with valid-format but non-existent ID",
+            "steps": [
+                "1. Send GET request to /tasks/{id} with a valid UUID that does not exist in the system.",
+                "2. Observe the response status code and body."
+            ],
+            "expected_result": "404 Not Found · descriptive error body"
+        },
+        {
+            "id": "TC-P02",
+            "title": "Error response schema validation for not-found task",
+            "steps": [
+                "1. Send GET request to /tasks/{id} with a valid UUID that does not exist in the system.",
+                "2. Observe the response status code and body."
+            ],
+            "expected_result": "Body matches agreed error schema · Content-Type: application/json"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Get task with invalid ID format",
+            "steps": [
+                "1. Send GET request to /tasks/{id} with an invalid ID format (e.g., 'abc123').",
+                "2. Observe the response status code and body."
+            ],
+            "expected_result": "400 Bad Request · type mismatch error"
+        },
+        {
+            "id": "TC-N02",
+            "title": "Get task with alphanumeric ID",
+            "steps": [
+                "1. Send GET request to /tasks/{id} with an alphanumeric ID.",
+                "2. Observe the response status code and body."
+            ],
+            "expected_result": "400 Bad Request · type mismatch error"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Get task with ID = 0",
+            "steps": [
+                "1. Send GET request to /tasks/0.",
+                "2. Observe the response status code and body."
+            ],
+            "expected_result": "400 Bad Request or 404 Not Found · no 500"
+        },
+        {
+            "id": "TC-E02",
+            "title": "Get task with negative ID",
+            "steps": [
+                "1. Send GET request to /tasks/-1.",
+                "2. Observe the response status code and body."
+            ],
+            "expected_result": "400 Bad Request or 404 Not Found · no 500"
+        }
+    ]
+}

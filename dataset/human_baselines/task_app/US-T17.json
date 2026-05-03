@@ -1,0 +1,80 @@
+{
+  "story_id": "US-T17",
+  "story_text": "As a user, I want to update the description of a task so that I can add more context.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Update description with valid text",
+      "steps": ["1. Send a PUT request to /tasks/{task_id} with a valid description in the request body.",
+                "2. Verify that the response status code is 200 OK.",
+                "3. Verify that the response body contains the updated description."],
+      "expected_result": "200 OK · description field updated in response"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Update description and verify persistence",
+      "steps": ["1. Send a PUT request to /tasks/{task_id} with a valid description in the request body.",
+                "2. Verify that the response status code is 200 OK.",
+                "3. Send a GET request to /tasks/{task_id} and verify that the response body contains the updated description."],
+      "expected_result": "200 OK · description field updated in response · subsequent GET request returns updated description"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Update description of a non-existent task",
+      "steps": ["1. Send a PUT request to /tasks/{non_existent_task_id} with a valid description in the request body.",
+                "2. Verify that the response status code is 404 Not Found."],
+      "expected_result": "404 Not Found · descriptive error body"
+    },
+    {
+      "id": "TC-N02",
+      "title": "Update description without authentication",
+      "steps": ["1. Send a PUT request to /tasks/{task_id} with a valid description in the request body.",
+                "2. Verify that the response status code is 401 Unauthorized."],
+      "expected_result": "401 Unauthorized · descriptive error body"
+    },
+    {
+      "id": "TC-N03",
+      "title": "Update description of another user's task",
+      "steps": ["1. Send a PUT request to /tasks/{task_id} with a valid description in the request body.",
+                "2. Verify that the response status code is 403 Forbidden."],
+      "expected_result": "403 Forbidden · descriptive error body"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Update description to empty string (clear description)",
+      "steps": ["1. Send a PUT request to /tasks/{task_id} with an empty string as the description.",
+                "2. Verify that the response status code is 200 OK.",
+                "3. Verify that the response body contains the updated description."],
+      "expected_result": "200 OK with empty description"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Update description with very long text (e.g., 10,000 characters)",
+      "steps": ["1. Send a PUT request to /tasks/{task_id} with a very long description in the request body.",
+                "2. Verify that the response status code is 200 OK.",
+                "3. Verify that the response body contains the updated description."],
+      "expected_result": "200 OK · description field updated in response · subsequent GET request returns full long description"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Update description to null (remove description)",
+      "steps": ["1. Send a PUT request to /tasks/{task_id} with a null value for the description.",
+                "2. Verify that the response status code is 200 OK.",
+                "3. Verify that the response body contains the updated description."],
+      "expected_result": "200 OK with null description"
+    },
+    {
+      "id": "TC-E04",
+      "title": "Update description with HTML/script tags",
+      "steps": ["1. Send a PUT request to /tasks/{task_id} with HTML/script tags in the description.",
+                "2. Verify that the response status code is 200 OK.",
+                "3. Verify that the response body contains the updated description."],
+      "expected_result": "200 OK · description field updated in response · subsequent GET request returns escaped HTML/script tags"
+    }
+  ]
+}
