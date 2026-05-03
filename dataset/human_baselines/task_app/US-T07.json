@@ -1,0 +1,75 @@
+{
+    "story_id": "US-T07",
+    "story_text": "As a user, I want to mark a task as complete so that I can track my progress.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Mark an existing incomplete task as complete",
+            "steps": [
+                "1. Create a new task (if not already existing)",
+                "2. Send a request to mark the task as complete"
+            ],
+            "expected_result": "200 OK · response shows status = COMPLETE · completedAt timestamp set"
+        },
+        {
+            "id": "TC-P02",
+            "title": "Mark an existing incomplete task as complete and verify via GET",
+            "steps": [
+                "1. Create a new task (if not already existing)",
+                "2. Send a request to mark the task as complete",
+                "3. Send a GET request to retrieve the task details"
+            ],
+            "expected_result": "200 OK · response shows status = COMPLETE · completedAt timestamp set"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Attempt to mark a non-existent task as complete",
+            "steps": [
+                "1. Send a request to mark a non-existent task as complete"
+            ],
+            "expected_result": "404 Not Found · message indicates task not found"
+        },
+        {
+            "id": "TC-N02",
+            "title": "Mark task as complete without authentication",
+            "steps": [
+                "1. Send a request to mark a task as complete without authentication"
+            ],
+            "expected_result": "401 Unauthorized · message indicates authentication required"
+        },
+        {
+            "id": "TC-N03",
+            "title": "Mark another user's task as complete",
+            "steps": [
+                "1. Create a new task (if not already existing)",
+                "2. Send a request to mark the task as complete"
+            ],
+            "expected_result": "403 Forbidden · message indicates insufficient permissions"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Mark an already-complete task as complete again",
+            "steps": [
+                "1. Create a new task (if not already existing)",
+                "2. Send a request to mark the task as complete",
+                "3. Send another request to mark the same task as complete again"
+            ],
+            "expected_result": "200 OK with no change or 409 Conflict — must be consistent and documented"
+        },
+        {
+            "id": "TC-E02",
+            "title": "Mark a task as complete then mark it as incomplete",
+            "steps": [
+                "1. Create a new task (if not already existing)",
+                "2. Send a request to mark the task as complete",
+                "3. Send a request to mark the task as incomplete"
+            ],
+            "expected_result": "200 OK for both operations · status toggles between COMPLETE and INCOMPLETE · completedAt timestamp updates accordingly"
+        }
+    ]
+}

@@ -1,0 +1,69 @@
+{
+  "story_id": "US-T02",
+  "story_text": "As a user, I want to assign a category to a task so that I can organize my tasks.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Create a task and assign a category",
+      "steps": ["1. Create a new task with the title \"Finish report\" and assign the category \"WORK\".",
+                "2. Verify that the task is created successfully and the category is assigned correctly."],
+      "expected_result": "201 Created · category field in response equals \"WORK\""
+    },
+    {
+      "id": "TC-P02",
+      "title": "Edit a task and update its category",
+      "steps": ["1. Create a new task with the title \"Finish report\" and assign the category \"WORK\".",
+                "2. Edit the task and update its category to \"PERSONAL\".",
+                "3. Verify that the task category is updated correctly."],
+      "expected_result": "200 OK · task category updated correctly"
+    },
+    {
+      "id": "TC-P03",
+      "title": "Create a task without assigning a category",
+      "steps": ["1. Create a new task with the title \"Finish report\".",
+                "2. Verify that the task is created successfully and the category field is null or empty."],
+      "expected_result": "201 Created · category field in response is null or empty"
+    }
+
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Create a task with an invalid category",
+      "steps": ["1. Create a new task with the title \"Finish report\" and assign an invalid category \"INVALID_CATEGORY\".",
+                "2. Verify that the API returns an error response indicating the category is invalid."],
+      "expected_result": "400 Bad Request · error message indicating invalid category"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Create a task with a category that exceeds the maximum length",
+      "steps": ["1. Create a new task with the title \"Finish report\" and assign a category that exceeds the maximum length (e.g., a string of 256 characters).",
+                "2. Verify that the API returns an error response indicating the category exceeds the maximum length."],
+      "expected_result": "400 Bad Request · error message indicating category exceeds maximum length"
+    },
+    {
+      "id": "TC-E02",
+      "title": "Create task with category in wrong case (e.g., \"work\" instead of \"WORK\")",
+      "steps": ["1. Create a new task with the title \"Finish report\" and assign the category \"work\" (lowercase).",
+                "2. Verify that the API handles the category case correctly."],
+      "expected_result": "200 OK with case-insensitive match or 400 — must be consistent and documented"
+    },
+    {
+      "id": "TC-E03",
+      "title": "Create task with null category",
+      "steps": ["1. Create a new task with the title \"Finish report\" and assign a null category.",
+                "2. Verify that the task is created successfully and the category field in the response is null."],
+      "expected_result": "201 Created · category field in response is null"
+    },
+    {
+      "id": "TC-E04",
+      "title": "Create task with category as an integer",
+      "steps": ["1. Create a new task with the title \"Finish report\" and assign the category as an integer.",
+                "2. Verify that the API returns an error response indicating the category type is invalid."],
+      "expected_result": "400 Bad Request · error message indicating invalid category type"
+    }
+  ]
+}

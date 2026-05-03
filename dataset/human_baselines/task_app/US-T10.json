@@ -1,0 +1,50 @@
+{
+  "story_id": "US-T10",
+  "story_text": "As a user, I want to retrieve a single task by its ID so that I can view its full details.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Retrieve an existing task by valid ID",
+      "steps": ["1. Create a task and note its ID",
+      "2. Send GET request to /tasks/{id} with the noted ID"],
+      "expected_result": "200 OK · full task object returned with all fields"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Verify all fields present in single task response",
+      "steps": ["1. Create a task with all fields filled and note its ID",
+      "2. Send GET request to /tasks/{id} with the noted ID"],
+      "expected_result": "Response contains id, title, description, category, priority, status, createdAt"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Retrieve task with non-existent ID",
+      "steps": ["1. Send GET request to /tasks/{id} with a non-existent ID"],
+      "expected_result": "404 Not Found"
+    },
+    {
+      "id": "TC-N02",
+      "title": "Retrieve task with non-numeric ID",
+      "steps": ["1. Send GET request to /tasks/{id} with a non-numeric ID"],
+      "expected_result": "400 Bad Request"
+    },
+    {
+      "id": "TC-N03",
+      "title": "Retrieve another user's task",
+      "steps": ["1. Send GET request to /tasks/{id} with another user's task ID"],
+      "expected_result": "403 Forbidden"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Retrieve a task with alot of data in description",
+      "steps": ["1. Create a task with a very long description and note its ID",
+      "2. Send GET request to /tasks/{id} with the noted ID"],
+      "expected_result": "200 OK · full task object returned with all fields, description truncated if exceeds limit"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+    "story_id": "US-T09",
+    "story_text": "As a user, I want to delete a task so that I can remove items I no longer need.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Delete an existing task successfully",
+            "steps": [
+                "1. Create a new task",
+                "2. Delete the created task"
+            ],
+            "expected_result": "200 OK or 204 No Content"
+        },
+        {
+            "id": "TC-P02",
+            "title": "Verify deleted task is no longer retrievable",
+            "steps": [
+                "1. Create a new task",
+                "2. Delete the created task",
+                "3. Attempt to retrieve the deleted task"
+            ],
+            "expected_result": "404 Not Found"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Delete a non-existent task",
+            "steps": [
+                "1. Attempt to delete a task that does not exist"
+            ],
+            "expected_result": "404 Not Found"
+        },
+        {
+            "id": "TC-N02",
+            "title": "Delete another user's task",
+            "steps": [
+                "1. Attempt to delete a task owned by another user"
+            ],
+            "expected_result": "403 Forbidden"
+        },
+        {
+            "id": "TC-N03",
+            "title": "Delete a task without authentication",
+            "steps": [
+                "1. Attempt to delete a task without being logged in"
+            ],
+            "expected_result": "401 Unauthorized"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Delete the same task twice",
+            "steps": [
+                "1. Create a new task",
+                "2. Delete the created task",
+                "3. Attempt to delete the same task again"
+            ],
+            "expected_result": "404 Not Found"
+        }
+    ]
+}

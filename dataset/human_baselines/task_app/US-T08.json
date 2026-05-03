@@ -1,0 +1,64 @@
+{
+    "story_id": "US-T08",
+    "story_text": "As a user, I want to update the title of an existing task so that I can correct or clarify it.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": " Update title with a valid new value",
+            "steps": ["1. Create a new task with an initial title.",
+                      "2. Update the task's title to a new valid value.",
+                      "3. Retrieve the task details to verify the update."],
+            "expected_result": "200 OK · response reflects new title"
+        },
+        {
+            "id": "TC-P02",
+            "title": "Update title and verify change persists",
+            "steps": ["1. Create a new task with an initial title.",
+                      "2. Update the task's title to a new valid value.",
+                      "3. Retrieve the task details to verify the update."],
+            "expected_result": "Title matches the updated value exactly"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Update title with an empty string",
+            "steps": ["1. Create a new task with an initial title.",
+                      "2. Attempt to update the task's title to an empty string.",
+                      "3. Verify the error response."],
+            "expected_result": "400 Bad Request · title cannot be empty"
+        },
+        {
+            "id": "TC-N02",
+            "title": "Update title of a non-existent task",
+            "steps": ["1. Attempt to update the title of a task that does not exist.",
+                      "2. Verify the error response."],
+            "expected_result": "404 Not Found · task does not exist"
+        },
+        {
+            "id": "TC-N03",
+            "title": "Update title of another user's task",
+            "steps": ["1. Attempt to update the title of a task owned by another user.",
+                      "2. Verify the error response."],
+            "expected_result": "400 Bad Request · title contains prohibited characters"
+        },
+        {
+            "id": "TC-N04",
+            "title": "Update title without authentication",
+            "steps": ["1. Attempt to update the title of a task without providing authentication.",
+                      "2. Verify the error response."],
+            "expected_result": "401 Unauthorized · authentication required"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Update title with maximum allowed characters",
+            "steps": ["1. Create a new task with an initial title.",
+                      "2. Update the task's title to the maximum allowed number of characters.",
+                      "3. Retrieve the task details to verify the update."],
+            "expected_result": "200 OK · full title stored without truncation"
+        }
+    ]
+}

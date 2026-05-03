@@ -1,0 +1,51 @@
+{
+  "story_id": "US-T05",
+  "story_text": "As a user, I want to filter tasks by category so that I can focus on a specific area.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Filter tasks by a valid category that has matching tasks",
+      "steps": ["1. Send a GET request to /tasks with the query parameter category=Work",
+                "2. Verify that the response status code is 200 OK",
+                "3. Verify that all returned tasks have category = Work"],
+      "expected_result": "200 OK · all returned tasks have category = Work"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Filter tasks by a valid category that has no matching tasks",
+      "steps": ["1. Send a GET request to /tasks with the query parameter category=Personal",
+                "2. Verify that the response status code is 200 OK",
+                "3. Verify that the returned array is empty"],
+      "expected_result": "200 OK · empty array returned"
+    },
+    {
+      "id": "TC-P03",
+      "title": "Filter tasks by category — results contain no cross-category contamination",
+      "steps": ["1. Send a GET request to /tasks with the query parameter category=Work",
+                "2. Verify that the response status code is 200 OK",
+                "3. Verify that all returned tasks have category = Work"],
+      "expected_result": "200 OK · only tasks from the specified category are returned"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": " Filter tasks by an invalid category",
+      "steps": ["1. Send a GET request to /tasks with the query parameter category=Invalid",
+                "2. Verify that the response status code is 400 Bad Request",
+                "3. Verify that the error message indicates valid categories"],
+      "expected_result": "400 Bad Request · message lists valid categories"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Filter tasks by category with empty value",
+      "steps": ["1. Send a GET request to /tasks with the query parameter category=",
+                "2. Verify that the response status code is 400 Bad Request",
+                "3. Verify that the error message indicates valid categories"],
+      "expected_result": "400 Bad Request · empty value rejected or all tasks returned per spec"
+    }
+  ]
+}

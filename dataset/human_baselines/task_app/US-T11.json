@@ -1,0 +1,46 @@
+{
+  "story_id": "US-T11",
+  "story_text": "As a user, I want task creation to fail when the title is empty so that all tasks have a meaningful name.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": "Create task with empty string title",
+      "steps": ["1. Send a POST request to the task creation endpoint with an empty string as the title.",
+                "2. Observe the response from the server."],
+      "expected_result": "400 Bad Request · message states title is required"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": "Create task with whitespace-only title",
+      "steps": ["1. Send a POST request to the task creation endpoint with a whitespace-only string as the title.",
+                "2. Observe the response from the server."],
+      "expected_result": "400 Bad Request · message states title is required"
+    },
+    {
+      "id": "TC-N02",
+      "title": "Create task with null title",
+      "steps": ["1. Send a POST request to the task creation endpoint with a null value for the title.",
+                "2. Observe the response from the server."],
+      "expected_result": "400 Bad Request · message states title is required"
+    },
+    {
+      "id": "TC-N03",
+      "title": "Create task with missing title field",
+      "steps": ["1. Send a POST request to the task creation endpoint without the title field.",
+                "2. Observe the response from the server."],
+      "expected_result": "400 Bad Request · message states title is required"
+    }
+  ],
+  "edge": [
+    {
+      "id": "TC-E01",
+      "title": "Create task with title as a non-string type (e.g., number or boolean)",
+      "steps": ["1. Send a POST request to the task creation endpoint with a non-string value for the title.",
+                "2. Observe the response from the server."],
+      "expected_result": "400 Bad Request · message states title must be a string"
+    }
+  ]
+}

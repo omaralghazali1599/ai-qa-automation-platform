@@ -1,10 +1,10 @@
 {
-  "story_id": "US-A01",
-  "story_text": "As a new user, I want to register with my name, email, and password so that I can create an account.",
+  "story_id": "US-T01",
+  "story_text": "",
   "rater": "Omar",
   "positive": [
     {
-      "id": "HB-P01",
+      "id": "TC-P01",
       "title": "",
       "steps": [],
       "expected_result": ""
@@ -12,7 +12,7 @@
   ],
   "negative": [
     {
-      "id": "HB-N01",
+      "id": "TC-N01",
       "title": "",
       "steps": [],
       "expected_result": ""
@@ -20,7 +20,7 @@
   ],
   "edge": [
     {
-      "id": "HB-E01",
+      "id": "TC-E01",
       "title": "",
       "steps": [],
       "expected_result": ""

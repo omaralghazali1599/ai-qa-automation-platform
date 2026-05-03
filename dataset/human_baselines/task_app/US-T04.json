@@ -1,0 +1,65 @@
+{
+    "story_id": "US-T04",
+    "story_text": "As a user, I want to list all my tasks so that I can see everything I need to do.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "List tasks when multiple tasks exist",
+            "steps": [
+                "1. Create multiple tasks for the authenticated user",
+                "2. Send GET request to /tasks endpoint"
+            ],
+            "expected_result": "200 OK · all user tasks returned in response array"
+        },
+        {
+            "id": "TC-P02",
+            "title": "List tasks when no tasks exist",
+            "steps": [
+                "1. Ensure no tasks exist for the authenticated user",
+                "2. Send GET request to /tasks endpoint"
+            ],
+            "expected_result": "200 OK · empty array [] returned, not 404"
+        },
+        {
+            "id": "TC-P03",
+            "title": "List tasks returns only the authenticated user's tasks",
+            "steps": [
+                "1. Create a task for User A",
+                "2. Create a task for User B",
+                "3. Send GET request to /tasks endpoint as User A"
+            ],
+            "expected_result": "Response contains only User A's tasks — no data from User B"
+        },
+        {
+            "id": "TC-P04",
+            "title": "List tasks response schema validation",
+            "steps": [
+                "1. Create a task for the authenticated user",
+                "2. Send GET request to /tasks endpoint"
+            ],
+            "expected_result": "Each task object contains id, title, status, priority, category, createdAt"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "List tasks without authentication",
+            "steps": [
+                "1. Send GET request to /tasks endpoint without authentication token"
+            ],
+            "expected_result": "401 Unauthorized"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": " List tasks with large dataset (pagination check)",
+            "steps": [
+                "1. Create a large number of tasks for the authenticated user",
+                "2. Send GET request to /tasks endpoint"
+            ],
+            "expected_result": "Response is paginated or returns all within acceptable response time — no timeout or 500"
+        }
+    ]
+}

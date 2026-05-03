@@ -1,0 +1,87 @@
+{
+    "story_id": "US-T15",
+    "story_text": "As a user, I want to update the priority of an existing task so that I can reprioritize my work.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Update task priority to each valid value",
+            "steps": [
+                "1. Create a task with an initial priority.",
+                "2. Update the task's priority to each valid value (e.g., Low, Medium, High).",
+                "3. Retrieve the task after each update to verify the priority change."
+            ],
+            "expected_result": "200 OK · priority updated and reflected in response"
+        },
+        {
+            "id": "TC-P02",
+            "title": "Update task priority to the same value",
+            "steps": [
+                "1. Create a task with an initial priority.",
+                "2. Update the task's priority to the same value.",
+                "3. Retrieve the task to verify the priority remains unchanged."
+            ],
+            "expected_result": "200 OK · priority remains unchanged and reflected in response"
+        },
+        {
+            "id": "TC-P03",
+            "title": "Update task priority and verify persistence",
+            "steps": [
+                "1. Create a task with an initial priority.",
+                "2. Update the task's priority to a new valid value.",
+                "3. Retrieve the task to verify the priority change is persisted."
+            ],
+            "expected_result": "200 OK · priority updated and reflected in response, and persists on subsequent retrieval"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Update priority to an invalid value",
+            "steps": [
+                "1. Create a task with an initial priority.",
+                "2. Attempt to update the task's priority to an invalid value (e.g., 'Urgent')."
+            ],
+            "expected_result": "400 Bad Request · message states priority must be a valid value"
+        },
+        {
+            "id": "TC-N02",
+            "title": "Update priority of a non-existent task",
+            "steps": [
+                "1. Attempt to update the priority of a task that does not exist.",
+                "2. Verify the response."
+            ],
+            "expected_result": "404 Not Found · message states task not found"
+        },
+        {
+            "id": "TC-N03",
+            "title": "Update task with no authentication",
+            "steps": [
+                "1. Attempt to update the priority of an existing task without providing authentication credentials.",
+                "2. Verify the response."
+            ],
+            "expected_result": "401 Unauthorized · message states user not authenticated"
+        },
+        {
+            "id": "TC-N04",
+            "title": "Update another user's task",
+            "steps": [
+                "1. Attempt to update the priority of a task that belongs to another user.",
+                "2. Verify the response."
+            ],
+            "expected_result": "403 Forbidden · message states user not authorized to update this task"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Update priority to null",
+            "steps": [
+                "1. Create a task with an initial priority.",
+                "2. Attempt to update the task's priority to null.",
+                "3. Verify the response."
+            ],
+            "expected_result": "400 Bad Request · message states priority cannot be null"
+        }
+    ]
+}

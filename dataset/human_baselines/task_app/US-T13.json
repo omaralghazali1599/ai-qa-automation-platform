@@ -1,0 +1,47 @@
+{
+    "story_id": "US-T13",
+    "story_text": "As a user, I want task creation to fail when an invalid category is provided so that data stays consistent.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Create task with a completely invalid category string",
+            "steps": ["1. Attempt to create a task with category set to 'InvalidCategory'",
+                     "2. Observe the response from the API"],
+            "expected_result": "400 Bad Request · message lists valid category options"
+        },
+        {
+            "id": "TC-P02",
+            "title": "Create task with each valid category value",
+            "steps": ["1. Attempt to create a task with each valid category value",
+                     "2. Observe the response from the API"],
+            "expected_result": "201 Created · task is created successfully"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Create task with numeric category",
+            "steps": ["1. Attempt to create a task with category set to 123",
+                     "2. Observe the response from the API"],
+            "expected_result": "400 Bad Request · message states category must be a string"
+        },
+        {
+            "id": "TC-N02",
+            "title": "Update existing task to an invalid category",
+            "steps": ["1. Create a task with a valid category",
+                     "2. Attempt to update the task's category to an invalid value",
+                     "3. Observe the response from the API"],
+            "expected_result": "400 Bad Request · message states category must be a string"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Create task with category containing injection payload",
+            "steps": ["1. Attempt to create a task with a category containing injection payload",
+                     "2. Observe the response from the API"],
+            "expected_result": "400 Bad Request · message states category must be a string"
+        }
+    ]
+}

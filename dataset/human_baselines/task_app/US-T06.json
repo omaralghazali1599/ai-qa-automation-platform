@@ -1,0 +1,54 @@
+{
+    "story_id": "US-T06",
+    "story_text": "As a user, I want to filter tasks by priority so that I can work on the most urgent items first.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Filter tasks by each valid priority level",
+            "steps": [
+                "1. Set priority filter to 'High'",
+                "2. Set priority filter to 'Medium'",
+                "3. Set priority filter to 'Low'"
+            ],
+            "expected_result": "200 OK · only tasks matching that priority returned"
+        },
+        {
+            "id": "TC-P02",
+            "title": "Filter tasks by priority with no matching results",
+            "steps": [
+                "1. Set priority filter to a value that does not exist in any task (e.g., 'Urgent')"
+            ],
+            "expected_result": "200 OK · empty list returned"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Filter tasks by an invalid priority value",
+            "steps": [
+                "1. Set priority filter to an invalid value (e.g., 'Invalid')"
+            ],
+            "expected_result": "400 Bad Request · message lists valid priorities400 Bad Request · message lists valid priority values"
+        },
+        {
+            "id": "TC-N02",
+            "title": "Filter tasks by priority using a numeric value instead of a string",
+            "steps": [
+                "1. Set priority filter to a numeric value (e.g., 1)"
+            ],
+            "expected_result": "400 Bad Request"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Filter tasks by priority combined with category filter",
+            "steps": [
+                "1. Set priority filter to 'High'",
+                "2. Set category filter to 'Work'"
+            ],
+            "expected_result": "200 OK · only tasks matching both criteria returned"
+        }
+    ]
+}

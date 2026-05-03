@@ -1,0 +1,66 @@
+{
+    "story_id": "US-T12",
+    "story_text": "As a user, I want the system to reject a task title longer than 200 characters so that titles remain readable.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Create task with exactly 200-character title (upper boundary — valid)",
+            "steps": [
+                "1. Generate a task title that is exactly 200 characters long.",
+                "2. Attempt to create a task using this title. "
+            ],
+            "expected_result": "201 Created · full title stored without truncation"
+        },
+        {
+            "id": "TC-P02",
+            "title": "Create task with 199-character title (boundary − 1)",
+            "steps": [
+                "1. Generate a task title that is 199 characters long.",
+                "2. Attempt to create a task using this title. "
+            ],
+            "expected_result": "201 Created · full title stored without truncation"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Create task with 201-character title (boundary + 1 — invalid)",
+            "steps": [
+                "1. Generate a task title that is 201 characters long.",
+                "2. Attempt to create a task using this title. "
+            ],
+            "expected_result": "400 Bad Request · message states 200-character maximum"
+        },
+        {
+            "id": "TC-N02",
+            "title": "Create task with 1-character title (lower boundary — valid)",
+            "steps": [
+                "1. Generate a task title that is 1 character long.",
+                "2. Attempt to create a task using this title. "
+            ],
+            "expected_result": "400 Bad Request · message states 5 character minimum"
+        },
+        {
+            "id": "TC-N03",
+            "title": "Update existing task title to 201 characters (boundary + 1 — invalid)",
+            "steps": [
+                "1. Create a task with a valid title.",
+                "2. Generate a new title that is 201 characters long.",
+                "3. Attempt to update the existing task's title to this new title."
+            ],
+            "expected_result": "400 Bad Request · message states 200-character maximum"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": " Create task with 500-character title (far above max)",
+            "steps": [
+                "1. Generate a task title that is 500 characters long.",
+                "2. Attempt to create a task using this title. "
+            ],
+            "expected_result": "400 Bad Request · rejected gracefully, no 500"
+        }
+    ]
+}

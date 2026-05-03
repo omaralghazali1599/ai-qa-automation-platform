@@ -1,0 +1,57 @@
+{
+    "story_id": "US-T03",
+    "story_text": "As a user, I want to set a priority level on a task so that I know what to work on first.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": " Create task with each valid priority level",
+            "steps": [
+                "1. Create a task with priority set to LOW",
+                "2. Create a task with priority set to MEDIUM",
+                "3. Create a task with priority set to HIGH"
+            ],
+            "expected_result": "201 Created for each · priority stored and returned correctly"
+        },
+        {
+            "id": "TC-P02",
+            "title": " Update task priority level",
+            "steps": [
+                "1. Create a task with priority set to LOW",
+                "2. Update the task's priority to HIGH"
+            ],
+            "expected_result": "200 OK · priority updated correctly"
+        },
+        {
+            "id": "TC-P03",
+            "title": " Create a task without setting a priority level",
+            "steps": [
+                "1. Create a task without setting a priority level",
+                "2. Retrieve the created task"
+            ],
+            "expected_result": "201 Created · default priority applied (e.g. MEDIUM) and reflected in response"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": " Create a task with an invalid priority level value",
+            "steps": [
+                "1. Attempt to create a task with an invalid priority level value (e.g., \"INVALID_PRIORITY\")",
+                "2. Observe the response"
+            ],
+            "expected_result": "400 Bad Request · message lists valid priority options"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Create task with priority as a number instead of a string",
+            "steps": [
+                "1. Attempt to create a task with a numeric priority value (e.g., 1)",
+                "2. Observe the response"
+            ],
+            "expected_result": "400 Bad Request · numeric value not accepted"
+        }
+    ]
+}

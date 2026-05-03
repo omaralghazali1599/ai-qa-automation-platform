@@ -1,0 +1,54 @@
+{
+  "story_id": "US-T14",
+  "story_text": "As a user, I want to filter tasks by completion status so that I can see only open or only done tasks.",
+  "rater": "Omar",
+  "positive": [
+    {
+      "id": "TC-P01",
+      "title": " Filter tasks by status=OPEN",
+      "steps": ["1. Create multiple tasks with varying statuses (OPEN, COMPLETE).", 
+      "2. Send a GET request to /tasks?status=OPEN."],
+      "expected_result": "200 OK · all returned tasks have status = 'OPEN'"
+    },
+    {
+      "id": "TC-P02",
+      "title": "Filter tasks by status=COMPLETE",
+      "steps": ["1. Create multiple tasks with varying statuses (OPEN, COMPLETE).", 
+      "2. Send a GET request to /tasks?status=COMPLETE."],
+      "expected_result": "200 OK · all returned tasks have status = 'COMPLETE'"
+    },
+    {
+      "id": "TC-P03",
+      "title": "Filter tasks by completion status with no matching results",
+      "steps": ["1. Create multiple tasks with varying statuses (OPEN, COMPLETE).", 
+      "2. Send a GET request to /tasks?status=UNKNOWN."],
+      "expected_result": "200 OK · empty array returned"
+    },
+    {
+      "id": "TC-P04",
+      "title": "Filter by status — verify no cross-status contamination",
+      "steps": ["1. Create multiple tasks with varying statuses (OPEN, COMPLETE).", 
+      "2. Send a GET request to /tasks?status=OPEN.", 
+      "3. Verify that only tasks with status 'OPEN' are returned."],
+      "expected_result": "200 OK · only tasks with the specified status are returned"
+    }
+  ],
+  "negative": [
+    {
+      "id": "TC-N01",
+      "title": " Filter by invalid status value",
+      "steps": ["1. Create multiple tasks with varying statuses (OPEN, COMPLETE).", 
+      "2. Send a GET request to /tasks?status=INVALID."],
+      "expected_result": "400 Bad Request · message states status must be a valid value"
+    }
+  ],
+  "edge": [
+      {
+      "id": "TC-E01",
+      "title": "Filter tasks by status combined with priority",
+      "steps": ["1. Create multiple tasks with varying statuses (OPEN, COMPLETE).", 
+      "2. Send a GET request to /tasks?status=OPEN&priority=HIGH."],
+      "expected_result": "200 OK · all returned tasks have the specified status and priority"
+    }
+  ]
+}

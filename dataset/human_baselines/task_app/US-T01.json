@@ -1,0 +1,81 @@
+{
+    "story_id": "US-T01",
+    "story_text": "As a user, I want to create a task with a title so that I can track my work.",
+    "rater": "Omar",
+    "positive": [
+        {
+            "id": "TC-P01",
+            "title": "Create task with a valid title",
+            "steps": [
+                "1. Send POST request to /tasks with a valid title in the request body.",
+                "2. Verify the response status code is 201 Created.",
+                "3. Verify the response body contains the task ID, title, and creation timestamp."
+            ],
+            "expected_result": "201 Created · response body contains task ID, title, and creation timestamp"
+        },
+        {
+            "id": "TC-P02",
+            "title": "Create task and verify it persists in the database",
+            "steps": [
+                "1. Send POST request to /tasks with a valid title in the request body.",
+                "2. Verify the response status code is 201 Created.",
+                "3. Send GET request to /tasks/{task_id} to retrieve the created task.",
+                "4. Verify the retrieved task contains the correct title and creation timestamp."
+            ],
+            "expected_result": "200 OK · returned task matches submitted title exactly"
+        }
+    ],
+    "negative": [
+        {
+            "id": "TC-N01",
+            "title": "Attempt to create task without a title",
+            "steps": [
+                "1. Send POST request to /tasks without a title in the request body.",
+                "2. Verify the response status code is 400 Bad Request.",
+                "3. Verify the response body contains an error message indicating that the title is required."
+            ],
+            "expected_result": "400 Bad Request with error message indicating title is required"
+        },
+        {
+            "id": "TC-N02",
+            "title": "Create task without authentication",
+            "steps": [
+                "1. Send POST request to /tasks with a valid title in the request body.",
+                "2. Verify the response status code is 401 Unauthorized."
+            ],
+            "expected_result": "401 Unauthorized"
+        }
+    ],
+    "edge": [
+        {
+            "id": "TC-E01",
+            "title": "Create task with a title containing leading/trailing whitespace",
+            "steps": [
+                "1. Send POST request to /tasks with a title that has leading and trailing whitespace in the request body.",
+                "2. Verify the response status code is 201 Created.",
+                "3. Verify the response body contains the task ID and title, and check how the title is stored (trimmed or as-is)."
+            ],
+            "expected_result": "201 Created · title trimmed or stored as-is per defined behaviour — must be consistent"
+        },
+        {
+            "id": "TC-E02",
+            "title": "Create task with a title containing Unicode characters",
+            "steps": [
+                "1. Send POST request to /tasks with a title that includes Unicode characters (e.g., emojis, non-Latin scripts) in the request body.",
+                "2. Verify the response status code is 201 Created.",
+                "3. Verify the response body contains the task ID and title, and check that the Unicode characters are stored and returned correctly."
+            ],
+            "expected_result": "201 Created · UTF-8 characters stored and returned correctly"
+        },
+        {
+            "id": "TC-E03",
+            "title": "Verify response schema on task creation",
+            "steps": [
+                "1. Send POST request to /tasks with a valid title in the request body.",
+                "2. Verify the response status code is 201 Created.",
+                "3. Verify the response body contains the expected fields (id, title, createdAt, status) and that the Content-Type header is set to application/json."
+            ],
+            "expected_result": "Response includes id, title, createdAt, status fields · Content-Type: application/json"
+        }
+    ]
+}
