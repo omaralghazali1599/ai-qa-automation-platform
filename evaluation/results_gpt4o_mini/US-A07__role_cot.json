@@ -1,0 +1,103 @@
+{
+  "story_id": "US-A07",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to be prevented from registering with an already-used email so that duplicate accounts are avoided.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "User successfully registers with a new email",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a unique email address",
+          "Fill out the remaining required fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "User is successfully registered and directed to the welcome page."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "User attempts to register with an already-used email",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter an email address that is already associated with an existing account",
+          "Fill out the remaining required fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "An error message is displayed indicating that the email is already in use."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "User attempts to register with an email that has different casing but is identical",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter an email address with different case, e.g., 'Test@Example.com' when 'test@example.com' is already registered",
+          "Fill out the remaining required fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "An error message is displayed indicating that the email is already in use."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.881
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "special_chars",
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "max_length",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 85.47,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.855,
+      "min_similarity": 0.838,
+      "max_similarity": 0.88
+    },
+    "overall_score": 80.43
+  }
+}

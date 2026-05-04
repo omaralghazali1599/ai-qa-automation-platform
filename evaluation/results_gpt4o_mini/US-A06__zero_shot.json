@@ -1,0 +1,160 @@
+{
+  "story_id": "US-A06",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to receive an error when my password is shorter than 8 characters so that I use a secure password.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "User provides a valid password of exactly 8 characters",
+        "steps": [
+          "Navigate to the password input field",
+          "Enter a password with exactly 8 characters, e.g., 'password'",
+          "Submit the form"
+        ],
+        "expected_result": "User successfully submits the form without any error"
+      },
+      {
+        "id": "TC-P02",
+        "title": "User provides a valid password greater than 8 characters",
+        "steps": [
+          "Navigate to the password input field",
+          "Enter a password with 12 characters, e.g., 'securepassword123'",
+          "Submit the form"
+        ],
+        "expected_result": "User successfully submits the form without any error"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "User provides a password shorter than 8 characters",
+        "steps": [
+          "Navigate to the password input field",
+          "Enter a password with 7 characters, e.g., 'short'",
+          "Submit the form"
+        ],
+        "expected_result": "Error message displayed: 'Password must be at least 8 characters long'"
+      },
+      {
+        "id": "TC-N02",
+        "title": "User provides an empty password",
+        "steps": [
+          "Navigate to the password input field",
+          "Leave the password field empty",
+          "Submit the form"
+        ],
+        "expected_result": "Error message displayed: 'Password must be at least 8 characters long'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "User provides a password with special characters and is exactly 8 characters long",
+        "steps": [
+          "Navigate to the password input field",
+          "Enter a password with exactly 8 characters, including special characters, e.g., '!@#$%^&*'",
+          "Submit the form"
+        ],
+        "expected_result": "User successfully submits the form without any error"
+      },
+      {
+        "id": "TC-E02",
+        "title": "User provides a password with spaces and is exactly 8 characters long",
+        "steps": [
+          "Navigate to the password input field",
+          "Enter a password with exactly 8 characters including spaces, e.g., 'pass word'",
+          "Submit the form"
+        ],
+        "expected_result": "User successfully submits the form without any error"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 6,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.915
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.881
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.897
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.91
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E02",
+          "similarity": 0.855
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E02",
+          "similarity": 0.856
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E02",
+          "similarity": 0.876
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.19,
+      "generated_cases": 6,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.732,
+      "min_similarity": 0.675,
+      "max_similarity": 0.824
+    },
+    "overall_score": 67.97
+  }
+}

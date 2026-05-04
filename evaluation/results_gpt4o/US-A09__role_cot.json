@@ -1,0 +1,113 @@
+{
+  "story_id": "US-A09",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to be blocked from logging in if my account is locked so that security is enforced.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Attempt login with a locked account",
+        "steps": [
+          "Ensure the user account status is set to 'locked' in the database.",
+          "Navigate to the login page.",
+          "Enter the username and password for the locked account.",
+          "Click on the 'Login' button."
+        ],
+        "expected_result": "User receives a message indicating the account is locked and cannot login."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt login with an incorrect username on a locked account",
+        "steps": [
+          "Ensure the user account status is set to 'locked' in the database.",
+          "Navigate to the login page.",
+          "Enter an incorrect username and the correct password for the locked account.",
+          "Click on the 'Login' button."
+        ],
+        "expected_result": "User receives an error message for incorrect login credentials."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt login with a locked account with empty fields",
+        "steps": [
+          "Ensure the user account status is set to 'locked' in the database.",
+          "Navigate to the login page.",
+          "Leave both the username and password fields empty.",
+          "Click on the 'Login' button."
+        ],
+        "expected_result": "User is prompted to fill in both username and password fields."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.93
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.927
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.893
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 78.18,
+      "generated_cases": 3,
+      "baseline_cases": 11,
+      "avg_best_match_similarity": 0.782,
+      "min_similarity": 0.732,
+      "max_similarity": 0.811
+    },
+    "overall_score": 65.64
+  }
+}

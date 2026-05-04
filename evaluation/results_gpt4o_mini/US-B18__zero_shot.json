@@ -1,0 +1,107 @@
+{
+  "story_id": "US-B18",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a staff member, I want to filter bookings by an invalid status to return an error so that only valid filter values are accepted.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter bookings with an invalid status",
+        "steps": [
+          "Open the booking management system.",
+          "Navigate to the filter section.",
+          "Input an invalid status (e.g., 'invalidStatus').",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "An error message is displayed indicating that the status is invalid."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Filter bookings with an empty status field",
+        "steps": [
+          "Open the booking management system.",
+          "Navigate to the filter section.",
+          "Leave the status input empty.",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "An error message is displayed indicating that a status must be provided."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter bookings with a status containing special characters",
+        "steps": [
+          "Open the booking management system.",
+          "Navigate to the filter section.",
+          "Input a status with special characters (e.g., '@#$$%^&').",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "An error message is displayed indicating that the status contains invalid characters."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Filter bookings with maximum character limit for status field",
+        "steps": [
+          "Open the booking management system.",
+          "Navigate to the filter section.",
+          "Input a status at the maximum character limit (e.g., 256 characters).",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "An error message is displayed indicating that the status is too long."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 4,
+      "unique_cases": 4,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 4,
+      "covered": 4,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 68.89,
+      "generated_cases": 4,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.689,
+      "min_similarity": 0.569,
+      "max_similarity": 0.796
+    },
+    "overall_score": 87.11
+  }
+}

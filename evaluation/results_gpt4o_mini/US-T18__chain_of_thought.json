@@ -1,0 +1,94 @@
+{
+  "story_id": "US-T18",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to create a task with only a title and no optional fields so that minimal input is sufficient.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create a task with only a title",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Enter a valid title for the task.",
+          "Submit the task."
+        ],
+        "expected_result": "The task is created successfully with the specified title."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to create a task with an empty title",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Leave the title field empty.",
+          "Attempt to submit the task."
+        ],
+        "expected_result": "An error message is displayed indicating that the title cannot be empty."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create a task with a very long title",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Enter a title that exceeds the maximum character limit for titles.",
+          "Submit the task."
+        ],
+        "expected_result": "An error message is displayed indicating that the title exceeds the maximum length."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.7,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.737,
+      "min_similarity": 0.716,
+      "max_similarity": 0.76
+    },
+    "overall_score": 84.74
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "story_id": "US-B10",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want the system to reject an invalid date format so that only correctly formatted dates are accepted.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Valid date format with valid month and day",
+        "steps": [
+          "Input the date '2023-10-01' into the date field",
+          "Submit the form"
+        ],
+        "expected_result": "The system accepts the date without any errors"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Valid date format with single digit day and month",
+        "steps": [
+          "Input the date '2023-1-1' into the date field",
+          "Submit the form"
+        ],
+        "expected_result": "The system accepts the date without any errors"
+      },
+      {
+        "id": "TC-P03",
+        "title": "Valid date format with different months",
+        "steps": [
+          "Input the date '2023-02-28' into the date field",
+          "Submit the form"
+        ],
+        "expected_result": "The system accepts the date without any errors"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Invalid date format with letters",
+        "steps": [
+          "Input the date '2023-AB-CD' into the date field",
+          "Submit the form"
+        ],
+        "expected_result": "The system rejects the date with an error message"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Invalid date format with incorrect delimiter",
+        "steps": [
+          "Input the date '2023/10/01' into the date field",
+          "Submit the form"
+        ],
+        "expected_result": "The system rejects the date with an error message"
+      },
+      {
+        "id": "TC-N03",
+        "title": "Invalid date format with missing year",
+        "steps": [
+          "Input the date '10-01' into the date field",
+          "Submit the form"
+        ],
+        "expected_result": "The system rejects the date with an error message"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Valid leap year date",
+        "steps": [
+          "Input the date '2024-02-29' into the date field",
+          "Submit the form"
+        ],
+        "expected_result": "The system accepts the date without any errors"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Edge case with maximum valid date",
+        "steps": [
+          "Input the date '9999-12-31' into the date field",
+          "Submit the form"
+        ],
+        "expected_result": "The system accepts the date without any errors"
+      },
+      {
+        "id": "TC-E03",
+        "title": "Invalid date format with extra characters",
+        "steps": [
+          "Input the date '2023-10-01abc' into the date field",
+          "Submit the form"
+        ],
+        "expected_result": "The system rejects the date with an error message"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 9,
+      "passed": 9,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 9,
+      "unique_cases": 6,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.912
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P03",
+          "similarity": 0.855
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-P03",
+          "similarity": 0.857
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E03",
+          "similarity": 0.913
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 9,
+      "covered": 9,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 3,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 63.2,
+      "generated_cases": 9,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.632,
+      "min_similarity": 0.57,
+      "max_similarity": 0.661
+    },
+    "overall_score": 79.31
+  }
+}

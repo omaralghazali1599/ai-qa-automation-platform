@@ -1,0 +1,104 @@
+{
+  "story_id": "US-T06",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to filter tasks by priority so that I can work on the most urgent items first.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter tasks by valid priority 'High'",
+        "steps": [
+          "Login to the application.",
+          "Navigate to the task list page.",
+          "Select 'High' from the priority filter dropdown.",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "Only tasks with the 'High' priority should be displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter tasks by an invalid priority",
+        "steps": [
+          "Login to the application.",
+          "Navigate to the task list page.",
+          "Enter 'InvalidPriority' in the priority filter input.",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "An error message should be displayed indicating that the priority is invalid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter tasks when there are no tasks",
+        "steps": [
+          "Login to the application.",
+          "Navigate to the task list page.",
+          "Ensure there are no existing tasks.",
+          "Select any priority from the priority filter dropdown.",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "A message should be displayed indicating that there are no tasks to display."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.87
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.29,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.733,
+      "min_similarity": 0.606,
+      "max_similarity": 0.809
+    },
+    "overall_score": 71.33
+  }
+}

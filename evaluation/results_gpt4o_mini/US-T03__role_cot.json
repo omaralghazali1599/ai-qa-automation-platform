@@ -1,0 +1,97 @@
+{
+  "story_id": "US-T03",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to set a priority level on a task so that I know what to work on first.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Set a high priority on a task",
+        "steps": [
+          "Navigate to the task management page.",
+          "Select a task from the list.",
+          "Choose 'High' from the priority level dropdown.",
+          "Save the changes."
+        ],
+        "expected_result": "The task priority is updated to 'High' and displayed correctly in the task list."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to set an invalid priority level on a task",
+        "steps": [
+          "Navigate to the task management page.",
+          "Select a task from the list.",
+          "Enter 'Urgent' (an invalid priority) in the priority level input.",
+          "Attempt to save the changes."
+        ],
+        "expected_result": "An error message is displayed indicating that 'Urgent' is not a valid priority level."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Set priority on the maximum number of tasks allowed (bulk update)",
+        "steps": [
+          "Navigate to the task management page.",
+          "Select the maximum number of tasks allowed (e.g., 100 tasks).",
+          "Choose 'Medium' from the priority level dropdown for all selected tasks.",
+          "Save the changes."
+        ],
+        "expected_result": "All selected tasks' priorities are updated to 'Medium' without any errors."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.64,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.766,
+      "min_similarity": 0.734,
+      "max_similarity": 0.792
+    },
+    "overall_score": 81.99
+  }
+}

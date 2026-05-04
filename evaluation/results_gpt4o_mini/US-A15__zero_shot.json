@@ -1,0 +1,81 @@
+{
+  "story_id": "US-A15",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want the login endpoint to return an error when the email field is empty so that I provide all required credentials.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Login with empty email field",
+        "steps": [
+          "Send a POST request to the login endpoint with an empty email field and a valid password.",
+          "Receive the response."
+        ],
+        "expected_result": "The response should return an error message indicating that the email field is required."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Login with email field containing only whitespace",
+        "steps": [
+          "Send a POST request to the login endpoint with the email field containing only whitespace characters and a valid password.",
+          "Receive the response."
+        ],
+        "expected_result": "The response should return an error message indicating that the email field is required."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 2,
+      "unique_cases": 2,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "special_chars"
+      ],
+      "missing_categories": [
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 94.36,
+      "generated_cases": 2,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.944,
+      "min_similarity": 0.942,
+      "max_similarity": 0.945
+    },
+    "overall_score": 85.54
+  }
+}

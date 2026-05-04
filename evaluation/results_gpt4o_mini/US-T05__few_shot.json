@@ -1,0 +1,94 @@
+{
+  "story_id": "US-T05",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to filter tasks by category so that I can focus on a specific area.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter tasks by a valid category",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select a valid category from the filter dropdown",
+          "Click on the 'Apply Filter' button"
+        ],
+        "expected_result": "Tasks belonging to the selected category are displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to filter tasks by an invalid category",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select an invalid category from the filter dropdown",
+          "Click on the 'Apply Filter' button"
+        ],
+        "expected_result": "Error message shown: 'Invalid category selected', no tasks displayed"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter tasks with no category selected",
+        "steps": [
+          "Navigate to the tasks page",
+          "Leave the category filter blank",
+          "Click on the 'Apply Filter' button"
+        ],
+        "expected_result": "All tasks are displayed"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 67.28,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.673,
+      "min_similarity": 0.63,
+      "max_similarity": 0.715
+    },
+    "overall_score": 76.79
+  }
+}

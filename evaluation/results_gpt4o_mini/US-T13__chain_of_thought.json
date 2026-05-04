@@ -1,0 +1,103 @@
+{
+  "story_id": "US-T13",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want task creation to fail when an invalid category is provided so that data stays consistent.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful task creation with a valid category",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Select a valid category from the dropdown.",
+          "Fill in the task details.",
+          "Submit the task creation form."
+        ],
+        "expected_result": "Task is created successfully and is visible in the tasks list."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Task creation fails with an invalid category",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Select an invalid category that does not exist.",
+          "Fill in the task details.",
+          "Submit the task creation form."
+        ],
+        "expected_result": "An error message is displayed indicating that the category is invalid, and the task is not created."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Task creation with an empty category field",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Leave the category field empty.",
+          "Fill in the task details.",
+          "Submit the task creation form."
+        ],
+        "expected_result": "An error message is displayed indicating that the category is required, and the task is not created."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.852
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 72.96,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.73,
+      "min_similarity": 0.667,
+      "max_similarity": 0.808
+    },
+    "overall_score": 71.26
+  }
+}

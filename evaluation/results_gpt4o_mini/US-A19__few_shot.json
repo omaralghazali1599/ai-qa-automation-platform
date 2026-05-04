@@ -1,0 +1,106 @@
+{
+  "story_id": "US-A19",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want logging out twice in a row to not cause an error so that the logout action is idempotent.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Log out successfully on first attempt",
+        "steps": [
+          "Log in to the account",
+          "Click Logout"
+        ],
+        "expected_result": "User is logged out and redirected to the login page"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Log out successfully on second attempt",
+        "steps": [
+          "Log in to the account",
+          "Click Logout",
+          "Click Logout again"
+        ],
+        "expected_result": "No error message displayed, user remains on the login page"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt logout without being logged in",
+        "steps": [
+          "Navigate to login page",
+          "Click Logout"
+        ],
+        "expected_result": "No error message displayed, user remains on the login page"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Log out after a session timeout",
+        "steps": [
+          "Wait for session timeout",
+          "Click Logout"
+        ],
+        "expected_result": "No error message displayed, user remains on the login page"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 75.0,
+      "total_cases": 4,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.923
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 4,
+      "covered": 4,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 77.29,
+      "generated_cases": 4,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.773,
+      "min_similarity": 0.742,
+      "max_similarity": 0.862
+    },
+    "overall_score": 70.46
+  }
+}

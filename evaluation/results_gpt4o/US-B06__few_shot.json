@@ -1,0 +1,109 @@
+{
+  "story_id": "US-B06",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a staff member, I want to delete a pending booking so that cancelled or invalid bookings are removed.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Delete a pending booking successfully",
+        "steps": [
+          "Log in as staff member",
+          "Navigate to pending bookings page",
+          "Select a pending booking",
+          "Click on Delete button",
+          "Confirm deletion"
+        ],
+        "expected_result": "Booking is successfully deleted, and booking list is updated"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to delete with insufficient permissions",
+        "steps": [
+          "Log in as a non-privileged staff member",
+          "Navigate to pending bookings page",
+          "Select a pending booking",
+          "Try to click on Delete button"
+        ],
+        "expected_result": "Error message displays: Access denied or insufficient permissions"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to delete a booking that has just been approved",
+        "steps": [
+          "Log in as staff member",
+          "Navigate to pending bookings page",
+          "While viewing the list, the booking is approved by another user",
+          "Attempt to delete the now approved booking"
+        ],
+        "expected_result": "Error message: Cannot delete, booking is no longer pending"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.868
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.871
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 78.11,
+      "generated_cases": 3,
+      "baseline_cases": 10,
+      "avg_best_match_similarity": 0.781,
+      "min_similarity": 0.703,
+      "max_similarity": 0.852
+    },
+    "overall_score": 65.62
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "story_id": "US-A15",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want the login endpoint to return an error when the email field is empty so that I provide all required credentials.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful login with valid email",
+        "steps": [
+          "Send a POST request to the login endpoint with a valid email and password.",
+          "Receive a response from the server."
+        ],
+        "expected_result": "Response status is 200 OK and user is logged in successfully."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Error when email field is empty",
+        "steps": [
+          "Send a POST request to the login endpoint with an empty email field and valid password.",
+          "Receive a response from the server."
+        ],
+        "expected_result": "Response status is 400 Bad Request with an error message indicating that the email field is required."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Error when email field is null",
+        "steps": [
+          "Send a POST request to the login endpoint with email set to null and a valid password.",
+          "Receive a response from the server."
+        ],
+        "expected_result": "Response status is 400 Bad Request with an error message indicating that the email field is required."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.931
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.18,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.812,
+      "min_similarity": 0.743,
+      "max_similarity": 0.868
+    },
+    "overall_score": 79.57
+  }
+}

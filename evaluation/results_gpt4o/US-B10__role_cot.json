@@ -1,0 +1,100 @@
+{
+  "story_id": "US-B10",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want the system to reject an invalid date format so that only correctly formatted dates are accepted.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Accept a valid date format",
+        "steps": [
+          "Open the date input form.",
+          "Enter a valid date in the format YYYY-MM-DD.",
+          "Submit the form."
+        ],
+        "expected_result": "The system accepts the date and proceeds to the next step without errors."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Reject an invalid date format",
+        "steps": [
+          "Open the date input form.",
+          "Enter a date in an incorrect format such as MM/DD/YYYY.",
+          "Submit the form."
+        ],
+        "expected_result": "The system rejects the date format and displays an error message indicating that the format is invalid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Handle a date with boundary value of a leap year",
+        "steps": [
+          "Open the date input form.",
+          "Enter the date February 29, 2024, in the format YYYY-MM-DD.",
+          "Submit the form."
+        ],
+        "expected_result": "The system accepts the leap year date format and proceeds to the next step without errors."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.891
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 65.53,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.655,
+      "min_similarity": 0.497,
+      "max_similarity": 0.752
+    },
+    "overall_score": 73.11
+  }
+}

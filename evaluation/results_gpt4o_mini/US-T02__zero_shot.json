@@ -1,0 +1,129 @@
+{
+  "story_id": "US-T02",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to assign a category to a task so that I can organize my tasks.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Assign a valid category to a task",
+        "steps": [
+          "Create a new task.",
+          "Select a valid category from the dropdown list.",
+          "Save the task."
+        ],
+        "expected_result": "The task is saved with the selected category."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Reassign a category to an existing task",
+        "steps": [
+          "Open an existing task.",
+          "Select a different category from the dropdown list.",
+          "Save the changes."
+        ],
+        "expected_result": "The task is updated with the new category."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to assign an invalid category to a task",
+        "steps": [
+          "Create a new task.",
+          "Select an invalid category that does not exist.",
+          "Save the task."
+        ],
+        "expected_result": "An error message is displayed indicating that the category is invalid."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Leave category selection blank",
+        "steps": [
+          "Create a new task.",
+          "Do not select any category.",
+          "Save the task."
+        ],
+        "expected_result": "An error message is displayed indicating that category selection is required."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Assign a category to a task with maximum character limit",
+        "steps": [
+          "Create a new task named with maximum allowed characters.",
+          "Select a valid category from the dropdown list.",
+          "Save the task."
+        ],
+        "expected_result": "The task is saved successfully with the selected category."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Assign category to task with special characters",
+        "steps": [
+          "Create a new task with special characters in the name.",
+          "Select a valid category from the dropdown list.",
+          "Save the task."
+        ],
+        "expected_result": "The task is saved successfully with the selected category."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 6,
+      "unique_cases": 6,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 83.33,
+      "total_cases": 6,
+      "covered": 5,
+      "not_covered": 1,
+      "low_relevance_cases": [
+        {
+          "id": "TC-N02",
+          "similarity": 0.254
+        }
+      ]
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 67.64,
+      "generated_cases": 6,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.676,
+      "min_similarity": 0.611,
+      "max_similarity": 0.747
+    },
+    "overall_score": 80.19
+  }
+}

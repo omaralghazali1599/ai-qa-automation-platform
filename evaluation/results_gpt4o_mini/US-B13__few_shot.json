@@ -1,0 +1,155 @@
+{
+  "story_id": "US-B13",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to filter bookings by status so that I can see only pending, confirmed, or cancelled reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter bookings by 'Pending' status",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'Pending' from status filter dropdown",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "Only bookings with 'Pending' status are displayed"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter bookings by 'Confirmed' status",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'Confirmed' from status filter dropdown",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "Only bookings with 'Confirmed' status are displayed"
+      },
+      {
+        "id": "TC-P03",
+        "title": "Filter bookings by 'Cancelled' status",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'Cancelled' from status filter dropdown",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "Only bookings with 'Cancelled' status are displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter bookings with an invalid status",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'InvalidStatus' from status filter dropdown",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "Error message: 'Invalid status selected' is displayed and no bookings are shown"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Filter bookings with no status selected",
+        "steps": [
+          "Navigate to bookings page",
+          "Leave status filter dropdown unselected",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "Error message: 'Please select a status' is displayed"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter bookings on an empty booking list",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'Pending' from status filter dropdown",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "Message: 'No bookings available' is displayed"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Simultaneously select multiple statuses (if allowed)",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'Pending' and 'Confirmed' from status filter dropdown",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "Only bookings with 'Pending' and 'Confirmed' statuses are displayed"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 7,
+      "passed": 7,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 57.14,
+      "total_cases": 7,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.876
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.9
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.861
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E01",
+          "similarity": 0.872
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 7,
+      "covered": 7,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 79.66,
+      "generated_cases": 7,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.797,
+      "min_similarity": 0.714,
+      "max_similarity": 0.84
+    },
+    "overall_score": 70.69
+  }
+}

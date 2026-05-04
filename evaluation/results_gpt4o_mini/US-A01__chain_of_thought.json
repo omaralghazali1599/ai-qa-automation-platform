@@ -1,0 +1,100 @@
+{
+  "story_id": "US-A01",
+  "app": "auth",
+  "strategy": "chain_of_thought",
+  "user_story": "As a new user, I want to register with my name, email, and password so that I can create an account.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful registration with valid data",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a valid name",
+          "Enter a valid email address",
+          "Enter a valid password that meets the security criteria",
+          "Click on the 'Register' button"
+        ],
+        "expected_result": "User is successfully registered and redirected to the account dashboard."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Registration with an invalid email format",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a valid name",
+          "Enter an invalid email address (e.g., 'user@domain')",
+          "Enter a valid password",
+          "Click on the 'Register' button"
+        ],
+        "expected_result": "Registration fails with an error message indicating that the email format is invalid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Registration with a password that meets the minimum length but is all numeric",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a valid name",
+          "Enter a valid email address",
+          "Enter a password that is numeric only and meets the minimum length requirements",
+          "Click on the 'Register' button"
+        ],
+        "expected_result": "Registration fails with an error message indicating that the password must include letters."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 88.18,
+      "generated_cases": 3,
+      "baseline_cases": 36,
+      "avg_best_match_similarity": 0.882,
+      "min_similarity": 0.85,
+      "max_similarity": 0.91
+    },
+    "overall_score": 80.97
+  }
+}

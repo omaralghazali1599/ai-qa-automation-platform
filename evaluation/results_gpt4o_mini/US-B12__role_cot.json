@@ -1,0 +1,112 @@
+{
+  "story_id": "US-B12",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a staff member, I want deleting a confirmed booking to return an error so that active reservations are protected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Verify error returned when attempting to delete a confirmed booking",
+        "steps": [
+          "Log in as a staff member.",
+          "Navigate to the bookings section.",
+          "Select a confirmed booking.",
+          "Attempt to delete the confirmed booking."
+        ],
+        "expected_result": "An error message is displayed indicating that confirmed bookings cannot be deleted."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Verify behavior when attempting to delete an active booking without confirmation",
+        "steps": [
+          "Log in as a staff member.",
+          "Navigate to the bookings section.",
+          "Select an active booking without confirmation.",
+          "Attempt to delete the active booking."
+        ],
+        "expected_result": "The active booking is deleted successfully and no error is displayed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Verify error when trying to delete a confirmed booking that is about to expire",
+        "steps": [
+          "Log in as a staff member.",
+          "Navigate to the bookings section.",
+          "Select a confirmed booking that is close to its expiration time.",
+          "Attempt to delete the confirmed booking."
+        ],
+        "expected_result": "An error message is displayed indicating that confirmed bookings cannot be deleted."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.871
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.931
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.85
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 86.75,
+      "generated_cases": 3,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.868,
+      "min_similarity": 0.823,
+      "max_similarity": 0.901
+    },
+    "overall_score": 64.02
+  }
+}

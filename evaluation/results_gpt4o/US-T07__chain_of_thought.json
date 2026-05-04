@@ -1,0 +1,100 @@
+{
+  "story_id": "US-T07",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to mark a task as complete so that I can track my progress.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Mark a task as complete",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task that is currently incomplete.",
+          "Click the 'Mark as Complete' button."
+        ],
+        "expected_result": "The selected task is marked as complete and visually indicated as such."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to mark a non-existent task as complete",
+        "steps": [
+          "Navigate to the task list.",
+          "Attempt to access a task that is not in the list.",
+          "Try to click the 'Mark as Complete' button for this nonexistent task."
+        ],
+        "expected_result": "An error message is displayed indicating that the task does not exist, and marking action is not allowed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Marking the last visible task as complete",
+        "steps": [
+          "Navigate to the task list with a single task.",
+          "Select the last remaining incomplete task.",
+          "Click the 'Mark as Complete' button."
+        ],
+        "expected_result": "The task is marked as complete; the task list shows a message indicating no more incomplete tasks or an empty state visualization."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.889
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.68,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.767,
+      "min_similarity": 0.74,
+      "max_similarity": 0.783
+    },
+    "overall_score": 72.0
+  }
+}

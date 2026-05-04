@@ -1,0 +1,90 @@
+{
+  "story_id": "US-A03",
+  "app": "auth",
+  "strategy": "chain_of_thought",
+  "user_story": "As a logged-in user, I want to log out so that my session is ended securely.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully log out from the application",
+        "steps": [
+          "Step 1: User clicks on the log out button.",
+          "Step 2: User is redirected to the login page."
+        ],
+        "expected_result": "User session is ended and the login page is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to log out without being logged in",
+        "steps": [
+          "Step 1: User attempts to click on the log out button without being logged in."
+        ],
+        "expected_result": "An error message is displayed indicating that the user is not logged in."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Log out during a session timeout",
+        "steps": [
+          "Step 1: User is logged in.",
+          "Step 2: Wait for session timeout duration.",
+          "Step 3: User attempts to click on the log out button."
+        ],
+        "expected_result": "User is redirected to the login page with a message indicating session has expired."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 79.0,
+      "generated_cases": 3,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.79,
+      "min_similarity": 0.718,
+      "max_similarity": 0.83
+    },
+    "overall_score": 75.8
+  }
+}

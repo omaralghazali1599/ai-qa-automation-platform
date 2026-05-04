@@ -1,0 +1,98 @@
+{
+  "story_id": "US-B12",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a staff member, I want deleting a confirmed booking to return an error so that active reservations are protected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Verify that attempting to delete a confirmed booking returns an error.",
+        "steps": [
+          "Login as a staff member.",
+          "Locate a confirmed booking in the system.",
+          "Attempt to delete the confirmed booking."
+        ],
+        "expected_result": "Error message is displayed stating that active reservations cannot be deleted."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Verify that an unauthorized user cannot delete a confirmed booking.",
+        "steps": [
+          "Login as a non-staff user.",
+          "Attempt to delete a confirmed booking."
+        ],
+        "expected_result": "Error message is displayed stating insufficient permissions to delete booking."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Verify behavior when trying to delete a booking with no active reservations.",
+        "steps": [
+          "Login as a staff member.",
+          "Create a booking and change its status to canceled.",
+          "Attempt to delete the canceled booking."
+        ],
+        "expected_result": "The booking is deleted successfully without any error."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.918
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 84.13,
+      "generated_cases": 3,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.841,
+      "min_similarity": 0.821,
+      "max_similarity": 0.881
+    },
+    "overall_score": 70.16
+  }
+}

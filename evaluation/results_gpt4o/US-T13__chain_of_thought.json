@@ -1,0 +1,100 @@
+{
+  "story_id": "US-T13",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want task creation to fail when an invalid category is provided so that data stays consistent.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Task creation with valid category",
+        "steps": [
+          "Navigate to task creation page",
+          "Enter task details with a valid category",
+          "Submit the task creation form"
+        ],
+        "expected_result": "Task is created successfully."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Task creation with invalid category",
+        "steps": [
+          "Navigate to task creation page",
+          "Enter task details with an invalid category",
+          "Submit the task creation form"
+        ],
+        "expected_result": "Task creation fails with an error message indicating an invalid category."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Task creation with empty category field",
+        "steps": [
+          "Navigate to task creation page",
+          "Enter task details but leave the category field empty",
+          "Submit the task creation form"
+        ],
+        "expected_result": "Task creation fails with an error message indicating the category field cannot be empty."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.912
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 69.85,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.699,
+      "min_similarity": 0.6,
+      "max_similarity": 0.774
+    },
+    "overall_score": 70.64
+  }
+}

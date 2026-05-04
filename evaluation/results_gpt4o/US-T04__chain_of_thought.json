@@ -1,0 +1,91 @@
+{
+  "story_id": "US-T04",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to list all my tasks so that I can see everything I need to do.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Display list of tasks when tasks are present",
+        "steps": [
+          "Log into the application.",
+          "Navigate to the 'My Tasks' section."
+        ],
+        "expected_result": "A list of all tasks is displayed to the user."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Error message when task list fails to load",
+        "steps": [
+          "Trigger a failure in the tasks loading API (e.g., disconnect network).",
+          "Attempt to navigate to the 'My Tasks' section."
+        ],
+        "expected_result": "An error message indicating failure to load tasks is displayed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Display empty state when no tasks are present",
+        "steps": [
+          "Log into the application with a new user or user with no tasks.",
+          "Navigate to the 'My Tasks' section."
+        ],
+        "expected_result": "A message indicating that there are no tasks to display is shown."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 55.72,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.557,
+      "min_similarity": 0.503,
+      "max_similarity": 0.607
+    },
+    "overall_score": 74.48
+  }
+}

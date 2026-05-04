@@ -1,0 +1,89 @@
+{
+  "story_id": "US-A06",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to receive an error when my password is shorter than 8 characters so that I use a secure password.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to set password shorter than 8 characters",
+        "steps": [
+          "Navigate to password creation page",
+          "Enter password '1234567'",
+          "Click Submit"
+        ],
+        "expected_result": "Error message: password must be at least 8 characters long"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to set password with exactly 8 characters",
+        "steps": [
+          "Navigate to password creation page",
+          "Enter password 'abcdefgh'",
+          "Click Submit"
+        ],
+        "expected_result": "Password accepted successfully"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 2,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.902
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.19,
+      "generated_cases": 2,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.712,
+      "min_similarity": 0.657,
+      "max_similarity": 0.767
+    },
+    "overall_score": 67.57
+  }
+}

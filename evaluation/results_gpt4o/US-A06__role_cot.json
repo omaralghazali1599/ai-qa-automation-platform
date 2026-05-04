@@ -1,0 +1,108 @@
+{
+  "story_id": "US-A06",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to receive an error when my password is shorter than 8 characters so that I use a secure password.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "User receives error when password is shorter than 8 characters",
+        "steps": [
+          "Open the registration page",
+          "Enter a username",
+          "Enter a password with 7 characters: 'abc1234'",
+          "Submit the form"
+        ],
+        "expected_result": "An error message is displayed stating that the password must be at least 8 characters long."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "User does not receive an error when password is at least 8 characters",
+        "steps": [
+          "Open the registration page",
+          "Enter a username",
+          "Enter a password with 8 characters: 'abc12345'",
+          "Submit the form"
+        ],
+        "expected_result": "Form is submitted successfully without any error message."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "User receives error when password is exactly 7 characters with special characters",
+        "steps": [
+          "Open the registration page",
+          "Enter a username",
+          "Enter a password with 7 characters containing special symbols: 'a1b2#c3'",
+          "Submit the form"
+        ],
+        "expected_result": "An error message is displayed stating that the password must be at least 8 characters long."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.967
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.869
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.37,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.834,
+      "min_similarity": 0.806,
+      "max_similarity": 0.877
+    },
+    "overall_score": 70.01
+  }
+}

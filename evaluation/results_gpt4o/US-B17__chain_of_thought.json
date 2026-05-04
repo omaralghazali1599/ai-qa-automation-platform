@@ -1,0 +1,103 @@
+{
+  "story_id": "US-B17",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want to create a booking where check-in and check-out are the same date to be rejected so that same-day bookings are not allowed.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully reject booking with same check-in and check-out date",
+        "steps": [
+          "Navigate to the booking page as a guest.",
+          "Select a check-in date.",
+          "Select a check-out date that is the same as the check-in date.",
+          "Attempt to complete the booking."
+        ],
+        "expected_result": "The system rejects the booking and displays a message indicating that same-day bookings are not allowed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to book with valid check-in and check-out dates",
+        "steps": [
+          "Navigate to the booking page as a guest.",
+          "Select a check-in date.",
+          "Select a check-out date that is after the check-in date.",
+          "Attempt to complete the booking."
+        ],
+        "expected_result": "The system accepts the booking and confirms the reservation."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Edge case with maximum number of allowed days",
+        "steps": [
+          "Navigate to the booking page as a guest.",
+          "Select a check-in date.",
+          "Select the maximum allowable check-out date (e.g., one year later).",
+          "Attempt to complete the booking."
+        ],
+        "expected_result": "The system accepts the booking and confirms the reservation."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.88
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 70.25,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.702,
+      "min_similarity": 0.609,
+      "max_similarity": 0.758
+    },
+    "overall_score": 74.05
+  }
+}

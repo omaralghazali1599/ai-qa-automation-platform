@@ -1,0 +1,102 @@
+{
+  "story_id": "US-T16",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want the system to return an error when I try to get a task with a non-existent ID so that I know the task does not exist.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Retrieve a task with an existing ID",
+        "steps": [
+          "Send a request to get a task with a valid existing ID",
+          "Receive the response from the system"
+        ],
+        "expected_result": "The system returns the details of the requested task"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Retrieve a task with a non-existent ID",
+        "steps": [
+          "Send a request to get a task with a non-existent ID",
+          "Receive the response from the system"
+        ],
+        "expected_result": "The system returns an error message indicating the task does not exist"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Retrieve a task with an ID that is an empty string",
+        "steps": [
+          "Send a request to get a task with an empty string as ID",
+          "Receive the response from the system"
+        ],
+        "expected_result": "The system returns an error message indicating invalid task ID"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.926
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.897
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 77.95,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.78,
+      "min_similarity": 0.728,
+      "max_similarity": 0.818
+    },
+    "overall_score": 68.92
+  }
+}

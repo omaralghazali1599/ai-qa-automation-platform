@@ -1,0 +1,87 @@
+{
+  "story_id": "US-T16",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want the system to return an error when I try to get a task with a non-existent ID so that I know the task does not exist.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Get task with non-existent ID",
+        "steps": [
+          "Navigate to tasks page",
+          "Attempt to retrieve task with non-existent ID"
+        ],
+        "expected_result": "Error message displayed: 'Task not found'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Get task with blank ID",
+        "steps": [
+          "Navigate to tasks page",
+          "Attempt to retrieve task with blank ID"
+        ],
+        "expected_result": "Validation error: 'Task ID is required'"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 2,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.933
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 72.16,
+      "generated_cases": 2,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.722,
+      "min_similarity": 0.698,
+      "max_similarity": 0.746
+    },
+    "overall_score": 67.77
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "story_id": "US-T12",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want the system to reject a task title longer than 200 characters so that titles remain readable.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Valid task title within limit",
+        "steps": [
+          "User inputs a title with exactly 200 characters.",
+          "User submits the task."
+        ],
+        "expected_result": "The task is successfully created."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Valid task title slightly under limit",
+        "steps": [
+          "User inputs a title with 150 characters.",
+          "User submits the task."
+        ],
+        "expected_result": "The task is successfully created."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Task title longer than limit",
+        "steps": [
+          "User inputs a title with 201 characters.",
+          "User submits the task."
+        ],
+        "expected_result": "System rejects the task with an error message indicating title length exceeds 200 characters."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Empty task title submission",
+        "steps": [
+          "User leaves the title field empty.",
+          "User submits the task."
+        ],
+        "expected_result": "System rejects the task with an error message indicating that the title is required."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Task title with exactly 200 characters",
+        "steps": [
+          "User inputs a title with 200 characters.",
+          "User submits the task."
+        ],
+        "expected_result": "The task is successfully created."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Task title with special characters",
+        "steps": [
+          "User inputs a title with 201 characters including special characters.",
+          "User submits the task."
+        ],
+        "expected_result": "System rejects the task with an error message indicating title length exceeds 200 characters."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 6,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.959
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.936
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.928
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.852
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-N01",
+          "similarity": 0.931
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E01",
+          "similarity": 0.898
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.932
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E02",
+          "similarity": 0.862
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E02",
+          "similarity": 0.898
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 82.03,
+      "generated_cases": 6,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.82,
+      "min_similarity": 0.635,
+      "max_similarity": 0.883
+    },
+    "overall_score": 73.07
+  }
+}

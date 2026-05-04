@@ -1,0 +1,92 @@
+{
+  "story_id": "US-A08",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to see an error when I try to log in with a wrong password so that I know my credentials are incorrect.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Login attempts with incorrect password",
+        "steps": [
+          "Navigate to login page",
+          "Enter valid email",
+          "Enter incorrect password",
+          "Click Login"
+        ],
+        "expected_result": "Error message shown indicating incorrect credentials"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Multiple failed login attempts with incorrect password",
+        "steps": [
+          "Navigate to login page",
+          "Enter valid email",
+          "Enter incorrect password",
+          "Click Login",
+          "Repeat previous steps multiple times"
+        ],
+        "expected_result": "Error message consistently shown, potential account lock after set attempts"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 2,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.929
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 78.26,
+      "generated_cases": 2,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.783,
+      "min_similarity": 0.775,
+      "max_similarity": 0.791
+    },
+    "overall_score": 68.99
+  }
+}

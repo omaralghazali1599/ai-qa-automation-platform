@@ -1,0 +1,99 @@
+{
+  "story_id": "US-B15",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want cancelling an already-cancelled booking to return a clear error so that duplicate cancellations are handled.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful attempt to cancel a non-cancelled booking",
+        "steps": [
+          "Log in as a guest.",
+          "Make a new booking.",
+          "Cancel the booking.",
+          "Attempt to cancel the same booking again."
+        ],
+        "expected_result": "The system returns a clear error message indicating that the booking has already been cancelled."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to cancel a booking that does not exist",
+        "steps": [
+          "Log in as a guest.",
+          "Attempt to cancel a booking with a non-existent ID."
+        ],
+        "expected_result": "The system returns a clear error message indicating that the booking does not exist."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to cancel a booking using an invalid ID format",
+        "steps": [
+          "Log in as a guest.",
+          "Cancel a booking using an invalid ID (e.g., special characters)."
+        ],
+        "expected_result": "The system returns a clear error message indicating that the ID format is invalid."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.872
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 72.13,
+      "generated_cases": 3,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.721,
+      "min_similarity": 0.66,
+      "max_similarity": 0.756
+    },
+    "overall_score": 74.43
+  }
+}

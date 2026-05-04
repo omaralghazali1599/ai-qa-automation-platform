@@ -1,0 +1,104 @@
+{
+  "story_id": "US-T03",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to set a priority level on a task so that I know what to work on first.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Set Priority Level on a Task",
+        "steps": [
+          "Navigate to the task list page.",
+          "Select a task from the list.",
+          "Click on the 'Set Priority' button.",
+          "Choose a priority level from the dropdown (e.g., High, Medium, Low).",
+          "Click 'Save' to set the priority."
+        ],
+        "expected_result": "The task's priority level is updated to the selected value and displayed correctly on the task list."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to Set Priority without Selecting a Task",
+        "steps": [
+          "Navigate to the task list page.",
+          "Do not select any task.",
+          "Click on the 'Set Priority' button."
+        ],
+        "expected_result": "The system should prompt the user with a message to select a task before setting a priority. No priority level is set."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Set Priority on a Task with Boundary Values",
+        "steps": [
+          "Navigate to the task list page.",
+          "Select a task that is at the bottom of a long list.",
+          "Click on the 'Set Priority' button.",
+          "Attempt to choose a priority level at boundary (empty input) or the lowest possible value.",
+          "Click 'Save' to set the priority."
+        ],
+        "expected_result": "The system should handle the boundary input gracefully, either by applying the lowest valid priority or by notifying the user of an invalid selection."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.878
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "special_chars",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 75.92,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.759,
+      "min_similarity": 0.701,
+      "max_similarity": 0.793
+    },
+    "overall_score": 81.85
+  }
+}

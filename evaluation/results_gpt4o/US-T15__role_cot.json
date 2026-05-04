@@ -1,0 +1,106 @@
+{
+  "story_id": "US-T15",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to update the priority of an existing task so that I can reprioritize my work.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update task priority successfully",
+        "steps": [
+          "Log in to the application.",
+          "Navigate to the tasks list.",
+          "Select an existing task.",
+          "Update the priority field to a valid, different priority level.",
+          "Save or confirm the changes."
+        ],
+        "expected_result": "The task's priority is updated successfully, and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Fail to update task priority with invalid input",
+        "steps": [
+          "Log in to the application.",
+          "Navigate to the tasks list.",
+          "Select an existing task.",
+          "Attempt to update the priority field with an invalid value (e.g., alphabetical characters).",
+          "Try to save or confirm the changes."
+        ],
+        "expected_result": "An error message is displayed, indicating that the entered priority is invalid, and the priority remains unchanged."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task priority to the same current priority",
+        "steps": [
+          "Log in to the application.",
+          "Navigate to the tasks list.",
+          "Select an existing task.",
+          "Update the priority field to the current priority value.",
+          "Save or confirm the changes."
+        ],
+        "expected_result": "The application allows the update but no visible change occurs, and a confirmation or unchanged message might be displayed."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.953
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 82.15,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.822,
+      "min_similarity": 0.796,
+      "max_similarity": 0.855
+    },
+    "overall_score": 73.1
+  }
+}

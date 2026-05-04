@@ -1,0 +1,171 @@
+{
+  "story_id": "US-A17",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to register with the maximum allowed name length so that long names are handled correctly.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Register with maximum allowed name length using valid characters",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a name with the maximum allowed length using valid characters",
+          "Fill in other required fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "User should be registered successfully and see a welcome message."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Register with maximum allowed name length using mixed case",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a name with the maximum allowed length using mixed case characters",
+          "Fill in other required fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "User should be registered successfully and see a welcome message."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Register with a name exceeding the maximum allowed length",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a name exceeding the maximum allowed length",
+          "Fill in other required fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "An error message should be displayed indicating the name is too long."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Register with an empty name field",
+        "steps": [
+          "Navigate to the registration page",
+          "Leave the name field empty",
+          "Fill in other required fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "An error message should be displayed indicating that the name field is required."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Register with name that has special characters at the maximum length",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a name with the maximum allowed length containing special characters",
+          "Fill in other required fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "User should be registered successfully and see a welcome message if special characters are allowed."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Register with name consisting of spaces at the maximum allowed length",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a name consisting solely of spaces at the maximum allowed length",
+          "Fill in other required fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "An error message should be displayed indicating that the name cannot consist solely of spaces."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 6,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.912
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.908
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.954
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.881
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E01",
+          "similarity": 0.898
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.877
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E02",
+          "similarity": 0.893
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E02",
+          "similarity": 0.866
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 77.25,
+      "generated_cases": 6,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.773,
+      "min_similarity": 0.551,
+      "max_similarity": 0.85
+    },
+    "overall_score": 75.45
+  }
+}

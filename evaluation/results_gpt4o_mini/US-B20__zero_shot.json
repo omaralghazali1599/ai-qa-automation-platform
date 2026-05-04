@@ -1,0 +1,161 @@
+{
+  "story_id": "US-B20",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want to create a booking with a very long guest name so that the system handles long string inputs gracefully.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create booking with a long guest name",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter a guest name with 255 characters.",
+          "Fill in other required booking details.",
+          "Submit the booking form."
+        ],
+        "expected_result": "The booking is created successfully and the long guest name is displayed correctly."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Create booking with maximum allowed characters for guest name",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter a guest name with the maximum allowed character limit (if defined).",
+          "Fill in other required booking details.",
+          "Submit the booking form."
+        ],
+        "expected_result": "The booking is created successfully without any errors."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Create booking with guest name exceeding character limit",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter a guest name exceeding the maximum character limit.",
+          "Fill in other required booking details.",
+          "Submit the booking form."
+        ],
+        "expected_result": "The booking submission fails with an error message indicating the guest name exceeds the allowed character limit."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Create booking with empty guest name field",
+        "steps": [
+          "Navigate to the booking page.",
+          "Leave the guest name field empty.",
+          "Fill in other required booking details.",
+          "Submit the booking form."
+        ],
+        "expected_result": "The booking submission fails with an error message indicating that the guest name is required."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create booking with guest name containing special characters",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter a guest name with special characters (e.g., !@#$%^&*()).",
+          "Fill in other required booking details.",
+          "Submit the booking form."
+        ],
+        "expected_result": "The booking is created successfully, and the system handles special characters in the guest name gracefully."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Create booking with guest name of zero length (just spaces)",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter a guest name consisting only of spaces.",
+          "Fill in other required booking details.",
+          "Submit the booking form."
+        ],
+        "expected_result": "The booking submission fails with an error message indicating that the guest name cannot be blank."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 6,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.898
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.883
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.857
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.888
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-N01",
+          "similarity": 0.964
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E02",
+          "similarity": 0.87
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "max_length",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.25,
+      "generated_cases": 6,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.832,
+      "min_similarity": 0.774,
+      "max_similarity": 0.884
+    },
+    "overall_score": 73.32
+  }
+}

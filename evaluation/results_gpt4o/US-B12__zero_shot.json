@@ -1,0 +1,150 @@
+{
+  "story_id": "US-B12",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a staff member, I want deleting a confirmed booking to return an error so that active reservations are protected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Attempt to delete an unconfirmed booking",
+        "steps": [
+          "Log in as a staff member",
+          "Navigate to the bookings page",
+          "Select an unconfirmed booking",
+          "Attempt to delete the booking"
+        ],
+        "expected_result": "The unconfirmed booking is successfully deleted."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to delete a confirmed booking",
+        "steps": [
+          "Log in as a staff member",
+          "Navigate to the bookings page",
+          "Select a confirmed booking",
+          "Attempt to delete the booking"
+        ],
+        "expected_result": "An error message is displayed indicating that confirmed bookings cannot be deleted."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to delete a confirmed booking without proper permissions",
+        "steps": [
+          "Log in as a staff member without delete permissions",
+          "Navigate to the bookings page",
+          "Select a confirmed booking",
+          "Attempt to delete the booking"
+        ],
+        "expected_result": "An error message is displayed indicating lack of permissions to perform this action."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Deleting a confirmed booking during system downtime",
+        "steps": [
+          "Simulate system downtime",
+          "Log in as a staff member",
+          "Navigate to the bookings page",
+          "Select a confirmed booking",
+          "Attempt to delete the booking"
+        ],
+        "expected_result": "An error message is displayed indicating the system is currently unavailable."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Deleting a confirmed booking while another delete operation is in progress",
+        "steps": [
+          "Log in as a staff member",
+          "Navigate to the bookings page",
+          "Start deleting another booking",
+          "Attempt to delete the confirmed booking simultaneously"
+        ],
+        "expected_result": "An error message is displayed indicating no multiple delete operations can be performed simultaneously."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 40.0,
+      "total_cases": 5,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.954
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.911
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.859
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.951
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E02",
+          "similarity": 0.894
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E02",
+          "similarity": 0.856
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 2,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.87,
+      "generated_cases": 5,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.819,
+      "min_similarity": 0.754,
+      "max_similarity": 0.884
+    },
+    "overall_score": 64.37
+  }
+}

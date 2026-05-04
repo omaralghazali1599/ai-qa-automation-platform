@@ -1,0 +1,116 @@
+{
+  "story_id": "US-T03",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to set a priority level on a task so that I know what to work on first.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Set priority level to high on a new task",
+        "steps": [
+          "Navigate to task creation page",
+          "Enter task details",
+          "Select 'High' as priority",
+          "Save the task"
+        ],
+        "expected_result": "Task is successfully created with 'High' priority level displayed"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Change priority level from medium to low on an existing task",
+        "steps": [
+          "Navigate to task list",
+          "Select an existing task with 'Medium' priority",
+          "Change priority to 'Low'",
+          "Save the changes"
+        ],
+        "expected_result": "Task priority level is updated to 'Low'"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Set priority level without selecting a task",
+        "steps": [
+          "Navigate to task list",
+          "Attempt to set priority to 'High' without selecting a task"
+        ],
+        "expected_result": "Error message shown: 'No task selected for priority change'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Set an extremely high priority level",
+        "steps": [
+          "Navigate to task creation page",
+          "Enter task details",
+          "Attempt to set priority to a custom value above allowed range",
+          "Save the task"
+        ],
+        "expected_result": "Validation error: 'Priority level is out of allowed range'"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 4,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.851
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.873
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 4,
+      "covered": 4,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.9,
+      "generated_cases": 4,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.769,
+      "min_similarity": 0.73,
+      "max_similarity": 0.812
+    },
+    "overall_score": 65.38
+  }
+}

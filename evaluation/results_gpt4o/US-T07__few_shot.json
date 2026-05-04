@@ -1,0 +1,100 @@
+{
+  "story_id": "US-T07",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to mark a task as complete so that I can track my progress.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Mark task as complete",
+        "steps": [
+          "Navigate to task list page",
+          "Locate an incomplete task",
+          "Click on the checkbox to mark the task as complete"
+        ],
+        "expected_result": "Task is marked as complete and displayed as completed in the list"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Mark completed task as complete again",
+        "steps": [
+          "Navigate to task list page",
+          "Locate a task that is already marked as complete",
+          "Attempt to mark the completed task as complete again"
+        ],
+        "expected_result": "No action taken, task remains marked as completed"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Mark task as complete with no internet connection",
+        "steps": [
+          "Disable internet connection",
+          "Navigate to task list page",
+          "Locate an incomplete task",
+          "Attempt to mark the task as complete"
+        ],
+        "expected_result": "Error message shown: 'No internet connection', task remains incomplete"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.855
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.75,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.717,
+      "min_similarity": 0.691,
+      "max_similarity": 0.77
+    },
+    "overall_score": 67.68
+  }
+}

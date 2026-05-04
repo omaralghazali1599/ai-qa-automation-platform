@@ -1,0 +1,171 @@
+{
+  "story_id": "US-A01",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a new user, I want to register with my name, email, and password so that I can create an account.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Register with valid name, email, and password",
+        "steps": [
+          "Go to the registration page",
+          "Enter a valid name",
+          "Enter a valid email address",
+          "Enter a valid password",
+          "Click on the register button"
+        ],
+        "expected_result": "User is successfully registered and redirected to the welcome page."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Register with an invalid email format",
+        "steps": [
+          "Go to the registration page",
+          "Enter a valid name",
+          "Enter an invalid email address (e.g., 'userexample.com')",
+          "Enter a valid password",
+          "Click on the register button"
+        ],
+        "expected_result": "User is shown an error message indicating an invalid email format."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Register with a blank name",
+        "steps": [
+          "Go to the registration page",
+          "Leave the name field blank",
+          "Enter a valid email address",
+          "Enter a valid password",
+          "Click on the register button"
+        ],
+        "expected_result": "User is shown an error message indicating the name field is required."
+      },
+      {
+        "id": "TC-N03",
+        "title": "Register with an empty password",
+        "steps": [
+          "Go to the registration page",
+          "Enter a valid name",
+          "Enter a valid email address",
+          "Leave the password field empty",
+          "Click on the register button"
+        ],
+        "expected_result": "User is shown an error message indicating the password field is required."
+      },
+      {
+        "id": "TC-N04",
+        "title": "Register with a password that is too short",
+        "steps": [
+          "Go to the registration page",
+          "Enter a valid name",
+          "Enter a valid email address",
+          "Enter a password shorter than the minimum required length",
+          "Click on the register button"
+        ],
+        "expected_result": "User is shown an error message indicating the password does not meet the minimum length requirement."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Register with a very long name",
+        "steps": [
+          "Go to the registration page",
+          "Enter a name that is at the maximum allowed character limit",
+          "Enter a valid email address",
+          "Enter a valid password",
+          "Click on the register button"
+        ],
+        "expected_result": "User is successfully registered or shown an error message if the name exceeds the allowed limit."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Register with a very long email",
+        "steps": [
+          "Go to the registration page",
+          "Enter a valid name",
+          "Enter an email that is at the maximum allowed character limit",
+          "Enter a valid password",
+          "Click on the register button"
+        ],
+        "expected_result": "User is successfully registered or shown an error message if the email exceeds the allowed limit."
+      },
+      {
+        "id": "TC-E03",
+        "title": "Register with a password containing special characters",
+        "steps": [
+          "Go to the registration page",
+          "Enter a valid name",
+          "Enter a valid email address",
+          "Enter a password containing special characters",
+          "Click on the register button"
+        ],
+        "expected_result": "User is successfully registered and redirected to the welcome page."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 8,
+      "passed": 8,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 75.0,
+      "total_cases": 8,
+      "unique_cases": 6,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N03",
+          "similarity": 0.918
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E02",
+          "similarity": 0.922
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 8,
+      "covered": 8,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 3,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 91.96,
+      "generated_cases": 8,
+      "baseline_cases": 36,
+      "avg_best_match_similarity": 0.92,
+      "min_similarity": 0.875,
+      "max_similarity": 0.969
+    },
+    "overall_score": 83.39
+  }
+}

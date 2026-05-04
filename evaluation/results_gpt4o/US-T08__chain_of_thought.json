@@ -1,0 +1,103 @@
+{
+  "story_id": "US-T08",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to update the title of an existing task so that I can correct or clarify it.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update task title successfully",
+        "steps": [
+          "Navigate to the tasks page",
+          "Click on the task to edit",
+          "Enter a new valid title in the title field",
+          "Click the save button"
+        ],
+        "expected_result": "The task title is updated successfully and displayed with the new title."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to update task title with an empty string",
+        "steps": [
+          "Navigate to the tasks page",
+          "Click on the task to edit",
+          "Enter an empty string in the title field",
+          "Click the save button"
+        ],
+        "expected_result": "The task title update is rejected, and an error message is displayed indicating that the title cannot be empty."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task title to maximum allowed length",
+        "steps": [
+          "Navigate to the tasks page",
+          "Click on the task to edit",
+          "Enter a title with the maximum allowed number of characters",
+          "Click the save button"
+        ],
+        "expected_result": "The task title is updated successfully with the maximum length title, and no error messages are displayed."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.864
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 86.34,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.863,
+      "min_similarity": 0.842,
+      "max_similarity": 0.886
+    },
+    "overall_score": 80.6
+  }
+}

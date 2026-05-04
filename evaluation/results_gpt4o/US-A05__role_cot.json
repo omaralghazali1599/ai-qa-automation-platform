@@ -1,0 +1,100 @@
+{
+  "story_id": "US-A05",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to receive an error message when I enter an invalid email format during registration so that I know to correct it.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Verify error message on entering invalid email format",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter 'user@domain' into the email field.",
+          "Submit the registration form."
+        ],
+        "expected_result": "An error message is displayed indicating the email format is invalid."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Verify no error message for a valid email format",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter 'user@domain.com' into the email field.",
+          "Submit the registration form."
+        ],
+        "expected_result": "No error message is displayed and registration proceeds."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Verify behavior when email field is left empty",
+        "steps": [
+          "Navigate to the registration page.",
+          "Leave the email field empty.",
+          "Submit the registration form."
+        ],
+        "expected_result": "An error message is displayed indicating the email field cannot be empty."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.948
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.59,
+      "generated_cases": 3,
+      "baseline_cases": 3,
+      "avg_best_match_similarity": 0.806,
+      "min_similarity": 0.637,
+      "max_similarity": 0.907
+    },
+    "overall_score": 72.79
+  }
+}

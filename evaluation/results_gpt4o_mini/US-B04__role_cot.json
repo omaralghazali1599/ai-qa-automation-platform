@@ -1,0 +1,105 @@
+{
+  "story_id": "US-B04",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a staff member, I want to confirm a booking so that the guest knows their reservation is secured.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Confirm a valid booking successfully",
+        "steps": [
+          "Step 1: Login as a staff member.",
+          "Step 2: Navigate to the bookings section.",
+          "Step 3: Select an unconfirmed booking.",
+          "Step 4: Click on the 'Confirm Booking' button.",
+          "Step 5: Verify the confirmation message is displayed."
+        ],
+        "expected_result": "The system confirms the booking, and the guest receives a confirmation notification."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to confirm an already confirmed booking",
+        "steps": [
+          "Step 1: Login as a staff member.",
+          "Step 2: Navigate to the bookings section.",
+          "Step 3: Select a booking that is already confirmed.",
+          "Step 4: Click on the 'Confirm Booking' button."
+        ],
+        "expected_result": "The system shows an error message indicating the booking is already confirmed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Confirm a booking with special characters in the guest name",
+        "steps": [
+          "Step 1: Login as a staff member.",
+          "Step 2: Navigate to the bookings section.",
+          "Step 3: Select a booking with special characters in the guest name.",
+          "Step 4: Click on the 'Confirm Booking' button.",
+          "Step 5: Verify the confirmation message is displayed."
+        ],
+        "expected_result": "The system confirms the booking successfully with no issues related to special characters."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.924
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 72.54,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.725,
+      "min_similarity": 0.667,
+      "max_similarity": 0.757
+    },
+    "overall_score": 71.18
+  }
+}

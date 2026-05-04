@@ -1,0 +1,142 @@
+{
+  "story_id": "US-T04",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to list all my tasks so that I can see everything I need to do.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "List all tasks successfully",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the 'My Tasks' section",
+          "Click on 'View All Tasks' button"
+        ],
+        "expected_result": "All tasks are displayed in a list format"
+      },
+      {
+        "id": "TC-P02",
+        "title": "List tasks with multiple categories",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the 'My Tasks' section",
+          "Ensure tasks are categorized",
+          "Click on 'View All Tasks' button"
+        ],
+        "expected_result": "All categorized tasks are displayed correctly"
+      },
+      {
+        "id": "TC-P03",
+        "title": "List tasks when tasks are present",
+        "steps": [
+          "Log in to the application",
+          "Ensure there are existing tasks",
+          "Navigate to the 'My Tasks' section",
+          "Click on 'View All Tasks' button"
+        ],
+        "expected_result": "All existing tasks are displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to list tasks when not logged in",
+        "steps": [
+          "Navigate to the 'My Tasks' section without logging in"
+        ],
+        "expected_result": "User is redirected to the login page with an appropriate message"
+      },
+      {
+        "id": "TC-N02",
+        "title": "List tasks when there are no tasks available",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the 'My Tasks' section with no tasks"
+        ],
+        "expected_result": "Message displayed: 'No tasks available'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "List tasks with a very large number of tasks",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the 'My Tasks' section with thousands of tasks"
+        ],
+        "expected_result": "All tasks are displayed without performance issues or errors"
+      },
+      {
+        "id": "TC-E02",
+        "title": "List tasks while offline",
+        "steps": [
+          "Log in to the application",
+          "Disconnect internet connection",
+          "Navigate to the 'My Tasks' section"
+        ],
+        "expected_result": "User is shown a cached version of tasks or a message indicating offline access"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 7,
+      "passed": 7,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 71.43,
+      "total_cases": 7,
+      "unique_cases": 5,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P03",
+          "similarity": 0.92
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.869
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 7,
+      "covered": 7,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 2,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 56.65,
+      "generated_cases": 7,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.566,
+      "min_similarity": 0.5,
+      "max_similarity": 0.665
+    },
+    "overall_score": 65.62
+  }
+}

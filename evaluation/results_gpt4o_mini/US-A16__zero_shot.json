@@ -1,0 +1,115 @@
+{
+  "story_id": "US-A16",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want the profile endpoint to return unauthorized when I am not logged in so that private data is protected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Access profile endpoint when logged in",
+        "steps": [
+          "User logs in with valid credentials",
+          "User accesses the profile endpoint"
+        ],
+        "expected_result": "Profile data is returned successfully"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Access profile endpoint when not logged in",
+        "steps": [
+          "User does not log in",
+          "User accesses the profile endpoint"
+        ],
+        "expected_result": "Response status is 401 Unauthorized"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Access profile endpoint with invalid session token",
+        "steps": [
+          "User logs in and receives a valid session token",
+          "User logs out",
+          "User uses the invalid session token to access the profile endpoint"
+        ],
+        "expected_result": "Response status is 401 Unauthorized"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Access profile endpoint with expired session token",
+        "steps": [
+          "User logs in and receives a session token",
+          "Delay for the session to expire",
+          "User tries to access the profile endpoint with the expired token"
+        ],
+        "expected_result": "Response status is 401 Unauthorized"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Simultaneous access of profile endpoint without login",
+        "steps": [
+          "Multiple users try to access the profile endpoint simultaneously without logging in"
+        ],
+        "expected_result": "Each request returns a 401 Unauthorized response"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 80.0,
+      "total_cases": 5,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.889
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 2,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 78.24,
+      "generated_cases": 5,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.782,
+      "min_similarity": 0.736,
+      "max_similarity": 0.826
+    },
+    "overall_score": 71.65
+  }
+}

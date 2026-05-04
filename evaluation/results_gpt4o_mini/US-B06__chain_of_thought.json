@@ -1,0 +1,95 @@
+{
+  "story_id": "US-B06",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a staff member, I want to delete a pending booking so that cancelled or invalid bookings are removed.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully delete a pending booking",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Locate the pending booking in the list.",
+          "Click on the 'Delete' button next to the booking.",
+          "Confirm the deletion in the popup window."
+        ],
+        "expected_result": "The pending booking is removed from the list, and a success message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to delete an already deleted booking",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Locate the already deleted booking (should not be visible).",
+          "Try to click 'Delete' on this booking."
+        ],
+        "expected_result": "An error message is displayed stating that the booking cannot be found."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Delete a booking during server maintenance",
+        "steps": [
+          "Simulate server maintenance mode.",
+          "Navigate to the bookings page.",
+          "Locate a pending booking in the list.",
+          "Click on the 'Delete' button next to the booking."
+        ],
+        "expected_result": "An error message is displayed indicating that the action cannot be performed due to server maintenance."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.26,
+      "generated_cases": 3,
+      "baseline_cases": 10,
+      "avg_best_match_similarity": 0.763,
+      "min_similarity": 0.65,
+      "max_similarity": 0.838
+    },
+    "overall_score": 75.25
+  }
+}

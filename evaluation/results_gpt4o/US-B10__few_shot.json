@@ -1,0 +1,135 @@
+{
+  "story_id": "US-B10",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want the system to reject an invalid date format so that only correctly formatted dates are accepted.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Accept correct date format (YYYY-MM-DD)",
+        "steps": [
+          "Navigate to date input page",
+          "Enter a date in the format '2023-10-09'",
+          "Submit the form"
+        ],
+        "expected_result": "Date is accepted without error"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Reject date in wrong format (DD-MM-YYYY)",
+        "steps": [
+          "Navigate to date input page",
+          "Enter a date in the format '09-10-2023'",
+          "Submit the form"
+        ],
+        "expected_result": "Error message shown: 'Invalid date format, please use YYYY-MM-DD'"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Reject date with non-numeric input",
+        "steps": [
+          "Navigate to date input page",
+          "Enter a non-numeric date 'Date123'",
+          "Submit the form"
+        ],
+        "expected_result": "Error message shown: 'Invalid date format, please use YYYY-MM-DD'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Reject malformed date string (YYYY/MM/DD)",
+        "steps": [
+          "Navigate to date input page",
+          "Enter a date in the format '2023/10/09'",
+          "Submit the form"
+        ],
+        "expected_result": "Error message shown: 'Invalid date format, please use YYYY-MM-DD'"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Reject date with missing parts (YYYY-MM)",
+        "steps": [
+          "Navigate to date input page",
+          "Enter a date missing the day '2023-10'",
+          "Submit the form"
+        ],
+        "expected_result": "Error message shown: 'Invalid date format, please use YYYY-MM-DD'"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 40.0,
+      "total_cases": 5,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.91
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.883
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.933
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E02",
+          "similarity": 0.859
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 63.07,
+      "generated_cases": 5,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.631,
+      "min_similarity": 0.607,
+      "max_similarity": 0.651
+    },
+    "overall_score": 67.28
+  }
+}

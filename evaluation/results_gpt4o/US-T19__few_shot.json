@@ -1,0 +1,83 @@
+{
+  "story_id": "US-T19",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want deleting a non-existent task to return a clear error so that I know the operation failed.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to delete a non-existent task",
+        "steps": [
+          "Navigate to task list page",
+          "Attempt to delete a task with an ID that does not exist in the database",
+          "Confirm deletion action"
+        ],
+        "expected_result": "Error message displayed indicating the task does not exist and the deletion fails"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Delete task with special characters in ID field",
+        "steps": [
+          "Navigate to task list page",
+          "Enter task ID with special characters",
+          "Attempt to delete the task"
+        ],
+        "expected_result": "Validation error shown for invalid task ID"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 2,
+      "unique_cases": 2,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.39,
+      "generated_cases": 2,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.714,
+      "min_similarity": 0.678,
+      "max_similarity": 0.75
+    },
+    "overall_score": 80.94
+  }
+}

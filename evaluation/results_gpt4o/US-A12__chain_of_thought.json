@@ -1,0 +1,100 @@
+{
+  "story_id": "US-A12",
+  "app": "auth",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to receive an error when I try to reset the password with an unregistered email so that I know the email is not in the system.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Receive error for unregistered email in password reset",
+        "steps": [
+          "Go to the password reset page.",
+          "Enter an unregistered email address.",
+          "Submit the password reset request."
+        ],
+        "expected_result": "An error message is displayed indicating the email is not registered in the system."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Receive error for registered email in password reset",
+        "steps": [
+          "Go to the password reset page.",
+          "Enter a registered email address.",
+          "Submit the password reset request."
+        ],
+        "expected_result": "No error message about the email being unregistered should be displayed; a password reset link should be sent to the email."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Receive error for invalid email format in password reset",
+        "steps": [
+          "Go to the password reset page.",
+          "Enter an invalid email format.",
+          "Submit the password reset request."
+        ],
+        "expected_result": "An error message is displayed indicating the email format is invalid."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.956
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 88.56,
+      "generated_cases": 3,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.886,
+      "min_similarity": 0.764,
+      "max_similarity": 0.956
+    },
+    "overall_score": 74.38
+  }
+}

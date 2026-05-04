@@ -1,0 +1,109 @@
+{
+  "story_id": "US-B05",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to cancel my booking so that I can free up the reservation.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Cancel booking with valid confirmation number",
+        "steps": [
+          "Navigate to the booking cancellation page",
+          "Enter valid booking confirmation number",
+          "Click Cancel Booking"
+        ],
+        "expected_result": "Booking is successfully canceled and confirmation message is shown"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Cancel booking with invalid confirmation number",
+        "steps": [
+          "Navigate to the booking cancellation page",
+          "Enter invalid booking confirmation number",
+          "Click Cancel Booking"
+        ],
+        "expected_result": "Error message shown: confirmation number not found"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Cancel booking after cancellation period has expired",
+        "steps": [
+          "Navigate to the booking cancellation page",
+          "Enter valid booking confirmation number for a past date",
+          "Click Cancel Booking"
+        ],
+        "expected_result": "Error message shown: cancellation period has expired"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.952
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.9
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.858
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 79.0,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.79,
+      "min_similarity": 0.765,
+      "max_similarity": 0.83
+    },
+    "overall_score": 62.47
+  }
+}

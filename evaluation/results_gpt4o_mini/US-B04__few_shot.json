@@ -1,0 +1,106 @@
+{
+  "story_id": "US-B04",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a staff member, I want to confirm a booking so that the guest knows their reservation is secured.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Confirm a booking with valid booking ID",
+        "steps": [
+          "Navigate to the bookings page",
+          "Select a booking with a valid booking ID",
+          "Click on Confirm Booking",
+          "Verify confirmation message appears"
+        ],
+        "expected_result": "Booking status updated to confirmed and guest receives confirmation notification"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to confirm a booking with invalid booking ID",
+        "steps": [
+          "Navigate to the bookings page",
+          "Enter an invalid booking ID",
+          "Click on Confirm Booking"
+        ],
+        "expected_result": "Error message: booking ID not found"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Confirm a booking that is already confirmed",
+        "steps": [
+          "Navigate to the bookings page",
+          "Select a booking that is already confirmed",
+          "Click on Confirm Booking"
+        ],
+        "expected_result": "Warning message shown: booking is already confirmed"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.898
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.861
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 69.18,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.692,
+      "min_similarity": 0.622,
+      "max_similarity": 0.77
+    },
+    "overall_score": 63.84
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "story_id": "US-B04",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a staff member, I want to confirm a booking so that the guest knows their reservation is secured.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Confirm booking with valid details",
+        "steps": [
+          "Log in as staff member",
+          "Navigate to pending bookings",
+          "Select a booking to confirm",
+          "Click confirm button",
+          "Confirm booking details"
+        ],
+        "expected_result": "Booking status changes to confirmed, and confirmation email is sent to guest"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Confirm booking with already confirmed reservation",
+        "steps": [
+          "Log in as staff member",
+          "Navigate to confirmed bookings",
+          "Select an already confirmed booking",
+          "Attempt to confirm booking again"
+        ],
+        "expected_result": "System notifies that the booking is already confirmed, no changes are made"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Confirm booking with missing booking details",
+        "steps": [
+          "Log in as staff member",
+          "Navigate to pending bookings",
+          "Select a booking with incomplete details",
+          "Attempt to confirm booking"
+        ],
+        "expected_result": "System prevents confirmation and shows an error message: booking details incomplete"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.889
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.892
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.855
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.17,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.712,
+      "min_similarity": 0.703,
+      "max_similarity": 0.723
+    },
+    "overall_score": 64.23
+  }
+}

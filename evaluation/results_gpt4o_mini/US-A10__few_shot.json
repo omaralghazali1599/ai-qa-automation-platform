@@ -1,0 +1,90 @@
+{
+  "story_id": "US-A10",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to see my profile information after logging in so that I can confirm my account details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "View profile information after logging in",
+        "steps": [
+          "Log in with valid credentials",
+          "Navigate to profile page"
+        ],
+        "expected_result": "User sees their profile information displayed correctly"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Access profile page without logging in",
+        "steps": [
+          "Navigate to profile page"
+        ],
+        "expected_result": "User is redirected to login page with an error message"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "View profile info with session timeout",
+        "steps": [
+          "Log in with valid credentials",
+          "Wait for the session timeout",
+          "Navigate to profile page"
+        ],
+        "expected_result": "User is redirected to login page with an error message about session expiration"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 70.87,
+      "generated_cases": 3,
+      "baseline_cases": 11,
+      "avg_best_match_similarity": 0.709,
+      "min_similarity": 0.514,
+      "max_similarity": 0.826
+    },
+    "overall_score": 74.17
+  }
+}

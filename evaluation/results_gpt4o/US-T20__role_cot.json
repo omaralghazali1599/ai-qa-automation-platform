@@ -1,0 +1,100 @@
+{
+  "story_id": "US-T20",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to update multiple fields of a task in a single request so that I can edit efficiently.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully update multiple fields of a task",
+        "steps": [
+          "Login to the application with valid credentials",
+          "Navigate to the tasks section",
+          "Select a task to update",
+          "Send a request with valid data to update multiple fields such as title, description, and due date",
+          "Submit the request"
+        ],
+        "expected_result": "Task fields are updated successfully and reflect the new data provided."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to update task fields with invalid data",
+        "steps": [
+          "Login to the application with valid credentials",
+          "Navigate to the tasks section",
+          "Select a task to update",
+          "Send a request with invalid data (e.g., invalid date format, empty required fields) for multiple fields",
+          "Submit the request"
+        ],
+        "expected_result": "The system rejects the update request and provides error messages indicating the invalid fields."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update multiple fields with maximum allowable data size",
+        "steps": [
+          "Login to the application with valid credentials",
+          "Navigate to the tasks section",
+          "Select a task to update",
+          "Send a request with data at maximum allowable size (e.g., max length for text fields) to update multiple fields",
+          "Submit the request"
+        ],
+        "expected_result": "Task fields are updated successfully without performance issues, and the application handles maximum data sizes gracefully."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 60.74,
+      "generated_cases": 3,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.607,
+      "min_similarity": 0.528,
+      "max_similarity": 0.682
+    },
+    "overall_score": 78.81
+  }
+}

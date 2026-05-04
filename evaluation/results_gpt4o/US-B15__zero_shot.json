@@ -1,0 +1,104 @@
+{
+  "story_id": "US-B15",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want cancelling an already-cancelled booking to return a clear error so that duplicate cancellations are handled.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Cancel a booking successfully",
+        "steps": [
+          "Login as a guest user",
+          "Navigate to booking management",
+          "Select an active booking",
+          "Initiate the cancellation process",
+          "Confirm the cancellation"
+        ],
+        "expected_result": "Booking is cancelled successfully with confirmation message"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Cancel an already cancelled booking",
+        "steps": [
+          "Login as a guest user",
+          "Navigate to booking management",
+          "Select an already cancelled booking",
+          "Attempt to cancel the booking again"
+        ],
+        "expected_result": "Receive a clear error message indicating the booking is already cancelled"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Cancel a booking with maximum possible transactions",
+        "steps": [
+          "Login as a guest user",
+          "Navigate to booking management",
+          "Attempt to cancel a booking with the maximum number of allowable transactions within a short period",
+          "Monitor system behavior"
+        ],
+        "expected_result": "System handles the transactions gracefully or provides an appropriate error message if limits are exceeded"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.93
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 68.24,
+      "generated_cases": 3,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.682,
+      "min_similarity": 0.539,
+      "max_similarity": 0.773
+    },
+    "overall_score": 73.65
+  }
+}

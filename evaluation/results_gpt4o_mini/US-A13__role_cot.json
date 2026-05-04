@@ -1,0 +1,100 @@
+{
+  "story_id": "US-A13",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want my password reset token to be invalidated after use so that it cannot be reused.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Validate password reset token after first use",
+        "steps": [
+          "1. Request a password reset token.",
+          "2. Use the password reset token to reset the password.",
+          "3. Attempt to use the same token again to reset the password."
+        ],
+        "expected_result": "The system should return an error message indicating that the token is invalid."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt using an expired password reset token",
+        "steps": [
+          "1. Request a password reset token.",
+          "2. Wait for the token to expire.",
+          "3. Attempt to use the expired token to reset the password."
+        ],
+        "expected_result": "The system should return an error message indicating that the token is expired."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Validate token invalidation when used with simultaneous requests",
+        "steps": [
+          "1. Request a password reset token.",
+          "2. At the same time, submit two separate requests to reset the password using the same token.",
+          "3. Verify the results of both attempts."
+        ],
+        "expected_result": "One of the password reset requests should succeed while the other should fail with an invalid token error."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.874
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 89.63,
+      "generated_cases": 3,
+      "baseline_cases": 15,
+      "avg_best_match_similarity": 0.896,
+      "min_similarity": 0.843,
+      "max_similarity": 0.934
+    },
+    "overall_score": 74.59
+  }
+}

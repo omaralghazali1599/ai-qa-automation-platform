@@ -1,0 +1,100 @@
+{
+  "story_id": "US-T11",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want task creation to fail when the title is empty so that all tasks have a meaningful name.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create task with valid title",
+        "steps": [
+          "Navigate to task creation page",
+          "Enter non-empty, valid task title",
+          "Click Create Task"
+        ],
+        "expected_result": "Task is successfully created and displayed in the task list"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Create task with empty title",
+        "steps": [
+          "Navigate to task creation page",
+          "Leave task title field empty",
+          "Click Create Task"
+        ],
+        "expected_result": "Error message displayed: title cannot be empty"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create task with title consisting only of spaces",
+        "steps": [
+          "Navigate to task creation page",
+          "Enter spaces in the task title field",
+          "Click Create Task"
+        ],
+        "expected_result": "Validation error displayed: title cannot be empty"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.913
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.92,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.769,
+      "min_similarity": 0.759,
+      "max_similarity": 0.786
+    },
+    "overall_score": 72.05
+  }
+}

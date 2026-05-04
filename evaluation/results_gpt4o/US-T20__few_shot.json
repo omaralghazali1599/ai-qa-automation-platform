@@ -1,0 +1,130 @@
+{
+  "story_id": "US-T20",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to update multiple fields of a task in a single request so that I can edit efficiently.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update all fields of a task with valid data",
+        "steps": [
+          "Navigate to task details page",
+          "Select a task to edit",
+          "Update task title, description, due date, and priority",
+          "Submit the update request"
+        ],
+        "expected_result": "Task details are updated successfully and changes are visible in the task list"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Update a single field of a task",
+        "steps": [
+          "Navigate to task details page",
+          "Select a task to edit",
+          "Update only the task title",
+          "Submit the update request"
+        ],
+        "expected_result": "Task title is updated successfully and change is visible in the task list"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to update task with invalid date",
+        "steps": [
+          "Navigate to task details page",
+          "Select a task to edit",
+          "Update task with an invalid date format",
+          "Submit the update request"
+        ],
+        "expected_result": "Error message shown: 'Invalid date format'; task details remain unchanged"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to update task with empty mandatory fields",
+        "steps": [
+          "Navigate to task details page",
+          "Select a task to edit",
+          "Clear the task title",
+          "Submit the update request"
+        ],
+        "expected_result": "Validation error: 'Task title is required'; task details remain unchanged"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task with maximum length fields",
+        "steps": [
+          "Navigate to task details page",
+          "Select a task to edit",
+          "Update task title and description with maximum allowed characters",
+          "Submit the update request"
+        ],
+        "expected_result": "Task is updated successfully, and all changes are reflected in the task list and do not exceed maximum length constraints"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Simultaneous multiple updates to the same task from different sessions",
+        "steps": [
+          "Open the task in two different browser sessions",
+          "In the first session, update the task title",
+          "In the second session, update the task description",
+          "Submit both update requests simultaneously"
+        ],
+        "expected_result": "The system handles the updates correctly with no data conflicts, and the task reflects the last consistent update"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 6,
+      "unique_cases": 6,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 59.48,
+      "generated_cases": 6,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.595,
+      "min_similarity": 0.55,
+      "max_similarity": 0.636
+    },
+    "overall_score": 81.9
+  }
+}

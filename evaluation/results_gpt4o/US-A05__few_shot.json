@@ -1,0 +1,91 @@
+{
+  "story_id": "US-A05",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to receive an error message when I enter an invalid email format during registration so that I know to correct it.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Register with invalid email format",
+        "steps": [
+          "Navigate to registration page",
+          "Enter an invalid email format (e.g., 'user@com', 'user.com', or 'user@.com')",
+          "Fill out other required registration fields",
+          "Click Register"
+        ],
+        "expected_result": "Error message displayed: 'Invalid email format'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Register with email having special characters",
+        "steps": [
+          "Navigate to registration page",
+          "Enter an email with special characters not allowed in format (e.g., 'user@!example.com')",
+          "Fill out other required registration fields",
+          "Click Register"
+        ],
+        "expected_result": "Error message displayed: 'Invalid email format due to special characters'"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 2,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.853
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "max_length",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 82.89,
+      "generated_cases": 2,
+      "baseline_cases": 3,
+      "avg_best_match_similarity": 0.829,
+      "min_similarity": 0.761,
+      "max_similarity": 0.897
+    },
+    "overall_score": 76.58
+  }
+}

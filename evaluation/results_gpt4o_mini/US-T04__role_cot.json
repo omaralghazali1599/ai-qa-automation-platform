@@ -1,0 +1,92 @@
+{
+  "story_id": "US-T04",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to list all my tasks so that I can see everything I need to do.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Display tasks list successfully when user has tasks",
+        "steps": [
+          "Login as a user.",
+          "Navigate to the tasks page.",
+          "View the list of tasks."
+        ],
+        "expected_result": "The system displays a list of all tasks assigned to the user."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Display error when user has no tasks",
+        "steps": [
+          "Login as a user with no tasks.",
+          "Navigate to the tasks page."
+        ],
+        "expected_result": "The system displays a message stating 'No tasks available'."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Handle large number of tasks",
+        "steps": [
+          "Login as a user with 10,000 tasks.",
+          "Navigate to the tasks page."
+        ],
+        "expected_result": "The system displays a paginated list of tasks without performance degradation."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 66.42,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.664,
+      "min_similarity": 0.639,
+      "max_similarity": 0.682
+    },
+    "overall_score": 76.62
+  }
+}

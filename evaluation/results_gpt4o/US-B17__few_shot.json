@@ -1,0 +1,90 @@
+{
+  "story_id": "US-B17",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to create a booking where check-in and check-out are the same date to be rejected so that same-day bookings are not allowed.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt booking with check-in and check-out on the same date",
+        "steps": [
+          "Navigate to booking page",
+          "Select check-in date as Today's date",
+          "Select check-out date as Today's date",
+          "Submit booking details"
+        ],
+        "expected_result": "Error message displayed: same-day bookings are not allowed"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt booking with check-in and check-out on consecutive days",
+        "steps": [
+          "Navigate to booking page",
+          "Select check-in date as Today's date",
+          "Select check-out date as Tomorrow's date",
+          "Submit booking details"
+        ],
+        "expected_result": "Booking is successful, user receives booking confirmation"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 2,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.937
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 72.77,
+      "generated_cases": 2,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.728,
+      "min_similarity": 0.694,
+      "max_similarity": 0.761
+    },
+    "overall_score": 64.55
+  }
+}

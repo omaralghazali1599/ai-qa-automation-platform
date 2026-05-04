@@ -1,0 +1,120 @@
+{
+  "story_id": "US-B10",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want the system to reject an invalid date format so that only correctly formatted dates are accepted.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Valid date format is accepted",
+        "steps": [
+          "Navigate to the date input form.",
+          "Enter a date in the format YYYY-MM-DD (e.g., 2023-10-21).",
+          "Submit the form."
+        ],
+        "expected_result": "The system accepts the date and processes it successfully."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Incorrect date format is rejected",
+        "steps": [
+          "Navigate to the date input form.",
+          "Enter a date in the format DD-MM-YYYY (e.g., 21-10-2023).",
+          "Submit the form."
+        ],
+        "expected_result": "The system rejects the date and displays an error message indicating the correct format."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Non-date characters in the date field",
+        "steps": [
+          "Navigate to the date input form.",
+          "Enter alphabets or symbols instead of a date (e.g., 'abcd-ef-gh' or '2023/10/21').",
+          "Submit the form."
+        ],
+        "expected_result": "The system rejects the input and displays an error message indicating the correct format."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Leap year date handling",
+        "steps": [
+          "Navigate to the date input form.",
+          "Enter a leap year date in the format YYYY-MM-DD (e.g., 2024-02-29).",
+          "Submit the form."
+        ],
+        "expected_result": "The system accepts the leap year date and processes it successfully."
+      },
+      {
+        "id": "TC-E02",
+        "title": "End of month date handling",
+        "steps": [
+          "Navigate to the date input form.",
+          "Enter the last day of a month (e.g., 2023-04-30).",
+          "Submit the form."
+        ],
+        "expected_result": "The system accepts the date and processes it successfully."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 80.0,
+      "total_cases": 5,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.869
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 60.32,
+      "generated_cases": 5,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.603,
+      "min_similarity": 0.475,
+      "max_similarity": 0.711
+    },
+    "overall_score": 71.4
+  }
+}

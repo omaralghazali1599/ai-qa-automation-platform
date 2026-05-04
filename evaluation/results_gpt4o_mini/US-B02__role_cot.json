@@ -1,0 +1,99 @@
+{
+  "story_id": "US-B02",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want to see all my bookings so that I can review my reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "View all bookings for a guest",
+        "steps": [
+          "Log in as a guest user",
+          "Navigate to the bookings page",
+          "Check if all bookings are displayed"
+        ],
+        "expected_result": "All bookings made by the guest are displayed correctly"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "View bookings when there are no reservations",
+        "steps": [
+          "Log in as a guest user",
+          "Navigate to the bookings page",
+          "Check if any bookings are displayed"
+        ],
+        "expected_result": "A message indicating that there are no bookings is displayed"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Load bookings page with slow internet connection",
+        "steps": [
+          "Log in as a guest user",
+          "Set internet connection to be slow",
+          "Navigate to the bookings page"
+        ],
+        "expected_result": "The bookings page loads eventually without errors, showing confirmation that the request is in progress"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.921
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 62.46,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.625,
+      "min_similarity": 0.487,
+      "max_similarity": 0.693
+    },
+    "overall_score": 65.83
+  }
+}

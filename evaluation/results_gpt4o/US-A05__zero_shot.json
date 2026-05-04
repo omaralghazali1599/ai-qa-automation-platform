@@ -1,0 +1,130 @@
+{
+  "story_id": "US-A05",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to receive an error message when I enter an invalid email format during registration so that I know to correct it.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "User enters a valid email format during registration",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a valid email format, e.g., user@example.com, in the email field.",
+          "Complete the rest of the registration form and submit."
+        ],
+        "expected_result": "The user successfully registers without any error messages."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "User receives an error message when entering an email without an '@' symbol",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter an email without an '@' symbol, e.g., userexample.com, in the email field.",
+          "Submit the registration form."
+        ],
+        "expected_result": "An error message is displayed indicating the email format is invalid."
+      },
+      {
+        "id": "TC-N02",
+        "title": "User receives an error message when entering an email without a domain",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter an email without a domain, e.g., user@.com, in the email field.",
+          "Submit the registration form."
+        ],
+        "expected_result": "An error message is displayed indicating the email format is invalid."
+      },
+      {
+        "id": "TC-N03",
+        "title": "User receives an error message when entering an email without a top-level domain",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter an email without a top-level domain, e.g., user@example., in the email field.",
+          "Submit the registration form."
+        ],
+        "expected_result": "An error message is displayed indicating the email format is invalid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "User receives an error message when entering an email with consecutive dots",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter an email with consecutive dots, e.g., user..example@example.com, in the email field.",
+          "Submit the registration form."
+        ],
+        "expected_result": "An error message is displayed indicating the email format is invalid."
+      },
+      {
+        "id": "TC-E02",
+        "title": "User receives an error message when entering a minimal email format",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a minimal email format, e.g., a@b.c, in the email field.",
+          "Submit the registration form."
+        ],
+        "expected_result": "An error message is displayed indicating the email format is invalid."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 83.33,
+      "total_cases": 6,
+      "unique_cases": 5,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N03",
+          "similarity": 0.948
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.57,
+      "generated_cases": 6,
+      "baseline_cases": 3,
+      "avg_best_match_similarity": 0.816,
+      "min_similarity": 0.755,
+      "max_similarity": 0.873
+    },
+    "overall_score": 79.65
+  }
+}

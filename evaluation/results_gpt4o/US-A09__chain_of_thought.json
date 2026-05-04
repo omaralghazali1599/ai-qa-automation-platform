@@ -1,0 +1,102 @@
+{
+  "story_id": "US-A09",
+  "app": "auth",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to be blocked from logging in if my account is locked so that security is enforced.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Block login for locked account",
+        "steps": [
+          "Step 1: Ensure the user account is in a 'locked' state.",
+          "Step 2: Attempt to login using valid username and password."
+        ],
+        "expected_result": "Login should be blocked, and the user should see a message indicating that the account is locked."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Login with locked account with invalid credentials",
+        "steps": [
+          "Step 1: Ensure the user account is in a 'locked' state.",
+          "Step 2: Attempt to login using invalid username and password."
+        ],
+        "expected_result": "Login attempt should still be blocked, with an error message indicating incorrect credentials, not account status."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Re-lock and login attempt",
+        "steps": [
+          "Step 1: Ensure the user account is initially unlocked and can log in.",
+          "Step 2: While logged in, manually lock the account from an admin interface.",
+          "Step 3: Log out and attempt to log back in with valid credentials."
+        ],
+        "expected_result": "Login should be blocked after re-locking, with a message stating that the account is locked."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.89
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.852
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 86.52,
+      "generated_cases": 3,
+      "baseline_cases": 11,
+      "avg_best_match_similarity": 0.865,
+      "min_similarity": 0.83,
+      "max_similarity": 0.891
+    },
+    "overall_score": 63.97
+  }
+}

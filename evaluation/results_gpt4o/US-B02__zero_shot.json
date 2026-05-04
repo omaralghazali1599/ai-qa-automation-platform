@@ -1,0 +1,128 @@
+{
+  "story_id": "US-B02",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want to see all my bookings so that I can review my reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Guest views bookings with existing reservations",
+        "steps": [
+          "Open the website",
+          "Navigate to the 'My Bookings' section after logging in",
+          "Verify the list of bookings is shown"
+        ],
+        "expected_result": "The system displays all existing reservations for the guest account"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Guest sees detailed reservation information",
+        "steps": [
+          "Open the website",
+          "Navigate to the 'My Bookings' section",
+          "Click on a specific booking to view details"
+        ],
+        "expected_result": "The system displays detailed information for the selected reservation"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Guest tries to view bookings without logging in",
+        "steps": [
+          "Open the website",
+          "Attempt to navigate to the 'My Bookings' section without logging in"
+        ],
+        "expected_result": "The system prompts the user to log in before accessing the 'My Bookings' section"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Guest views bookings with an invalid session",
+        "steps": [
+          "Open the website",
+          "Login with valid credentials",
+          "Wait for session to expire or manually invalidate session",
+          "Attempt to view 'My Bookings' section"
+        ],
+        "expected_result": "The system denies access to the 'My Bookings' section and prompts the user to log in again"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Guest with no bookings visits the bookings page",
+        "steps": [
+          "Open the website",
+          "Navigate to the 'My Bookings' section with an account that has no bookings"
+        ],
+        "expected_result": "The system displays a friendly message stating there are no bookings yet"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Guest views a large number of bookings",
+        "steps": [
+          "Open the website",
+          "Navigate to the 'My Bookings' section for an account with a large number of reservations (e.g., 1000 bookings)"
+        ],
+        "expected_result": "The system efficiently loads and displays all bookings without performance issues"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 83.33,
+      "total_cases": 6,
+      "unique_cases": 5,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.857
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 61.19,
+      "generated_cases": 6,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.612,
+      "min_similarity": 0.584,
+      "max_similarity": 0.65
+    },
+    "overall_score": 72.24
+  }
+}

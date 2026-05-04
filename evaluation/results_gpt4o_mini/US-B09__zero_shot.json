@@ -1,0 +1,204 @@
+{
+  "story_id": "US-B09",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want the system to reject more than 10 guests per booking so that room capacity is respected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Allow booking with 10 guests",
+        "steps": [
+          "Navigate to the booking page",
+          "Select room type",
+          "Enter 10 guests",
+          "Submit booking"
+        ],
+        "expected_result": "Booking is confirmed successfully"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Allow booking for 1 guest",
+        "steps": [
+          "Navigate to the booking page",
+          "Select room type",
+          "Enter 1 guest",
+          "Submit booking"
+        ],
+        "expected_result": "Booking is confirmed successfully"
+      },
+      {
+        "id": "TC-P03",
+        "title": "Allow booking with 5 guests",
+        "steps": [
+          "Navigate to the booking page",
+          "Select room type",
+          "Enter 5 guests",
+          "Submit booking"
+        ],
+        "expected_result": "Booking is confirmed successfully"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Reject booking with 11 guests",
+        "steps": [
+          "Navigate to the booking page",
+          "Select room type",
+          "Enter 11 guests",
+          "Submit booking"
+        ],
+        "expected_result": "Receiving an error message indicating that the number of guests exceeds the limit"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Reject booking with 15 guests",
+        "steps": [
+          "Navigate to the booking page",
+          "Select room type",
+          "Enter 15 guests",
+          "Submit booking"
+        ],
+        "expected_result": "Receiving an error message indicating that the number of guests exceeds the limit"
+      },
+      {
+        "id": "TC-N03",
+        "title": "Reject booking with 20 guests",
+        "steps": [
+          "Navigate to the booking page",
+          "Select room type",
+          "Enter 20 guests",
+          "Submit booking"
+        ],
+        "expected_result": "Receiving an error message indicating that the number of guests exceeds the limit"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Edge case: Reject booking with exactly 10 guests",
+        "steps": [
+          "Navigate to the booking page",
+          "Select room type",
+          "Enter 10 guests",
+          "Submit booking"
+        ],
+        "expected_result": "Booking is confirmed successfully"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Edge case: Reject booking with a non-numeric guest count",
+        "steps": [
+          "Navigate to the booking page",
+          "Select room type",
+          "Enter 'five' guests",
+          "Submit booking"
+        ],
+        "expected_result": "Receiving an error message indicating invalid input"
+      },
+      {
+        "id": "TC-E03",
+        "title": "Edge case: Reject booking with 0 guests",
+        "steps": [
+          "Navigate to the booking page",
+          "Select room type",
+          "Enter 0 guests",
+          "Submit booking"
+        ],
+        "expected_result": "Receiving an error message indicating that at least one guest must be entered"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 9,
+      "passed": 9,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 44.44,
+      "total_cases": 9,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P03",
+          "similarity": 0.886
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.87
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-P03",
+          "similarity": 0.859
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.885
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.862
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N03",
+          "similarity": 0.877
+        },
+        {
+          "case_a": "TC-N03",
+          "case_b": "TC-E01",
+          "similarity": 0.853
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E02",
+          "similarity": 0.856
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 9,
+      "covered": 9,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 3,
+      "covered_categories": [
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.22,
+      "generated_cases": 9,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.732,
+      "min_similarity": 0.684,
+      "max_similarity": 0.797
+    },
+    "overall_score": 70.2
+  }
+}

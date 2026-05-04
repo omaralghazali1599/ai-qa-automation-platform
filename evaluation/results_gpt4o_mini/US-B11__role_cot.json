@@ -1,0 +1,100 @@
+{
+  "story_id": "US-B11",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a staff member, I want confirming an already-cancelled booking to return an error so that invalid state transitions are blocked.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Confirm a valid booking",
+        "steps": [
+          "Given I have a booking that is active",
+          "When I confirm the booking",
+          "Then I should see a success message indicating the booking is confirmed"
+        ],
+        "expected_result": "Booking is confirmed successfully."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to confirm an already-cancelled booking",
+        "steps": [
+          "Given I have a booking that has been cancelled",
+          "When I attempt to confirm the booking",
+          "Then I should see an error message indicating that the booking cannot be confirmed because it is already cancelled"
+        ],
+        "expected_result": "Error message is displayed: 'Cannot confirm as the booking is already cancelled.'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Confirm a booking that was cancelled recently",
+        "steps": [
+          "Given I have a booking that was cancelled 1 minute ago",
+          "When I attempt to confirm the booking",
+          "Then I should see an error message indicating that the booking cannot be confirmed because it is already cancelled"
+        ],
+        "expected_result": "Error message is displayed: 'Cannot confirm as the booking is already cancelled.'"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.951
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 79.75,
+      "generated_cases": 3,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.798,
+      "min_similarity": 0.755,
+      "max_similarity": 0.833
+    },
+    "overall_score": 72.62
+  }
+}

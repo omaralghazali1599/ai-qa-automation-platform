@@ -1,0 +1,146 @@
+{
+  "story_id": "US-T05",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to filter tasks by category so that I can focus on a specific area.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter tasks by a single category",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Select a category from the category filter dropdown",
+          "Click on the 'Apply' button"
+        ],
+        "expected_result": "Tasks belonging to the selected category are displayed."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter tasks by multiple categories",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Select multiple categories from the category filter dropdown",
+          "Click on the 'Apply' button"
+        ],
+        "expected_result": "Tasks belonging to any of the selected categories are displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter tasks without selecting any category",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Do not select any categories from the dropdown",
+          "Click on the 'Apply' button"
+        ],
+        "expected_result": "No tasks are displayed, and a warning message prompts the user to select at least one category."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Select invalid category from dropdown",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Inject invalid data to simulate an invalid category selection",
+          "Click on the 'Apply' button"
+        ],
+        "expected_result": "System throws an error or refreshes to a valid state without crashing."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter tasks with the maximum number of categories",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Select all available categories from the category filter dropdown",
+          "Click on the 'Apply' button"
+        ],
+        "expected_result": "All tasks are displayed as all categories are selected without any performance issues."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Filter tasks with no tasks assigned to a selected category",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Select a category that has no tasks assigned to it",
+          "Click on the 'Apply' button"
+        ],
+        "expected_result": "A message indicating 'No tasks found' is displayed."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 6,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.939
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E02",
+          "similarity": 0.882
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 83.33,
+      "total_cases": 6,
+      "covered": 5,
+      "not_covered": 1,
+      "low_relevance_cases": [
+        {
+          "id": "TC-N02",
+          "similarity": 0.2
+        }
+      ]
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 64.25,
+      "generated_cases": 6,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.642,
+      "min_similarity": 0.601,
+      "max_similarity": 0.695
+    },
+    "overall_score": 69.52
+  }
+}

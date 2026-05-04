@@ -1,0 +1,100 @@
+{
+  "story_id": "US-A20",
+  "app": "auth",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want the forgot-password endpoint to require the email field so that incomplete requests are rejected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful request with valid email",
+        "steps": [
+          "Send a POST request to the forgot-password endpoint with a valid email address in the email field.",
+          "Check the response status code.",
+          "Verify the response message indicates that a recovery email has been sent."
+        ],
+        "expected_result": "Response status code is 200 and the message confirms that the recovery email has been sent."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Request with missing email field",
+        "steps": [
+          "Send a POST request to the forgot-password endpoint without the email field.",
+          "Check the response status code.",
+          "Verify the response message indicates that an email is required."
+        ],
+        "expected_result": "Response status code is 400 and the message indicates that the email field is required."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Request with invalid email format",
+        "steps": [
+          "Send a POST request to the forgot-password endpoint with an invalid email format (e.g., 'invalid-email').",
+          "Check the response status code.",
+          "Verify the response message indicates that the email format is invalid."
+        ],
+        "expected_result": "Response status code is 400 and the message indicates that the email format is invalid."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.861
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.15,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.832,
+      "min_similarity": 0.786,
+      "max_similarity": 0.901
+    },
+    "overall_score": 76.63
+  }
+}

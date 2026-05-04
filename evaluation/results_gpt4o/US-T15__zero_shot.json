@@ -1,0 +1,101 @@
+{
+  "story_id": "US-T15",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to update the priority of an existing task so that I can reprioritize my work.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update priority of an existing task successfully",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the task list",
+          "Select a task to update",
+          "Open the task details",
+          "Change the priority level to a new valid value",
+          "Save the changes"
+        ],
+        "expected_result": "Task priority is updated successfully and reflected in the task list."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to update task priority without sufficient permissions",
+        "steps": [
+          "Log in to the application with a user account that does not have edit permissions",
+          "Navigate to the task list",
+          "Select a task to update",
+          "Try to change the priority level"
+        ],
+        "expected_result": "User receives an error message stating they do not have permission to update the task priority."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to update priority with an extremely large value",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the task list",
+          "Select a task to update",
+          "Open the task details",
+          "Change the priority level to an extremely large integer value",
+          "Save the changes"
+        ],
+        "expected_result": "System restricts the value and prompts the user with an error message indicating the priority level is invalid."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 75.84,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.758,
+      "min_similarity": 0.709,
+      "max_similarity": 0.818
+    },
+    "overall_score": 78.5
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "story_id": "US-T11",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want task creation to fail when the title is empty so that all tasks have a meaningful name.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Task creation with valid title",
+        "steps": [
+          "Open the task creation form.",
+          "Enter a valid title into the title field.",
+          "Fill in the necessary details.",
+          "Submit the task."
+        ],
+        "expected_result": "The task is created successfully with the provided title."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Task creation with empty title",
+        "steps": [
+          "Open the task creation form.",
+          "Leave the title field empty.",
+          "Fill in the necessary details.",
+          "Submit the task."
+        ],
+        "expected_result": "Task creation fails with an error message indicating that the title cannot be empty."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Task creation with whitespace title",
+        "steps": [
+          "Open the task creation form.",
+          "Enter only whitespace into the title field.",
+          "Fill in the necessary details.",
+          "Submit the task."
+        ],
+        "expected_result": "Task creation fails with an error message indicating that the title cannot be empty or must be meaningful."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.902
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.852
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.69,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.817,
+      "min_similarity": 0.801,
+      "max_similarity": 0.828
+    },
+    "overall_score": 66.34
+  }
+}

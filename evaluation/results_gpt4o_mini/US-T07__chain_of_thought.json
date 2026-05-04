@@ -1,0 +1,108 @@
+{
+  "story_id": "US-T07",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to mark a task as complete so that I can track my progress.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully mark a task as complete",
+        "steps": [
+          "Login to the application",
+          "Navigate to the task list",
+          "Select a task",
+          "Click on the 'Mark as Complete' button",
+          "Verify the task status changes to complete"
+        ],
+        "expected_result": "The task is marked as complete and reflects the updated status in the task list."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to mark a task as complete without logging in",
+        "steps": [
+          "Navigate to the task list",
+          "Select a task",
+          "Click on the 'Mark as Complete' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the user must log in to mark a task as complete."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Mark a task as complete that is already completed",
+        "steps": [
+          "Login to the application",
+          "Navigate to the task list",
+          "Select a task that is already marked as complete",
+          "Click on the 'Mark as Complete' button"
+        ],
+        "expected_result": "A message is displayed indicating that the task is already marked as complete and no changes are made."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.904
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.858
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 70.4,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.704,
+      "min_similarity": 0.657,
+      "max_similarity": 0.754
+    },
+    "overall_score": 70.75
+  }
+}

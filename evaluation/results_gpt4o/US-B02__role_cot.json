@@ -1,0 +1,108 @@
+{
+  "story_id": "US-B02",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want to see all my bookings so that I can review my reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Guest views bookings successfully",
+        "steps": [
+          "Navigate to the website",
+          "Log in as a guest",
+          "Access the 'My Bookings' section"
+        ],
+        "expected_result": "Guest is able to see a list of all their bookings."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Guest cannot view bookings without login",
+        "steps": [
+          "Navigate to the website",
+          "Attempt to access the 'My Bookings' section without logging in"
+        ],
+        "expected_result": "'Access Denied' message is displayed, and bookings are not shown."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Guest with no bookings attempts to view their bookings",
+        "steps": [
+          "Navigate to the website",
+          "Log in as a guest",
+          "Access the 'My Bookings' section"
+        ],
+        "expected_result": "A message indicating no bookings are present is displayed, such as 'You currently have no bookings.'"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.908
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.905
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.938
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 67.71,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.677,
+      "min_similarity": 0.668,
+      "max_similarity": 0.684
+    },
+    "overall_score": 60.21
+  }
+}

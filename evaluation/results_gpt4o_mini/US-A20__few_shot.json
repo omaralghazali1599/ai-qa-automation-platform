@@ -1,0 +1,107 @@
+{
+  "story_id": "US-A20",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want the forgot-password endpoint to require the email field so that incomplete requests are rejected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully send request with valid email",
+        "steps": [
+          "Send POST request to forgot-password endpoint with valid email in payload",
+          "Check response"
+        ],
+        "expected_result": "Successful response indicating reset link sent"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to send request with missing email",
+        "steps": [
+          "Send POST request to forgot-password endpoint without email in payload",
+          "Check response"
+        ],
+        "expected_result": "Error message: email is required"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to send request with empty email field",
+        "steps": [
+          "Send POST request to forgot-password endpoint with empty email field in payload",
+          "Check response"
+        ],
+        "expected_result": "Validation error: email is required"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.921
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.891
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.939
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.34,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.833,
+      "min_similarity": 0.8,
+      "max_similarity": 0.861
+    },
+    "overall_score": 66.67
+  }
+}

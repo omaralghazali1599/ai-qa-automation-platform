@@ -1,0 +1,97 @@
+{
+  "story_id": "US-B14",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want the system to reject a booking with 0 guests so that only valid guest counts are accepted.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "System accepts a booking with one or more guests",
+        "steps": [
+          "Open the booking system page.",
+          "Enter valid guest count as 1 or more.",
+          "Complete the rest of the booking details.",
+          "Submit the booking request."
+        ],
+        "expected_result": "The booking is accepted and a confirmation is provided."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "System rejects a booking with 0 guests",
+        "steps": [
+          "Open the booking system page.",
+          "Enter guest count as 0.",
+          "Complete the rest of the booking details.",
+          "Submit the booking request."
+        ],
+        "expected_result": "The booking is rejected with an error message indicating 0 guests is not acceptable."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "System handling of maximum guests booking",
+        "steps": [
+          "Open the booking system page.",
+          "Enter guest count as the maximum allowed (e.g., 100 depending on system constraints).",
+          "Complete the rest of the booking details.",
+          "Submit the booking request."
+        ],
+        "expected_result": "The booking is accepted at maximum limit and a confirmation is provided without any errors."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 72.76,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.728,
+      "min_similarity": 0.643,
+      "max_similarity": 0.82
+    },
+    "overall_score": 81.22
+  }
+}

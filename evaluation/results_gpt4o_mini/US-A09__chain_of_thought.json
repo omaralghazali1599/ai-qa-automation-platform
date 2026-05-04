@@ -1,0 +1,91 @@
+{
+  "story_id": "US-A09",
+  "app": "auth",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to be blocked from logging in if my account is locked so that security is enforced.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful block from logging in with a locked account",
+        "steps": [
+          "User attempts to log in with valid credentials.",
+          "User's account status is checked and found to be locked."
+        ],
+        "expected_result": "User is presented with a message indicating the account is locked and is denied access."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Unsuccessful login attempt with incorrect credentials",
+        "steps": [
+          "User attempts to log in with invalid credentials.",
+          "User's account status is checked."
+        ],
+        "expected_result": "User is presented with a message indicating invalid credentials regardless of account status."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Account locked after too many failed login attempts",
+        "steps": [
+          "User attempts to log in with invalid credentials multiple times (more than limit).",
+          "User attempts to log in again with valid credentials."
+        ],
+        "expected_result": "User is presented with a message indicating the account is locked and is denied access."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "invalid_format",
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "boundary_value"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.64,
+      "generated_cases": 3,
+      "baseline_cases": 11,
+      "avg_best_match_similarity": 0.806,
+      "min_similarity": 0.684,
+      "max_similarity": 0.885
+    },
+    "overall_score": 86.13
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "story_id": "US-B11",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a staff member, I want confirming an already-cancelled booking to return an error so that invalid state transitions are blocked.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Confirm a booking that is active and not cancelled",
+        "steps": [
+          "Step 1: Log in as a staff member.",
+          "Step 2: Navigate to the booking management system.",
+          "Step 3: Search for an active booking that has not been cancelled.",
+          "Step 4: Select the booking.",
+          "Step 5: Confirm the booking."
+        ],
+        "expected_result": "The booking is confirmed successfully, and no errors are returned."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to confirm an already-cancelled booking",
+        "steps": [
+          "Step 1: Log in as a staff member.",
+          "Step 2: Navigate to the booking management system.",
+          "Step 3: Search for a booking that has already been cancelled.",
+          "Step 4: Select the cancelled booking.",
+          "Step 5: Attempt to confirm the booking."
+        ],
+        "expected_result": "An error message is displayed indicating that an already-cancelled booking cannot be confirmed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to confirm a booking immediately after it is cancelled",
+        "steps": [
+          "Step 1: Log in as a staff member.",
+          "Step 2: Navigate to the booking management system.",
+          "Step 3: Search for an active booking.",
+          "Step 4: Select the booking and cancel it.",
+          "Step 5: Immediately attempt to confirm the booking."
+        ],
+        "expected_result": "An error message is displayed indicating that an already-cancelled booking cannot be confirmed, even immediately after cancellation."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.924
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.92
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.951
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.41,
+      "generated_cases": 3,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.814,
+      "min_similarity": 0.788,
+      "max_similarity": 0.829
+    },
+    "overall_score": 66.28
+  }
+}

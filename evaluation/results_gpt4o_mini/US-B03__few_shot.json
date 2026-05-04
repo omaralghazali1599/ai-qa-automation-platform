@@ -1,0 +1,105 @@
+{
+  "story_id": "US-B03",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to retrieve a booking by its ID so that I can see its details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Retrieve booking with valid ID",
+        "steps": [
+          "Navigate to booking retrieval page",
+          "Enter valid booking ID",
+          "Click Retrieve"
+        ],
+        "expected_result": "Booking details are displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Retrieve booking with non-existent ID",
+        "steps": [
+          "Navigate to booking retrieval page",
+          "Enter invalid booking ID",
+          "Click Retrieve"
+        ],
+        "expected_result": "Error message: booking not found"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Retrieve booking with empty ID",
+        "steps": [
+          "Navigate to booking retrieval page",
+          "Leave booking ID field blank",
+          "Click Retrieve"
+        ],
+        "expected_result": "Validation error: booking ID is required"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.923
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.863
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 77.45,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.774,
+      "min_similarity": 0.749,
+      "max_similarity": 0.798
+    },
+    "overall_score": 65.49
+  }
+}

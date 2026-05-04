@@ -1,0 +1,89 @@
+{
+  "story_id": "US-B15",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want cancelling an already-cancelled booking to return a clear error so that duplicate cancellations are handled.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully cancel a booking that was already cancelled",
+        "steps": [
+          "User selects a cancelled booking from the list",
+          "User attempts to cancel the booking again"
+        ],
+        "expected_result": "The system returns an error message indicating the booking cannot be cancelled again."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to cancel a booking that does not exist",
+        "steps": [
+          "User tries to cancel a booking with an invalid or non-existent booking ID"
+        ],
+        "expected_result": "The system returns an error message indicating that the booking does not exist."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Cancel an already-cancelled booking multiple times rapidly",
+        "steps": [
+          "User initiates multiple cancellation requests on the same already-cancelled booking in quick succession"
+        ],
+        "expected_result": "The system returns an error message for each cancellation attempt after the first, indicating the booking cannot be cancelled again."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 79.34,
+      "generated_cases": 3,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.793,
+      "min_similarity": 0.757,
+      "max_similarity": 0.824
+    },
+    "overall_score": 79.2
+  }
+}

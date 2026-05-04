@@ -1,0 +1,93 @@
+{
+  "story_id": "US-A03",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a logged-in user, I want to log out so that my session is ended securely.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Logout from dashboard",
+        "steps": [
+          "User is logged in",
+          "Navigate to user menu",
+          "Click on 'Logout' button"
+        ],
+        "expected_result": "User is logged out and redirected to the login page"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Logout without being logged in",
+        "steps": [
+          "Ensure user is not logged in",
+          "Attempt to access dashboard",
+          "Attempt to use logout functionality"
+        ],
+        "expected_result": "Error message shown: 'You must be logged in to log out' and user stays on login page"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Logout with expired session",
+        "steps": [
+          "User is logged in",
+          "Wait for session to expire",
+          "Attempt to logout"
+        ],
+        "expected_result": "User is informed that their session has expired and redirected to login page"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 69.77,
+      "generated_cases": 3,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.698,
+      "min_similarity": 0.681,
+      "max_similarity": 0.707
+    },
+    "overall_score": 73.95
+  }
+}

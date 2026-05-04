@@ -1,0 +1,110 @@
+{
+  "story_id": "US-B01",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want to create a booking with my name, room type, and dates so that I can reserve a room.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully create a booking with valid details",
+        "steps": [
+          "Navigate to the booking page",
+          "Fill in the guest name with a valid name",
+          "Select a room type from the options available",
+          "Select valid start and end dates for the booking",
+          "Submit the booking form"
+        ],
+        "expected_result": "The booking is created successfully and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Fail to create a booking with missing guest name",
+        "steps": [
+          "Navigate to the booking page",
+          "Leave the guest name field empty",
+          "Select a room type from the options available",
+          "Select valid start and end dates for the booking",
+          "Submit the booking form"
+        ],
+        "expected_result": "An error message stating 'Guest name is required' is displayed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create a booking for a single day stay",
+        "steps": [
+          "Navigate to the booking page",
+          "Fill in the guest name with a valid name",
+          "Select a room type from the options available",
+          "Select the same start and end date for the booking",
+          "Submit the booking form"
+        ],
+        "expected_result": "The booking is created successfully, allowing a single day reservation, and a confirmation message is displayed."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.863
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.905
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.7,
+      "generated_cases": 3,
+      "baseline_cases": 18,
+      "avg_best_match_similarity": 0.767,
+      "min_similarity": 0.735,
+      "max_similarity": 0.821
+    },
+    "overall_score": 62.01
+  }
+}

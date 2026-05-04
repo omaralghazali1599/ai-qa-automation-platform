@@ -1,0 +1,183 @@
+{
+  "story_id": "US-B01",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want to create a booking with my name, room type, and dates so that I can reserve a room.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful booking with valid details",
+        "steps": [
+          "Open the booking page",
+          "Enter a valid name",
+          "Select a room type from the available options",
+          "Select check-in and check-out dates within the available range",
+          "Submit the booking request"
+        ],
+        "expected_result": "Booking is created successfully and confirmation message is displayed"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Booking with minimum date range",
+        "steps": [
+          "Open the booking page",
+          "Enter a valid name",
+          "Select a room type from the available options",
+          "Select check-in date as today and check-out date tomorrow",
+          "Submit the booking request"
+        ],
+        "expected_result": "Booking is created successfully and confirmation message is displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Booking with missing name",
+        "steps": [
+          "Open the booking page",
+          "Leave the name field empty",
+          "Select a room type from the available options",
+          "Select check-in and check-out dates",
+          "Submit the booking request"
+        ],
+        "expected_result": "Error message is displayed indicating that the name is required"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Booking with invalid room type",
+        "steps": [
+          "Open the booking page",
+          "Enter a valid name",
+          "Select an invalid room type",
+          "Select check-in and check-out dates",
+          "Submit the booking request"
+        ],
+        "expected_result": "Error message is displayed indicating that the room type is invalid"
+      },
+      {
+        "id": "TC-N03",
+        "title": "Booking with check-out date before check-in date",
+        "steps": [
+          "Open the booking page",
+          "Enter a valid name",
+          "Select a room type from the available options",
+          "Select check-in date as tomorrow and check-out date as today",
+          "Submit the booking request"
+        ],
+        "expected_result": "Error message is displayed indicating that check-out date must be after check-in date"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Booking for a leap year date range",
+        "steps": [
+          "Open the booking page",
+          "Enter a valid name",
+          "Select a room type from the available options",
+          "Select check-in date as February 29 of a leap year and check-out date as March 1 of the following year",
+          "Submit the booking request"
+        ],
+        "expected_result": "Booking is created successfully and confirmation message is displayed"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Booking at the last minute (same day)",
+        "steps": [
+          "Open the booking page",
+          "Enter a valid name",
+          "Select a room type from the available options",
+          "Select today's date for check-in and a date within one month for check-out",
+          "Submit the booking request"
+        ],
+        "expected_result": "Booking is created successfully and confirmation message is displayed"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 7,
+      "passed": 7,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 42.86,
+      "total_cases": 7,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.875
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.89
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.868
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-N03",
+          "similarity": 0.935
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E02",
+          "similarity": 0.888
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.858
+        },
+        {
+          "case_a": "TC-N03",
+          "case_b": "TC-E02",
+          "similarity": 0.893
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 7,
+      "covered": 7,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 2,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 74.88,
+      "generated_cases": 7,
+      "baseline_cases": 18,
+      "avg_best_match_similarity": 0.749,
+      "min_similarity": 0.664,
+      "max_similarity": 0.802
+    },
+    "overall_score": 63.55
+  }
+}

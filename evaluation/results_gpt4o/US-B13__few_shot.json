@@ -1,0 +1,129 @@
+{
+  "story_id": "US-B13",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to filter bookings by status so that I can see only pending, confirmed, or cancelled reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter bookings by pending status",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'Pending' from status filter dropdown",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "Only bookings with pending status are displayed"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter bookings by confirmed status",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'Confirmed' from status filter dropdown",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "Only bookings with confirmed status are displayed"
+      },
+      {
+        "id": "TC-P03",
+        "title": "Filter bookings by cancelled status",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'Cancelled' from status filter dropdown",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "Only bookings with cancelled status are displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter bookings with no selected status",
+        "steps": [
+          "Navigate to bookings page",
+          "Leave status filter dropdown empty",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "Error message shown: 'Please select a status to filter by'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter bookings with all statuses selected",
+        "steps": [
+          "Navigate to bookings page",
+          "Select all options in status filter dropdown",
+          "Click 'Apply Filter'"
+        ],
+        "expected_result": "All bookings are displayed regardless of status"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 60.0,
+      "total_cases": 5,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.882
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.867
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E01",
+          "similarity": 0.867
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.14,
+      "generated_cases": 5,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.811,
+      "min_similarity": 0.763,
+      "max_similarity": 0.844
+    },
+    "overall_score": 68.23
+  }
+}

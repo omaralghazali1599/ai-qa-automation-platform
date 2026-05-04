@@ -1,0 +1,117 @@
+{
+  "story_id": "US-A19",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want logging out twice in a row to not cause an error so that the logout action is idempotent.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Logout twice successfully",
+        "steps": [
+          "Log in to the application.",
+          "Click the 'Logout' button.",
+          "Click the 'Logout' button again."
+        ],
+        "expected_result": "User is logged out without any errors and redirected to the login page."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Logout after session timeout",
+        "steps": [
+          "Log in to the application.",
+          "Wait for the session to timeout.",
+          "Click the 'Logout' button."
+        ],
+        "expected_result": "User is logged out and redirected to the login page without errors."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Logout without being logged in",
+        "steps": [
+          "Do not log in to the application.",
+          "Click the 'Logout' button."
+        ],
+        "expected_result": "The application provides an error message indicating the user is not logged in."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Simultaneous logout requests",
+        "steps": [
+          "Log in to the application.",
+          "Simultaneously issue two logout requests."
+        ],
+        "expected_result": "User is logged out successfully without errors, and the second request does not cause any issues."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Logout during a network interruption",
+        "steps": [
+          "Log in to the application.",
+          "Simulate a network interruption during logout.",
+          "Click the 'Logout' button."
+        ],
+        "expected_result": "User is logged out without errors despite the network interruption."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 80.0,
+      "total_cases": 5,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-N01",
+          "similarity": 0.877
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 2,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.42,
+      "generated_cases": 5,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.764,
+      "min_similarity": 0.689,
+      "max_similarity": 0.832
+    },
+    "overall_score": 71.28
+  }
+}

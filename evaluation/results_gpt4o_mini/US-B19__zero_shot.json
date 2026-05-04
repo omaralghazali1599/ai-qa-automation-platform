@@ -1,0 +1,160 @@
+{
+  "story_id": "US-B19",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want to create a booking with the maximum allowed guests (10) so that boundary values are handled correctly.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Booking creation with maximum allowed guests",
+        "steps": [
+          "Navigate to the booking page as a guest",
+          "Select the date and time for the booking",
+          "Input guest count as 10",
+          "Fill in other required booking details",
+          "Submit the booking form"
+        ],
+        "expected_result": "Booking is successfully created for 10 guests with confirmation notification."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Booking creation with more than maximum allowed guests",
+        "steps": [
+          "Navigate to the booking page as a guest",
+          "Select the date and time for the booking",
+          "Input guest count as 11",
+          "Fill in other required booking details",
+          "Submit the booking form"
+        ],
+        "expected_result": "Booking is not created and an error message is displayed indicating the maximum guest limit."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Booking creation with zero guests",
+        "steps": [
+          "Navigate to the booking page as a guest",
+          "Select the date and time for the booking",
+          "Input guest count as 0",
+          "Fill in other required booking details",
+          "Submit the booking form"
+        ],
+        "expected_result": "Booking is not created and an error message is displayed indicating that at least one guest is required."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Booking creation with minimum allowed guests (1)",
+        "steps": [
+          "Navigate to the booking page as a guest",
+          "Select the date and time for the booking",
+          "Input guest count as 1",
+          "Fill in other required booking details",
+          "Submit the booking form"
+        ],
+        "expected_result": "Booking is successfully created for 1 guest with confirmation notification."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Booking creation with maximum allowed guests just below the limit (9)",
+        "steps": [
+          "Navigate to the booking page as a guest",
+          "Select the date and time for the booking",
+          "Input guest count as 9",
+          "Fill in other required booking details",
+          "Submit the booking form"
+        ],
+        "expected_result": "Booking is successfully created for 9 guests with confirmation notification."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 40.0,
+      "total_cases": 5,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.963
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.917
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.941
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.914
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E02",
+          "similarity": 0.925
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E01",
+          "similarity": 0.875
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E02",
+          "similarity": 0.883
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.36,
+      "generated_cases": 5,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.714,
+      "min_similarity": 0.669,
+      "max_similarity": 0.759
+    },
+    "overall_score": 72.27
+  }
+}

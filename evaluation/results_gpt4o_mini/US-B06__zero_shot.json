@@ -1,0 +1,182 @@
+{
+  "story_id": "US-B06",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a staff member, I want to delete a pending booking so that cancelled or invalid bookings are removed.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Delete a valid pending booking",
+        "steps": [
+          "Log in as a staff member.",
+          "Navigate to the bookings page.",
+          "Select a pending booking.",
+          "Click on the delete button.",
+          "Confirm deletion."
+        ],
+        "expected_result": "The selected pending booking is successfully deleted and no longer appears in the bookings list."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Delete multiple valid pending bookings",
+        "steps": [
+          "Log in as a staff member.",
+          "Navigate to the bookings page.",
+          "Select multiple pending bookings.",
+          "Click on the delete button.",
+          "Confirm deletion."
+        ],
+        "expected_result": "All selected pending bookings are successfully deleted and do not appear in the bookings list."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Delete a completed booking",
+        "steps": [
+          "Log in as a staff member.",
+          "Navigate to the bookings page.",
+          "Select a completed booking.",
+          "Click on the delete button.",
+          "Try to confirm deletion."
+        ],
+        "expected_result": "An error message appears stating that completed bookings cannot be deleted."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to delete a pending booking without proper permissions",
+        "steps": [
+          "Log in as a user without admin rights.",
+          "Navigate to the bookings page.",
+          "Select a pending booking.",
+          "Click on the delete button.",
+          "Try to confirm deletion."
+        ],
+        "expected_result": "An error message appears stating that the user does not have permission to delete bookings."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Delete a pending booking that doesn't exist",
+        "steps": [
+          "Log in as a staff member.",
+          "Navigate to the bookings page.",
+          "Select a non-existent booking ID.",
+          "Click on the delete button.",
+          "Try to confirm deletion."
+        ],
+        "expected_result": "An error message appears stating that the booking does not exist."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Simultaneous deletion of bookings from multiple sessions",
+        "steps": [
+          "Log in as a staff member in two different sessions.",
+          "Navigate to the bookings page in both sessions.",
+          "In session one, select a pending booking to delete.",
+          "In session two, select the same pending booking to delete.",
+          "Try to confirm deletion in both sessions."
+        ],
+        "expected_result": "One session successfully deletes the booking, while the other receives an error message stating that the booking no longer exists."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 6,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.944
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.919
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.874
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.934
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-N01",
+          "similarity": 0.859
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E01",
+          "similarity": 0.862
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.862
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.929
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E01",
+          "similarity": 0.88
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.31,
+      "generated_cases": 6,
+      "baseline_cases": 10,
+      "avg_best_match_similarity": 0.813,
+      "min_similarity": 0.769,
+      "max_similarity": 0.856
+    },
+    "overall_score": 66.26
+  }
+}

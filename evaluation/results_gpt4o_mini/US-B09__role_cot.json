@@ -1,0 +1,100 @@
+{
+  "story_id": "US-B09",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want the system to reject more than 10 guests per booking so that room capacity is respected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "System accepts booking for 10 guests",
+        "steps": [
+          "Navigate to the booking page.",
+          "Select 10 guests for the booking.",
+          "Submit the booking request."
+        ],
+        "expected_result": "The booking is accepted, and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "System rejects booking for 11 guests",
+        "steps": [
+          "Navigate to the booking page.",
+          "Select 11 guests for the booking.",
+          "Submit the booking request."
+        ],
+        "expected_result": "The booking is rejected, and an error message indicating too many guests is displayed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "System handles booking for 10 guests plus 1 child",
+        "steps": [
+          "Navigate to the booking page.",
+          "Select 10 adults and 1 child for the booking.",
+          "Submit the booking request."
+        ],
+        "expected_result": "The booking is accepted, and a confirmation message is displayed."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.882
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 77.09,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.771,
+      "min_similarity": 0.719,
+      "max_similarity": 0.811
+    },
+    "overall_score": 72.09
+  }
+}

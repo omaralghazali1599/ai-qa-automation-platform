@@ -1,0 +1,97 @@
+{
+  "story_id": "US-A08",
+  "app": "auth",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to see an error when I try to log in with a wrong password so that I know my credentials are incorrect.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful login with valid credentials",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a valid username",
+          "Enter a valid password",
+          "Click the login button"
+        ],
+        "expected_result": "User successfully logs in and is taken to the dashboard."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to log in with an incorrect password",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a valid username",
+          "Enter an incorrect password",
+          "Click the login button"
+        ],
+        "expected_result": "An error message is displayed indicating that the credentials are incorrect."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to log in with a blank password",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a valid username",
+          "Leave the password field blank",
+          "Click the login button"
+        ],
+        "expected_result": "An error message is displayed indicating that the password cannot be blank."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 70.73,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.707,
+      "min_similarity": 0.642,
+      "max_similarity": 0.811
+    },
+    "overall_score": 77.48
+  }
+}

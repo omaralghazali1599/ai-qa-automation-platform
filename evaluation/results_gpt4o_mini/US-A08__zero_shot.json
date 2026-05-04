@@ -1,0 +1,145 @@
+{
+  "story_id": "US-A08",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to see an error when I try to log in with a wrong password so that I know my credentials are incorrect.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful login with correct credentials",
+        "steps": [
+          "Open the login page.",
+          "Enter a valid username.",
+          "Enter the correct password.",
+          "Click the 'Login' button."
+        ],
+        "expected_result": "User is successfully logged in and redirected to the homepage."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Login attempt with incorrect password",
+        "steps": [
+          "Open the login page.",
+          "Enter a valid username.",
+          "Enter an incorrect password.",
+          "Click the 'Login' button."
+        ],
+        "expected_result": "An error message is displayed stating 'Invalid credentials. Please try again.'"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Login attempt with blank credentials",
+        "steps": [
+          "Open the login page.",
+          "Leave the username and password fields blank.",
+          "Click the 'Login' button."
+        ],
+        "expected_result": "An error message is displayed stating 'Username and password cannot be empty.'"
+      },
+      {
+        "id": "TC-N03",
+        "title": "Login attempt with non-existing username",
+        "steps": [
+          "Open the login page.",
+          "Enter a non-existing username.",
+          "Enter any password.",
+          "Click the 'Login' button."
+        ],
+        "expected_result": "An error message is displayed stating 'Invalid credentials. Please try again.'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Login attempt with a very long password",
+        "steps": [
+          "Open the login page.",
+          "Enter a valid username.",
+          "Enter a password with 256 characters.",
+          "Click the 'Login' button."
+        ],
+        "expected_result": "An error message is displayed stating 'Password is too long.'"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Login attempt with special characters in username",
+        "steps": [
+          "Open the login page.",
+          "Enter a username with special characters (e.g. '@#$%^&*')",
+          "Enter a valid password.",
+          "Click the 'Login' button."
+        ],
+        "expected_result": "An error message is displayed stating 'Invalid username format.'"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 6,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.896
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N03",
+          "similarity": 0.852
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N03",
+          "similarity": 0.868
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 65.56,
+      "generated_cases": 6,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.656,
+      "min_similarity": 0.55,
+      "max_similarity": 0.794
+    },
+    "overall_score": 76.45
+  }
+}

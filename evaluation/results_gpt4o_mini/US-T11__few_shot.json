@@ -1,0 +1,91 @@
+{
+  "story_id": "US-T11",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want task creation to fail when the title is empty so that all tasks have a meaningful name.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Task creation with empty title",
+        "steps": [
+          "Navigate to the task creation page",
+          "Leave the title field blank",
+          "Enter other required fields",
+          "Click Create Task"
+        ],
+        "expected_result": "Error message shown indicating that the title is required"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Task creation with whitespace as title",
+        "steps": [
+          "Navigate to the task creation page",
+          "Enter only whitespace in the title field",
+          "Enter other required fields",
+          "Click Create Task"
+        ],
+        "expected_result": "Error message shown indicating that the title cannot be empty or just whitespace"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 2,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.867
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.22,
+      "generated_cases": 2,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.812,
+      "min_similarity": 0.799,
+      "max_similarity": 0.826
+    },
+    "overall_score": 69.58
+  }
+}

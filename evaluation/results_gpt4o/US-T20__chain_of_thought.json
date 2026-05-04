@@ -1,0 +1,98 @@
+{
+  "story_id": "US-T20",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to update multiple fields of a task in a single request so that I can edit efficiently.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update multiple fields of a task successfully",
+        "steps": [
+          "Log in as a registered user",
+          "Navigate to the task list",
+          "Select a specific task",
+          "Update multiple fields (e.g., title, description, due date) in a single request",
+          "Submit the update request"
+        ],
+        "expected_result": "The task is updated with all specified changes and a success confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Update task fields with invalid data",
+        "steps": [
+          "Log in as a registered user",
+          "Navigate to the task list",
+          "Select a specific task",
+          "Attempt to update fields with invalid data (e.g., non-existent date, exceeding character limit) in a single request",
+          "Submit the update request"
+        ],
+        "expected_result": "The update fails, and the user receives an error message indicating the invalid fields."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update a task with no fields changed",
+        "steps": [
+          "Log in as a registered user",
+          "Navigate to the task list",
+          "Select a specific task",
+          "Submit an update request without changing any fields"
+        ],
+        "expected_result": "The system processes the request but no changes occur, and the user receives a message indicating no updates were made."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 63.96,
+      "generated_cases": 3,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.64,
+      "min_similarity": 0.621,
+      "max_similarity": 0.65
+    },
+    "overall_score": 72.79
+  }
+}

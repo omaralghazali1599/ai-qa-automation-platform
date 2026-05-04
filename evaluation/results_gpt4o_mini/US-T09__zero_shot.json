@@ -1,0 +1,148 @@
+{
+  "story_id": "US-T09",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to delete a task so that I can remove items I no longer need.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Delete an existing task successfully",
+        "steps": [
+          "Navigate to the task list",
+          "Select a task to delete",
+          "Click on the 'Delete' button",
+          "Confirm the deletion"
+        ],
+        "expected_result": "The task is removed from the task list"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Delete multiple tasks successfully",
+        "steps": [
+          "Navigate to the task list",
+          "Select multiple tasks to delete",
+          "Click on the 'Delete' button",
+          "Confirm the deletion"
+        ],
+        "expected_result": "All selected tasks are removed from the task list"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to delete a non-existent task",
+        "steps": [
+          "Navigate to the task list",
+          "Try to select a task that does not exist",
+          "Click on the 'Delete' button",
+          "Confirm the deletion"
+        ],
+        "expected_result": "Error message indicating the task does not exist"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Cancel deletion of a task",
+        "steps": [
+          "Navigate to the task list",
+          "Select a task to delete",
+          "Click on the 'Delete' button",
+          "Cancel the deletion when prompted"
+        ],
+        "expected_result": "The task remains in the task list"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Delete task when the task list is empty",
+        "steps": [
+          "Navigate to the task list",
+          "Try to delete a task when no tasks exist"
+        ],
+        "expected_result": "Error message indicating no tasks available to delete"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Delete the last remaining task",
+        "steps": [
+          "Navigate to the task list",
+          "Delete the only task present in the list",
+          "Confirm the deletion"
+        ],
+        "expected_result": "The task list is empty after the deletion"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 6,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.902
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.878
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.881
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.874
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.22,
+      "generated_cases": 6,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.732,
+      "min_similarity": 0.642,
+      "max_similarity": 0.796
+    },
+    "overall_score": 64.64
+  }
+}

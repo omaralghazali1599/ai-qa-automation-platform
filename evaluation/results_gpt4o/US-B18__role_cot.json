@@ -1,0 +1,100 @@
+{
+  "story_id": "US-B18",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a staff member, I want to filter bookings by an invalid status to return an error so that only valid filter values are accepted.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter bookings with a valid status",
+        "steps": [
+          "Log in as a staff member.",
+          "Navigate to the bookings page.",
+          "Apply filter with a valid status (e.g., 'Confirmed')."
+        ],
+        "expected_result": "Bookings with status 'Confirmed' are displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter bookings with an invalid status",
+        "steps": [
+          "Log in as a staff member.",
+          "Navigate to the bookings page.",
+          "Apply filter with an invalid status (e.g., 'InvalidStatus')."
+        ],
+        "expected_result": "An error message is displayed, stating that the filter value is invalid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter bookings with an empty status field",
+        "steps": [
+          "Log in as a staff member.",
+          "Navigate to the bookings page.",
+          "Apply filter with an empty status."
+        ],
+        "expected_result": "An error message is displayed, requesting the user to enter a valid status value."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.853
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 79.19,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.792,
+      "min_similarity": 0.785,
+      "max_similarity": 0.8
+    },
+    "overall_score": 72.51
+  }
+}

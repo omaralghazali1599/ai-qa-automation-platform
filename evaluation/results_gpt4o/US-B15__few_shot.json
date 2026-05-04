@@ -1,0 +1,83 @@
+{
+  "story_id": "US-B15",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want cancelling an already-cancelled booking to return a clear error so that duplicate cancellations are handled.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to cancel an already-cancelled booking",
+        "steps": [
+          "Navigate to bookings page",
+          "Select an already-cancelled booking",
+          "Attempt to cancel the booking again"
+        ],
+        "expected_result": "Clear error message displayed, indicating the booking has already been cancelled"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to cancel a booking with invalid booking ID",
+        "steps": [
+          "Navigate to bookings page",
+          "Input an invalid booking ID",
+          "Attempt to cancel with invalid booking ID"
+        ],
+        "expected_result": "Error message displayed: invalid booking ID"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 2,
+      "unique_cases": 2,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.62,
+      "generated_cases": 2,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.836,
+      "min_similarity": 0.82,
+      "max_similarity": 0.852
+    },
+    "overall_score": 80.06
+  }
+}

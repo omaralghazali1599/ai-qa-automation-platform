@@ -1,0 +1,120 @@
+{
+  "story_id": "US-T14",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to filter tasks by completion status so that I can see only open or only done tasks.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter tasks to show only open tasks",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select 'Open' from the completion status filter",
+          "Observe the task list"
+        ],
+        "expected_result": "Only tasks marked as open are displayed"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter tasks to show only done tasks",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select 'Done' from the completion status filter",
+          "Observe the task list"
+        ],
+        "expected_result": "Only tasks marked as done are displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter tasks with an invalid status",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select an invalid status 'In Progress' from the completion status filter",
+          "Observe the task list"
+        ],
+        "expected_result": "An error message is displayed indicating an invalid filter selection"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter tasks when no tasks exist",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select 'Open' from the completion status filter",
+          "Observe the task list"
+        ],
+        "expected_result": "An empty task list is displayed with a message indicating there are no tasks available"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 4,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.86
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.923
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E01",
+          "similarity": 0.876
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 4,
+      "covered": 4,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.55,
+      "generated_cases": 4,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.715,
+      "min_similarity": 0.694,
+      "max_similarity": 0.745
+    },
+    "overall_score": 67.64
+  }
+}

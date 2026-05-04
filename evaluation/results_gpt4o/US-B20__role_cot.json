@@ -1,0 +1,110 @@
+{
+  "story_id": "US-B20",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want to create a booking with a very long guest name so that the system handles long string inputs gracefully.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create booking with a long guest name within allowable limits",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter a guest name consisting of 255 characters (the maximum allowable limit).",
+          "Complete the remaining booking details and submit the form."
+        ],
+        "expected_result": "The booking is successfully created without any errors, and the guest name is stored and displayed correctly."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Create booking with a guest name exceeding allowable limits",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter a guest name consisting of 256 characters (one above the maximum limit).",
+          "Complete the remaining booking details and attempt to submit the form."
+        ],
+        "expected_result": "The system displays an error message indicating that the guest name exceeds the allowable length limit and prevents form submission."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create booking with a guest name at the boundary limit",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter a guest name consisting of 255 characters (exactly at the maximum limit).",
+          "Complete the remaining booking details and submit the form."
+        ],
+        "expected_result": "The booking is processed successfully, and no errors are thrown for the guest name. The full name is stored and displayed accurately in the system."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.977
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.967
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.955
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 86.49,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.865,
+      "min_similarity": 0.861,
+      "max_similarity": 0.869
+    },
+    "overall_score": 73.96
+  }
+}

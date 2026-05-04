@@ -1,0 +1,111 @@
+{
+  "story_id": "US-B05",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to cancel my booking so that I can free up the reservation.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Cancel booking with valid booking ID",
+        "steps": [
+          "Navigate to booking page",
+          "Enter valid booking ID",
+          "Click Cancel Booking button",
+          "Confirm cancellation"
+        ],
+        "expected_result": "Booking successfully canceled with confirmation message shown"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Cancel booking with invalid booking ID",
+        "steps": [
+          "Navigate to booking page",
+          "Enter invalid booking ID",
+          "Click Cancel Booking button"
+        ],
+        "expected_result": "Error message shown: 'Booking ID not found'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Cancel booking with a booking ID already canceled",
+        "steps": [
+          "Navigate to booking page",
+          "Enter booking ID of already canceled reservation",
+          "Click Cancel Booking button"
+        ],
+        "expected_result": "Error message shown: 'Booking has already been canceled'"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.932
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.94
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.921
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 84.34,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.843,
+      "min_similarity": 0.825,
+      "max_similarity": 0.853
+    },
+    "overall_score": 66.87
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "story_id": "US-T20",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to update multiple fields of a task in a single request so that I can edit efficiently.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update multiple fields of a task successfully",
+        "steps": [
+          "Navigate to task management page",
+          "Select a task to edit",
+          "Update the title, description, and due date",
+          "Click Save Changes"
+        ],
+        "expected_result": "Task is updated successfully and confirmation message is displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Update task with invalid due date",
+        "steps": [
+          "Navigate to task management page",
+          "Select a task to edit",
+          "Update the title and description",
+          "Enter an invalid due date format",
+          "Click Save Changes"
+        ],
+        "expected_result": "Error message: invalid due date format, task remains unchanged"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task with empty fields",
+        "steps": [
+          "Navigate to task management page",
+          "Select a task to edit",
+          "Clear the title and description fields",
+          "Click Save Changes"
+        ],
+        "expected_result": "Validation error: title and description cannot be empty"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "special_chars"
+      ],
+      "missing_categories": [
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 55.2,
+      "generated_cases": 3,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.552,
+      "min_similarity": 0.529,
+      "max_similarity": 0.572
+    },
+    "overall_score": 77.71
+  }
+}

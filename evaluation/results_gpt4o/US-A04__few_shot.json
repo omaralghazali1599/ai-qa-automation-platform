@@ -1,0 +1,143 @@
+{
+  "story_id": "US-A04",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to reset my password via email so that I can regain access if I forget it.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Reset password with valid email",
+        "steps": [
+          "Navigate to forgot password page",
+          "Enter registered email address",
+          "Click on Send Reset Link",
+          "Check email inbox for reset link",
+          "Click on received reset link",
+          "Enter new password",
+          "Confirm new password",
+          "Submit the form"
+        ],
+        "expected_result": "Password reset successful, confirmation message shown"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Reset password with unregistered email",
+        "steps": [
+          "Navigate to forgot password page",
+          "Enter unregistered email address",
+          "Click on Send Reset Link"
+        ],
+        "expected_result": "Error message displayed: email not found"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Reset password with incorrect reset link",
+        "steps": [
+          "Navigate to forgot password page",
+          "Enter registered email address",
+          "Click on Send Reset Link",
+          "Check email inbox for reset link",
+          "Manually alter the reset link",
+          "Try to access reset password page"
+        ],
+        "expected_result": "Error message displayed: invalid reset link"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Reset password with empty email field",
+        "steps": [
+          "Navigate to forgot password page",
+          "Leave email field blank",
+          "Click on Send Reset Link"
+        ],
+        "expected_result": "Validation error displayed: email is required"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Reset password with email exceeding character limit",
+        "steps": [
+          "Navigate to forgot password page",
+          "Enter email address with 300+ characters",
+          "Click on Send Reset Link"
+        ],
+        "expected_result": "Validation error displayed: email exceeds maximum character limit"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 40.0,
+      "total_cases": 5,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.867
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.899
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.896
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.852
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.41,
+      "generated_cases": 5,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.814,
+      "min_similarity": 0.719,
+      "max_similarity": 0.865
+    },
+    "overall_score": 77.62
+  }
+}

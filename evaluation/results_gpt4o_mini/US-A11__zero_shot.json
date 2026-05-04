@@ -1,0 +1,135 @@
+{
+  "story_id": "US-A11",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want registration to fail if I leave any field empty so that incomplete accounts are not created.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful registration with all fields filled",
+        "steps": [
+          "Navigate to the registration page",
+          "Fill in all required fields with valid data",
+          "Click the 'Register' button"
+        ],
+        "expected_result": "User is successfully registered and redirected to the homepage"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Registration fails when username field is empty",
+        "steps": [
+          "Navigate to the registration page",
+          "Leave the username field empty",
+          "Fill in other required fields with valid data",
+          "Click the 'Register' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the username is required"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Registration fails when email field is empty",
+        "steps": [
+          "Navigate to the registration page",
+          "Fill in username with valid data",
+          "Leave the email field empty",
+          "Fill in other required fields with valid data",
+          "Click the 'Register' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the email is required"
+      },
+      {
+        "id": "TC-N03",
+        "title": "Registration fails when password field is empty",
+        "steps": [
+          "Navigate to the registration page",
+          "Fill in username and email with valid data",
+          "Leave the password field empty",
+          "Click the 'Register' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the password is required"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Registration fails with leading and trailing spaces in username",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a username with leading and trailing spaces",
+          "Fill in other required fields with valid data",
+          "Click the 'Register' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the username is required or invalid"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 60.0,
+      "total_cases": 5,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.915
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N03",
+          "similarity": 0.855
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N03",
+          "similarity": 0.883
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.26,
+      "generated_cases": 5,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.733,
+      "min_similarity": 0.606,
+      "max_similarity": 0.792
+    },
+    "overall_score": 73.32
+  }
+}

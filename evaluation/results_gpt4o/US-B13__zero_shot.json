@@ -1,0 +1,144 @@
+{
+  "story_id": "US-B13",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want to filter bookings by status so that I can see only pending, confirmed, or cancelled reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter bookings to show only pending reservations",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Select 'Pending' from the status filter dropdown.",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "The bookings list is updated to show only reservations with a status of 'Pending'."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter bookings to show only confirmed reservations",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Select 'Confirmed' from the status filter dropdown.",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "The bookings list is updated to show only reservations with a status of 'Confirmed'."
+      },
+      {
+        "id": "TC-P03",
+        "title": "Filter bookings to show only cancelled reservations",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Select 'Cancelled' from the status filter dropdown.",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "The bookings list is updated to show only reservations with a status of 'Cancelled'."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to filter bookings with an invalid status option",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Manually enter an invalid status, such as 'In Progress', in the status filter field.",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "The system throws an error or shows a message stating 'Invalid status option'. No bookings list is updated or displayed."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Apply filter without selecting any status",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Leave the status filter dropdown unselected.",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "The system should prompt the user to select at least one status or show all bookings by default."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter bookings with a large number of reservations",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Select 'Pending' from the status filter dropdown.",
+          "Click on the 'Apply Filter' button in an environment with a large dataset (e.g., 10,000+ bookings)."
+        ],
+        "expected_result": "The system efficiently filters and displays only 'Pending' bookings without performance degradation."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Filter bookings with no reservations matching the selected status",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Select 'Cancelled' from the status filter dropdown in an environment where no bookings are cancelled.",
+          "Click on the 'Apply Filter' button."
+        ],
+        "expected_result": "The system displays a message indicating there are no bookings with the status 'Cancelled'."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 7,
+      "passed": 7,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 71.43,
+      "total_cases": 7,
+      "unique_cases": 5,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.865
+        },
+        {
+          "case_a": "TC-P03",
+          "case_b": "TC-E02",
+          "similarity": 0.935
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 7,
+      "covered": 7,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 2,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 82.92,
+      "generated_cases": 7,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.829,
+      "min_similarity": 0.796,
+      "max_similarity": 0.851
+    },
+    "overall_score": 70.87
+  }
+}

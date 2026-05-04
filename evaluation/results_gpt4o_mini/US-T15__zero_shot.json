@@ -1,0 +1,170 @@
+{
+  "story_id": "US-T15",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to update the priority of an existing task so that I can reprioritize my work.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully update task priority to High",
+        "steps": [
+          "Login to the application",
+          "Navigate to the tasks list",
+          "Select an existing task",
+          "Change the priority from Medium to High",
+          "Save the changes"
+        ],
+        "expected_result": "The task priority is updated to High in the tasks list."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Successfully update task priority to Low",
+        "steps": [
+          "Login to the application",
+          "Navigate to the tasks list",
+          "Select an existing task",
+          "Change the priority from High to Low",
+          "Save the changes"
+        ],
+        "expected_result": "The task priority is updated to Low in the tasks list."
+      },
+      {
+        "id": "TC-P03",
+        "title": "Successfully update task priority to Medium",
+        "steps": [
+          "Login to the application",
+          "Navigate to the tasks list",
+          "Select an existing task",
+          "Change the priority from Low to Medium",
+          "Save the changes"
+        ],
+        "expected_result": "The task priority is updated to Medium in the tasks list."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to update task priority with invalid value",
+        "steps": [
+          "Login to the application",
+          "Navigate to the tasks list",
+          "Select an existing task",
+          "Change the priority to an invalid value (e.g., 'Urgent')",
+          "Save the changes"
+        ],
+        "expected_result": "An error message is displayed indicating that the priority value is invalid."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to update priority without selecting a task",
+        "steps": [
+          "Login to the application",
+          "Navigate to the tasks list",
+          "Click on 'Update Priority' without selecting any task"
+        ],
+        "expected_result": "An error message is displayed indicating that no task is selected."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task priority when no tasks exist",
+        "steps": [
+          "Login to the application",
+          "Navigate to the tasks list where no tasks are present",
+          "Attempt to update priority of a non-existing task"
+        ],
+        "expected_result": "An error message is displayed indicating that no tasks are available to update."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Update priority rapidly multiple times",
+        "steps": [
+          "Login to the application",
+          "Navigate to the tasks list",
+          "Select an existing task",
+          "Rapidly change the priority multiple times in quick succession",
+          "Save the changes"
+        ],
+        "expected_result": "The task priority is updated successfully to the last selected value without errors."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 7,
+      "passed": 7,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 42.86,
+      "total_cases": 7,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.95
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P03",
+          "similarity": 0.956
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-P03",
+          "similarity": 0.905
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-N02",
+          "similarity": 0.86
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E01",
+          "similarity": 0.865
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 7,
+      "covered": 7,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.96,
+      "generated_cases": 7,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.74,
+      "min_similarity": 0.652,
+      "max_similarity": 0.838
+    },
+    "overall_score": 66.7
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "story_id": "US-B13",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want to filter bookings by status so that I can see only pending, confirmed, or cancelled reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter bookings by status to show confirmed reservations",
+        "steps": [
+          "Navigate to the bookings page as a guest.",
+          "Select the 'Confirmed' status filter.",
+          "Verify the displayed reservations match the confirmed status."
+        ],
+        "expected_result": "Only confirmed reservations are displayed successfully."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter bookings by non-existent status",
+        "steps": [
+          "Navigate to the bookings page as a guest.",
+          "Select a status filter that does not exist (e.g., 'Completed').",
+          "Verify the system's response to the invalid filter."
+        ],
+        "expected_result": "An error message is displayed indicating the status is not valid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter bookings when there are no reservations",
+        "steps": [
+          "Navigate to the bookings page as a guest.",
+          "Select any status filter (e.g., 'Pending').",
+          "Verify the displayed message when no reservations exist."
+        ],
+        "expected_result": "A message is displayed indicating no reservations found for the selected status."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.867
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.6,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.766,
+      "min_similarity": 0.755,
+      "max_similarity": 0.776
+    },
+    "overall_score": 68.65
+  }
+}

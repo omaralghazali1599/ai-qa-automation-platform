@@ -1,0 +1,145 @@
+{
+  "story_id": "US-T18",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to create a task with only a title and no optional fields so that minimal input is sufficient.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create task with valid title",
+        "steps": [
+          "Navigate to the task creation page",
+          "Enter a valid title in the title field",
+          "Submit the task"
+        ],
+        "expected_result": "Task is created successfully with the provided title"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Create task with minimal title length",
+        "steps": [
+          "Navigate to the task creation page",
+          "Enter a title with minimum allowed characters",
+          "Submit the task"
+        ],
+        "expected_result": "Task is created successfully with the minimal title"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Create task with empty title",
+        "steps": [
+          "Navigate to the task creation page",
+          "Leave the title field empty",
+          "Submit the task"
+        ],
+        "expected_result": "Error message displayed indicating title is required"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Create task with title exceeding character limit",
+        "steps": [
+          "Navigate to the task creation page",
+          "Enter a title that exceeds the maximum character limit",
+          "Submit the task"
+        ],
+        "expected_result": "Error message displayed indicating title exceeds limit"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create task with title having special characters",
+        "steps": [
+          "Navigate to the task creation page",
+          "Enter a title that includes special characters (e.g. @, #, $, etc.)",
+          "Submit the task"
+        ],
+        "expected_result": "Task is created successfully with a title containing special characters"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Create task with maximum allowed title length",
+        "steps": [
+          "Navigate to the task creation page",
+          "Enter a title with the maximum allowed characters",
+          "Submit the task"
+        ],
+        "expected_result": "Task is created successfully with the title at maximum length"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 6,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.858
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-N02",
+          "similarity": 0.902
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E02",
+          "similarity": 0.943
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E02",
+          "similarity": 0.958
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.19,
+      "generated_cases": 6,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.712,
+      "min_similarity": 0.633,
+      "max_similarity": 0.764
+    },
+    "overall_score": 74.24
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "story_id": "US-B02",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to see all my bookings so that I can review my reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "View all bookings as a guest",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'View Bookings' option",
+          "Enter guest email and booking ID",
+          "Click View Bookings"
+        ],
+        "expected_result": "User sees a list of all bookings associated with the provided email and ID"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to view bookings with invalid email",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'View Bookings' option",
+          "Enter unregistered email",
+          "Click View Bookings"
+        ],
+        "expected_result": "Error message: no bookings found for this email"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "View bookings with empty email and booking ID",
+        "steps": [
+          "Navigate to bookings page",
+          "Select 'View Bookings' option",
+          "Leave email and booking ID fields blank",
+          "Click View Bookings"
+        ],
+        "expected_result": "Validation error: email and booking ID are required"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 60.7,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.607,
+      "min_similarity": 0.543,
+      "max_similarity": 0.697
+    },
+    "overall_score": 75.47
+  }
+}

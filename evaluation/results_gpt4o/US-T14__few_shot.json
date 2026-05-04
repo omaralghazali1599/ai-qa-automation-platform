@@ -1,0 +1,106 @@
+{
+  "story_id": "US-T14",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to filter tasks by completion status so that I can see only open or only done tasks.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter tasks to show only open tasks",
+        "steps": [
+          "Navigate to task list page",
+          "Select filter option",
+          "Choose 'Open' from the filter dropdown",
+          "Apply filter"
+        ],
+        "expected_result": "Only open tasks are displayed in the list"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter tasks to show only done tasks",
+        "steps": [
+          "Navigate to task list page",
+          "Select filter option",
+          "Choose 'Done' from the filter dropdown",
+          "Apply filter"
+        ],
+        "expected_result": "Only done tasks are displayed in the list"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter tasks with invalid status",
+        "steps": [
+          "Navigate to task list page",
+          "Modify URL to include an invalid status filter",
+          "Reload page"
+        ],
+        "expected_result": "Error message shown, no tasks displayed or default filter applied"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter tasks with no tasks available",
+        "steps": [
+          "Navigate to task list page",
+          "Ensure no tasks exist in either 'Open' or 'Done' categories",
+          "Apply filter for 'Open'",
+          "Apply filter for 'Done'"
+        ],
+        "expected_result": "Appropriate message shown indicating no tasks available"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 4,
+      "unique_cases": 4,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 4,
+      "covered": 4,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 64.9,
+      "generated_cases": 4,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.649,
+      "min_similarity": 0.606,
+      "max_similarity": 0.694
+    },
+    "overall_score": 72.98
+  }
+}

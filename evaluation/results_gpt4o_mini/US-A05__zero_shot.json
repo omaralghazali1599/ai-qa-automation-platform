@@ -1,0 +1,119 @@
+{
+  "story_id": "US-A05",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to receive an error message when I enter an invalid email format during registration so that I know to correct it.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Valid email format registration",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a valid email address (e.g., user@example.com)",
+          "Fill in the required registration fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "User is successfully registered and redirected to the welcome page."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Invalid email format registration",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter an invalid email address (e.g., user@.com)",
+          "Fill in the required registration fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "An error message is displayed indicating that the email format is invalid."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Email with spaces registration",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter an email address with spaces (e.g., user @example.com)",
+          "Fill in the required registration fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "An error message is displayed indicating that the email format is invalid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Email with special characters registration",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter an email address with special characters (e.g., user!#$%&'*+/=?^_`{|}~@example.com)",
+          "Fill in the required registration fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "User is successfully registered and redirected to the welcome page if special characters are valid; otherwise, an error message is displayed."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Empty email field registration",
+        "steps": [
+          "Navigate to the registration page",
+          "Leave the email field empty",
+          "Fill in the required registration fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "An error message is displayed indicating that the email field cannot be empty."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 5,
+      "unique_cases": 5,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "special_chars"
+      ],
+      "missing_categories": [
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 74.81,
+      "generated_cases": 5,
+      "baseline_cases": 3,
+      "avg_best_match_similarity": 0.748,
+      "min_similarity": 0.641,
+      "max_similarity": 0.903
+    },
+    "overall_score": 81.63
+  }
+}

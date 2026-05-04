@@ -1,0 +1,103 @@
+{
+  "story_id": "US-A02",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a registered user, I want to log in with my email and password so that I can access my account.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful login with valid email and password",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter a valid email in the email field.",
+          "Enter the correct password in the password field.",
+          "Click the 'Login' button."
+        ],
+        "expected_result": "User is successfully logged in and redirected to their account dashboard."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Login attempt with invalid password",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter a valid email in the email field.",
+          "Enter an invalid password in the password field.",
+          "Click the 'Login' button."
+        ],
+        "expected_result": "An error message is displayed indicating 'Invalid email or password'."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Login attempt with empty email and password fields",
+        "steps": [
+          "Navigate to the login page.",
+          "Leave the email field empty.",
+          "Leave the password field empty.",
+          "Click the 'Login' button."
+        ],
+        "expected_result": "An error message is displayed indicating 'Email and password are required'."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.905
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 90.11,
+      "generated_cases": 3,
+      "baseline_cases": 22,
+      "avg_best_match_similarity": 0.901,
+      "min_similarity": 0.844,
+      "max_similarity": 0.939
+    },
+    "overall_score": 74.69
+  }
+}

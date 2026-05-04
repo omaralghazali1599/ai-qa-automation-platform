@@ -1,0 +1,111 @@
+{
+  "story_id": "US-T08",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to update the title of an existing task so that I can correct or clarify it.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update task title with valid input",
+        "steps": [
+          "Log in to the application with valid credentials",
+          "Navigate to the task list",
+          "Select an existing task",
+          "Update the task title with a valid new title",
+          "Click the 'Save' button"
+        ],
+        "expected_result": "The task title is successfully updated and displayed with the new title."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to update task title with empty input",
+        "steps": [
+          "Log in to the application with valid credentials",
+          "Navigate to the task list",
+          "Select an existing task",
+          "Attempt to update the task title with an empty string",
+          "Click the 'Save' button"
+        ],
+        "expected_result": "The application displays an error message indicating the title cannot be empty and the task title is not changed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task title with maximum allowed length",
+        "steps": [
+          "Log in to the application with valid credentials",
+          "Navigate to the task list",
+          "Select an existing task",
+          "Update the task title with a title that has the maximum allowed characters",
+          "Click the 'Save' button"
+        ],
+        "expected_result": "The task title is successfully updated and displayed with the new title, up to the maximum allowed length."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.923
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.891
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.97,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.84,
+      "min_similarity": 0.825,
+      "max_similarity": 0.866
+    },
+    "overall_score": 76.79
+  }
+}

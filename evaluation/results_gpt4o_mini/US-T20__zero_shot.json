@@ -1,0 +1,141 @@
+{
+  "story_id": "US-T20",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to update multiple fields of a task in a single request so that I can edit efficiently.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update multiple fields successfully",
+        "steps": [
+          "Send a request to update task with valid task ID and multiple fields (title, description, due date)",
+          "Verify the response status code is 200",
+          "Fetch the task using the task ID and ensure that the fields are updated correctly"
+        ],
+        "expected_result": "All specified fields are updated successfully"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Update task with optional fields",
+        "steps": [
+          "Send a request to update a task with only optional fields filled (e.g., tags, priority)",
+          "Verify the response status code is 200",
+          "Fetch the task using the task ID and ensure that the optional fields are updated correctly"
+        ],
+        "expected_result": "Optional fields are updated successfully"
+      },
+      {
+        "id": "TC-P03",
+        "title": "Update task fields without changing others",
+        "steps": [
+          "Send a request to update a task with some fields unchanged (title unchanged, description updated)",
+          "Verify the response status code is 200",
+          "Fetch the task using the task ID and ensure that only the updated fields have changed"
+        ],
+        "expected_result": "Only the specified fields are updated, others remain the same"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Update task with invalid task ID",
+        "steps": [
+          "Send a request to update task with an invalid task ID and multiple fields",
+          "Verify the response status code is 404"
+        ],
+        "expected_result": "An error message indicating the task ID is not found"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Update task with invalid data types",
+        "steps": [
+          "Send a request to update a task with fields having invalid data types (e.g., title as number)",
+          "Verify the response status code is 400"
+        ],
+        "expected_result": "An error message indicating that the field types are incorrect"
+      },
+      {
+        "id": "TC-N03",
+        "title": "Update task with missing required fields",
+        "steps": [
+          "Send a request to update the task with all required fields missing",
+          "Verify the response status code is 400"
+        ],
+        "expected_result": "An error message indicating required fields must be provided"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task with maximum allowed field lengths",
+        "steps": [
+          "Send a request to update a task with maximum length for all string fields",
+          "Verify the response status code is 200",
+          "Fetch the task using the task ID and ensure that the fields are updated correctly"
+        ],
+        "expected_result": "Fields are updated successfully with maximum length values"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Simultaneous rapid updates to a task",
+        "steps": [
+          "Send multiple update requests to the same task ID in rapid succession",
+          "Verify the last response status code is 200",
+          "Fetch the task and ensure that the final state reflects the most recent update"
+        ],
+        "expected_result": "The task is updated based on the last request made"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 8,
+      "passed": 8,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 8,
+      "unique_cases": 8,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 8,
+      "covered": 8,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.9,
+      "generated_cases": 8,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.739,
+      "min_similarity": 0.651,
+      "max_similarity": 0.834
+    },
+    "overall_score": 81.45
+  }
+}

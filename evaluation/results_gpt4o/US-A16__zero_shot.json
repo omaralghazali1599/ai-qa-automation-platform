@@ -1,0 +1,101 @@
+{
+  "story_id": "US-A16",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want the profile endpoint to return unauthorized when I am not logged in so that private data is protected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Verify profile endpoint returns unauthorized when user is not logged in",
+        "steps": [
+          "Send a request to the profile endpoint without an authentication token.",
+          "Check the response status code."
+        ],
+        "expected_result": "The response status code is 401 Unauthorized."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Verify profile endpoint returns unauthorized with an invalid token",
+        "steps": [
+          "Send a request to the profile endpoint with an invalid authentication token.",
+          "Check the response status code."
+        ],
+        "expected_result": "The response status code is 401 Unauthorized."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Verify profile endpoint handles requests with expired token correctly",
+        "steps": [
+          "Send a request to the profile endpoint with an expired authentication token.",
+          "Check the response status code."
+        ],
+        "expected_result": "The response status code is 401 Unauthorized."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.923
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.852
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 82.22,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.822,
+      "min_similarity": 0.799,
+      "max_similarity": 0.851
+    },
+    "overall_score": 63.11
+  }
+}

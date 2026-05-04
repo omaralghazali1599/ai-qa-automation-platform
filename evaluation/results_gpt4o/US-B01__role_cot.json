@@ -1,0 +1,113 @@
+{
+  "story_id": "US-B01",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want to create a booking with my name, room type, and dates so that I can reserve a room.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create booking with valid details",
+        "steps": [
+          "Open the booking application.",
+          "Navigate to the booking section.",
+          "Enter a valid guest name.",
+          "Select a valid room type from the available options.",
+          "Choose valid check-in and check-out dates.",
+          "Submit the booking form."
+        ],
+        "expected_result": "Booking confirmation is displayed with the guest's name, room type, and dates."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Create booking with missing guest name",
+        "steps": [
+          "Open the booking application.",
+          "Navigate to the booking section.",
+          "Leave the guest name field empty.",
+          "Select a valid room type from the available options.",
+          "Choose valid check-in and check-out dates.",
+          "Submit the booking form."
+        ],
+        "expected_result": "Error message is displayed prompting the user to enter a guest name."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create booking with same day check-in and check-out",
+        "steps": [
+          "Open the booking application.",
+          "Navigate to the booking section.",
+          "Enter a valid guest name.",
+          "Select a valid room type from the available options.",
+          "Choose the same day for both check-in and check-out.",
+          "Submit the booking form."
+        ],
+        "expected_result": "Error message is displayed indicating that check-in and check-out dates cannot be the same."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.922
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.891
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.89,
+      "generated_cases": 3,
+      "baseline_cases": 18,
+      "avg_best_match_similarity": 0.769,
+      "min_similarity": 0.747,
+      "max_similarity": 0.789
+    },
+    "overall_score": 62.04
+  }
+}

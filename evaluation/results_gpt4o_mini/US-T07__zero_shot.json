@@ -1,0 +1,132 @@
+{
+  "story_id": "US-T07",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to mark a task as complete so that I can track my progress.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Mark a task as complete successfully",
+        "steps": [
+          "Open the task list",
+          "Select a task that is not marked as complete",
+          "Click on the 'Mark as complete' button"
+        ],
+        "expected_result": "The task is marked as complete and is visually updated in the task list"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Check progress tracking after marking a task complete",
+        "steps": [
+          "Open the task list",
+          "Mark a task as complete",
+          "Access the progress tracking section"
+        ],
+        "expected_result": "The completed task is reflected in the user's progress tracking"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to mark a task as complete with no tasks available",
+        "steps": [
+          "Open the task list with no tasks present",
+          "Attempt to click on 'Mark as complete' for a non-existent task"
+        ],
+        "expected_result": "An error message is displayed indicating no tasks are available"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Mark already completed task as complete",
+        "steps": [
+          "Open the task list",
+          "Select a task that is already marked as complete",
+          "Click on the 'Mark as complete' button"
+        ],
+        "expected_result": "An alert or message is displayed indicating the task is already complete"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Mark a task as complete with network latency",
+        "steps": [
+          "Simulate high network latency",
+          "Open the task list",
+          "Select a task and click on 'Mark as complete'"
+        ],
+        "expected_result": "The task is marked as complete eventually, but with a noticeable delay and an indication of processing"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Mark the last task as complete",
+        "steps": [
+          "Open the task list containing only one task",
+          "Click on 'Mark as complete' for the last remaining task"
+        ],
+        "expected_result": "The task is marked as complete, and the task list shows no tasks remaining"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 6,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.86
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.914
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 2,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 68.35,
+      "generated_cases": 6,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.684,
+      "min_similarity": 0.604,
+      "max_similarity": 0.79
+    },
+    "overall_score": 67.0
+  }
+}

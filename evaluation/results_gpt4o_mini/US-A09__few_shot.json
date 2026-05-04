@@ -1,0 +1,93 @@
+{
+  "story_id": "US-A09",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to be blocked from logging in if my account is locked so that security is enforced.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to log in with a locked account",
+        "steps": [
+          "Navigate to login page",
+          "Enter locked account email",
+          "Enter valid password",
+          "Click Login"
+        ],
+        "expected_result": "Error message shown indicating the account is locked"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to log in with a locked account after multiple failed attempts",
+        "steps": [
+          "Navigate to login page",
+          "Enter locked account email",
+          "Enter valid password",
+          "Click Login",
+          "Wait for 30 minutes",
+          "Click Login again"
+        ],
+        "expected_result": "Error message shown indicating the account is still locked"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 2,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.9
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "boundary_value",
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.97,
+      "generated_cases": 2,
+      "baseline_cases": 11,
+      "avg_best_match_similarity": 0.84,
+      "min_similarity": 0.837,
+      "max_similarity": 0.843
+    },
+    "overall_score": 73.46
+  }
+}

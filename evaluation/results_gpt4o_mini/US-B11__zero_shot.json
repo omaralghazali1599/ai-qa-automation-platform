@@ -1,0 +1,104 @@
+{
+  "story_id": "US-B11",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a staff member, I want confirming an already-cancelled booking to return an error so that invalid state transitions are blocked.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Confirm an active booking",
+        "steps": [
+          "Login as a staff member",
+          "Select an active booking",
+          "Attempt to confirm the booking"
+        ],
+        "expected_result": "Booking confirmation is successful and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Confirm an already-cancelled booking",
+        "steps": [
+          "Login as a staff member",
+          "Select a cancelled booking",
+          "Attempt to confirm the booking"
+        ],
+        "expected_result": "An error message is displayed indicating that the booking cannot be confirmed as it has been cancelled."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Confirm a booking that was in the process of cancellation",
+        "steps": [
+          "Login as a staff member",
+          "Select a booking that is currently being cancelled",
+          "Attempt to confirm the booking"
+        ],
+        "expected_result": "An error message is displayed indicating that the booking cannot be confirmed as it is in the process of being cancelled."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.852
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.956
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.3,
+      "generated_cases": 3,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.763,
+      "min_similarity": 0.676,
+      "max_similarity": 0.808
+    },
+    "overall_score": 61.93
+  }
+}

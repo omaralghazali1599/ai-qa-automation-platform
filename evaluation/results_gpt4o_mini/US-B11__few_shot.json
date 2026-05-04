@@ -1,0 +1,83 @@
+{
+  "story_id": "US-B11",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a staff member, I want confirming an already-cancelled booking to return an error so that invalid state transitions are blocked.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Confirming a cancelled booking",
+        "steps": [
+          "Navigate to the bookings page",
+          "Find an already cancelled booking",
+          "Attempt to confirm the cancelled booking"
+        ],
+        "expected_result": "Error message shown: booking is already cancelled and cannot be confirmed"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Confirming a booking with special characters in the ID",
+        "steps": [
+          "Navigate to the bookings page",
+          "Try to confirm a cancelled booking using a booking ID with special characters",
+          "Check for system response"
+        ],
+        "expected_result": "Error message shown: invalid booking state or ID"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 2,
+      "unique_cases": 2,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 77.97,
+      "generated_cases": 2,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.78,
+      "min_similarity": 0.736,
+      "max_similarity": 0.823
+    },
+    "overall_score": 82.26
+  }
+}

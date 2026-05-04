@@ -1,0 +1,69 @@
+{
+  "story_id": "US-B16",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to retrieve a booking that does not exist to return a not-found error so that I know the ID is invalid.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Retrieve booking with invalid ID",
+        "steps": [
+          "Navigate to booking retrieval page",
+          "Enter non-existent booking ID",
+          "Click Retrieve Booking"
+        ],
+        "expected_result": "Not-found error message shown, indicating the ID is invalid"
+      }
+    ],
+    "edge": []
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 1,
+      "passed": 1,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 1,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 1,
+      "covered": 1,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.45,
+      "generated_cases": 1,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.714,
+      "min_similarity": 0.714,
+      "max_similarity": 0.714
+    },
+    "overall_score": 74.29
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "story_id": "US-A18",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want the system to handle an email with special characters correctly during registration so that valid edge-case emails are accepted.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Registering with a valid email containing standard special characters",
+        "steps": [
+          "Open the registration page.",
+          "Enter a valid email such as 'user+name@example.com' in the email field.",
+          "Fill out all other mandatory fields.",
+          "Submit the registration form."
+        ],
+        "expected_result": "The system accepts the email and successfully registers the user."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Rejecting an invalid email format with consecutive special characters",
+        "steps": [
+          "Open the registration page.",
+          "Enter an invalid email such as 'user..name@example.com' in the email field.",
+          "Fill out all other mandatory fields.",
+          "Submit the registration form."
+        ],
+        "expected_result": "The system rejects the registration and displays an error message indicating an invalid email format."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Handling an email with uncommon but valid special characters",
+        "steps": [
+          "Open the registration page.",
+          "Enter an email such as 'user_name@sub-domain.example.travel' in the email field.",
+          "Fill out all other mandatory fields.",
+          "Submit the registration form."
+        ],
+        "expected_result": "The system accepts the email and successfully registers the user."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 86.47,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.865,
+      "min_similarity": 0.797,
+      "max_similarity": 0.906
+    },
+    "overall_score": 80.63
+  }
+}

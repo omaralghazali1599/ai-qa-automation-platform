@@ -1,0 +1,135 @@
+{
+  "story_id": "US-T13",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want task creation to fail when an invalid category is provided so that data stays consistent.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Task creation with a valid category",
+        "steps": [
+          "Log into the application.",
+          "Navigate to the task creation page.",
+          "Enter a valid task name and description.",
+          "Select a valid category from the dropdown list.",
+          "Click on the 'Create Task' button."
+        ],
+        "expected_result": "Task is created successfully with the selected valid category."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Task creation with an invalid category",
+        "steps": [
+          "Log into the application.",
+          "Navigate to the task creation page.",
+          "Enter a valid task name and description.",
+          "Enter an invalid category that is not available in the dropdown list.",
+          "Click on the 'Create Task' button."
+        ],
+        "expected_result": "Task creation fails with an error message indicating an invalid category."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Task creation without selecting any category",
+        "steps": [
+          "Log into the application.",
+          "Navigate to the task creation page.",
+          "Enter a valid task name and description.",
+          "Leave the category selection empty.",
+          "Click on the 'Create Task' button."
+        ],
+        "expected_result": "Task creation fails with an error message indicating that a category must be selected."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Task creation with category input as special characters",
+        "steps": [
+          "Log into the application.",
+          "Navigate to the task creation page.",
+          "Enter a valid task name and description.",
+          "Enter special characters into the category field.",
+          "Click on the 'Create Task' button."
+        ],
+        "expected_result": "Task creation fails with an error message indicating an invalid category format."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Task creation with maximum character limit for category input",
+        "steps": [
+          "Log into the application.",
+          "Navigate to the task creation page.",
+          "Enter a valid task name and description.",
+          "Enter a category name with the maximum allowed characters.",
+          "Click on the 'Create Task' button."
+        ],
+        "expected_result": "Task creation succeeds if the category is valid or fails with an error if it exceeds the limit or is invalid."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 60.0,
+      "total_cases": 5,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.857
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.868
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 69.57,
+      "generated_cases": 5,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.696,
+      "min_similarity": 0.622,
+      "max_similarity": 0.793
+    },
+    "overall_score": 79.25
+  }
+}

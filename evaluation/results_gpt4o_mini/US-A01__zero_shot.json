@@ -1,0 +1,169 @@
+{
+  "story_id": "US-A01",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a new user, I want to register with my name, email, and password so that I can create an account.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful registration with valid inputs",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a valid name.",
+          "Enter a valid email address.",
+          "Enter a valid password.",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "User is registered successfully and redirected to the welcome page."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Registration with minimum password length",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a valid name.",
+          "Enter a valid email address.",
+          "Enter a password with minimum length.",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "User is registered successfully with the minimum password length."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Registration with invalid email format",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a valid name.",
+          "Enter an invalid email address.",
+          "Enter a valid password.",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "Error message is displayed indicating an invalid email format."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Registration with missing name",
+        "steps": [
+          "Navigate to the registration page.",
+          "Leave the name field empty.",
+          "Enter a valid email address.",
+          "Enter a valid password.",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "Error message is displayed indicating that the name is required."
+      },
+      {
+        "id": "TC-N03",
+        "title": "Registration with already registered email",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a valid name.",
+          "Enter an email address that is already registered.",
+          "Enter a valid password.",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "Error message is displayed indicating that the email is already in use."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Registration with maximum length name",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a name with the maximum allowed character length.",
+          "Enter a valid email address.",
+          "Enter a valid password.",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "User is registered successfully with a name at maximum length."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Registration with maximum length password",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a valid name.",
+          "Enter a valid email address.",
+          "Enter a password with the maximum allowed character length.",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "User is registered successfully with a password at maximum length."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 7,
+      "passed": 7,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 57.14,
+      "total_cases": 7,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N03",
+          "similarity": 0.864
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E01",
+          "similarity": 0.887
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E02",
+          "similarity": 0.934
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E02",
+          "similarity": 0.965
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 7,
+      "covered": 7,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 91.07,
+      "generated_cases": 7,
+      "baseline_cases": 36,
+      "avg_best_match_similarity": 0.911,
+      "min_similarity": 0.872,
+      "max_similarity": 0.939
+    },
+    "overall_score": 79.64
+  }
+}

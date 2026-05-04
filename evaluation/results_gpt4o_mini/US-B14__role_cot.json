@@ -1,0 +1,110 @@
+{
+  "story_id": "US-B14",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want the system to reject a booking with 0 guests so that only valid guest counts are accepted.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful booking attempt with valid guest count",
+        "steps": [
+          "Navigate to the booking page.",
+          "Select a valid guest count (e.g., 1 or more).",
+          "Submit the booking request."
+        ],
+        "expected_result": "The system confirms the booking and displays a success message."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Booking attempt with 0 guests",
+        "steps": [
+          "Navigate to the booking page.",
+          "Select 0 as the guest count.",
+          "Submit the booking request."
+        ],
+        "expected_result": "The system rejects the booking and displays an error message indicating 'Invalid guest count. Please enter a valid number of guests.'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Booking attempt with a negative guest count",
+        "steps": [
+          "Navigate to the booking page.",
+          "Select -1 as the guest count.",
+          "Submit the booking request."
+        ],
+        "expected_result": "The system rejects the booking and displays an error message indicating 'Invalid guest count. Please enter a valid number of guests.'"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.91
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.874
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.902
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.79,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.808,
+      "min_similarity": 0.775,
+      "max_similarity": 0.857
+    },
+    "overall_score": 69.49
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "story_id": "US-B05",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want to cancel my booking so that I can free up the reservation.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Cancel a booking successfully",
+        "steps": [
+          "Navigate to the bookings page as a guest user.",
+          "Select an active booking from the list.",
+          "Click on the cancel option available for the selected booking.",
+          "Confirm the cancellation action in the popup/modal dialog."
+        ],
+        "expected_result": "The booking is successfully canceled, and a confirmation message is displayed to the user, updating the booking status to 'Canceled'."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to cancel a non-existent booking",
+        "steps": [
+          "Navigate to the bookings page as a guest user.",
+          "Attempt to cancel a booking ID that does not exist in the user's booking list (simulated via URL manipulation or API call)."
+        ],
+        "expected_result": "An error message is displayed indicating that the booking cannot be found or canceled."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Cancel a booking made very close to the cancellation deadline",
+        "steps": [
+          "Navigate to the bookings page as a guest user.",
+          "Select a booking that is scheduled to start in less than an hour.",
+          "Attempt to cancel the booking."
+        ],
+        "expected_result": "The system processes the cancellation without errors, or gracefully handles and informs the user if cancellations are not permissible within the set deadline, displaying an appropriate message."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 78.24,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.782,
+      "min_similarity": 0.745,
+      "max_similarity": 0.825
+    },
+    "overall_score": 75.65
+  }
+}

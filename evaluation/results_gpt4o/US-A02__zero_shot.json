@@ -1,0 +1,129 @@
+{
+  "story_id": "US-A02",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a registered user, I want to log in with my email and password so that I can access my account.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful login with valid email and password",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a registered email in the email field",
+          "Enter the correct password in the password field",
+          "Click on the 'Login' button"
+        ],
+        "expected_result": "The user is logged in and redirected to their account homepage."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Unsuccessful login with invalid email format",
+        "steps": [
+          "Navigate to the login page",
+          "Enter an unregistered email or a non-email string in the email field",
+          "Enter any password in the password field",
+          "Click on the 'Login' button"
+        ],
+        "expected_result": "Login fails, and an error message is displayed indicating an invalid email format."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Unsuccessful login with correct email but incorrect password",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a registered email in the email field",
+          "Enter an incorrect password in the password field",
+          "Click on the 'Login' button"
+        ],
+        "expected_result": "Login fails, and an error message is displayed indicating the email or password is incorrect."
+      },
+      {
+        "id": "TC-N03",
+        "title": "Unsuccessful login with empty email and password fields",
+        "steps": [
+          "Navigate to the login page",
+          "Leave the email field empty",
+          "Leave the password field empty",
+          "Click on the 'Login' button"
+        ],
+        "expected_result": "Login fails, and error messages are displayed indicating that both fields are required."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Login with email having leading and trailing spaces",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a registered email with leading and trailing spaces in the email field",
+          "Enter the correct password in the password field",
+          "Click on the 'Login' button"
+        ],
+        "expected_result": "The system trims the spaces and successfully logs the user in, redirecting them to their account homepage."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 80.0,
+      "total_cases": 5,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.873
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.869
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 87.11,
+      "generated_cases": 5,
+      "baseline_cases": 22,
+      "avg_best_match_similarity": 0.871,
+      "min_similarity": 0.821,
+      "max_similarity": 0.913
+    },
+    "overall_score": 73.42
+  }
+}

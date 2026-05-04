@@ -1,0 +1,86 @@
+{
+  "story_id": "US-B11",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a staff member, I want confirming an already-cancelled booking to return an error so that invalid state transitions are blocked.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Confirm an already-cancelled booking",
+        "steps": [
+          "Log in as staff member",
+          "Navigate to the bookings section",
+          "Select a booking that is already cancelled",
+          "Attempt to confirm the booking"
+        ],
+        "expected_result": "Error message is shown indicating the booking cannot be confirmed because it is already cancelled"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to confirm a booking while system is restarting",
+        "steps": [
+          "Log in as staff member",
+          "Navigate to the bookings section",
+          "Select a booking that is already cancelled",
+          "Initiate system restart",
+          "Attempt to confirm the booking during restart"
+        ],
+        "expected_result": "System displays an error message or maintenance notice, preventing the confirmation action"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 2,
+      "unique_cases": 2,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.21,
+      "generated_cases": 2,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.762,
+      "min_similarity": 0.708,
+      "max_similarity": 0.816
+    },
+    "overall_score": 78.58
+  }
+}

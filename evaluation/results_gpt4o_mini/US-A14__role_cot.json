@@ -1,0 +1,113 @@
+{
+  "story_id": "US-A14",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want the system to reject a new password shorter than 8 characters during reset so that security standards are maintained.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Password is exactly 8 characters long",
+        "steps": [
+          "Navigate to the password reset page.",
+          "Enter 'abcdefgh' as the new password.",
+          "Confirm the new password by re-entering 'abcdefgh'.",
+          "Submit the password reset form."
+        ],
+        "expected_result": "The system accepts the new password and confirms the password reset."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Password is shorter than 8 characters",
+        "steps": [
+          "Navigate to the password reset page.",
+          "Enter 'abcdefg' as the new password.",
+          "Confirm the new password by re-entering 'abcdefg'.",
+          "Submit the password reset form."
+        ],
+        "expected_result": "The system rejects the password and displays an error message indicating that the password must be at least 8 characters long."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Password is exactly 8 characters with special characters",
+        "steps": [
+          "Navigate to the password reset page.",
+          "Enter '!@#$%^&*' as the new password.",
+          "Confirm the new password by re-entering '!@#$%^&*'.",
+          "Submit the password reset form."
+        ],
+        "expected_result": "The system accepts the new password and confirms the password reset."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.967
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.895
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.902
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 79.96,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.8,
+      "min_similarity": 0.778,
+      "max_similarity": 0.84
+    },
+    "overall_score": 65.99
+  }
+}

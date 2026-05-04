@@ -1,0 +1,89 @@
+{
+  "story_id": "US-A12",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to receive an error when I try to reset the password with an unregistered email so that I know the email is not in the system.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Request reset with unregistered email",
+        "steps": [
+          "Go to forgot password page",
+          "Enter unregistered email",
+          "Click Send Reset Link"
+        ],
+        "expected_result": "Error message: email not found"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Request reset with empty email field",
+        "steps": [
+          "Go to forgot password page",
+          "Leave email blank",
+          "Click Send Reset Link"
+        ],
+        "expected_result": "Validation error: email is required"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 2,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.859
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 75.73,
+      "generated_cases": 2,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.757,
+      "min_similarity": 0.698,
+      "max_similarity": 0.817
+    },
+    "overall_score": 68.48
+  }
+}

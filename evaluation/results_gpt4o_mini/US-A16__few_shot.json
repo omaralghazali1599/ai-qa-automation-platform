@@ -1,0 +1,67 @@
+{
+  "story_id": "US-A16",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want the profile endpoint to return unauthorized when I am not logged in so that private data is protected.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Access profile endpoint when not logged in",
+        "steps": [
+          "Send GET request to profile endpoint without authentication token"
+        ],
+        "expected_result": "Response code 401 Unauthorized and error message indicating user must be logged in"
+      }
+    ],
+    "edge": []
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 1,
+      "passed": 1,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 1,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 1,
+      "covered": 1,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 79.01,
+      "generated_cases": 1,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.79,
+      "min_similarity": 0.79,
+      "max_similarity": 0.79
+    },
+    "overall_score": 75.8
+  }
+}

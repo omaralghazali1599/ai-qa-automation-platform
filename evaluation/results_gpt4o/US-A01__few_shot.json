@@ -1,0 +1,122 @@
+{
+  "story_id": "US-A01",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a new user, I want to register with my name, email, and password so that I can create an account.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Register with valid credentials",
+        "steps": [
+          "Navigate to registration page",
+          "Enter valid name",
+          "Enter valid email",
+          "Enter valid password",
+          "Click Register"
+        ],
+        "expected_result": "User is redirected to welcome page and account is created"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Register with already used email",
+        "steps": [
+          "Navigate to registration page",
+          "Enter valid name",
+          "Enter email already in use",
+          "Enter valid password",
+          "Click Register"
+        ],
+        "expected_result": "Error message: email already registered"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Register with invalid email format",
+        "steps": [
+          "Navigate to registration page",
+          "Enter valid name",
+          "Enter email in invalid format",
+          "Enter valid password",
+          "Click Register"
+        ],
+        "expected_result": "Validation error: invalid email format"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Register with maximum length password",
+        "steps": [
+          "Navigate to registration page",
+          "Enter valid name",
+          "Enter valid email",
+          "Enter password with maximum allowed length",
+          "Click Register"
+        ],
+        "expected_result": "User is redirected to welcome page and account is created"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Register with empty fields",
+        "steps": [
+          "Navigate to registration page",
+          "Leave name, email, and password fields empty",
+          "Click Register"
+        ],
+        "expected_result": "Validation errors: name, email, and password are required"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 5,
+      "unique_cases": 5,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 84.09,
+      "generated_cases": 5,
+      "baseline_cases": 36,
+      "avg_best_match_similarity": 0.841,
+      "min_similarity": 0.74,
+      "max_similarity": 0.877
+    },
+    "overall_score": 86.82
+  }
+}

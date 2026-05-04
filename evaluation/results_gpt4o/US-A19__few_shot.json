@@ -1,0 +1,92 @@
+{
+  "story_id": "US-A19",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want logging out twice in a row to not cause an error so that the logout action is idempotent.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Logout once successfully",
+        "steps": [
+          "Login to the account",
+          "Click Logout button"
+        ],
+        "expected_result": "User is redirected to login page"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Logout while not logged in",
+        "steps": [
+          "Ensure user is not logged in",
+          "Attempt to trigger logout function"
+        ],
+        "expected_result": "Error message shown or no action taken, user remains on the current page"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Logout twice consecutively",
+        "steps": [
+          "Login to the account",
+          "Click Logout button",
+          "Click Logout button again"
+        ],
+        "expected_result": "First logout is successful, second logout does not cause an error"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 75.61,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.756,
+      "min_similarity": 0.72,
+      "max_similarity": 0.826
+    },
+    "overall_score": 78.46
+  }
+}

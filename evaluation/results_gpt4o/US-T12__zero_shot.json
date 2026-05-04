@@ -1,0 +1,110 @@
+{
+  "story_id": "US-T12",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want the system to reject a task title longer than 200 characters so that titles remain readable.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create a task with a title of exactly 200 characters",
+        "steps": [
+          "Open the task creation page",
+          "Enter a task title with exactly 200 characters",
+          "Submit the task for creation"
+        ],
+        "expected_result": "The task is successfully created with the provided title."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to create a task with a title of more than 200 characters",
+        "steps": [
+          "Open the task creation page",
+          "Enter a task title with more than 200 characters",
+          "Submit the task for creation"
+        ],
+        "expected_result": "The system rejects the task and displays an error message indicating that titles cannot be longer than 200 characters."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create a task with a title of exactly 199 characters",
+        "steps": [
+          "Open the task creation page",
+          "Enter a task title with exactly 199 characters",
+          "Submit the task for creation"
+        ],
+        "expected_result": "The task is successfully created with the provided title."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.958
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.964
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.926
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 90.35,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.903,
+      "min_similarity": 0.901,
+      "max_similarity": 0.906
+    },
+    "overall_score": 68.07
+  }
+}

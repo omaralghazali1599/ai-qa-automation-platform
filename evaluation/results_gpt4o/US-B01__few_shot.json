@@ -1,0 +1,116 @@
+{
+  "story_id": "US-B01",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to create a booking with my name, room type, and dates so that I can reserve a room.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create a booking with valid details",
+        "steps": [
+          "Navigate to booking page",
+          "Enter valid name",
+          "Select valid room type",
+          "Choose valid check-in and check-out dates",
+          "Click Confirm Booking"
+        ],
+        "expected_result": "Booking confirmation message shown and booking details saved"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Create a booking with past dates",
+        "steps": [
+          "Navigate to booking page",
+          "Enter valid name",
+          "Select valid room type",
+          "Choose check-in and check-out dates in the past",
+          "Click Confirm Booking"
+        ],
+        "expected_result": "Error message: check-in and check-out dates must be in the future"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create a booking with name field left empty",
+        "steps": [
+          "Navigate to booking page",
+          "Leave name field empty",
+          "Select valid room type",
+          "Choose valid check-in and check-out dates",
+          "Click Confirm Booking"
+        ],
+        "expected_result": "Validation error: name is required"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.957
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.901
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.86
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 77.74,
+      "generated_cases": 3,
+      "baseline_cases": 18,
+      "avg_best_match_similarity": 0.777,
+      "min_similarity": 0.756,
+      "max_similarity": 0.797
+    },
+    "overall_score": 65.55
+  }
+}

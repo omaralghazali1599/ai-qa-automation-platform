@@ -1,0 +1,135 @@
+{
+  "story_id": "US-A15",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want the login endpoint to return an error when the email field is empty so that I provide all required credentials.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful login with valid credentials",
+        "steps": [
+          "Send a POST request to the login endpoint with valid email and password.",
+          "Verify the response status code is 200."
+        ],
+        "expected_result": "User successfully logs in and receives a token."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Error when email field is empty",
+        "steps": [
+          "Send a POST request to the login endpoint with an empty email field and a valid password.",
+          "Verify the response status code is 400."
+        ],
+        "expected_result": "The response contains an error message indicating that the email field is required."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Error when both email and password fields are empty",
+        "steps": [
+          "Send a POST request to the login endpoint with both email and password fields empty.",
+          "Verify the response status code is 400."
+        ],
+        "expected_result": "The response contains an error message indicating that both email and password fields are required."
+      },
+      {
+        "id": "TC-N03",
+        "title": "Error when email is invalid",
+        "steps": [
+          "Send a POST request to the login endpoint with an invalid email format and a valid password.",
+          "Verify the response status code is 400."
+        ],
+        "expected_result": "The response contains an error message indicating that the email format is invalid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Error when email is a valid format but not registered",
+        "steps": [
+          "Send a POST request to the login endpoint with an email that is in valid format but not registered and a valid password.",
+          "Verify the response status code is 401."
+        ],
+        "expected_result": "The response contains an error message indicating that the email is not registered."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 40.0,
+      "total_cases": 5,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N03",
+          "similarity": 0.855
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.955
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N03",
+          "similarity": 0.859
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N03",
+          "similarity": 0.85
+        },
+        {
+          "case_a": "TC-N03",
+          "case_b": "TC-E01",
+          "similarity": 0.892
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 74.6,
+      "generated_cases": 5,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.746,
+      "min_similarity": 0.67,
+      "max_similarity": 0.876
+    },
+    "overall_score": 66.25
+  }
+}

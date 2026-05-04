@@ -1,0 +1,92 @@
+{
+  "story_id": "US-B02",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want to see all my bookings so that I can review my reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Guest sees all bookings when logged in",
+        "steps": [
+          "Navigate to the login page",
+          "Enter valid guest credentials",
+          "Click on the 'Bookings' tab or section",
+          "View the list of bookings presented"
+        ],
+        "expected_result": "All bookings for the logged-in guest account are displayed in a list"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Bookings are not displayed without logging in",
+        "steps": [
+          "Attempt to access the 'Bookings' section without logging in"
+        ],
+        "expected_result": "User is prompted to log in with a message like 'Please log in to view your bookings'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Guest with zero bookings sees appropriate message",
+        "steps": [
+          "Log in with guest credentials that have no bookings",
+          "Navigate to the 'Bookings' page"
+        ],
+        "expected_result": "A message like 'You have no bookings at this time' is displayed instead of a list"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 65.86,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.659,
+      "min_similarity": 0.603,
+      "max_similarity": 0.738
+    },
+    "overall_score": 76.51
+  }
+}

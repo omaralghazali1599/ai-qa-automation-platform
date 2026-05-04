@@ -1,0 +1,170 @@
+{
+  "story_id": "US-A02",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a registered user, I want to log in with my email and password so that I can access my account.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful login with valid credentials",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a registered email address",
+          "Enter the corresponding password",
+          "Click the 'Login' button"
+        ],
+        "expected_result": "User is redirected to their account dashboard"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Successful login with remember me option",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a registered email address",
+          "Enter the corresponding password",
+          "Select the 'Remember Me' checkbox",
+          "Click the 'Login' button"
+        ],
+        "expected_result": "User is redirected to their account dashboard and remains logged in on the next visit"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Login with unregistered email",
+        "steps": [
+          "Navigate to the login page",
+          "Enter an unregistered email address",
+          "Enter any password",
+          "Click the 'Login' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the email is not registered"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Login with incorrect password",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a registered email address",
+          "Enter an incorrect password",
+          "Click the 'Login' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the password is incorrect"
+      },
+      {
+        "id": "TC-N03",
+        "title": "Login with empty email field",
+        "steps": [
+          "Navigate to the login page",
+          "Leave the email field empty",
+          "Enter any password",
+          "Click the 'Login' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the email field cannot be empty"
+      },
+      {
+        "id": "TC-N04",
+        "title": "Login with empty password field",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a registered email address",
+          "Leave the password field empty",
+          "Click the 'Login' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the password field cannot be empty"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Login attempt with special characters in email",
+        "steps": [
+          "Navigate to the login page",
+          "Enter an email address with special characters (e.g., '!@#$.')",
+          "Enter any password",
+          "Click the 'Login' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the email format is invalid"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Login with extremely long email",
+        "steps": [
+          "Navigate to the login page",
+          "Enter an email address longer than 255 characters",
+          "Enter any password",
+          "Click the 'Login' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the email is too long"
+      },
+      {
+        "id": "TC-E03",
+        "title": "Login attempt with XSS attack in email field",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a registered email address with an XSS script (e.g., '<script>alert(1)</script>')",
+          "Enter the corresponding password",
+          "Click the 'Login' button"
+        ],
+        "expected_result": "An error message is displayed and no script is executed"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 9,
+      "passed": 9,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 88.89,
+      "total_cases": 9,
+      "unique_cases": 8,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N03",
+          "case_b": "TC-N04",
+          "similarity": 0.948
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 9,
+      "covered": 9,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 3,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.34,
+      "generated_cases": 9,
+      "baseline_cases": 22,
+      "avg_best_match_similarity": 0.803,
+      "min_similarity": 0.583,
+      "max_similarity": 0.931
+    },
+    "overall_score": 83.85
+  }
+}

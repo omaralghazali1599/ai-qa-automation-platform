@@ -1,0 +1,96 @@
+{
+  "story_id": "US-T10",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to retrieve a single task by its ID so that I can view its full details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Retrieve a task by a valid ID",
+        "steps": [
+          "Ensure a task with ID '1234' exists in the system.",
+          "Send a GET request to '/tasks/1234'."
+        ],
+        "expected_result": "The response status is 200, and the response body contains the full details of the task with ID '1234'."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to retrieve a task with a non-existing ID",
+        "steps": [
+          "Send a GET request to '/tasks/5678', where '5678' is not a valid task ID in the system."
+        ],
+        "expected_result": "The response status is 404, and the response body contains an error message indicating that the task was not found."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Retrieve a task with a boundary value ID",
+        "steps": [
+          "Ensure a task with ID '1' exists in the system.",
+          "Send a GET request to '/tasks/1'."
+        ],
+        "expected_result": "The response status is 200, and the response body contains the full details of the task with ID '1'."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.866
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 82.33,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.823,
+      "min_similarity": 0.793,
+      "max_similarity": 0.867
+    },
+    "overall_score": 76.47
+  }
+}

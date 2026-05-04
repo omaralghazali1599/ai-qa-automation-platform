@@ -1,0 +1,94 @@
+{
+  "story_id": "US-B16",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want to retrieve a booking that does not exist to return a not-found error so that I know the ID is invalid.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Retrieve a non-existent booking ID and receive a not-found error",
+        "steps": [
+          "Step 1: Open the booking retrieval interface.",
+          "Step 2: Enter a booking ID that does not exist in the system.",
+          "Step 3: Submit the request to retrieve the booking."
+        ],
+        "expected_result": "A not-found error is returned indicating that the booking ID is invalid."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Retrieve a booking with a null ID value",
+        "steps": [
+          "Step 1: Open the booking retrieval interface.",
+          "Step 2: Enter a null value in the booking ID field.",
+          "Step 3: Submit the request to retrieve the booking."
+        ],
+        "expected_result": "The system returns an error indicating that the booking ID cannot be null."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Retrieve a booking with a very long booking ID",
+        "steps": [
+          "Step 1: Open the booking retrieval interface.",
+          "Step 2: Enter a very long booking ID that exceeds typical lengths (e.g., 256 characters).",
+          "Step 3: Submit the request to retrieve the booking."
+        ],
+        "expected_result": "The system handles the input gracefully and returns a not-found error or a proper input validation error message."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 70.57,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.706,
+      "min_similarity": 0.634,
+      "max_similarity": 0.782
+    },
+    "overall_score": 80.78
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "story_id": "US-A14",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want the system to reject a new password shorter than 8 characters during reset so that security standards are maintained.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Reset password with new password shorter than 8 characters",
+        "steps": [
+          "Go to reset password page",
+          "Enter a valid and registered email to receive reset link",
+          "Open email and click on the reset link",
+          "Enter a new password with less than 8 characters",
+          "Confirm the same new password",
+          "Submit the password reset form"
+        ],
+        "expected_result": "Error message: password must be at least 8 characters long"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Reset password with no password entered",
+        "steps": [
+          "Go to reset password page",
+          "Enter a valid and registered email to receive reset link",
+          "Open email and click on the reset link",
+          "Leave the new password field empty",
+          "Submit the password reset form"
+        ],
+        "expected_result": "Validation error: password is required"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 2,
+      "unique_cases": 2,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 74.41,
+      "generated_cases": 2,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.744,
+      "min_similarity": 0.641,
+      "max_similarity": 0.847
+    },
+    "overall_score": 78.22
+  }
+}

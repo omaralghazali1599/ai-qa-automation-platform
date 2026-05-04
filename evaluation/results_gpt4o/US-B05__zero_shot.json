@@ -1,0 +1,142 @@
+{
+  "story_id": "US-B05",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want to cancel my booking so that I can free up the reservation.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully cancel a booking",
+        "steps": [
+          "Navigate to the website",
+          "Log in as a guest",
+          "View current bookings",
+          "Select a booking to cancel",
+          "Click on 'Cancel Booking' button",
+          "Confirm cancellation"
+        ],
+        "expected_result": "Booking is successfully canceled and confirmation message is displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to cancel a booking without logging in",
+        "steps": [
+          "Navigate to the website",
+          "Try to view bookings without logging in"
+        ],
+        "expected_result": "User is prompted to log in before performing actions on bookings"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to cancel a booking that is already started",
+        "steps": [
+          "Navigate to the website",
+          "Log in as a guest",
+          "View current bookings",
+          "Select an ongoing booking",
+          "Click on 'Cancel Booking' button"
+        ],
+        "expected_result": "Error message is displayed indicating the booking cannot be canceled as it is in progress"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Cancel a booking just before the cut-off time",
+        "steps": [
+          "Navigate to the website",
+          "Log in as a guest",
+          "View current bookings",
+          "Select a booking close to its start time",
+          "Click on 'Cancel Booking' button"
+        ],
+        "expected_result": "Booking is canceled successfully if within allowable time, or a message is displayed if cancellation time window has passed"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Cancel a booking multiple times in quick succession",
+        "steps": [
+          "Navigate to the website",
+          "Log in as a guest",
+          "View current bookings",
+          "Select a booking",
+          "Rapidly click on 'Cancel Booking' multiple times"
+        ],
+        "expected_result": "Booking is canceled only once and identical cancellation confirmation is not repeated"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 40.0,
+      "total_cases": 5,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.938
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.893
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E01",
+          "similarity": 0.856
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E02",
+          "similarity": 0.891
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 2,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 74.41,
+      "generated_cases": 5,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.744,
+      "min_similarity": 0.727,
+      "max_similarity": 0.76
+    },
+    "overall_score": 62.88
+  }
+}

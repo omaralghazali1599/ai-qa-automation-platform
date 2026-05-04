@@ -1,0 +1,134 @@
+{
+  "story_id": "US-A04",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to reset my password via email so that I can regain access if I forget it.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful password reset request",
+        "steps": [
+          "Navigate to the login page",
+          "Click on 'Forgot Password' link",
+          "Enter a valid registered email address",
+          "Click 'Submit' button",
+          "Check the email inbox for the password reset email",
+          "Click on the password reset link in the email",
+          "Enter a new password",
+          "Confirm the new password",
+          "Submit the new password"
+        ],
+        "expected_result": "The password is successfully reset, and a confirmation message is displayed."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Password reset email received",
+        "steps": [
+          "Initiate the password reset process",
+          "Check email inbox",
+          "Open the email with the password reset link"
+        ],
+        "expected_result": "The password reset email is received and contains a valid reset link."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Password reset request with unregistered email",
+        "steps": [
+          "Navigate to the login page",
+          "Click on 'Forgot Password' link",
+          "Enter an unregistered email address",
+          "Click 'Submit' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the email is not registered."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Expired password reset link",
+        "steps": [
+          "Initiate a password reset request",
+          "Wait for the reset link to expire",
+          "Click on the expired reset link"
+        ],
+        "expected_result": "An error message is displayed indicating the reset link has expired."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Password reset request with email containing special characters",
+        "steps": [
+          "Navigate to the login page",
+          "Click on 'Forgot Password' link",
+          "Enter an email address with special characters (e.g., user.name+tag@example.com)",
+          "Click 'Submit' button",
+          "Check the email inbox for the password reset email"
+        ],
+        "expected_result": "The password reset email is successfully sent, and a valid reset link is provided."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Password reset with very long password",
+        "steps": [
+          "Navigate to the password reset page via email link",
+          "Enter a password that exceeds the maximum length (e.g., 100 characters)",
+          "Confirm the password with the same long password",
+          "Submit the new password"
+        ],
+        "expected_result": "An error message is displayed indicating the password is too long."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 6,
+      "unique_cases": 6,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.15,
+      "generated_cases": 6,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.832,
+      "min_similarity": 0.704,
+      "max_similarity": 0.915
+    },
+    "overall_score": 86.63
+  }
+}

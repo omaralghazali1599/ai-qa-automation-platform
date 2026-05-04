@@ -1,0 +1,99 @@
+{
+  "story_id": "US-T19",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want deleting a non-existent task to return a clear error so that I know the operation failed.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Delete an existing task successfully",
+        "steps": [
+          "Step 1: Create a new task with a valid ID.",
+          "Step 2: Send a delete request for the created task.",
+          "Step 3: Verify the response indicates successful deletion."
+        ],
+        "expected_result": "The task is successfully deleted and removal is confirmed by the response."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to delete a non-existent task",
+        "steps": [
+          "Step 1: Identify or generate a task ID that does not exist in the system.",
+          "Step 2: Send a delete request using the non-existent task ID.",
+          "Step 3: Verify the response returns a clear error message indicating the task does not exist."
+        ],
+        "expected_result": "An error message is returned indicating that the task does not exist and the operation failed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Delete a task with a malformed ID",
+        "steps": [
+          "Step 1: Attempt to delete a task using a malformed ID (e.g., special characters).",
+          "Step 2: Verify the response to ensure proper error handling is in place."
+        ],
+        "expected_result": "An appropriate error message is returned indicating that the task ID format is invalid, ensuring the system maintains integrity."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.923
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.71,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.807,
+      "min_similarity": 0.76,
+      "max_similarity": 0.853
+    },
+    "overall_score": 76.14
+  }
+}

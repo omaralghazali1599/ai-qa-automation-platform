@@ -1,0 +1,143 @@
+{
+  "story_id": "US-T02",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to assign a category to a task so that I can organize my tasks.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Assign category to task with valid input",
+        "steps": [
+          "Navigate to tasks page",
+          "Select a task from the list",
+          "Click on 'Add Category' field",
+          "Enter a valid category name",
+          "Press 'Save' button"
+        ],
+        "expected_result": "Category is successfully assigned to the task"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Assign multiple categories to a task",
+        "steps": [
+          "Navigate to tasks page",
+          "Select a task from the list",
+          "Click on 'Add Category' field",
+          "Enter the first valid category name and save",
+          "Repeat to add a second valid category name and save"
+        ],
+        "expected_result": "Multiple categories are successfully assigned to the task"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Assign category to task with existing category name",
+        "steps": [
+          "Navigate to tasks page",
+          "Select a task with an existing category",
+          "Attempt to assign the same category again",
+          "Press 'Save' button"
+        ],
+        "expected_result": "Error message shown: 'Category already assigned to this task'"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Assign category to a non-existent task",
+        "steps": [
+          "Navigate to tasks page",
+          "Select a task that does not exist",
+          "Try to add a category",
+          "Press 'Save' button"
+        ],
+        "expected_result": "Error message shown: 'Task does not exist'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Assign category with max length",
+        "steps": [
+          "Navigate to tasks page",
+          "Select a task from the list",
+          "Enter a category name with exactly 255 characters",
+          "Press 'Save' button"
+        ],
+        "expected_result": "Category is successfully assigned to the task"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Assign category with special characters",
+        "steps": [
+          "Navigate to tasks page",
+          "Select a task from the list",
+          "Enter a category name with a mix of special characters",
+          "Press 'Save' button"
+        ],
+        "expected_result": "Validation error: 'Invalid characters in category name'"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 6,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.882
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.864
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 64.48,
+      "generated_cases": 6,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.645,
+      "min_similarity": 0.559,
+      "max_similarity": 0.713
+    },
+    "overall_score": 76.23
+  }
+}

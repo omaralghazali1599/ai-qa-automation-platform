@@ -1,0 +1,125 @@
+{
+  "story_id": "US-B13",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want to filter bookings by status so that I can see only pending, confirmed, or cancelled reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter bookings by 'pending' status",
+        "steps": [
+          "Navigate to the bookings page",
+          "Select 'pending' from the status filter dropdown",
+          "Click the apply filter button"
+        ],
+        "expected_result": "Only bookings with 'pending' status are displayed"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter bookings by 'confirmed' status",
+        "steps": [
+          "Navigate to the bookings page",
+          "Select 'confirmed' from the status filter dropdown",
+          "Click the apply filter button"
+        ],
+        "expected_result": "Only bookings with 'confirmed' status are displayed"
+      },
+      {
+        "id": "TC-P03",
+        "title": "Filter bookings by 'cancelled' status",
+        "steps": [
+          "Navigate to the bookings page",
+          "Select 'cancelled' from the status filter dropdown",
+          "Click the apply filter button"
+        ],
+        "expected_result": "Only bookings with 'cancelled' status are displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to filter with an invalid status",
+        "steps": [
+          "Navigate to the bookings page",
+          "Select 'invalid' from the status filter dropdown",
+          "Click the apply filter button"
+        ],
+        "expected_result": "Error message is displayed indicating invalid status selected"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter when there are no bookings",
+        "steps": [
+          "Navigate to the bookings page with no existing bookings",
+          "Select 'pending' from the status filter dropdown",
+          "Click the apply filter button"
+        ],
+        "expected_result": "Message indicating no bookings available is displayed"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 60.0,
+      "total_cases": 5,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.868
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.899
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.7,
+      "generated_cases": 5,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.837,
+      "min_similarity": 0.753,
+      "max_similarity": 0.868
+    },
+    "overall_score": 72.07
+  }
+}

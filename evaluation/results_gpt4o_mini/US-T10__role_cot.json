@@ -1,0 +1,96 @@
+{
+  "story_id": "US-T10",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to retrieve a single task by its ID so that I can view its full details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Retrieve a task by valid ID",
+        "steps": [
+          "Send a request to retrieve the task with a valid ID (e.g., 1)",
+          "Check the response for the task details"
+        ],
+        "expected_result": "The task details are returned successfully with the correct information."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Retrieve a task by invalid ID",
+        "steps": [
+          "Send a request to retrieve the task with an invalid ID (e.g., -1)",
+          "Check the response for an error message"
+        ],
+        "expected_result": "An error message is returned indicating that the task was not found."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Retrieve a task with a very large ID",
+        "steps": [
+          "Send a request to retrieve the task with a very large ID (e.g., 9999999999)",
+          "Check the response for an appropriate message or handling"
+        ],
+        "expected_result": "The system handles the request without crashing and returns a suitable error message."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.873
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.31,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.733,
+      "min_similarity": 0.63,
+      "max_similarity": 0.81
+    },
+    "overall_score": 68.0
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "story_id": "US-T17",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to update the description of a task so that I can add more context.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update task description with valid input",
+        "steps": [
+          "Navigate to the task list",
+          "Select a task to update",
+          "Click on the 'Edit' button",
+          "Update the description field with valid text",
+          "Click on 'Save'"
+        ],
+        "expected_result": "The task description is updated successfully and the new description is displayed on the task list."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Update task description with special characters",
+        "steps": [
+          "Navigate to the task list",
+          "Select a task to update",
+          "Click on the 'Edit' button",
+          "Update the description field with special characters (e.g., @,#,$,%)",
+          "Click on 'Save'"
+        ],
+        "expected_result": "The task description is updated successfully and the new description with special characters is displayed correctly."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Update task description with empty input",
+        "steps": [
+          "Navigate to the task list",
+          "Select a task to update",
+          "Click on the 'Edit' button",
+          "Clear the description field",
+          "Click on 'Save'"
+        ],
+        "expected_result": "An error message is displayed stating that the description cannot be empty and the description is not updated."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Update task description with an overly long input",
+        "steps": [
+          "Navigate to the task list",
+          "Select a task to update",
+          "Click on the 'Edit' button",
+          "Update the description field with a text longer than the maximum allowed limit",
+          "Click on 'Save'"
+        ],
+        "expected_result": "An error message is displayed stating that the description exceeds the maximum character limit and the description is not updated."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task description with SQL injection attempt",
+        "steps": [
+          "Navigate to the task list",
+          "Select a task to update",
+          "Click on the 'Edit' button",
+          "Update the description field with an SQL injection string (e.g., 'X'; DROP TABLE tasks; --)",
+          "Click on 'Save'"
+        ],
+        "expected_result": "The application handles the input safely, displaying an error message or rejecting the input, and the description is not updated."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Update task description with HTML tags",
+        "steps": [
+          "Navigate to the task list",
+          "Select a task to update",
+          "Click on the 'Edit' button",
+          "Update the description field with HTML tags (e.g., <script>alert('test');</script>)",
+          "Click on 'Save'"
+        ],
+        "expected_result": "The application sanitizes the input, either removing or escaping the HTML tags, and the task description is updated without executing any scripts."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 83.33,
+      "total_cases": 6,
+      "unique_cases": 5,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.857
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 66.43,
+      "generated_cases": 6,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.664,
+      "min_similarity": 0.584,
+      "max_similarity": 0.716
+    },
+    "overall_score": 73.29
+  }
+}

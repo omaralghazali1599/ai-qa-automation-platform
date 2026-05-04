@@ -1,0 +1,100 @@
+{
+  "story_id": "US-B10",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want the system to reject an invalid date format so that only correctly formatted dates are accepted.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Accept valid date format",
+        "steps": [
+          "Navigate to date input field",
+          "Enter date in valid format (e.g., YYYY-MM-DD)",
+          "Submit the form"
+        ],
+        "expected_result": "Date is accepted and process continues"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Reject invalid date format with letters",
+        "steps": [
+          "Navigate to date input field",
+          "Enter date with letters (e.g., 'March 10, 2023')",
+          "Submit the form"
+        ],
+        "expected_result": "Error message shown: 'Invalid date format'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Reject date format with special characters",
+        "steps": [
+          "Navigate to date input field",
+          "Enter date with special characters (e.g., '2023/03/10')",
+          "Submit the form"
+        ],
+        "expected_result": "Error message shown: 'Invalid date format'"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.889
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 63.28,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.633,
+      "min_similarity": 0.625,
+      "max_similarity": 0.642
+    },
+    "overall_score": 72.66
+  }
+}

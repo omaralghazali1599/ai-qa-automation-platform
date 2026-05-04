@@ -1,0 +1,113 @@
+{
+  "story_id": "US-B09",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want the system to reject more than 10 guests per booking so that room capacity is respected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Book room with 10 or fewer guests",
+        "steps": [
+          "Navigate to booking page",
+          "Select room type",
+          "Enter guest details for 10 or fewer guests",
+          "Submit booking request"
+        ],
+        "expected_result": "Booking is successfully processed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Book room with more than 10 guests",
+        "steps": [
+          "Navigate to booking page",
+          "Select room type",
+          "Enter guest details for more than 10 guests",
+          "Submit booking request"
+        ],
+        "expected_result": "Error message shown: 'Cannot book more than 10 guests per room'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Book room with exactly 10 guests",
+        "steps": [
+          "Navigate to booking page",
+          "Select room type",
+          "Enter guest details for exactly 10 guests",
+          "Submit booking request"
+        ],
+        "expected_result": "Booking is successfully processed"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.972
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.949
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.979
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 74.96,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.75,
+      "min_similarity": 0.736,
+      "max_similarity": 0.774
+    },
+    "overall_score": 64.99
+  }
+}

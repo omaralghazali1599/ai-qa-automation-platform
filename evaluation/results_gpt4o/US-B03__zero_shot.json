@@ -1,0 +1,130 @@
+{
+  "story_id": "US-B03",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want to retrieve a booking by its ID so that I can see its details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Retrieve booking with valid ID",
+        "steps": [
+          "Navigate to the booking retrieval page",
+          "Enter a valid booking ID",
+          "Click on the 'Retrieve' button"
+        ],
+        "expected_result": "Booking details are displayed for the given ID"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Retrieve booking with non-existent ID",
+        "steps": [
+          "Navigate to the booking retrieval page",
+          "Enter a non-existent booking ID",
+          "Click on the 'Retrieve' button"
+        ],
+        "expected_result": "An error message is displayed indicating the booking ID does not exist"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Retrieve booking with invalid ID format",
+        "steps": [
+          "Navigate to the booking retrieval page",
+          "Enter an invalid format booking ID (e.g. '123abc!')",
+          "Click on the 'Retrieve' button"
+        ],
+        "expected_result": "An error message is displayed indicating the booking ID format is invalid"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Retrieve booking with very large ID number",
+        "steps": [
+          "Navigate to the booking retrieval page",
+          "Enter a very large number as booking ID",
+          "Click on the 'Retrieve' button"
+        ],
+        "expected_result": "Either the booking details are displayed or an error message is shown without crashing"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Retrieve booking with an empty ID",
+        "steps": [
+          "Navigate to the booking retrieval page",
+          "Leave the booking ID field empty",
+          "Click on the 'Retrieve' button"
+        ],
+        "expected_result": "An error message is displayed indicating that the booking ID field cannot be empty"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 40.0,
+      "total_cases": 5,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.927
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.861
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E02",
+          "similarity": 0.907
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 77.52,
+      "generated_cases": 5,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.775,
+      "min_similarity": 0.691,
+      "max_similarity": 0.822
+    },
+    "overall_score": 66.84
+  }
+}

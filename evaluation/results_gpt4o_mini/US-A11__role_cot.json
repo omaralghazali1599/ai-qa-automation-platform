@@ -1,0 +1,143 @@
+{
+  "story_id": "US-A11",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want registration to fail if I leave any field empty so that incomplete accounts are not created.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful registration with all fields filled",
+        "steps": [
+          "Navigate to the registration page.",
+          "Fill in all required fields (e.g., username, password, email).",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "The user is successfully registered and redirected to the welcome page."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Registration fails with empty username field",
+        "steps": [
+          "Navigate to the registration page.",
+          "Leave the username field empty.",
+          "Fill in the password and email fields.",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "An error message is displayed stating that the username field cannot be empty."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Registration fails with empty password field",
+        "steps": [
+          "Navigate to the registration page.",
+          "Fill in the username and email fields.",
+          "Leave the password field empty.",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "An error message is displayed stating that the password field cannot be empty."
+      },
+      {
+        "id": "TC-N03",
+        "title": "Registration fails with empty email field",
+        "steps": [
+          "Navigate to the registration page.",
+          "Fill in the username and password fields.",
+          "Leave the email field empty.",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "An error message is displayed stating that the email field cannot be empty."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Registration fails with all fields empty",
+        "steps": [
+          "Navigate to the registration page.",
+          "Leave all fields empty.",
+          "Click on the 'Register' button."
+        ],
+        "expected_result": "Multiple error messages are displayed stating that all fields are required."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 40.0,
+      "total_cases": 5,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.951
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N03",
+          "similarity": 0.958
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.879
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N03",
+          "similarity": 0.939
+        },
+        {
+          "case_a": "TC-N03",
+          "case_b": "TC-E01",
+          "similarity": 0.871
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.78,
+      "generated_cases": 5,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.738,
+      "min_similarity": 0.538,
+      "max_similarity": 0.872
+    },
+    "overall_score": 66.09
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "story_id": "US-T15",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to update the priority of an existing task so that I can reprioritize my work.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update priority of a task to high",
+        "steps": [
+          "Navigate to task list",
+          "Select an existing task",
+          "Click on priority dropdown",
+          "Select 'High' priority",
+          "Save changes"
+        ],
+        "expected_result": "Task priority updated to high and changes saved successfully"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to update priority without selecting a task",
+        "steps": [
+          "Navigate to task list",
+          "Click on priority dropdown without selecting task",
+          "Select 'Medium' priority",
+          "Save changes"
+        ],
+        "expected_result": "Error message shown: No task selected"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update priority with session timeout",
+        "steps": [
+          "Navigate to task list",
+          "Select an existing task",
+          "Leave session idle until timeout",
+          "Attempt to update priority",
+          "Save changes"
+        ],
+        "expected_result": "User is prompted to log in again due to session timeout"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.866
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 67.28,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.673,
+      "min_similarity": 0.601,
+      "max_similarity": 0.722
+    },
+    "overall_score": 70.12
+  }
+}

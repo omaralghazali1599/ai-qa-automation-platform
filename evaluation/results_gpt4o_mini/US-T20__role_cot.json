@@ -1,0 +1,102 @@
+{
+  "story_id": "US-T20",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to update multiple fields of a task in a single request so that I can edit efficiently.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully update multiple fields of a task",
+        "steps": [
+          "Navigate to the task update page.",
+          "Select the task you wish to update.",
+          "Modify the title, description, and due date fields.",
+          "Submit the update request."
+        ],
+        "expected_result": "The task is updated successfully with the new title, description, and due date."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Fail to update task due to invalid date format",
+        "steps": [
+          "Navigate to the task update page.",
+          "Select the task you wish to update.",
+          "Modify the title and description fields.",
+          "Input an invalid date format in the due date field.",
+          "Submit the update request."
+        ],
+        "expected_result": "An error message is displayed indicating that the due date format is invalid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to update task with no fields modified",
+        "steps": [
+          "Navigate to the task update page.",
+          "Select the task you wish to update.",
+          "Keep all fields unchanged.",
+          "Submit the update request."
+        ],
+        "expected_result": "The task remains unchanged and a message is displayed indicating no changes were made."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 66.67,
+      "total_cases": 3,
+      "covered": 2,
+      "not_covered": 1,
+      "low_relevance_cases": [
+        {
+          "id": "TC-N01",
+          "similarity": 0.262
+        }
+      ]
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 61.25,
+      "generated_cases": 3,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.613,
+      "min_similarity": 0.564,
+      "max_similarity": 0.664
+    },
+    "overall_score": 65.58
+  }
+}

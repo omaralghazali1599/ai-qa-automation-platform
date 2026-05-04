@@ -1,0 +1,103 @@
+{
+  "story_id": "US-T18",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to create a task with only a title and no optional fields so that minimal input is sufficient.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create task with valid title",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Enter a valid title for the task.",
+          "Leave all optional fields empty.",
+          "Click on the 'Create Task' button."
+        ],
+        "expected_result": "A new task is successfully created with the provided title and no optional fields."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to create task with empty title",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Leave the title field empty.",
+          "Leave all optional fields empty.",
+          "Click on the 'Create Task' button."
+        ],
+        "expected_result": "An error message is displayed indicating that the title is required."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create task with a very long title",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Enter a title that exceeds the maximum allowed length.",
+          "Leave all optional fields empty.",
+          "Click on the 'Create Task' button."
+        ],
+        "expected_result": "An error message is displayed indicating that the title exceeds the maximum length."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.915
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 75.08,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.751,
+      "min_similarity": 0.73,
+      "max_similarity": 0.781
+    },
+    "overall_score": 78.35
+  }
+}

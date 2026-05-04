@@ -1,0 +1,118 @@
+{
+  "story_id": "US-A04",
+  "app": "auth",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to reset my password via email so that I can regain access if I forget it.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful password reset via email",
+        "steps": [
+          "User clicks on 'Forgot Password' link",
+          "User enters registered email address",
+          "User submits the password reset request",
+          "User receives a password reset email",
+          "User clicks the link in the email",
+          "User enters a new password",
+          "User confirms the new password",
+          "User submits the new password"
+        ],
+        "expected_result": "User successfully resets the password and can log in with the new password."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Password reset request with unregistered email",
+        "steps": [
+          "User clicks on 'Forgot Password' link",
+          "User enters an unregistered email address",
+          "User submits the password reset request"
+        ],
+        "expected_result": "User sees an error message indicating that the email address is not registered."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Password reset link expiration",
+        "steps": [
+          "User clicks on 'Forgot Password' link",
+          "User enters registered email address",
+          "User submits the password reset request",
+          "User receives a password reset email",
+          "User does not click the reset link for 24 hours",
+          "User clicks the link in the email after 24 hours",
+          "User attempts to enter a new password"
+        ],
+        "expected_result": "User sees an error message indicating the link has expired."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.886
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.874
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.851
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.57,
+      "generated_cases": 3,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.736,
+      "min_similarity": 0.684,
+      "max_similarity": 0.807
+    },
+    "overall_score": 61.38
+  }
+}

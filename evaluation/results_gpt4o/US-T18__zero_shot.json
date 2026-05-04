@@ -1,0 +1,110 @@
+{
+  "story_id": "US-T18",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to create a task with only a title and no optional fields so that minimal input is sufficient.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create a task with a valid title",
+        "steps": [
+          "Navigate to the 'Create Task' page",
+          "Enter a valid title into the 'Title' field",
+          "Click the 'Save' button"
+        ],
+        "expected_result": "Task is created successfully with the provided title."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to create a task with an empty title",
+        "steps": [
+          "Navigate to the 'Create Task' page",
+          "Leave the 'Title' field empty",
+          "Click the 'Save' button"
+        ],
+        "expected_result": "Error message is displayed indicating that the title is required, and the task is not created."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to create a task with a title that exceeds the character limit",
+        "steps": [
+          "Navigate to the 'Create Task' page",
+          "Enter a title into the 'Title' field that exceeds the character limit",
+          "Click the 'Save' button"
+        ],
+        "expected_result": "Error message is displayed indicating that the title exceeds the character limit, and the task is not created."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create a task with a title exactly at the character limit",
+        "steps": [
+          "Navigate to the 'Create Task' page",
+          "Enter a title into the 'Title' field that is exactly at the character limit",
+          "Click the 'Save' button"
+        ],
+        "expected_result": "Task is created successfully with the title at the character limit."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 75.0,
+      "total_cases": 4,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E01",
+          "similarity": 0.926
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 4,
+      "covered": 4,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 66.11,
+      "generated_cases": 4,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.661,
+      "min_similarity": 0.64,
+      "max_similarity": 0.691
+    },
+    "overall_score": 74.89
+  }
+}

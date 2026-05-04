@@ -1,0 +1,114 @@
+{
+  "story_id": "US-T04",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to list all my tasks so that I can see everything I need to do.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Display tasks when user has multiple tasks",
+        "steps": [
+          "Log in as a user with multiple tasks.",
+          "Navigate to the task listing page."
+        ],
+        "expected_result": "All tasks created by the user are displayed in a list format."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Display tasks when user has a single task",
+        "steps": [
+          "Log in as a user with one task.",
+          "Navigate to the task listing page."
+        ],
+        "expected_result": "The single task created by the user is displayed in a list format."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to access task list without logging in",
+        "steps": [
+          "Navigate to the task listing page without logging in."
+        ],
+        "expected_result": "The user is prompted to log in and no tasks are displayed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Display tasks when the user has a very large number of tasks",
+        "steps": [
+          "Log in as a user with a large number of tasks (e.g., 1000).",
+          "Navigate to the task listing page."
+        ],
+        "expected_result": "Tasks are displayed correctly without performance issues or UI errors."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Display tasks when the user has zero tasks",
+        "steps": [
+          "Log in as a user with no tasks.",
+          "Navigate to the task listing page."
+        ],
+        "expected_result": "A message indicating that there are no tasks is displayed."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 80.0,
+      "total_cases": 5,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.941
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 64.68,
+      "generated_cases": 5,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.647,
+      "min_similarity": 0.587,
+      "max_similarity": 0.708
+    },
+    "overall_score": 72.27
+  }
+}

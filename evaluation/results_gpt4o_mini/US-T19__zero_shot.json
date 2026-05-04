@@ -1,0 +1,96 @@
+{
+  "story_id": "US-T19",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want deleting a non-existent task to return a clear error so that I know the operation failed.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful deletion of an existing task",
+        "steps": [
+          "Create a task with a valid ID.",
+          "Delete the task using the valid ID.",
+          "Check for the confirmation message of deletion."
+        ],
+        "expected_result": "The task is successfully deleted and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Deletion attempt of a non-existent task",
+        "steps": [
+          "Attempt to delete a task with an ID that does not exist."
+        ],
+        "expected_result": "An error message indicating that the task does not exist is returned."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Deletion attempt with a null ID",
+        "steps": [
+          "Attempt to delete a task with a null or empty ID."
+        ],
+        "expected_result": "An error message indicating that the task ID is invalid is returned."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.906
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.41,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.764,
+      "min_similarity": 0.72,
+      "max_similarity": 0.8
+    },
+    "overall_score": 75.28
+  }
+}

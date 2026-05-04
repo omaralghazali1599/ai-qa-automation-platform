@@ -1,0 +1,100 @@
+{
+  "story_id": "US-A01",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a new user, I want to register with my name, email, and password so that I can create an account.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful Registration with Valid Inputs",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a valid name in the 'Name' field.",
+          "Enter a valid email in the 'Email' field.",
+          "Enter a valid password in the 'Password' field.",
+          "Click the 'Register' button."
+        ],
+        "expected_result": "User successfully creates an account and is directed to the welcome page."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Registration Fails with Invalid Email",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a valid name in the 'Name' field.",
+          "Enter an invalid email format in the 'Email' field.",
+          "Enter a valid password in the 'Password' field.",
+          "Click the 'Register' button."
+        ],
+        "expected_result": "User sees an error message indicating the email format is invalid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Registration with Maximum Length Inputs",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter the maximum allowed characters in the 'Name' field.",
+          "Enter the maximum allowed characters in the 'Email' field.",
+          "Enter the maximum allowed characters in the 'Password' field.",
+          "Click the 'Register' button."
+        ],
+        "expected_result": "User successfully creates an account and is directed to the welcome page."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 90.34,
+      "generated_cases": 3,
+      "baseline_cases": 36,
+      "avg_best_match_similarity": 0.903,
+      "min_similarity": 0.896,
+      "max_similarity": 0.911
+    },
+    "overall_score": 88.07
+  }
+}

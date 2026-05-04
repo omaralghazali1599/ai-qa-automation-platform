@@ -1,0 +1,105 @@
+{
+  "story_id": "US-B05",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want to cancel my booking so that I can free up the reservation.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully cancel an existing booking",
+        "steps": [
+          "Log in as a guest user.",
+          "Navigate to 'My Bookings' page.",
+          "Select an existing booking from the list.",
+          "Click on the 'Cancel Booking' button.",
+          "Confirm the cancellation when prompted."
+        ],
+        "expected_result": "The booking is successfully canceled, and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to cancel a booking with no internet connection",
+        "steps": [
+          "Log in as a guest user on a device.",
+          "Deactivate the internet connection.",
+          "Navigate to 'My Bookings' page.",
+          "Select an existing booking from the list.",
+          "Click on the 'Cancel Booking' button."
+        ],
+        "expected_result": "A failure notification is displayed indicating that an internet connection is required to process the booking cancellation."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Cancel a booking that has already been checked-in",
+        "steps": [
+          "Log in as a guest user.",
+          "Navigate to 'My Bookings' page.",
+          "Select a booking that has already been checked-in.",
+          "Attempt to click the 'Cancel Booking' button."
+        ],
+        "expected_result": "A notification is displayed indicating that the booking cannot be canceled as it has already been checked-in."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.895
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.83,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.768,
+      "min_similarity": 0.708,
+      "max_similarity": 0.808
+    },
+    "overall_score": 72.03
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "story_id": "US-A03",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a logged-in user, I want to log out so that my session is ended securely.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful logout",
+        "steps": [
+          "User clicks on the logout button",
+          "User is redirected to the login page"
+        ],
+        "expected_result": "User is successfully logged out and the session is ended."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Logout confirmation message",
+        "steps": [
+          "User clicks on the logout button",
+          "User sees a confirmation message that the logout was successful"
+        ],
+        "expected_result": "A confirmation message is displayed to the user indicating they have successfully logged out."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Logout when not logged in",
+        "steps": [
+          "User navigates to the logout URL without being logged in"
+        ],
+        "expected_result": "User receives an error message indicating that they must be logged in to log out."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Session timeout before logout",
+        "steps": [
+          "User is logged in and idle for longer than the session timeout",
+          "User attempts to click on the logout button"
+        ],
+        "expected_result": "User is redirected to the login page with an error message indicating the session has expired."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Logout while performing an action",
+        "steps": [
+          "User is in the middle of submitting a form",
+          "User clicks the logout button"
+        ],
+        "expected_result": "Form submission is cancelled, and user is logged out successfully without any data loss."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Multiple logout attempts",
+        "steps": [
+          "User clicks the logout button once",
+          "User quickly clicks the logout button again before the action completes"
+        ],
+        "expected_result": "User is logged out successfully, and the second click does not produce an error."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 6,
+      "unique_cases": 6,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 70.02,
+      "generated_cases": 6,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.7,
+      "min_similarity": 0.64,
+      "max_similarity": 0.83
+    },
+    "overall_score": 77.34
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "story_id": "US-T13",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want task creation to fail when an invalid category is provided so that data stays consistent.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Task creation with valid category",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Select a valid category from the dropdown.",
+          "Fill in the task details.",
+          "Submit the task."
+        ],
+        "expected_result": "The task is created successfully and is displayed in the task list."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Task creation with invalid category",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Select an invalid category from the dropdown.",
+          "Fill in the task details.",
+          "Submit the task."
+        ],
+        "expected_result": "An error message is displayed indicating that the category is invalid and the task is not created."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Task creation with empty category",
+        "steps": [
+          "Navigate to the task creation page.",
+          "Leave the category dropdown empty.",
+          "Fill in the task details.",
+          "Submit the task."
+        ],
+        "expected_result": "An error message is displayed indicating that the category cannot be empty and the task is not created."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.874
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.76,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.738,
+      "min_similarity": 0.658,
+      "max_similarity": 0.82
+    },
+    "overall_score": 71.42
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "story_id": "US-B07",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want the system to reject a booking where check-out is before check-in so that invalid date ranges are prevented.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create booking with valid date range",
+        "steps": [
+          "Navigate to booking page",
+          "Select a valid check-in date",
+          "Select a valid check-out date that is after check-in",
+          "Submit booking"
+        ],
+        "expected_result": "Booking is successfully created"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Reject booking with check-out date before check-in",
+        "steps": [
+          "Navigate to booking page",
+          "Select check-in date",
+          "Select check-out date that is before check-in",
+          "Submit booking"
+        ],
+        "expected_result": "Error message shown: Check-out date must be after check-in date"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt booking with same check-in and check-out date",
+        "steps": [
+          "Navigate to booking page",
+          "Select the same date for check-in and check-out",
+          "Submit booking"
+        ],
+        "expected_result": "Error message shown: Check-out date must be after check-in date"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.47,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.805,
+      "min_similarity": 0.787,
+      "max_similarity": 0.817
+    },
+    "overall_score": 76.09
+  }
+}

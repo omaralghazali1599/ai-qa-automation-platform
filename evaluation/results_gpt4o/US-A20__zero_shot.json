@@ -1,0 +1,159 @@
+{
+  "story_id": "US-A20",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want the forgot-password endpoint to require the email field so that incomplete requests are rejected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Forgot Password with Valid Email",
+        "steps": [
+          "Prepare a valid request payload with an existing user's email.",
+          "Send the request to the forgot-password endpoint."
+        ],
+        "expected_result": "The system sends a password reset email to the user's email address."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Forgot Password with Missing Email",
+        "steps": [
+          "Prepare a request payload without the email field.",
+          "Send the request to the forgot-password endpoint."
+        ],
+        "expected_result": "The system returns a 400 Bad Request error indicating that the email field is required."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Forgot Password with Invalid Email Format",
+        "steps": [
+          "Prepare a request payload with an invalid email format (e.g., 'user@domain').",
+          "Send the request to the forgot-password endpoint."
+        ],
+        "expected_result": "The system returns a 400 Bad Request error indicating that the email format is invalid."
+      },
+      {
+        "id": "TC-N03",
+        "title": "Forgot Password with Non-existent Email",
+        "steps": [
+          "Prepare a request payload with an email that does not exist in the system.",
+          "Send the request to the forgot-password endpoint."
+        ],
+        "expected_result": "The system returns a 200 OK status but does not send any email, handling the request gracefully without exposing existence of email."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Forgot Password with Extremely Long Email Address",
+        "steps": [
+          "Prepare a request payload with an email address at the maximum length allowed by the system.",
+          "Send the request to the forgot-password endpoint."
+        ],
+        "expected_result": "The system processes the request correctly and sends a password reset email if the email exists, or handles the request gracefully if not."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Forgot Password with Email Containing Special Characters",
+        "steps": [
+          "Prepare a request payload with an email containing special characters permitted by the email standards (e.g., 'user+test@domain.com').",
+          "Send the request to the forgot-password endpoint."
+        ],
+        "expected_result": "The system processes the request correctly and sends a password reset email if the email exists, or handles the request gracefully if not."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 6,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.909
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.906
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N03",
+          "similarity": 0.925
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.855
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.865
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N03",
+          "similarity": 0.949
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N03",
+          "similarity": 0.891
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E02",
+          "similarity": 0.901
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 84.05,
+      "generated_cases": 6,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.841,
+      "min_similarity": 0.795,
+      "max_similarity": 0.914
+    },
+    "overall_score": 73.48
+  }
+}

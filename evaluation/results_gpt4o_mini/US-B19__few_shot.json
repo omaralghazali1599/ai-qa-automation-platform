@@ -1,0 +1,113 @@
+{
+  "story_id": "US-B19",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to create a booking with the maximum allowed guests (10) so that boundary values are handled correctly.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create a booking with maximum allowed guests",
+        "steps": [
+          "Navigate to booking page",
+          "Select check-in and check-out dates",
+          "Select 10 guests",
+          "Click Create Booking"
+        ],
+        "expected_result": "Booking is created successfully and confirmation message is shown"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Create a booking with more than the maximum guests allowed",
+        "steps": [
+          "Navigate to booking page",
+          "Select check-in and check-out dates",
+          "Select 11 guests",
+          "Click Create Booking"
+        ],
+        "expected_result": "Error message shown: 'Maximum guests exceeded'"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create a booking with the minimum guests allowed (1)",
+        "steps": [
+          "Navigate to booking page",
+          "Select check-in and check-out dates",
+          "Select 1 guest",
+          "Click Create Booking"
+        ],
+        "expected_result": "Booking is created successfully and confirmation message is shown"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.936
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.883
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.862
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.93,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.719,
+      "min_similarity": 0.706,
+      "max_similarity": 0.745
+    },
+    "overall_score": 64.39
+  }
+}

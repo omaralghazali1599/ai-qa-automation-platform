@@ -1,0 +1,95 @@
+{
+  "story_id": "US-A10",
+  "app": "auth",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to see my profile information after logging in so that I can confirm my account details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "View Profile Information After Successful Login",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter valid username and password.",
+          "Click the login button.",
+          "Check the profile information displayed on the screen."
+        ],
+        "expected_result": "User profile information is displayed correctly."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to View Profile Information with Invalid Credentials",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter invalid username and/or password.",
+          "Click the login button."
+        ],
+        "expected_result": "An error message indicating invalid credentials is displayed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "View Profile Information with Empty Credentials",
+        "steps": [
+          "Navigate to the login page.",
+          "Leave the username and password fields empty.",
+          "Click the login button."
+        ],
+        "expected_result": "An error message indicating that credentials are required is displayed."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.37,
+      "generated_cases": 3,
+      "baseline_cases": 11,
+      "avg_best_match_similarity": 0.714,
+      "min_similarity": 0.627,
+      "max_similarity": 0.841
+    },
+    "overall_score": 80.94
+  }
+}

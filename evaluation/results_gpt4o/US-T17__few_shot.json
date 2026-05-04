@@ -1,0 +1,100 @@
+{
+  "story_id": "US-T17",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to update the description of a task so that I can add more context.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update task description with valid input",
+        "steps": [
+          "Navigate to the task management page",
+          "Select a task to update",
+          "Click on 'Edit' button of the selected task",
+          "Enter a new valid description",
+          "Click 'Save'"
+        ],
+        "expected_result": "Task description is updated and saved successfully"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Update task description with SQL injection text",
+        "steps": [
+          "Navigate to the task management page",
+          "Select a task to update",
+          "Click on 'Edit' button of the selected task",
+          "Enter an SQL injection string as the description",
+          "Click 'Save'"
+        ],
+        "expected_result": "Error message shown and changes are not saved"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task description with extremely long text",
+        "steps": [
+          "Navigate to the task management page",
+          "Select a task to update",
+          "Click on 'Edit' button of the selected task",
+          "Enter a very long description exceeding the character limit",
+          "Click 'Save'"
+        ],
+        "expected_result": "Validation error shown: description exceeds maximum allowed length"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 62.22,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.622,
+      "min_similarity": 0.54,
+      "max_similarity": 0.667
+    },
+    "overall_score": 82.44
+  }
+}

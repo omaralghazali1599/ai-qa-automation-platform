@@ -1,0 +1,85 @@
+{
+  "story_id": "US-T13",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want task creation to fail when an invalid category is provided so that data stays consistent.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Task creation with invalid category",
+        "steps": [
+          "Navigate to task creation page",
+          "Select an invalid category from the dropdown",
+          "Fill in task details",
+          "Click Create Task"
+        ],
+        "expected_result": "Error message shown indicating that the category is invalid and task is not created"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Task creation with empty category field",
+        "steps": [
+          "Navigate to task creation page",
+          "Leave category field blank",
+          "Fill in task details",
+          "Click Create Task"
+        ],
+        "expected_result": "Validation error shown indicating that the category is required and task is not created"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 2,
+      "unique_cases": 2,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 2,
+      "covered": 2,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.12,
+      "generated_cases": 2,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.711,
+      "min_similarity": 0.65,
+      "max_similarity": 0.772
+    },
+    "overall_score": 77.56
+  }
+}

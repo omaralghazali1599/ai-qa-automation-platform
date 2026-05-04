@@ -1,0 +1,100 @@
+{
+  "story_id": "US-A06",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to receive an error when my password is shorter than 8 characters so that I use a secure password.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "User receives an error when password is shorter than 8 characters",
+        "steps": [
+          "Navigate to the password input field on the signup page.",
+          "Enter a password with 6 characters.",
+          "Submit the signup form."
+        ],
+        "expected_result": "An error message is displayed indicating that the password is too short."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "User successfully sets a password with 8 or more characters",
+        "steps": [
+          "Navigate to the password input field on the signup page.",
+          "Enter a password with 8 or more characters.",
+          "Submit the signup form."
+        ],
+        "expected_result": "The form is submitted successfully without any error message related to password length."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "User attempts to set an empty password",
+        "steps": [
+          "Navigate to the password input field on the signup page.",
+          "Leave the password field empty.",
+          "Submit the signup form."
+        ],
+        "expected_result": "An error message is displayed indicating that the password cannot be empty."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.858
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.77,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.818,
+      "min_similarity": 0.769,
+      "max_similarity": 0.877
+    },
+    "overall_score": 73.02
+  }
+}

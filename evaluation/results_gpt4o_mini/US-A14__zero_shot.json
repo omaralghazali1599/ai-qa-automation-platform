@@ -1,0 +1,206 @@
+{
+  "story_id": "US-A14",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want the system to reject a new password shorter than 8 characters during reset so that security standards are maintained.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "New password is exactly 8 characters",
+        "steps": [
+          "Navigate to the password reset page",
+          "Enter 'abcdefgh' as the new password",
+          "Confirm the new password with 'abcdefgh'",
+          "Submit the password reset request"
+        ],
+        "expected_result": "The system accepts the new password and confirms the reset"
+      },
+      {
+        "id": "TC-P02",
+        "title": "New password is more than 8 characters",
+        "steps": [
+          "Navigate to the password reset page",
+          "Enter 'abcdefgh123' as the new password",
+          "Confirm the new password with 'abcdefgh123'",
+          "Submit the password reset request"
+        ],
+        "expected_result": "The system accepts the new password and confirms the reset"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "New password is shorter than 8 characters",
+        "steps": [
+          "Navigate to the password reset page",
+          "Enter 'abcde' as the new password",
+          "Confirm the new password with 'abcde'",
+          "Submit the password reset request"
+        ],
+        "expected_result": "The system rejects the new password and shows an error message indicating the password must be at least 8 characters"
+      },
+      {
+        "id": "TC-N02",
+        "title": "New password is exactly 7 characters",
+        "steps": [
+          "Navigate to the password reset page",
+          "Enter 'abcdefg' as the new password",
+          "Confirm the new password with 'abcdefg'",
+          "Submit the password reset request"
+        ],
+        "expected_result": "The system rejects the new password and shows an error message indicating the password must be at least 8 characters"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "New password is 8 characters with special characters",
+        "steps": [
+          "Navigate to the password reset page",
+          "Enter '!@#$%^&*' as the new password",
+          "Confirm the new password with '!@#$%^&*'",
+          "Submit the password reset request"
+        ],
+        "expected_result": "The system accepts the new password and confirms the reset"
+      },
+      {
+        "id": "TC-E02",
+        "title": "New password is 8 characters with spaces",
+        "steps": [
+          "Navigate to the password reset page",
+          "Enter 'abcd efgh' as the new password",
+          "Confirm the new password with 'abcd efgh'",
+          "Submit the password reset request"
+        ],
+        "expected_result": "The system accepts the new password and confirms the reset"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 16.67,
+      "total_cases": 6,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.974
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.963
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.958
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.894
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.938
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-N01",
+          "similarity": 0.953
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-N02",
+          "similarity": 0.937
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E01",
+          "similarity": 0.883
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E02",
+          "similarity": 0.917
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.935
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.858
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E02",
+          "similarity": 0.911
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E01",
+          "similarity": 0.872
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E02",
+          "similarity": 0.91
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E02",
+          "similarity": 0.884
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.62,
+      "generated_cases": 6,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.766,
+      "min_similarity": 0.733,
+      "max_similarity": 0.815
+    },
+    "overall_score": 61.99
+  }
+}

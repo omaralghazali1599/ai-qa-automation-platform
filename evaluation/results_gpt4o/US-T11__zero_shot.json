@@ -1,0 +1,129 @@
+{
+  "story_id": "US-T11",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want task creation to fail when the title is empty so that all tasks have a meaningful name.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Task creation succeeds with a non-empty title",
+        "steps": [
+          "Open the task creation page",
+          "Enter a valid title in the title field",
+          "Fill in other required fields",
+          "Submit the task creation form"
+        ],
+        "expected_result": "Task is successfully created, and the user sees a confirmation message."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Task creation fails with an empty title",
+        "steps": [
+          "Open the task creation page",
+          "Leave the title field empty",
+          "Fill in other required fields",
+          "Submit the task creation form"
+        ],
+        "expected_result": "Task creation is rejected, and the user sees an error message indicating the title is required."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Task creation fails with a title containing only spaces",
+        "steps": [
+          "Open the task creation page",
+          "Enter spaces in the title field",
+          "Fill in other required fields",
+          "Submit the task creation form"
+        ],
+        "expected_result": "Task creation is rejected, and the user sees an error message indicating the title must not be empty."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Task creation succeeds with a title at maximum allowed length",
+        "steps": [
+          "Open the task creation page",
+          "Enter a title with maximum allowed characters",
+          "Fill in other required fields",
+          "Submit the task creation form"
+        ],
+        "expected_result": "Task is successfully created, and the user sees a confirmation message."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 25.0,
+      "total_cases": 4,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.96
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.85
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.867
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.865
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 4,
+      "covered": 4,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.22,
+      "generated_cases": 4,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.802,
+      "min_similarity": 0.757,
+      "max_similarity": 0.843
+    },
+    "overall_score": 74.38
+  }
+}

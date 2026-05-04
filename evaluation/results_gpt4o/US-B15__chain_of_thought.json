@@ -1,0 +1,102 @@
+{
+  "story_id": "US-B15",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want cancelling an already-cancelled booking to return a clear error so that duplicate cancellations are handled.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully cancel a booking that has not been cancelled yet",
+        "steps": [
+          "Navigate to the booking summary page.",
+          "Locate the booking that is confirmed but not yet cancelled.",
+          "Click on the 'Cancel Booking' button.",
+          "Confirm cancellation in the pop-up modal."
+        ],
+        "expected_result": "The booking status is updated to 'Cancelled' and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to cancel an already-cancelled booking",
+        "steps": [
+          "Navigate to the booking summary page.",
+          "Locate the booking that has already been cancelled.",
+          "Click on the 'Cancel Booking' button.",
+          "Attempt to confirm cancellation in the pop-up modal."
+        ],
+        "expected_result": "An error message is displayed indicating the booking has already been cancelled, and no further action is taken."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to cancel a booking with an invalid or corrupted booking ID",
+        "steps": [
+          "Navigate to the booking management page.",
+          "Manually enter an invalid or corrupted booking ID in the URL.",
+          "Attempt to cancel the booking using the 'Cancel Booking' button."
+        ],
+        "expected_result": "An error message is displayed indicating the booking ID is invalid and the booking cannot be found or cancelled."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.945
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 82.2,
+      "generated_cases": 3,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.822,
+      "min_similarity": 0.81,
+      "max_similarity": 0.837
+    },
+    "overall_score": 73.11
+  }
+}

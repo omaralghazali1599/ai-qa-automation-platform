@@ -1,0 +1,142 @@
+{
+  "story_id": "US-T14",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to filter tasks by completion status so that I can see only open or only done tasks.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter tasks by completion status to show only open tasks",
+        "steps": [
+          "Navigate to the task list page",
+          "Select the 'Open' filter option"
+        ],
+        "expected_result": "Only tasks with open status are displayed"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter tasks by completion status to show only done tasks",
+        "steps": [
+          "Navigate to the task list page",
+          "Select the 'Done' filter option"
+        ],
+        "expected_result": "Only tasks with done status are displayed"
+      },
+      {
+        "id": "TC-P03",
+        "title": "Toggle between open and done filter",
+        "steps": [
+          "Navigate to the task list page",
+          "Select the 'Open' filter option",
+          "Switch to 'Done' filter option"
+        ],
+        "expected_result": "Initially only open tasks are displayed, then only done tasks are displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter tasks by invalid status",
+        "steps": [
+          "Navigate to the task list page",
+          "Attempt to filter by an invalid status option"
+        ],
+        "expected_result": "No tasks are displayed or an error message is shown"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Filter tasks without an active status filter",
+        "steps": [
+          "Navigate to the task list page",
+          "Attempt to clear all filters"
+        ],
+        "expected_result": "All tasks irrespective of their status are displayed"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter tasks when there are no tasks with the selected status",
+        "steps": [
+          "Ensure no tasks have open status",
+          "Select the 'Open' filter option"
+        ],
+        "expected_result": "No tasks are displayed"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Filter tasks when all tasks have the same status",
+        "steps": [
+          "Ensure all tasks are marked as done",
+          "Select the 'Done' filter option"
+        ],
+        "expected_result": "All tasks are displayed"
+      },
+      {
+        "id": "TC-E03",
+        "title": "Filter tasks by extremely large task list",
+        "steps": [
+          "Generate a large list of tasks with mixed statuses",
+          "Select the 'Done' filter option"
+        ],
+        "expected_result": "Only done tasks are displayed, performance is not degraded"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 8,
+      "passed": 8,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 87.5,
+      "total_cases": 8,
+      "unique_cases": 7,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.882
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 8,
+      "covered": 8,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 3,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.7,
+      "generated_cases": 8,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.717,
+      "min_similarity": 0.615,
+      "max_similarity": 0.776
+    },
+    "overall_score": 71.84
+  }
+}

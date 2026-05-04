@@ -1,0 +1,130 @@
+{
+  "story_id": "US-T20",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to update multiple fields of a task in a single request so that I can edit efficiently.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully update all editable fields of a task",
+        "steps": [
+          "Navigate to the task editing interface.",
+          "Input valid data into all editable fields of the task.",
+          "Submit the update request."
+        ],
+        "expected_result": "The task is updated successfully with all valid changes reflected."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Successfully update only specific fields of a task",
+        "steps": [
+          "Navigate to the task editing interface.",
+          "Edit only selected fields with valid data, leaving others unchanged.",
+          "Submit the update request."
+        ],
+        "expected_result": "Only the selected fields are updated with provided changes."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to update a task with invalid data in one field",
+        "steps": [
+          "Navigate to the task editing interface.",
+          "Input invalid data (e.g., special characters in a numeric field) in one of the fields.",
+          "Submit the update request."
+        ],
+        "expected_result": "The system rejects the update and displays an error message indicating the invalid input."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to update a task with unauthorized access",
+        "steps": [
+          "While logged in as a user without edit permissions, navigate to the task editing interface.",
+          "Attempt to edit and submit changes to the fields.",
+          "Submit the update request."
+        ],
+        "expected_result": "The system prevents the update and displays an error message about insufficient permissions."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update a task with an extremely long input in text fields",
+        "steps": [
+          "Navigate to the task editing interface.",
+          "Input extremely long text in a field, such as a description or title.",
+          "Submit the update request."
+        ],
+        "expected_result": "The system handles the long input gracefully, either by accepting the text if within limits or displaying a message if it exceeds allowed length."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Submit an update request with all fields left empty",
+        "steps": [
+          "Navigate to the task editing interface.",
+          "Clear all fields or do not alter the pre-existing values.",
+          "Submit the update request."
+        ],
+        "expected_result": "The system should either not allow submission or ignore the request as no changes have been made."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 83.33,
+      "total_cases": 6,
+      "unique_cases": 5,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.876
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 60.69,
+      "generated_cases": 6,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.607,
+      "min_similarity": 0.45,
+      "max_similarity": 0.68
+    },
+    "overall_score": 82.14
+  }
+}

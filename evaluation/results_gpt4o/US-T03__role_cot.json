@@ -1,0 +1,104 @@
+{
+  "story_id": "US-T03",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to set a priority level on a task so that I know what to work on first.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Set priority level to 'High' on a new task",
+        "steps": [
+          "Navigate to the task management page.",
+          "Click on 'Create New Task'.",
+          "Enter task details including setting the priority level to 'High'.",
+          "Save the new task."
+        ],
+        "expected_result": "The task is successfully created with a 'High' priority level, and it is visible on the task list."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to set an invalid priority level on a task",
+        "steps": [
+          "Navigate to the task management page.",
+          "Click on 'Create New Task'.",
+          "Enter task details and attempt to set the priority level to 'InvalidLevel'.",
+          "Save the new task."
+        ],
+        "expected_result": "An error message is displayed indicating that the priority level is invalid, and the task is not saved."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Set the priority of a task to each available level in succession and observe execution time",
+        "steps": [
+          "Navigate to the task management page.",
+          "Click on 'Create New Task'.",
+          "Enter task details.",
+          "Set the priority level to 'Low' and save the task.",
+          "Edit the task to change priority to 'Medium' and save.",
+          "Edit the task to change priority to 'High' and save."
+        ],
+        "expected_result": "The task priority is updated each time without any errors, and performance remains acceptable with each change taking no more than two seconds."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.875
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 78.69,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.787,
+      "min_similarity": 0.75,
+      "max_similarity": 0.813
+    },
+    "overall_score": 69.07
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "story_id": "US-B15",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want cancelling an already-cancelled booking to return a clear error so that duplicate cancellations are handled.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Cancel a Booking That Is Still Active",
+        "steps": [
+          "Step 1: Log in as a guest with an active booking.",
+          "Step 2: Navigate to the 'My Bookings' page.",
+          "Step 3: Select an active booking from the list.",
+          "Step 4: Click on the 'Cancel Booking' option.",
+          "Step 5: Confirm cancellation when prompted."
+        ],
+        "expected_result": "The booking status changes to 'Cancelled' and the guest receives confirmation that the cancellation was successful."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to Cancel an Already-Cancelled Booking",
+        "steps": [
+          "Step 1: Log in as a guest with a cancelled booking.",
+          "Step 2: Navigate to the 'My Bookings' page.",
+          "Step 3: Select the cancelled booking from the list.",
+          "Step 4: Click on the 'Cancel Booking' option."
+        ],
+        "expected_result": "An error message stating 'This booking has already been cancelled' is displayed to the guest."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Cancel Booking Exactly at the Cutoff Time",
+        "steps": [
+          "Step 1: Log in as a guest with a booking that is about to reach the cancellation cutoff time.",
+          "Step 2: Navigate to the 'My Bookings' page.",
+          "Step 3: Select the booking nearing cutoff from the list.",
+          "Step 4: Click on the 'Cancel Booking' option exactly at the cutoff time."
+        ],
+        "expected_result": "The system processes the cancellation request considering the exact cutoff time, and provides a clear message whether the cancellation was processed or not."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.91
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.04,
+      "generated_cases": 3,
+      "baseline_cases": 4,
+      "avg_best_match_similarity": 0.71,
+      "min_similarity": 0.625,
+      "max_similarity": 0.779
+    },
+    "overall_score": 67.54
+  }
+}

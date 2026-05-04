@@ -1,0 +1,114 @@
+{
+  "story_id": "US-B06",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a staff member, I want to delete a pending booking so that cancelled or invalid bookings are removed.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully delete a pending booking from the system",
+        "steps": [
+          "Log in as a staff member",
+          "Navigate to the 'Pending Bookings' section",
+          "Select a pending booking",
+          "Click the 'Delete' button",
+          "Confirm the deletion"
+        ],
+        "expected_result": "The pending booking is removed from the list of bookings, and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to delete a booking that is not in a pending state",
+        "steps": [
+          "Log in as a staff member",
+          "Navigate to any bookings section",
+          "Select a booking that is confirmed or completed",
+          "Attempt to delete the booking"
+        ],
+        "expected_result": "The system does not allow deletion, and an error message stating 'Only pending bookings can be deleted.' is displayed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Delete a pending booking when no bookings are listed",
+        "steps": [
+          "Log in as a staff member",
+          "Navigate to the 'Pending Bookings' section",
+          "Verify the booking list is empty",
+          "Attempt to delete any booking"
+        ],
+        "expected_result": "The system remains unchanged, and a message stating 'No pending bookings available' is displayed."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.864
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.899
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.881
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 79.81,
+      "generated_cases": 3,
+      "baseline_cases": 10,
+      "avg_best_match_similarity": 0.798,
+      "min_similarity": 0.765,
+      "max_similarity": 0.837
+    },
+    "overall_score": 65.96
+  }
+}

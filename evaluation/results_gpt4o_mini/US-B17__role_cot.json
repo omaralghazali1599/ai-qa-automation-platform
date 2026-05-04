@@ -1,0 +1,96 @@
+{
+  "story_id": "US-B17",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want to create a booking where check-in and check-out are the same date to be rejected so that same-day bookings are not allowed.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Ensure booking is successful when check-in and check-out dates are different",
+        "steps": [
+          "Navigate to the booking page",
+          "Select a check-in date that is 2 days from today",
+          "Select a check-out date that is 3 days from today",
+          "Submit the booking request"
+        ],
+        "expected_result": "The booking should be created successfully with the provided check-in and check-out dates."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Reject booking when check-in and check-out dates are the same",
+        "steps": [
+          "Navigate to the booking page",
+          "Select today's date as the check-in date",
+          "Select today's date as the check-out date",
+          "Submit the booking request"
+        ],
+        "expected_result": "An error message should be displayed indicating that same-day bookings are not allowed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Handle booking when check-in and check-out dates are the last minute before cutoff",
+        "steps": [
+          "Navigate to the booking page",
+          "Select a date which is the current date and time as check-in date",
+          "Select the same date a minute later as check-out date",
+          "Submit the booking request"
+        ],
+        "expected_result": "An error message should be displayed indicating that same-day bookings are not allowed."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 75.4,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.754,
+      "min_similarity": 0.737,
+      "max_similarity": 0.765
+    },
+    "overall_score": 75.08
+  }
+}

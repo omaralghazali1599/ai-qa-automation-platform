@@ -1,0 +1,144 @@
+{
+  "story_id": "US-T02",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to assign a category to a task so that I can organize my tasks.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Assign a category to a task successfully",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Select a task",
+          "Choose a category from the list",
+          "Assign the selected category to the task"
+        ],
+        "expected_result": "The task is updated with the selected category."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Assign multiple categories to multiple tasks",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Select multiple tasks",
+          "Select multiple categories for the tasks",
+          "Assign the selected categories to the tasks"
+        ],
+        "expected_result": "Each task is updated with the selected categories."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Assign a non-existent category to a task",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Select a task",
+          "Attempt to assign a non-existent category"
+        ],
+        "expected_result": "An error message is displayed indicating the category cannot be found."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Assign a category to a task without selecting a task",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Attempt to assign a category without selecting any tasks"
+        ],
+        "expected_result": "An error message is displayed indicating that no task has been selected."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Assign a category with maximum allowable characters",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Select a task",
+          "Create a category with the maximum allowable number of characters",
+          "Assign the created category to the task"
+        ],
+        "expected_result": "The task is updated with the maximum character category without any issues."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Assign a category when network connection is lost",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Select a task",
+          "Disable network connection",
+          "Attempt to assign a category"
+        ],
+        "expected_result": "The system prompts a network error and prevents the category assignment."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 83.33,
+      "total_cases": 6,
+      "unique_cases": 5,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.896
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.913
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 63.03,
+      "generated_cases": 6,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.63,
+      "min_similarity": 0.456,
+      "max_similarity": 0.685
+    },
+    "overall_score": 79.27
+  }
+}

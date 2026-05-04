@@ -1,0 +1,111 @@
+{
+  "story_id": "US-A20",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want the forgot-password endpoint to require the email field so that incomplete requests are rejected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Valid email provided",
+        "steps": [
+          "Send a POST request to the forgot-password endpoint with a valid email address in the email field",
+          "Check the response status code"
+        ],
+        "expected_result": "Response status code is 200 and a success message is returned"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Empty email field",
+        "steps": [
+          "Send a POST request to the forgot-password endpoint with an empty email field",
+          "Check the response status code"
+        ],
+        "expected_result": "Response status code is 400 and an error message indicating the email field is required is returned"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Invalid email format",
+        "steps": [
+          "Send a POST request to the forgot-password endpoint with an invalid email format in the email field",
+          "Check the response status code"
+        ],
+        "expected_result": "Response status code is 400 and an error message about invalid email format is returned"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Email field with excessive characters",
+        "steps": [
+          "Send a POST request to the forgot-password endpoint with an email address that exceeds the maximum character limit (e.g., 256 characters)",
+          "Check the response status code"
+        ],
+        "expected_result": "Response status code is 400 and an error message indicating that the email is too long is returned"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 4,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.87
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.881
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 4,
+      "covered": 4,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.77,
+      "generated_cases": 4,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.768,
+      "min_similarity": 0.627,
+      "max_similarity": 0.862
+    },
+    "overall_score": 75.35
+  }
+}

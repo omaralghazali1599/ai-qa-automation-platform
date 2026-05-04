@@ -1,0 +1,113 @@
+{
+  "story_id": "US-B01",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to create a booking with my name, room type, and dates so that I can reserve a room.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create booking with valid details",
+        "steps": [
+          "Navigate to booking page",
+          "Enter name",
+          "Select room type",
+          "Select start and end dates",
+          "Click Confirm Booking"
+        ],
+        "expected_result": "Booking is confirmed and details are displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Create booking with missing name",
+        "steps": [
+          "Navigate to booking page",
+          "Leave name field blank",
+          "Select room type",
+          "Select start and end dates",
+          "Click Confirm Booking"
+        ],
+        "expected_result": "Validation error: name is required"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Create booking with past dates",
+        "steps": [
+          "Navigate to booking page",
+          "Enter name",
+          "Select room type",
+          "Select a past date for check-in",
+          "Select a later date for check-out",
+          "Click Confirm Booking"
+        ],
+        "expected_result": "Error message: Check-in date cannot be in the past"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create booking with very long name",
+        "steps": [
+          "Navigate to booking page",
+          "Enter a name with 300+ characters",
+          "Select room type",
+          "Select start and end dates",
+          "Click Confirm Booking"
+        ],
+        "expected_result": "Validation error: name exceeds maximum length"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 4,
+      "unique_cases": 4,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 4,
+      "covered": 4,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 75.83,
+      "generated_cases": 4,
+      "baseline_cases": 18,
+      "avg_best_match_similarity": 0.758,
+      "min_similarity": 0.715,
+      "max_similarity": 0.792
+    },
+    "overall_score": 85.17
+  }
+}

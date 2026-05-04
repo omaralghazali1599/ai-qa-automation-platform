@@ -1,0 +1,106 @@
+{
+  "story_id": "US-B05",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want to cancel my booking so that I can free up the reservation.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful cancellation of a booking",
+        "steps": [
+          "Navigate to the booking management page.",
+          "Select the booking to be canceled.",
+          "Click on the 'Cancel Booking' button.",
+          "Confirm the cancellation in the prompt."
+        ],
+        "expected_result": "The booking is canceled successfully, and the user receives a confirmation message."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to cancel a non-existent booking",
+        "steps": [
+          "Navigate to the booking management page.",
+          "Attempt to select a booking that does not exist.",
+          "Click on the 'Cancel Booking' button."
+        ],
+        "expected_result": "An error message is displayed indicating that the booking does not exist."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Cancellation of a booking that is already canceled",
+        "steps": [
+          "Navigate to the booking management page.",
+          "Select a booking that has already been canceled.",
+          "Click on the 'Cancel Booking' button."
+        ],
+        "expected_result": "An error message is displayed indicating that the booking has already been canceled."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.942
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.855
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.46,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.815,
+      "min_similarity": 0.803,
+      "max_similarity": 0.836
+    },
+    "overall_score": 72.96
+  }
+}

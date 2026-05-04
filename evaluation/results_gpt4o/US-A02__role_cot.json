@@ -1,0 +1,103 @@
+{
+  "story_id": "US-A02",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a registered user, I want to log in with my email and password so that I can access my account.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Registered user logs in with valid credentials",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter a valid email in the email field.",
+          "Enter the correct password in the password field.",
+          "Click the 'Log In' button."
+        ],
+        "expected_result": "The user is successfully logged into their account and is redirected to the account dashboard."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Registered user attempts to log in with an incorrect password",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter a valid email in the email field.",
+          "Enter an incorrect password in the password field.",
+          "Click the 'Log In' button."
+        ],
+        "expected_result": "The user receives an error message indicating that the email or password is incorrect and remains on the login page."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Registered user logs in with a password at maximum character limit",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter a valid email in the email field.",
+          "Enter a valid password at the maximum allowed character limit in the password field.",
+          "Click the 'Log In' button."
+        ],
+        "expected_result": "The user is successfully logged into their account and is redirected to the account dashboard, confirming that the maximum character password was handled correctly."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.898
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 84.93,
+      "generated_cases": 3,
+      "baseline_cases": 22,
+      "avg_best_match_similarity": 0.849,
+      "min_similarity": 0.802,
+      "max_similarity": 0.93
+    },
+    "overall_score": 80.32
+  }
+}

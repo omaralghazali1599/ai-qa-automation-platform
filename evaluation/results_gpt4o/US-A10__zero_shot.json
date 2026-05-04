@@ -1,0 +1,97 @@
+{
+  "story_id": "US-A10",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to see my profile information after logging in so that I can confirm my account details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully View Profile Information After Logging In",
+        "steps": [
+          "Open the application",
+          "Enter valid login credentials",
+          "Click on the login button",
+          "Navigate to the profile section"
+        ],
+        "expected_result": "User's profile information is displayed, showing account details correctly."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Profile Information Not Displayed With Incorrect Login",
+        "steps": [
+          "Open the application",
+          "Enter invalid login credentials",
+          "Click on the login button",
+          "Attempt to navigate to the profile section"
+        ],
+        "expected_result": "User receives an invalid login message and is not able to navigate to the profile section."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "User Profile Information Displayed for Large Dataset",
+        "steps": [
+          "Open the application",
+          "Enter valid login credentials of a user with a large amount of profile data",
+          "Click on the login button",
+          "Navigate to the profile section"
+        ],
+        "expected_result": "User's profile information is displayed correctly, showing all account details without performance degradation."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 74.03,
+      "generated_cases": 3,
+      "baseline_cases": 11,
+      "avg_best_match_similarity": 0.74,
+      "min_similarity": 0.675,
+      "max_similarity": 0.815
+    },
+    "overall_score": 78.14
+  }
+}

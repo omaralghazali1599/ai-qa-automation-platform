@@ -1,0 +1,116 @@
+{
+  "story_id": "US-T10",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to retrieve a single task by its ID so that I can view its full details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Retrieve task details with valid ID",
+        "steps": [
+          "Send a GET request to the /tasks/{id} endpoint with a valid task ID.",
+          "Receive a 200 OK response with the task details in JSON format."
+        ],
+        "expected_result": "The response should contain the full details of the task with the specified ID."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to retrieve task with non-existent ID",
+        "steps": [
+          "Send a GET request to the /tasks/{id} endpoint with a non-existent task ID."
+        ],
+        "expected_result": "The system should return a 404 Not Found response indicating that the task does not exist."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to retrieve task with invalid ID format",
+        "steps": [
+          "Send a GET request to the /tasks/{id} endpoint with an invalid task ID format, such as a string or special characters."
+        ],
+        "expected_result": "The system should return a 400 Bad Request response indicating that the task ID is invalid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Retrieve task with the minimum valid ID value",
+        "steps": [
+          "Send a GET request to the /tasks/{id} endpoint with the minimum valid task ID, such as '1' or '0' depending on the implementation."
+        ],
+        "expected_result": "The system should return a 200 OK response with the task details if the task exists."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Retrieve task with the maximum valid ID value",
+        "steps": [
+          "Send a GET request to the /tasks/{id} endpoint with the maximum possible task ID according to the system’s constraints."
+        ],
+        "expected_result": "The system should return a 200 OK response with the task details if the task exists, or it should return a 404 Not Found if it doesn't."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 60.0,
+      "total_cases": 5,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.886
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E02",
+          "similarity": 0.88
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.94,
+      "generated_cases": 5,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.839,
+      "min_similarity": 0.794,
+      "max_similarity": 0.943
+    },
+    "overall_score": 75.45
+  }
+}

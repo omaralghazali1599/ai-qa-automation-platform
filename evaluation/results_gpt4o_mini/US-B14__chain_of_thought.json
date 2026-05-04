@@ -1,0 +1,100 @@
+{
+  "story_id": "US-B14",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want the system to reject a booking with 0 guests so that only valid guest counts are accepted.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Booking with 1 guest",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter '1' in the guest count input field.",
+          "Submit the booking."
+        ],
+        "expected_result": "The booking is successfully made and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Booking with 0 guests",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter '0' in the guest count input field.",
+          "Submit the booking."
+        ],
+        "expected_result": "The system displays an error message indicating that the booking cannot be made with 0 guests."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Booking with negative guest count",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter '-1' in the guest count input field.",
+          "Submit the booking."
+        ],
+        "expected_result": "The system displays an error message indicating that the guest count must be a positive number."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.878
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.61,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.816,
+      "min_similarity": 0.753,
+      "max_similarity": 0.859
+    },
+    "overall_score": 72.99
+  }
+}

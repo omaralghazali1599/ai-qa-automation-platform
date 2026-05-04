@@ -1,0 +1,120 @@
+{
+  "story_id": "US-T10",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to retrieve a single task by its ID so that I can view its full details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Retrieve a task by valid ID",
+        "steps": [
+          "Send a request to retrieve the task with ID 1",
+          "Check the response status code"
+        ],
+        "expected_result": "Response status code is 200 and the task details are correctly returned"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Retrieve a task with full details",
+        "steps": [
+          "Send a request to retrieve the task with ID 2",
+          "Verify that the response contains all the required fields: title, description, due date, and status"
+        ],
+        "expected_result": "Response contains all task details with correct values"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Retrieve a task with invalid ID",
+        "steps": [
+          "Send a request to retrieve the task with ID -1"
+        ],
+        "expected_result": "Response status code is 404 and an error message is returned"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Retrieve a task with a non-numeric ID",
+        "steps": [
+          "Send a request to retrieve the task with ID 'abc'"
+        ],
+        "expected_result": "Response status code is 400 and an error message is returned"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Retrieve a task with maximum integer ID",
+        "steps": [
+          "Send a request to retrieve the task with the maximum integer value for the ID"
+        ],
+        "expected_result": "Response status code is 404 or returns valid task details if the task exists at that ID"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Retrieve a task with no ID provided",
+        "steps": [
+          "Send a request to retrieve a task without providing an ID"
+        ],
+        "expected_result": "Response status code is 400 and an error message is returned stating that ID is required"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 83.33,
+      "total_cases": 6,
+      "unique_cases": 5,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.874
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 82.31,
+      "generated_cases": 6,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.823,
+      "min_similarity": 0.785,
+      "max_similarity": 0.869
+    },
+    "overall_score": 83.13
+  }
+}

@@ -1,0 +1,235 @@
+{
+  "story_id": "US-T06",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to filter tasks by priority so that I can work on the most urgent items first.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter tasks by high priority",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select 'High' from the priority filter dropdown",
+          "View the filtered list of tasks"
+        ],
+        "expected_result": "The list displays only tasks marked as high priority."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter tasks by medium priority",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select 'Medium' from the priority filter dropdown",
+          "View the filtered list of tasks"
+        ],
+        "expected_result": "The list displays only tasks marked as medium priority."
+      },
+      {
+        "id": "TC-P03",
+        "title": "Filter tasks by low priority",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select 'Low' from the priority filter dropdown",
+          "View the filtered list of tasks"
+        ],
+        "expected_result": "The list displays only tasks marked as low priority."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter tasks by invalid priority value",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select 'Invalid' from the priority filter dropdown"
+        ],
+        "expected_result": "An error message is displayed indicating that the selected priority is not valid."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Filter tasks with no tasks available",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select any priority from the filter dropdown"
+        ],
+        "expected_result": "A message is displayed indicating that there are no tasks available."
+      },
+      {
+        "id": "TC-N03",
+        "title": "Filter tasks by empty priority selection",
+        "steps": [
+          "Navigate to the tasks page",
+          "Leave the priority filter empty",
+          "Click the filter button"
+        ],
+        "expected_result": "The default task list is displayed without any filters applied."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter tasks when no priority is set for tasks",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select 'High' from the priority filter dropdown"
+        ],
+        "expected_result": "The list may display an empty set or inform the user that there are no tasks with the selected priority."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Filter tasks with maximum number of tasks",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select 'High' from the priority filter dropdown"
+        ],
+        "expected_result": "The list displays the maximum number of high priority tasks without performance issues."
+      },
+      {
+        "id": "TC-E03",
+        "title": "Filter tasks with all priorities set",
+        "steps": [
+          "Navigate to the tasks page",
+          "Select all priority levels (High, Medium, Low)"
+        ],
+        "expected_result": "The list displays all tasks regardless of their priority."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 9,
+      "passed": 9,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 22.22,
+      "total_cases": 9,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.897
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P03",
+          "similarity": 0.946
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.944
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.921
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E03",
+          "similarity": 0.897
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-P03",
+          "similarity": 0.883
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E01",
+          "similarity": 0.86
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E03",
+          "similarity": 0.897
+        },
+        {
+          "case_a": "TC-P03",
+          "case_b": "TC-N02",
+          "similarity": 0.856
+        },
+        {
+          "case_a": "TC-P03",
+          "case_b": "TC-E01",
+          "similarity": 0.924
+        },
+        {
+          "case_a": "TC-P03",
+          "case_b": "TC-E02",
+          "similarity": 0.858
+        },
+        {
+          "case_a": "TC-P03",
+          "case_b": "TC-E03",
+          "similarity": 0.878
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N03",
+          "similarity": 0.885
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E01",
+          "similarity": 0.872
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E02",
+          "similarity": 0.9
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E03",
+          "similarity": 0.899
+        },
+        {
+          "case_a": "TC-E02",
+          "case_b": "TC-E03",
+          "similarity": 0.855
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 9,
+      "covered": 9,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 3,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.62,
+      "generated_cases": 9,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.806,
+      "min_similarity": 0.706,
+      "max_similarity": 0.855
+    },
+    "overall_score": 70.57
+  }
+}

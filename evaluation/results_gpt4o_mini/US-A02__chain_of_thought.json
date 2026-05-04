@@ -1,0 +1,103 @@
+{
+  "story_id": "US-A02",
+  "app": "auth",
+  "strategy": "chain_of_thought",
+  "user_story": "As a registered user, I want to log in with my email and password so that I can access my account.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful login with valid email and password",
+        "steps": [
+          "Navigate to the login page",
+          "Enter a valid registered email",
+          "Enter the correct password",
+          "Click the login button"
+        ],
+        "expected_result": "User is redirected to the account dashboard"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Failed login with invalid email",
+        "steps": [
+          "Navigate to the login page",
+          "Enter an unregistered email",
+          "Enter any password",
+          "Click the login button"
+        ],
+        "expected_result": "An error message is displayed indicating invalid login credentials"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Login attempt with empty email and password fields",
+        "steps": [
+          "Navigate to the login page",
+          "Leave the email field empty",
+          "Leave the password field empty",
+          "Click the login button"
+        ],
+        "expected_result": "An error message is displayed prompting the user to enter email and password"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.871
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 86.38,
+      "generated_cases": 3,
+      "baseline_cases": 22,
+      "avg_best_match_similarity": 0.864,
+      "min_similarity": 0.829,
+      "max_similarity": 0.887
+    },
+    "overall_score": 73.94
+  }
+}

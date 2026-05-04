@@ -1,0 +1,125 @@
+{
+  "story_id": "US-A08",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to see an error when I try to log in with a wrong password so that I know my credentials are incorrect.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Login with correct password",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter valid username.",
+          "Enter correct password.",
+          "Click the login button."
+        ],
+        "expected_result": "User is logged in successfully."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Login with incorrect password",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter valid username.",
+          "Enter incorrect password.",
+          "Click the login button."
+        ],
+        "expected_result": "Display error message: 'Incorrect password'."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Login with empty password field",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter valid username.",
+          "Leave the password field empty.",
+          "Click the login button."
+        ],
+        "expected_result": "Display error message: 'Password cannot be empty'."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Login with the maximum length of password field",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter valid username.",
+          "Enter a password using maximum allowed length of characters.",
+          "Click the login button."
+        ],
+        "expected_result": "Display error message: 'Incorrect password' if password is invalid, otherwise login successfully."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Login with special characters in the password",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter valid username.",
+          "Enter password with special characters.",
+          "Click the login button."
+        ],
+        "expected_result": "Display error message: 'Incorrect password' if password is invalid, otherwise login successfully."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 80.0,
+      "total_cases": 5,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.937
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.52,
+      "generated_cases": 5,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.765,
+      "min_similarity": 0.606,
+      "max_similarity": 0.873
+    },
+    "overall_score": 84.64
+  }
+}

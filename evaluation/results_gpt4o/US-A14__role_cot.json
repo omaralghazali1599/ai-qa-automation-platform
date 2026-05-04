@@ -1,0 +1,100 @@
+{
+  "story_id": "US-A14",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want the system to reject a new password shorter than 8 characters during reset so that security standards are maintained.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Password reset with a valid password length",
+        "steps": [
+          "Navigate to the password reset page.",
+          "Enter a new password that is exactly 8 characters long.",
+          "Submit the new password."
+        ],
+        "expected_result": "The system accepts the new password and confirms a successful reset."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Password reset with an invalid password length",
+        "steps": [
+          "Navigate to the password reset page.",
+          "Enter a new password that is shorter than 8 characters.",
+          "Submit the new password."
+        ],
+        "expected_result": "The system rejects the new password and displays an error message indicating that the password is too short."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Password reset with no password entered",
+        "steps": [
+          "Navigate to the password reset page.",
+          "Leave the new password field blank.",
+          "Submit the empty password field."
+        ],
+        "expected_result": "The system rejects the password reset attempt and displays an error message indicating that the password field cannot be empty."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.974
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.38,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.804,
+      "min_similarity": 0.7,
+      "max_similarity": 0.863
+    },
+    "overall_score": 72.74
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "story_id": "US-T11",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want task creation to fail when the title is empty so that all tasks have a meaningful name.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create a task with a non-empty title",
+        "steps": [
+          "Navigate to the task creation page",
+          "Enter a non-empty title in the title field",
+          "Submit the task creation form"
+        ],
+        "expected_result": "Task is created successfully with the specified title"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to create a task with an empty title",
+        "steps": [
+          "Navigate to the task creation page",
+          "Leave the title field empty",
+          "Submit the task creation form"
+        ],
+        "expected_result": "Task creation fails with an error message indicating that the title cannot be empty"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to create a task with a very long title",
+        "steps": [
+          "Navigate to the task creation page",
+          "Enter a very long string as the title in the title field",
+          "Submit the task creation form"
+        ],
+        "expected_result": "Task is created successfully, or an appropriate message is displayed if the title exceeds the maximum length limit"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.948
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.38,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.764,
+      "min_similarity": 0.7,
+      "max_similarity": 0.811
+    },
+    "overall_score": 75.28
+  }
+}

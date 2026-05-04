@@ -1,0 +1,104 @@
+{
+  "story_id": "US-B05",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want to cancel my booking so that I can free up the reservation.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful booking cancellation as a guest",
+        "steps": [
+          "Login as a guest user.",
+          "Navigate to the booking management section.",
+          "Select a booking to cancel.",
+          "Click on the 'Cancel Booking' button.",
+          "Confirm the cancellation."
+        ],
+        "expected_result": "The booking is successfully canceled and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Cancellation attempt without being logged in",
+        "steps": [
+          "Navigate to the booking management section.",
+          "Attempt to select a booking to cancel.",
+          "Click on the 'Cancel Booking' button.",
+          "Try to confirm the cancellation."
+        ],
+        "expected_result": "An error message is displayed indicating that the user must be logged in to cancel bookings."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Cancellation of a booking made within non-cancellable time frame",
+        "steps": [
+          "Login as a guest user.",
+          "Navigate to the booking management section.",
+          "Select a booking that is within the non-cancellation period.",
+          "Click on the 'Cancel Booking' button.",
+          "Try to confirm the cancellation."
+        ],
+        "expected_result": "An error message is displayed indicating that the booking cannot be canceled at this time."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.895
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 75.68,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.757,
+      "min_similarity": 0.723,
+      "max_similarity": 0.779
+    },
+    "overall_score": 68.47
+  }
+}

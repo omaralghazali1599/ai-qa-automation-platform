@@ -1,0 +1,100 @@
+{
+  "story_id": "US-B16",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want to retrieve a booking that does not exist to return a not-found error so that I know the ID is invalid.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Retrieve a booking with valid ID",
+        "steps": [
+          "Given a booking ID that exists in the system",
+          "When the guest attempts to retrieve the booking using the valid ID",
+          "Then the system returns booking details successfully"
+        ],
+        "expected_result": "Booking details are displayed for the valid ID"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Retrieve a booking with non-existent ID",
+        "steps": [
+          "Given a booking ID that does not exist in the system",
+          "When the guest attempts to retrieve the booking using this non-existent ID",
+          "Then the system returns a not-found error"
+        ],
+        "expected_result": "A not-found error message is returned indicating the ID is invalid"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Retrieve a booking with special characters in ID",
+        "steps": [
+          "Given a booking ID containing special characters",
+          "When the guest attempts to retrieve the booking using this ID",
+          "Then the system returns an invalid ID error"
+        ],
+        "expected_result": "An error message is returned specifying that the ID format is invalid"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.894
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 69.57,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.696,
+      "min_similarity": 0.655,
+      "max_similarity": 0.739
+    },
+    "overall_score": 73.91
+  }
+}

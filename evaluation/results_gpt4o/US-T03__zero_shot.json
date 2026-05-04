@@ -1,0 +1,146 @@
+{
+  "story_id": "US-T03",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to set a priority level on a task so that I know what to work on first.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Set Priority to High",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task.",
+          "Set the priority level to High.",
+          "Save the changes."
+        ],
+        "expected_result": "The task's priority level is set to High."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Set Priority to Medium",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task.",
+          "Set the priority level to Medium.",
+          "Save the changes."
+        ],
+        "expected_result": "The task's priority level is set to Medium."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to Set Empty Priority",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task.",
+          "Attempt to set the priority level to ' ' (blank).",
+          "Save the changes."
+        ],
+        "expected_result": "The system displays an error message indicating that priority level cannot be blank."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Invalid Priority Level",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task.",
+          "Attempt to set the priority level to 'Urgent' (an invalid input).",
+          "Save the changes."
+        ],
+        "expected_result": "The system displays an error message indicating that 'Urgent' is not a valid priority level."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Set Priority With Maximum Input Length",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task.",
+          "Set the priority level to 'High' with 255 characters allowed by the input field.",
+          "Save the changes."
+        ],
+        "expected_result": "The system saves the priority correctly, indicating that it can handle the maximum input length."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Set Priority Rapidly",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task.",
+          "Quickly set the priority level from Low to Medium to High in rapid succession.",
+          "Save the changes."
+        ],
+        "expected_result": "The system correctly saves the final priority level as High, demonstrating it can handle rapid sequential changes."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 6,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.862
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.888
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E02",
+          "similarity": 0.892
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 72.31,
+      "generated_cases": 6,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.723,
+      "min_similarity": 0.496,
+      "max_similarity": 0.8
+    },
+    "overall_score": 77.8
+  }
+}

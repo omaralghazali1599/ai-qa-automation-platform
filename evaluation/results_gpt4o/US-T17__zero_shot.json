@@ -1,0 +1,100 @@
+{
+  "story_id": "US-T17",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to update the description of a task so that I can add more context.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update task description with valid text",
+        "steps": [
+          "Navigate to the task list page",
+          "Select a specific task to view its details",
+          "Click the 'Edit Description' button",
+          "Enter a new valid description text",
+          "Click 'Save'"
+        ],
+        "expected_result": "The task description is updated successfully and visible on the task details page."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Update task description with prohibited characters",
+        "steps": [
+          "Navigate to the task list page",
+          "Select a specific task to view its details",
+          "Click the 'Edit Description' button",
+          "Enter a description with prohibited characters (e.g., <script>)",
+          "Click 'Save'"
+        ],
+        "expected_result": "An error message is displayed indicating invalid characters and the description is not updated."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task description with maximum allowed length",
+        "steps": [
+          "Navigate to the task list page",
+          "Select a specific task to view its details",
+          "Click the 'Edit Description' button",
+          "Enter a description with the maximum allowed length",
+          "Click 'Save'"
+        ],
+        "expected_result": "The task description is updated successfully without truncation."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 64.63,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.646,
+      "min_similarity": 0.589,
+      "max_similarity": 0.677
+    },
+    "overall_score": 82.93
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "story_id": "US-A10",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to see my profile information after logging in so that I can confirm my account details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful login and display of profile information",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter valid username and password.",
+          "Click on the login button.",
+          "Wait for the profile page to load."
+        ],
+        "expected_result": "User profile information is displayed accurately, including username and account details."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Login attempt with invalid credentials",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter an invalid username and/or password.",
+          "Click on the login button."
+        ],
+        "expected_result": "User is presented with an error message indicating incorrect login details, and profile page is not accessed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Login with valid credentials but profile information is incomplete",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter valid username and password.",
+          "Click on the login button.",
+          "Wait for the profile page to load with deliberately missing profile information."
+        ],
+        "expected_result": "Profile page loads but with warning/message indicating incomplete profile information or empty fields for the missing details."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 73.19,
+      "generated_cases": 3,
+      "baseline_cases": 11,
+      "avg_best_match_similarity": 0.732,
+      "min_similarity": 0.594,
+      "max_similarity": 0.854
+    },
+    "overall_score": 81.3
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "story_id": "US-A17",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to register with the maximum allowed name length so that long names are handled correctly.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "User can register with the maximum allowed name length",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a name with the maximum allowed length",
+          "Fill in other required registration fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "User receives a confirmation message that registration is successful"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "User cannot register with a name longer than the maximum allowed length",
+        "steps": [
+          "Navigate to the registration page",
+          "Enter a name that exceeds the maximum allowed length",
+          "Fill in other required registration fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "User receives an error message indicating that the name is too long"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "User can register with an empty name field",
+        "steps": [
+          "Navigate to the registration page",
+          "Leave the name field empty",
+          "Fill in other required registration fields",
+          "Submit the registration form"
+        ],
+        "expected_result": "User receives an error message indicating that the name field is required"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.917
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 72.04,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.72,
+      "min_similarity": 0.545,
+      "max_similarity": 0.838
+    },
+    "overall_score": 71.08
+  }
+}

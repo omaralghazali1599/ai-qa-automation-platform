@@ -1,0 +1,161 @@
+{
+  "story_id": "US-T06",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to filter tasks by priority so that I can work on the most urgent items first.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter tasks by high priority",
+        "steps": [
+          "Navigate to task list page",
+          "Open filter options",
+          "Select 'High' from priority dropdown",
+          "Apply filter"
+        ],
+        "expected_result": "Task list is updated to display only high priority tasks"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter tasks by medium priority",
+        "steps": [
+          "Navigate to task list page",
+          "Open filter options",
+          "Select 'Medium' from priority dropdown",
+          "Apply filter"
+        ],
+        "expected_result": "Task list is updated to display only medium priority tasks"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter tasks with invalid priority value",
+        "steps": [
+          "Navigate to task list page",
+          "Open filter options",
+          "Manually enter an invalid priority value",
+          "Apply filter"
+        ],
+        "expected_result": "Error message: invalid priority value"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Filter tasks when no priority options are selected",
+        "steps": [
+          "Navigate to task list page",
+          "Open filter options",
+          "Deselect all priority options",
+          "Apply filter"
+        ],
+        "expected_result": "Task list displays without applying any priority filter"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter tasks with priority when no tasks exist",
+        "steps": [
+          "Navigate to task list page",
+          "Open filter options",
+          "Select 'High' from priority dropdown",
+          "Apply filter"
+        ],
+        "expected_result": "Task list is empty and shows a no tasks message"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Filter tasks by priority with a large number of tasks",
+        "steps": [
+          "Navigate to task list page with 10,000 tasks",
+          "Open filter options",
+          "Select 'Low' from priority dropdown",
+          "Apply filter"
+        ],
+        "expected_result": "Application performance remains optimal and task list is correctly filtered"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 6,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.875
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.858
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.904
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.866
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.88
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-E01",
+          "similarity": 0.905
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.52,
+      "generated_cases": 6,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.765,
+      "min_similarity": 0.733,
+      "max_similarity": 0.802
+    },
+    "overall_score": 68.64
+  }
+}

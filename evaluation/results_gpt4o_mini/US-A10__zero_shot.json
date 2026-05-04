@@ -1,0 +1,126 @@
+{
+  "story_id": "US-A10",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to see my profile information after logging in so that I can confirm my account details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful profile information retrieval after logging in",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter valid username and password.",
+          "Click on the login button.",
+          "Wait for the profile page to load."
+        ],
+        "expected_result": "User profile information is displayed correctly on the screen."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Profile information integrity verification",
+        "steps": [
+          "Login successfully using valid credentials.",
+          "Verify that the profile information displayed matches the expected details."
+        ],
+        "expected_result": "Profile information matches the stored account details."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Login with invalid credentials",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter invalid username and password.",
+          "Click on the login button."
+        ],
+        "expected_result": "Error message is displayed indicating invalid credentials."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Access profile information without logging in",
+        "steps": [
+          "Navigate to the profile page directly without logging in."
+        ],
+        "expected_result": "User is redirected to the login page."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Login with maximum length username and password",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter a username and password with the maximum allowed characters.",
+          "Click on the login button."
+        ],
+        "expected_result": "User profile information is displayed correctly without errors."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Simultaneous logins from multiple devices",
+        "steps": [
+          "Login from the first device.",
+          "Login from a second device with the same credentials."
+        ],
+        "expected_result": "Profile information can be accessed on both devices simultaneously."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 6,
+      "unique_cases": 6,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 83.33,
+      "total_cases": 6,
+      "covered": 5,
+      "not_covered": 1,
+      "low_relevance_cases": [
+        {
+          "id": "TC-N01",
+          "similarity": 0.281
+        }
+      ]
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 69.23,
+      "generated_cases": 6,
+      "baseline_cases": 11,
+      "avg_best_match_similarity": 0.692,
+      "min_similarity": 0.475,
+      "max_similarity": 0.857
+    },
+    "overall_score": 83.85
+  }
+}

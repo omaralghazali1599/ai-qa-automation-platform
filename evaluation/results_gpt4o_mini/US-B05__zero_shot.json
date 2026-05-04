@@ -1,0 +1,192 @@
+{
+  "story_id": "US-B05",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want to cancel my booking so that I can free up the reservation.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful cancellation of a booking",
+        "steps": [
+          "Login as a guest",
+          "Navigate to 'My Bookings'",
+          "Select a booking",
+          "Click on 'Cancel Booking'",
+          "Confirm cancellation"
+        ],
+        "expected_result": "Booking is successfully canceled and confirmation message is displayed."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Cancellation of a booking within the allowed time frame",
+        "steps": [
+          "Login as a guest",
+          "Navigate to 'My Bookings'",
+          "Select a booking due 3 days from now",
+          "Click on 'Cancel Booking'",
+          "Confirm cancellation"
+        ],
+        "expected_result": "Booking is successfully canceled and confirmation message is displayed."
+      },
+      {
+        "id": "TC-P03",
+        "title": "Cancellation of a booking with multiple reservations",
+        "steps": [
+          "Login as a guest",
+          "Navigate to 'My Bookings'",
+          "Select a booking with multiple rooms",
+          "Click on 'Cancel Booking'",
+          "Confirm cancellation"
+        ],
+        "expected_result": "All selected rooms are successfully canceled and confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to cancel a booking that has already passed",
+        "steps": [
+          "Login as a guest",
+          "Navigate to 'My Bookings'",
+          "Select a booking that has already completed",
+          "Click on 'Cancel Booking'"
+        ],
+        "expected_result": "Cancellation option is not available and an error message indicating that the booking cannot be canceled is displayed."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to cancel a non-existent booking",
+        "steps": [
+          "Login as a guest",
+          "Navigate to 'My Bookings'",
+          "Attempt to select a booking not in the list",
+          "Click on 'Cancel Booking'"
+        ],
+        "expected_result": "Cancellation option is not available and an error message indicating that the booking does not exist is displayed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Cancellation of a booking made just before the cut-off time",
+        "steps": [
+          "Login as a guest",
+          "Navigate to 'My Bookings'",
+          "Select a booking that is about to start in 1 hour",
+          "Click on 'Cancel Booking'",
+          "Confirm cancellation"
+        ],
+        "expected_result": "Booking is successfully canceled despite being close to the cut-off time and confirmation message is displayed."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Cancellation attempt during high traffic times",
+        "steps": [
+          "Login as a guest during peak booking hours",
+          "Navigate to 'My Bookings'",
+          "Select a booking",
+          "Click on 'Cancel Booking'",
+          "Confirm cancellation"
+        ],
+        "expected_result": "Booking is canceled successfully, but response time may be longer due to server load."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 7,
+      "passed": 7,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 28.57,
+      "total_cases": 7,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.878
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P03",
+          "similarity": 0.932
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.906
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N02",
+          "similarity": 0.888
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.863
+        },
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-E01",
+          "similarity": 0.9
+        },
+        {
+          "case_a": "TC-P03",
+          "case_b": "TC-N01",
+          "similarity": 0.881
+        },
+        {
+          "case_a": "TC-P03",
+          "case_b": "TC-N02",
+          "similarity": 0.861
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.914
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 7,
+      "covered": 7,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 72.69,
+      "generated_cases": 7,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.727,
+      "min_similarity": 0.596,
+      "max_similarity": 0.793
+    },
+    "overall_score": 63.59
+  }
+}

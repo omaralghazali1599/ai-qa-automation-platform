@@ -1,0 +1,101 @@
+{
+  "story_id": "US-T15",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to update the priority of an existing task so that I can reprioritize my work.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update task priority successfully",
+        "steps": [
+          "Select an existing task from the task list.",
+          "Change the priority from 'Medium' to 'High'.",
+          "Save the changes.",
+          "Verify that the task priority is updated to 'High'."
+        ],
+        "expected_result": "The task priority is successfully updated to 'High'."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to update priority of a non-existent task",
+        "steps": [
+          "Try to select a task that does not exist.",
+          "Attempt to change the priority.",
+          "Try to save the changes."
+        ],
+        "expected_result": "An error message is displayed indicating that the task does not exist."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task priority with invalid input",
+        "steps": [
+          "Select an existing task from the task list.",
+          "Attempt to set the priority to an invalid value (e.g., an empty string or a string that doesn't match any priority level).",
+          "Try to save the changes."
+        ],
+        "expected_result": "An error message is displayed indicating that the priority value is invalid."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.866
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.51,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.835,
+      "min_similarity": 0.787,
+      "max_similarity": 0.865
+    },
+    "overall_score": 80.04
+  }
+}

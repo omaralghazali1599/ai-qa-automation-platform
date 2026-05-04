@@ -1,0 +1,93 @@
+{
+  "story_id": "US-B02",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want to see all my bookings so that I can review my reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "View bookings with valid session",
+        "steps": [
+          "Navigate to bookings page",
+          "Ensure user is logged in as guest",
+          "View list of bookings"
+        ],
+        "expected_result": "List of all bookings is displayed"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "View bookings with expired session",
+        "steps": [
+          "Navigate to bookings page",
+          "Ensure session is expired",
+          "Attempt to view bookings"
+        ],
+        "expected_result": "User is redirected to login page"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "View bookings with large number of bookings",
+        "steps": [
+          "Navigate to bookings page",
+          "Logged in as guest with 1000+ bookings",
+          "View list of bookings"
+        ],
+        "expected_result": "Bookings are paginated or displayed without performance issues"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 59.41,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.594,
+      "min_similarity": 0.531,
+      "max_similarity": 0.643
+    },
+    "overall_score": 71.88
+  }
+}

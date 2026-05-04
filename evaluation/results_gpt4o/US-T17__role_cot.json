@@ -1,0 +1,99 @@
+{
+  "story_id": "US-T17",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to update the description of a task so that I can add more context.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Update Task Description Successfully",
+        "steps": [
+          "Navigate to the list of tasks.",
+          "Select a task to update.",
+          "Click on the 'Edit' button for the task.",
+          "Enter a new valid description in the description field.",
+          "Click 'Save' to update the description."
+        ],
+        "expected_result": "The task description is updated successfully and displays the new text."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to Update Task Description Without Permission",
+        "steps": [
+          "Log in as a user without edit permissions.",
+          "Navigate to the list of tasks.",
+          "Select a task to update.",
+          "Attempt to click on the 'Edit' button for the task."
+        ],
+        "expected_result": "The user is not able to edit the task description and receives a permission error message."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update Task Description with Maximum Character Length",
+        "steps": [
+          "Navigate to the list of tasks.",
+          "Select a task to update.",
+          "Click on the 'Edit' button for the task.",
+          "Enter a description with the maximum allowed number of characters.",
+          "Click 'Save' to update the description."
+        ],
+        "expected_result": "The task description is updated successfully and displays the entire maximum length text without any truncation."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 65.43,
+      "generated_cases": 3,
+      "baseline_cases": 9,
+      "avg_best_match_similarity": 0.654,
+      "min_similarity": 0.608,
+      "max_similarity": 0.681
+    },
+    "overall_score": 83.09
+  }
+}

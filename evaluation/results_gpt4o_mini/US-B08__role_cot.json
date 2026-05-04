@@ -1,0 +1,94 @@
+{
+  "story_id": "US-B08",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a guest, I want booking creation to fail if any required field is missing so that incomplete bookings are not saved.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully create a booking with all required fields filled",
+        "steps": [
+          "Navigate to the booking creation page.",
+          "Fill in all required fields with valid data.",
+          "Click on the 'Create Booking' button."
+        ],
+        "expected_result": "The booking is created successfully and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Fail to create a booking when a required field is missing",
+        "steps": [
+          "Navigate to the booking creation page.",
+          "Leave one required field empty.",
+          "Click on the 'Create Booking' button."
+        ],
+        "expected_result": "An error message is displayed indicating that the required field is missing and the booking is not created."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to create a booking with invalid data in a required field",
+        "steps": [
+          "Navigate to the booking creation page.",
+          "Fill in all required fields with valid data except for one field filled with invalid data (e.g., a string instead of a number).",
+          "Click on the 'Create Booking' button."
+        ],
+        "expected_result": "An error message is displayed indicating that the data in the required field is invalid and the booking is not created."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.99,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.81,
+      "min_similarity": 0.748,
+      "max_similarity": 0.877
+    },
+    "overall_score": 82.86
+  }
+}

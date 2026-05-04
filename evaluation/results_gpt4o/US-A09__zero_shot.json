@@ -1,0 +1,146 @@
+{
+  "story_id": "US-A09",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to be blocked from logging in if my account is locked so that security is enforced.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully login with an active account",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter a valid username.",
+          "Enter the correct password.",
+          "Click on the login button."
+        ],
+        "expected_result": "User is successfully logged into the account."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to login with a locked account",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter a valid username for a locked account.",
+          "Enter the correct password.",
+          "Click on the login button."
+        ],
+        "expected_result": "User receives an error message stating the account is locked and cannot log in."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to login with incorrect password on locked account",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter a valid username for a locked account.",
+          "Enter an incorrect password.",
+          "Click on the login button."
+        ],
+        "expected_result": "User receives an error message stating the account is locked and cannot log in, despite the incorrect password."
+      },
+      {
+        "id": "TC-N03",
+        "title": "Attempt to login with an incorrect username and correct password",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter an incorrect username.",
+          "Enter the correct password.",
+          "Click on the login button."
+        ],
+        "expected_result": "User receives an error message stating the username or password is incorrect."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Login attempt with no username and password",
+        "steps": [
+          "Navigate to the login page.",
+          "Leave the username and password fields empty.",
+          "Click on the login button."
+        ],
+        "expected_result": "User receives an error message prompting to enter a username and password."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Login attempt with special characters in username",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter special characters in the username field.",
+          "Enter the correct password.",
+          "Click on the login button."
+        ],
+        "expected_result": "User receives an error message stating the username is invalid."
+      },
+      {
+        "id": "TC-E03",
+        "title": "Login with maximum allowed length for username and password",
+        "steps": [
+          "Navigate to the login page.",
+          "Enter a username with the maximum allowed length.",
+          "Enter a password with the maximum allowed length.",
+          "Click on the login button."
+        ],
+        "expected_result": "User is successfully logged into the account if the credentials are active, otherwise receives an error message."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 7,
+      "passed": 7,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 85.71,
+      "total_cases": 7,
+      "unique_cases": 6,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.965
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 7,
+      "covered": 7,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 83.33,
+      "total_edge_cases": 3,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 71.99,
+      "generated_cases": 7,
+      "baseline_cases": 11,
+      "avg_best_match_similarity": 0.72,
+      "min_similarity": 0.611,
+      "max_similarity": 0.877
+    },
+    "overall_score": 88.21
+  }
+}

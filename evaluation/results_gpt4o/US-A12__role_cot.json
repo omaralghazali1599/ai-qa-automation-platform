@@ -1,0 +1,103 @@
+{
+  "story_id": "US-A12",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to receive an error when I try to reset the password with an unregistered email so that I know the email is not in the system.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Receive error when resetting password with unregistered email",
+        "steps": [
+          "Navigate to the login page.",
+          "Click on the 'Forgot Password?' link.",
+          "Enter an unregistered email in the email input field.",
+          "Click on the 'Reset Password' button."
+        ],
+        "expected_result": "An error message is displayed indicating that the email is not registered in the system."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Reset password using a registered email",
+        "steps": [
+          "Navigate to the login page.",
+          "Click on the 'Forgot Password?' link.",
+          "Enter a registered email in the email input field.",
+          "Click on the 'Reset Password' button."
+        ],
+        "expected_result": "A message is displayed indicating that a reset link has been sent to the registered email."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Reset password with an invalid email format",
+        "steps": [
+          "Navigate to the login page.",
+          "Click on the 'Forgot Password?' link.",
+          "Enter an email with invalid format (e.g., 'user@.com') in the email input field.",
+          "Click on the 'Reset Password' button."
+        ],
+        "expected_result": "An error message is displayed indicating that the entered email format is invalid."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.876
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 85.02,
+      "generated_cases": 3,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.85,
+      "min_similarity": 0.751,
+      "max_similarity": 0.931
+    },
+    "overall_score": 77.0
+  }
+}

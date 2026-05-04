@@ -1,0 +1,164 @@
+{
+  "story_id": "US-B08",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want booking creation to fail if any required field is missing so that incomplete bookings are not saved.",
+  "generated_suite": {
+    "positive": [],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to create booking with missing name field",
+        "steps": [
+          "Navigate to booking page",
+          "Leave name field empty",
+          "Fill in all other required fields",
+          "Click Create Booking"
+        ],
+        "expected_result": "Error message: Name is required, booking is not created"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to create booking with missing date field",
+        "steps": [
+          "Navigate to booking page",
+          "Fill in name field",
+          "Leave date field empty",
+          "Click Create Booking"
+        ],
+        "expected_result": "Error message: Date is required, booking is not created"
+      },
+      {
+        "id": "TC-N03",
+        "title": "Attempt to create booking with missing time field",
+        "steps": [
+          "Navigate to booking page",
+          "Fill in name and date fields",
+          "Leave time field empty",
+          "Click Create Booking"
+        ],
+        "expected_result": "Error message: Time is required, booking is not created"
+      },
+      {
+        "id": "TC-N04",
+        "title": "Attempt to create booking with missing contact information",
+        "steps": [
+          "Navigate to booking page",
+          "Fill in name, date, and time",
+          "Leave contact information field empty",
+          "Click Create Booking"
+        ],
+        "expected_result": "Error message: Contact information is required, booking is not created"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to create booking with all fields empty",
+        "steps": [
+          "Navigate to booking page",
+          "Leave all fields empty",
+          "Click Create Booking"
+        ],
+        "expected_result": "Multiple error messages: Name, Date, Time, and Contact information are required, booking is not created"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Attempt to create booking with invalid date format",
+        "steps": [
+          "Navigate to booking page",
+          "Fill in name and time fields",
+          "Enter invalid date",
+          "Click Create Booking"
+        ],
+        "expected_result": "Error message: Invalid date format, booking is not created"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 6,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.909
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N03",
+          "similarity": 0.869
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N04",
+          "similarity": 0.865
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.867
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N03",
+          "similarity": 0.94
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N04",
+          "similarity": 0.865
+        },
+        {
+          "case_a": "TC-N03",
+          "case_b": "TC-N04",
+          "similarity": 0.873
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 76.79,
+      "generated_cases": 6,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.768,
+      "min_similarity": 0.718,
+      "max_similarity": 0.879
+    },
+    "overall_score": 68.69
+  }
+}

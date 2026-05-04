@@ -1,0 +1,95 @@
+{
+  "story_id": "US-T14",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to filter tasks by completion status so that I can see only open or only done tasks.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter tasks to show only open tasks",
+        "steps": [
+          "Navigate to the task list page.",
+          "Select the filter option for 'Open' tasks.",
+          "Apply the filter."
+        ],
+        "expected_result": "Only tasks with the status 'Open' are displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to filter tasks without selecting a status",
+        "steps": [
+          "Navigate to the task list page.",
+          "Open the filter menu but do not select any status.",
+          "Apply the filter."
+        ],
+        "expected_result": "The filter does not apply and possibly shows an error message indicating that a selection is necessary."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter tasks with an empty task list",
+        "steps": [
+          "Ensure the task list is cleared, leaving no tasks.",
+          "Navigate to the task list page.",
+          "Select the filter option for 'Done' tasks.",
+          "Apply the filter."
+        ],
+        "expected_result": "The system should display a message indicating no 'Done' tasks are available, without errors."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 65.99,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.66,
+      "min_similarity": 0.624,
+      "max_similarity": 0.685
+    },
+    "overall_score": 76.53
+  }
+}

@@ -1,0 +1,4 @@
+,Format Compliance,Redundancy,Functional Coverage,Edge Case Coverage,Overall
+Task App,100.0,72.83,99.79,30.83,75.14
+Auth App,100.0,67.99,100.0,24.17,74.71
+Booking API,100.0,60.06,100.0,17.08,70.63

@@ -1,0 +1,97 @@
+{
+  "story_id": "US-T02",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to assign a category to a task so that I can organize my tasks.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Assign a valid category to a task",
+        "steps": [
+          "Navigate to the task management interface",
+          "Select a task from the task list",
+          "Choose a valid category from the category dropdown",
+          "Click the 'Assign Category' button",
+          "Verify the category is displayed next to the task"
+        ],
+        "expected_result": "The selected category is successfully assigned to the task and is displayed correctly."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to assign an invalid category to a task",
+        "steps": [
+          "Navigate to the task management interface",
+          "Select a task from the task list",
+          "Choose an invalid category (not available in the dropdown)",
+          "Click the 'Assign Category' button"
+        ],
+        "expected_result": "An error message is displayed indicating the category is invalid and the task category remains unchanged."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Assign a category when no tasks are selected",
+        "steps": [
+          "Navigate to the task management interface",
+          "Ensure no task is selected",
+          "Choose a valid category from the category dropdown",
+          "Click the 'Assign Category' button"
+        ],
+        "expected_result": "An error message is displayed indicating that a task must be selected before assigning a category."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 68.03,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.68,
+      "min_similarity": 0.663,
+      "max_similarity": 0.705
+    },
+    "overall_score": 73.61
+  }
+}

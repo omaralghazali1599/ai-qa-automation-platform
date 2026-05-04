@@ -1,0 +1,153 @@
+{
+  "story_id": "US-B08",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want booking creation to fail if any required field is missing so that incomplete bookings are not saved.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create booking with all required fields filled",
+        "steps": [
+          "Navigate to booking page",
+          "Enter all required fields such as name, date, and time",
+          "Submit the booking form"
+        ],
+        "expected_result": "Booking is created successfully and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Booking creation fails if the name field is missing",
+        "steps": [
+          "Navigate to booking page",
+          "Fill in the booking date and time",
+          "Leave the name field empty",
+          "Submit the booking form"
+        ],
+        "expected_result": "An error message is displayed indicating that the name field is required."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Booking creation fails if the date field is missing",
+        "steps": [
+          "Navigate to booking page",
+          "Fill in the name and time",
+          "Leave the date field empty",
+          "Submit the booking form"
+        ],
+        "expected_result": "An error message is displayed indicating that the date field is required."
+      },
+      {
+        "id": "TC-N03",
+        "title": "Booking creation fails if the time field is missing",
+        "steps": [
+          "Navigate to booking page",
+          "Fill in the name and date",
+          "Leave the time field empty",
+          "Submit the booking form"
+        ],
+        "expected_result": "An error message is displayed indicating that the time field is required."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Booking creation fails with all required fields missing",
+        "steps": [
+          "Navigate to booking page",
+          "Leave all fields empty",
+          "Submit the booking form"
+        ],
+        "expected_result": "An error message is displayed for each required field indicating they are required."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Booking creation fails with extraneous fields filled but required fields missing",
+        "steps": [
+          "Navigate to booking page",
+          "Fill in optional notes field, leave required fields like name, date, and time empty",
+          "Submit the booking form"
+        ],
+        "expected_result": "An error message is displayed indicating all required fields are missing."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 6,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.951
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N03",
+          "similarity": 0.94
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.86
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N03",
+          "similarity": 0.973
+        },
+        {
+          "case_a": "TC-E01",
+          "case_b": "TC-E02",
+          "similarity": 0.875
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.39,
+      "generated_cases": 6,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.834,
+      "min_similarity": 0.723,
+      "max_similarity": 0.908
+    },
+    "overall_score": 66.68
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "story_id": "US-T10",
+  "app": "task",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want to retrieve a single task by its ID so that I can view its full details.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Retrieve task by valid ID",
+        "steps": [
+          "Step 1: Ensure the task with ID 123 exists in the system.",
+          "Step 2: Send a GET request to /tasks/123.",
+          "Step 3: Receive and check the response."
+        ],
+        "expected_result": "HTTP status code 200 with full task details in the response body."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Retrieve task by non-existent ID",
+        "steps": [
+          "Step 1: Ensure no task exists with ID 999.",
+          "Step 2: Send a GET request to /tasks/999.",
+          "Step 3: Receive and check the response."
+        ],
+        "expected_result": "HTTP status code 404 with an error message indicating the task was not found."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Retrieve task by boundary ID",
+        "steps": [
+          "Step 1: Determine the boundary ID, for example, the maximum integer value the system supports.",
+          "Step 2: Send a GET request to /tasks/<boundary_id>.",
+          "Step 3: Receive and check the response."
+        ],
+        "expected_result": "HTTP status code 404 with an error message if no task exists, or 200 with task details if the task exists for the boundary ID."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.904
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 33.33,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "max_length",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.32,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.803,
+      "min_similarity": 0.746,
+      "max_similarity": 0.869
+    },
+    "overall_score": 76.06
+  }
+}

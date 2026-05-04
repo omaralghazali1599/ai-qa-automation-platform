@@ -1,0 +1,107 @@
+{
+  "story_id": "US-B06",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a staff member, I want to delete a pending booking so that cancelled or invalid bookings are removed.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Delete a pending booking successfully",
+        "steps": [
+          "Log in as a staff member",
+          "Navigate to the 'Pending Bookings' section",
+          "Select a pending booking",
+          "Click the 'Delete' button",
+          "Confirm the deletion"
+        ],
+        "expected_result": "The pending booking is successfully deleted from the system, and a confirmation message is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to delete a non-existent pending booking",
+        "steps": [
+          "Log in as a staff member",
+          "Navigate to the 'Pending Bookings' section",
+          "Attempt to delete a booking that does not exist"
+        ],
+        "expected_result": "An error message is displayed indicating that the booking cannot be found or deleted."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Delete a pending booking when the system is under maintenance",
+        "steps": [
+          "Log in as a staff member",
+          "Navigate to the 'Pending Bookings' section during system maintenance",
+          "Select a pending booking",
+          "Attempt to delete the booking"
+        ],
+        "expected_result": "A maintenance notification is displayed, and the booking deletion is not processed."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.911
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.882
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 77.02,
+      "generated_cases": 3,
+      "baseline_cases": 10,
+      "avg_best_match_similarity": 0.77,
+      "min_similarity": 0.684,
+      "max_similarity": 0.843
+    },
+    "overall_score": 62.07
+  }
+}

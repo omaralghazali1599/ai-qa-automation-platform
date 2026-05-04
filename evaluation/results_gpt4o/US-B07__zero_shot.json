@@ -1,0 +1,112 @@
+{
+  "story_id": "US-B07",
+  "app": "booking",
+  "strategy": "zero_shot",
+  "user_story": "As a guest, I want the system to reject a booking where check-out is before check-in so that invalid date ranges are prevented.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully create a valid booking",
+        "steps": [
+          "Navigate to the booking system as a guest.",
+          "Select check-in date as today’s date.",
+          "Select check-out date as a date after the selected check-in date.",
+          "Submit the booking request."
+        ],
+        "expected_result": "The booking is successfully created."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to create a booking with check-out date before check-in date",
+        "steps": [
+          "Navigate to the booking system as a guest.",
+          "Select check-in date as today’s date.",
+          "Select check-out date as a date before the selected check-in date.",
+          "Submit the booking request."
+        ],
+        "expected_result": "The system displays an error message indicating the check-out date cannot be before the check-in date and prevents the booking."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Attempt to create a booking with check-in and check-out dates on the same day",
+        "steps": [
+          "Navigate to the booking system as a guest.",
+          "Select check-in date as today's date.",
+          "Select check-out date as the same day as the check-in date.",
+          "Submit the booking request."
+        ],
+        "expected_result": "The system either allows the booking as a single-day booking or displays a relevant error message if single-day bookings are not allowed."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 33.33,
+      "total_cases": 3,
+      "unique_cases": 1,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.924
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.909
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.937
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 75.35,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.754,
+      "min_similarity": 0.729,
+      "max_similarity": 0.772
+    },
+    "overall_score": 61.74
+  }
+}

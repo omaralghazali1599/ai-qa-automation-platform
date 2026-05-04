@@ -1,0 +1,112 @@
+{
+  "story_id": "US-A19",
+  "app": "auth",
+  "strategy": "chain_of_thought",
+  "user_story": "As a user, I want logging out twice in a row to not cause an error so that the logout action is idempotent.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successful logout on first attempt",
+        "steps": [
+          "User is logged in",
+          "User clicks the 'Logout' button"
+        ],
+        "expected_result": "User is successfully logged out without any errors"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Successful logout on second attempt after first logout",
+        "steps": [
+          "User is logged in",
+          "User clicks the 'Logout' button",
+          "User clicks the 'Logout' button again"
+        ],
+        "expected_result": "User remains logged out without any errors"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Logout attempts when not logged in",
+        "steps": [
+          "User is not logged in",
+          "User clicks the 'Logout' button"
+        ],
+        "expected_result": "No error occurs and the system remains in the 'not logged in' state"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Logout attempts during network failure",
+        "steps": [
+          "User is logged in",
+          "Simulate network failure",
+          "User clicks the 'Logout' button"
+        ],
+        "expected_result": "The system handles the situation gracefully and no error occurs"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 4,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.937
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.87
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 4,
+      "covered": 4,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.64,
+      "generated_cases": 4,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.806,
+      "min_similarity": 0.765,
+      "max_similarity": 0.86
+    },
+    "overall_score": 66.13
+  }
+}

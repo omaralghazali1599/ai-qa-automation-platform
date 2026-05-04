@@ -1,0 +1,101 @@
+{
+  "story_id": "US-B04",
+  "app": "booking",
+  "strategy": "role_cot",
+  "user_story": "As a staff member, I want to confirm a booking so that the guest knows their reservation is secured.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Confirm a standard booking successfully",
+        "steps": [
+          "Log in as a staff member",
+          "Navigate to the bookings management page",
+          "Select a pending booking from the list",
+          "Click on the 'Confirm' button",
+          "Verify confirmation message is displayed"
+        ],
+        "expected_result": "The booking is confirmed, and a confirmation message 'Booking successfully confirmed' is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to confirm a booking without being logged in",
+        "steps": [
+          "Navigate to the bookings management page without logging in",
+          "Attempt to confirm a booking"
+        ],
+        "expected_result": "Access is denied, and the user is prompted with a login page."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Confirm a booking for a past date",
+        "steps": [
+          "Log in as a staff member",
+          "Navigate to the bookings management page",
+          "Select a pending booking with a past date",
+          "Click on the 'Confirm' button"
+        ],
+        "expected_result": "The system displays an error message 'Cannot confirm a booking for a past date'."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.872
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 67.3,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.673,
+      "min_similarity": 0.658,
+      "max_similarity": 0.701
+    },
+    "overall_score": 66.79
+  }
+}

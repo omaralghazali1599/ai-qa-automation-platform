@@ -1,0 +1,103 @@
+{
+  "story_id": "US-A18",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want the system to handle an email with special characters correctly during registration so that valid edge-case emails are accepted.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Register with a valid email containing special characters",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a valid email with special characters (e.g., john.doe+test@example.com) into the email field.",
+          "Fill out the rest of the registration form correctly.",
+          "Submit the registration form."
+        ],
+        "expected_result": "The registration is successful, and the user receives a confirmation message."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt registration with an invalid email containing special characters",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter an invalid email with improper special characters (e.g., john.doe.@.example..com) into the email field.",
+          "Fill out the rest of the registration form correctly.",
+          "Submit the registration form."
+        ],
+        "expected_result": "The registration fails with an error message indicating the email is invalid."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Register with a borderline valid email containing special edge-case characters",
+        "steps": [
+          "Navigate to the registration page.",
+          "Enter a borderline valid email with edge-case special characters (e.g., jane.o'williams+test@example.co.uk) into the email field.",
+          "Fill out the rest of the registration form correctly.",
+          "Submit the registration form."
+        ],
+        "expected_result": "The registration is successful, and the user receives a confirmation message."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.878
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 85.54,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.855,
+      "min_similarity": 0.784,
+      "max_similarity": 0.911
+    },
+    "overall_score": 73.78
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "story_id": "US-A04",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to reset my password via email so that I can regain access if I forget it.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Request reset link with valid email",
+        "steps": [
+          "Go to forgot password page",
+          "Enter registered email",
+          "Click Send Reset Link"
+        ],
+        "expected_result": "Confirmation message shown and email sent"
+      },
+      {
+        "id": "TC-P02",
+        "title": "Access reset link from email",
+        "steps": [
+          "Check email inbox",
+          "Click on the reset password link in the email",
+          "Enter new password",
+          "Confirm new password",
+          "Click Reset Password"
+        ],
+        "expected_result": "Password reset successful message shown and user redirected to login page"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Request reset with unregistered email",
+        "steps": [
+          "Go to forgot password page",
+          "Enter unregistered email",
+          "Click Send Reset Link"
+        ],
+        "expected_result": "Error message: email not found"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Access reset link with invalid link",
+        "steps": [
+          "Click on an expired or invalid reset password link"
+        ],
+        "expected_result": "Error message: link is invalid or expired"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Request reset with empty email field",
+        "steps": [
+          "Go to forgot password page",
+          "Leave email blank",
+          "Click Send Reset Link"
+        ],
+        "expected_result": "Validation error: email is required"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Request reset with email exceeding max length",
+        "steps": [
+          "Go to forgot password page",
+          "Enter email with 300+ characters",
+          "Click Send Reset Link"
+        ],
+        "expected_result": "Validation error: email exceeds maximum length"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 6,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.933
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E01",
+          "similarity": 0.877
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-E01",
+          "similarity": 0.859
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 78.2,
+      "generated_cases": 6,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.782,
+      "min_similarity": 0.713,
+      "max_similarity": 0.822
+    },
+    "overall_score": 82.31
+  }
+}

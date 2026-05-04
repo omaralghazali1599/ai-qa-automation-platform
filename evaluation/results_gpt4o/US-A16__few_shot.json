@@ -1,0 +1,89 @@
+{
+  "story_id": "US-A16",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want the profile endpoint to return unauthorized when I am not logged in so that private data is protected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Access profile endpoint while logged out",
+        "steps": [
+          "Ensure user is logged out",
+          "Send request to profile endpoint"
+        ],
+        "expected_result": "HTTP 401 Unauthorized status is returned"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Access profile endpoint with invalid token",
+        "steps": [
+          "Obtain an invalid or expired token",
+          "Send request to profile endpoint with invalid token"
+        ],
+        "expected_result": "HTTP 401 Unauthorized status is returned"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Access profile endpoint with malformed authorization header",
+        "steps": [
+          "Send request to profile endpoint with malformed authorization header"
+        ],
+        "expected_result": "HTTP 401 Unauthorized status is returned"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 78.61,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.786,
+      "min_similarity": 0.737,
+      "max_similarity": 0.842
+    },
+    "overall_score": 75.72
+  }
+}

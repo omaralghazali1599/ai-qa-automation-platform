@@ -1,0 +1,133 @@
+{
+  "story_id": "US-B08",
+  "app": "booking",
+  "strategy": "few_shot",
+  "user_story": "As a guest, I want booking creation to fail if any required field is missing so that incomplete bookings are not saved.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create booking with all required fields filled",
+        "steps": [
+          "Navigate to booking page",
+          "Enter all required fields: name, email, date",
+          "Click Submit"
+        ],
+        "expected_result": "Booking is successfully created and confirmation message shown"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Fail booking creation with missing email",
+        "steps": [
+          "Navigate to booking page",
+          "Enter name and date",
+          "Leave email empty",
+          "Click Submit"
+        ],
+        "expected_result": "Error message: email is required"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Fail booking creation with missing date",
+        "steps": [
+          "Navigate to booking page",
+          "Enter name and email",
+          "Leave date empty",
+          "Click Submit"
+        ],
+        "expected_result": "Error message: date is required"
+      },
+      {
+        "id": "TC-N03",
+        "title": "Fail booking creation with missing name",
+        "steps": [
+          "Navigate to booking page",
+          "Enter email and date",
+          "Leave name empty",
+          "Click Submit"
+        ],
+        "expected_result": "Error message: name is required"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Fail booking creation with all fields missing",
+        "steps": [
+          "Navigate to booking page",
+          "Leave all fields empty",
+          "Click Submit"
+        ],
+        "expected_result": "Error messages for all required fields: name, email, date"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 60.0,
+      "total_cases": 5,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.963
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N03",
+          "similarity": 0.942
+        },
+        {
+          "case_a": "TC-N02",
+          "case_b": "TC-N03",
+          "similarity": 0.925
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 77.87,
+      "generated_cases": 5,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.779,
+      "min_similarity": 0.702,
+      "max_similarity": 0.836
+    },
+    "overall_score": 70.91
+  }
+}

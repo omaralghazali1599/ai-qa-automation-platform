@@ -1,0 +1,96 @@
+{
+  "story_id": "US-B04",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a staff member, I want to confirm a booking so that the guest knows their reservation is secured.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Confirm a booking successfully",
+        "steps": [
+          "Staff member accesses the booking system",
+          "Staff member selects a booking to confirm",
+          "Staff member clicks on the 'Confirm Booking' button",
+          "System notifies the staff member that the booking is confirmed",
+          "System sends a confirmation message to the guest"
+        ],
+        "expected_result": "The booking is confirmed and the guest receives a confirmation message."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to confirm a booking that does not exist",
+        "steps": [
+          "Staff member accesses the booking system",
+          "Staff member enters an invalid booking ID",
+          "Staff member clicks on the 'Confirm Booking' button"
+        ],
+        "expected_result": "The system displays an error message indicating that the booking does not exist."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Confirm a booking with special characters in the guest's name",
+        "steps": [
+          "Staff member accesses the booking system",
+          "Staff member selects a booking with special characters in the guest's name (e.g., 'Jane O'Connor')",
+          "Staff member clicks on the 'Confirm Booking' button"
+        ],
+        "expected_result": "The booking is confirmed correctly without issues, and the guest receives a confirmation message."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 68.1,
+      "generated_cases": 3,
+      "baseline_cases": 8,
+      "avg_best_match_similarity": 0.681,
+      "min_similarity": 0.61,
+      "max_similarity": 0.794
+    },
+    "overall_score": 76.95
+  }
+}

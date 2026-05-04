@@ -1,0 +1,120 @@
+{
+  "story_id": "US-B13",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want to filter bookings by status so that I can see only pending, confirmed, or cancelled reservations.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter bookings by status 'pending'",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Select 'pending' from the status filter drop-down.",
+          "Click the apply filter button."
+        ],
+        "expected_result": "Only reservations with status 'pending' should be displayed."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter bookings by status 'confirmed'",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Select 'confirmed' from the status filter drop-down.",
+          "Click the apply filter button."
+        ],
+        "expected_result": "Only reservations with status 'confirmed' should be displayed."
+      },
+      {
+        "id": "TC-P03",
+        "title": "Filter bookings by status 'cancelled'",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Select 'cancelled' from the status filter drop-down.",
+          "Click the apply filter button."
+        ],
+        "expected_result": "Only reservations with status 'cancelled' should be displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to filter bookings with no status selected",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Leave the status filter drop-down unselected or select a blank option.",
+          "Click the apply filter button."
+        ],
+        "expected_result": "An error message should display indicating a status must be selected to apply a filter."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter bookings with a status not existing in the system",
+        "steps": [
+          "Navigate to the bookings page.",
+          "Manually enter a non-existing status, such as 'archived', into the status filter input.",
+          "Click the apply filter button."
+        ],
+        "expected_result": "No reservations should be displayed, and the system should either show a message indicating no results or reset to show all bookings."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 80.0,
+      "total_cases": 5,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-P02",
+          "similarity": 0.88
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 82.75,
+      "generated_cases": 5,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.827,
+      "min_similarity": 0.773,
+      "max_similarity": 0.865
+    },
+    "overall_score": 75.88
+  }
+}

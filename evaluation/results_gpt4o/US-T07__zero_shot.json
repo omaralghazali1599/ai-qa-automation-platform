@@ -1,0 +1,119 @@
+{
+  "story_id": "US-T07",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to mark a task as complete so that I can track my progress.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Mark a task as complete successfully",
+        "steps": [
+          "Open the task management application",
+          "Navigate to the list of tasks",
+          "Select a task marked as incomplete",
+          "Click on the 'Mark as Complete' button"
+        ],
+        "expected_result": "The task is marked as complete and visually updated in the task list with a completion indicator."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to mark a non-existent task as complete",
+        "steps": [
+          "Open the task management application",
+          "Navigate to the task list",
+          "Try to retrieve a task that does not exist",
+          "Attempt to mark the non-existent task as complete"
+        ],
+        "expected_result": "An error message is displayed indicating that the task does not exist and the operation cannot be completed."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Try to mark a task as complete without permissions",
+        "steps": [
+          "Log in to the task management application as a user without edit permissions",
+          "Navigate to the task list",
+          "Select a task marked as incomplete",
+          "Attempt to click on the 'Mark as Complete' button"
+        ],
+        "expected_result": "An error message is displayed explaining the lack of permission to complete the task, and no action is taken."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Mark a task with special characters in its name as complete",
+        "steps": [
+          "Open the task management application",
+          "Navigate to the list of tasks",
+          "Select a task with special characters in its name that is marked as incomplete",
+          "Click on the 'Mark as Complete' button"
+        ],
+        "expected_result": "The task is marked as complete without any issues, and special characters in the name are handled correctly."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Mark a task as complete when network connection is unstable",
+        "steps": [
+          "Open the task management application with an unstable network connection",
+          "Navigate to the list of tasks",
+          "Select a task marked as incomplete",
+          "Click on the 'Mark as Complete' button"
+        ],
+        "expected_result": "The application retries the operation until successful, or a message is displayed notifying the user of network issues if the task could not be marked as complete."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 5,
+      "unique_cases": 5,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 69.69,
+      "generated_cases": 5,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.697,
+      "min_similarity": 0.593,
+      "max_similarity": 0.801
+    },
+    "overall_score": 77.27
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "story_id": "US-T14",
+  "app": "task",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want to filter tasks by completion status so that I can see only open or only done tasks.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Filter tasks to show only open tasks",
+        "steps": [
+          "Navigate to the tasks page.",
+          "Select the filter option for 'Open' tasks.",
+          "Observe the list of tasks displayed."
+        ],
+        "expected_result": "Only tasks marked as 'open' are displayed."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Filter tasks to show only done tasks",
+        "steps": [
+          "Navigate to the tasks page.",
+          "Select the filter option for 'Done' tasks.",
+          "Observe the list of tasks displayed."
+        ],
+        "expected_result": "Only tasks marked as 'done' are displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Filter tasks with no tasks available",
+        "steps": [
+          "Navigate to the tasks page.",
+          "Select the filter option for 'Done' tasks where no tasks are done.",
+          "Observe the list of tasks displayed."
+        ],
+        "expected_result": "No tasks are displayed with a message indicating no tasks found."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Select invalid filter option",
+        "steps": [
+          "Navigate to the tasks page.",
+          "Select an invalid filter option (e.g., 'In Progress').",
+          "Observe the list of tasks displayed."
+        ],
+        "expected_result": "No tasks are displayed with a message indicating invalid filter option."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Filter tasks with a large number of tasks",
+        "steps": [
+          "Navigate to the tasks page with a large dataset (e.g., 1000 tasks).",
+          "Select the filter option for 'Open' tasks.",
+          "Observe the list of tasks displayed."
+        ],
+        "expected_result": "Only open tasks are displayed efficiently without performance issues."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Filter tasks while simultaneously updating task statuses",
+        "steps": [
+          "Navigate to the tasks page.",
+          "While the page is open, change some task statuses to 'done' and some to 'open'.",
+          "Select the filter option for 'Open' tasks.",
+          "Observe the list of tasks displayed."
+        ],
+        "expected_result": "The displayed tasks reflect the updated statuses correctly."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 83.33,
+      "total_cases": 6,
+      "unique_cases": 5,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P02",
+          "case_b": "TC-N01",
+          "similarity": 0.9
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "boundary_value"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 64.01,
+      "generated_cases": 6,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.64,
+      "min_similarity": 0.599,
+      "max_similarity": 0.705
+    },
+    "overall_score": 72.8
+  }
+}

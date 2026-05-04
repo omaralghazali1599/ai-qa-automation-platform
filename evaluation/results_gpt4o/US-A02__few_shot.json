@@ -1,0 +1,125 @@
+{
+  "story_id": "US-A02",
+  "app": "auth",
+  "strategy": "few_shot",
+  "user_story": "As a registered user, I want to log in with my email and password so that I can access my account.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Login with valid email and password",
+        "steps": [
+          "Navigate to the login page",
+          "Enter registered email",
+          "Enter correct password",
+          "Click Login button"
+        ],
+        "expected_result": "User is redirected to the account dashboard"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Login with incorrect password",
+        "steps": [
+          "Navigate to the login page",
+          "Enter registered email",
+          "Enter incorrect password",
+          "Click Login button"
+        ],
+        "expected_result": "Error message: Incorrect password, please try again"
+      },
+      {
+        "id": "TC-N02",
+        "title": "Login with unregistered email",
+        "steps": [
+          "Navigate to the login page",
+          "Enter unregistered email",
+          "Enter any password",
+          "Click Login button"
+        ],
+        "expected_result": "Error message: Email not found, please check your input"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Login with empty email and password fields",
+        "steps": [
+          "Navigate to the login page",
+          "Leave email field empty",
+          "Leave password field empty",
+          "Click Login button"
+        ],
+        "expected_result": "Validation errors: email is required, password is required"
+      },
+      {
+        "id": "TC-E02",
+        "title": "Login with email having special characters",
+        "steps": [
+          "Navigate to the login page",
+          "Enter email with special characters like '!@#$%^&*'",
+          "Enter any password",
+          "Click Login button"
+        ],
+        "expected_result": "Validation error: Invalid email format"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 80.0,
+      "total_cases": 5,
+      "unique_cases": 4,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.889
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 5,
+      "covered": 5,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 50.0,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "empty_input",
+        "special_chars",
+        "invalid_format"
+      ],
+      "missing_categories": [
+        "max_length",
+        "boundary_value",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 80.63,
+      "generated_cases": 5,
+      "baseline_cases": 22,
+      "avg_best_match_similarity": 0.806,
+      "min_similarity": 0.691,
+      "max_similarity": 0.865
+    },
+    "overall_score": 82.13
+  }
+}

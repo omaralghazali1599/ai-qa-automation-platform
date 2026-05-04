@@ -1,0 +1,152 @@
+{
+  "story_id": "US-T08",
+  "app": "task",
+  "strategy": "zero_shot",
+  "user_story": "As a user, I want to update the title of an existing task so that I can correct or clarify it.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Successfully update task title",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task to update.",
+          "Click on the edit button.",
+          "Change the title of the task.",
+          "Save the changes."
+        ],
+        "expected_result": "The task title is updated successfully and displayed correctly in the task list."
+      },
+      {
+        "id": "TC-P02",
+        "title": "Update task title with special characters",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task to update.",
+          "Click on the edit button.",
+          "Change the title to include special characters (e.g., @, #, $, %).",
+          "Save the changes."
+        ],
+        "expected_result": "The task title is updated successfully and displays the special characters correctly."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to update task title with an empty string",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task to update.",
+          "Click on the edit button.",
+          "Leave the title field empty.",
+          "Try to save the changes."
+        ],
+        "expected_result": "An error message is displayed indicating that the title cannot be empty."
+      },
+      {
+        "id": "TC-N02",
+        "title": "Attempt to update a non-existing task title",
+        "steps": [
+          "Try to navigate directly to a non-existing task's edit page.",
+          "Attempt to change the title.",
+          "Save the changes."
+        ],
+        "expected_result": "An error message is displayed indicating that the task does not exist."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Update task title to the maximum character limit",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task to update.",
+          "Click on the edit button.",
+          "Change the title to the maximum allowed character limit (e.g., 255 characters).",
+          "Save the changes."
+        ],
+        "expected_result": "The task title is updated successfully, and the title is correctly displayed with the maximum character limit."
+      },
+      {
+        "id": "TC-E02",
+        "title": "Update task title rapidly",
+        "steps": [
+          "Navigate to the task list.",
+          "Select a task to update.",
+          "Click on the edit button.",
+          "Change the title to 'Test Title 1'.",
+          "Quickly change the title to 'Test Title 2'.",
+          "Quickly change the title again to 'Final Title'.",
+          "Save the changes."
+        ],
+        "expected_result": "The last title change is applied successfully, and the task title reflects 'Final Title'."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 50.0,
+      "total_cases": 6,
+      "unique_cases": 3,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.881
+        },
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-E02",
+          "similarity": 0.89
+        },
+        {
+          "case_a": "TC-N01",
+          "case_b": "TC-N02",
+          "similarity": 0.857
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 66.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "duplicate_action"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "invalid_format"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.65,
+      "generated_cases": 6,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.817,
+      "min_similarity": 0.713,
+      "max_similarity": 0.872
+    },
+    "overall_score": 79.66
+  }
+}

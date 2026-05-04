@@ -1,0 +1,124 @@
+{
+  "story_id": "US-T04",
+  "app": "task",
+  "strategy": "few_shot",
+  "user_story": "As a user, I want to list all my tasks so that I can see everything I need to do.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "List tasks as a logged-in user",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "View the list of tasks"
+        ],
+        "expected_result": "All user's tasks are displayed"
+      },
+      {
+        "id": "TC-P02",
+        "title": "List tasks with multiple tasks available",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Ensure multiple tasks are created",
+          "View the list of tasks"
+        ],
+        "expected_result": "All tasks are displayed with correct details"
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Failed to list tasks as a logged-out user",
+        "steps": [
+          "Navigate to the tasks page"
+        ],
+        "expected_result": "User is redirected to login page"
+      },
+      {
+        "id": "TC-N02",
+        "title": "List tasks when no tasks available",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page"
+        ],
+        "expected_result": "Message indicating no tasks available is displayed"
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "List tasks with a large number of tasks",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Ensure a large number of tasks are created (e.g., 1000+)",
+          "Scroll through the tasks list"
+        ],
+        "expected_result": "User can smoothly view all tasks without performance issues"
+      },
+      {
+        "id": "TC-E02",
+        "title": "List tasks with special characters in task names",
+        "steps": [
+          "Log in to the application",
+          "Navigate to the tasks page",
+          "Ensure tasks with special characters are created",
+          "View the list of tasks"
+        ],
+        "expected_result": "All tasks with special characters are displayed correctly"
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 6,
+      "passed": 6,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 6,
+      "unique_cases": 6,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 6,
+      "covered": 6,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 2,
+      "covered_categories": [
+        "special_chars"
+      ],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 59.45,
+      "generated_cases": 6,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.595,
+      "min_similarity": 0.426,
+      "max_similarity": 0.689
+    },
+    "overall_score": 75.22
+  }
+}

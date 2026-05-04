@@ -1,0 +1,91 @@
+{
+  "story_id": "US-A16",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want the profile endpoint to return unauthorized when I am not logged in so that private data is protected.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Get profile information when logged in",
+        "steps": [
+          "Step 1: Log in with valid credentials using the authentication endpoint.",
+          "Step 2: Access the profile endpoint with a valid session token."
+        ],
+        "expected_result": "The profile endpoint returns the user's profile data with a HTTP 200 status code."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Access the profile endpoint without logging in",
+        "steps": [
+          "Step 1: Ensure that there is no active session by logging out if necessary.",
+          "Step 2: Attempt to access the profile endpoint without a session token."
+        ],
+        "expected_result": "The profile endpoint returns a HTTP 401 Unauthorized status code."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Access the profile endpoint with an expired session token",
+        "steps": [
+          "Step 1: Log in with valid credentials to obtain a session token.",
+          "Step 2: Wait for the session token to expire or manually set an expired token.",
+          "Step 3: Attempt to access the profile endpoint using the expired session token."
+        ],
+        "expected_result": "The profile endpoint returns a HTTP 401 Unauthorized status code indicating session expiration."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 75.24,
+      "generated_cases": 3,
+      "baseline_cases": 6,
+      "avg_best_match_similarity": 0.752,
+      "min_similarity": 0.666,
+      "max_similarity": 0.813
+    },
+    "overall_score": 75.05
+  }
+}

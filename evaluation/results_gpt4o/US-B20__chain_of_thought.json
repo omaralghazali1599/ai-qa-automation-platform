@@ -1,0 +1,100 @@
+{
+  "story_id": "US-B20",
+  "app": "booking",
+  "strategy": "chain_of_thought",
+  "user_story": "As a guest, I want to create a booking with a very long guest name so that the system handles long string inputs gracefully.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Create booking with a very long guest name within acceptable limits",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter a guest name with 255 characters.",
+          "Complete the booking process."
+        ],
+        "expected_result": "Booking is successfully created, guest name is displayed in full."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to create booking with a guest name exceeding acceptable limits",
+        "steps": [
+          "Navigate to the booking page.",
+          "Enter a guest name with 256 characters.",
+          "Attempt to complete the booking process."
+        ],
+        "expected_result": "Error message displayed indicating guest name length exceeds the maximum allowed."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Create booking with an empty guest name",
+        "steps": [
+          "Navigate to the booking page.",
+          "Leave the guest name field empty.",
+          "Attempt to complete the booking process."
+        ],
+        "expected_result": "Error message displayed indicating the guest name field cannot be empty."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 66.67,
+      "total_cases": 3,
+      "unique_cases": 2,
+      "redundant_pairs": [
+        {
+          "case_a": "TC-P01",
+          "case_b": "TC-N01",
+          "similarity": 0.912
+        }
+      ]
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 16.67,
+      "total_edge_cases": 1,
+      "covered_categories": [
+        "empty_input"
+      ],
+      "missing_categories": [
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 81.87,
+      "generated_cases": 3,
+      "baseline_cases": 7,
+      "avg_best_match_similarity": 0.819,
+      "min_similarity": 0.762,
+      "max_similarity": 0.85
+    },
+    "overall_score": 73.04
+  }
+}

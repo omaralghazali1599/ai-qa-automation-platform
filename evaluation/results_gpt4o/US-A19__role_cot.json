@@ -1,0 +1,94 @@
+{
+  "story_id": "US-A19",
+  "app": "auth",
+  "strategy": "role_cot",
+  "user_story": "As a user, I want logging out twice in a row to not cause an error so that the logout action is idempotent.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "Verify user is logged out successfully without error when logging out twice consecutively.",
+        "steps": [
+          "Log in to the application with valid credentials.",
+          "Click on the 'Logout' button.",
+          "Verify the user is logged out and redirected to the login page.",
+          "Click on the 'Logout' button again.",
+          "Verify there is no error and the user remains on the login page."
+        ],
+        "expected_result": "User is logged out without any errors, and second logout attempt has no adverse effect."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Verify no error message is displayed when user attempts to log out without being logged in.",
+        "steps": [
+          "Ensure the user is not logged in (open a new session or browser tab).",
+          "Attempt to access the logout URL directly or click on the 'Logout' button on the login screen."
+        ],
+        "expected_result": "No error message is displayed, and user remains on the login screen."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Verify system behavior when session expires and user clicks 'Logout' button.",
+        "steps": [
+          "Log in to the application with valid credentials.",
+          "Leave the session inactive to allow it to expire naturally (or simulate session expiration).",
+          "Once session is expired, click on the 'Logout' button."
+        ],
+        "expected_result": "No error is displayed. User is either redirected to login page or remains on the current page without session."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 83.33,
+      "generated_cases": 3,
+      "baseline_cases": 5,
+      "avg_best_match_similarity": 0.833,
+      "min_similarity": 0.786,
+      "max_similarity": 0.862
+    },
+    "overall_score": 76.67
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "story_id": "US-A03",
+  "app": "auth",
+  "strategy": "zero_shot",
+  "user_story": "As a logged-in user, I want to log out so that my session is ended securely.",
+  "generated_suite": {
+    "positive": [
+      {
+        "id": "TC-P01",
+        "title": "User successfully logs out from the application",
+        "steps": [
+          "Log in with valid credentials.",
+          "Click on the 'Logout' button on the user dashboard."
+        ],
+        "expected_result": "The user is logged out and redirected to the login page. A message 'Successfully logged out' is displayed."
+      }
+    ],
+    "negative": [
+      {
+        "id": "TC-N01",
+        "title": "Attempt to log out with an expired session",
+        "steps": [
+          "Log in with valid credentials.",
+          "Wait for the session to expire.",
+          "Try to log out by clicking the 'Logout' button."
+        ],
+        "expected_result": "The user sees a message indicating that the session has already expired and is redirected to the login page."
+      }
+    ],
+    "edge": [
+      {
+        "id": "TC-E01",
+        "title": "Log out while multiple sessions are active from different devices",
+        "steps": [
+          "Log in on Device A.",
+          "Log in on Device B with the same user credentials.",
+          "Logout from Device A.",
+          "Verify session status on Device B."
+        ],
+        "expected_result": "The session on Device A is terminated and Device B remains logged in. No error occurs on Device B."
+      }
+    ]
+  },
+  "scores": {
+    "format_compliance": {
+      "scorer": "format_compliance",
+      "score": 100.0,
+      "total_cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "failures": []
+    },
+    "redundancy": {
+      "scorer": "redundancy",
+      "score": 100.0,
+      "total_cases": 3,
+      "unique_cases": 3,
+      "redundant_pairs": []
+    },
+    "functional_coverage": {
+      "scorer": "functional_coverage",
+      "score": 100.0,
+      "total_cases": 3,
+      "covered": 3,
+      "not_covered": 0,
+      "low_relevance_cases": []
+    },
+    "edge_case_coverage": {
+      "scorer": "edge_case_coverage",
+      "score": 0.0,
+      "total_edge_cases": 1,
+      "covered_categories": [],
+      "missing_categories": [
+        "empty_input",
+        "max_length",
+        "special_chars",
+        "boundary_value",
+        "invalid_format",
+        "duplicate_action"
+      ]
+    },
+    "baseline_comparison": {
+      "scorer": "baseline_comparison",
+      "score": 82.89,
+      "generated_cases": 3,
+      "baseline_cases": 12,
+      "avg_best_match_similarity": 0.829,
+      "min_similarity": 0.81,
+      "max_similarity": 0.863
+    },
+    "overall_score": 76.58
+  }
+}
