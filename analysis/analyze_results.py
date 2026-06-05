@@ -17,6 +17,7 @@ DIMENSIONS = [
     "redundancy",
     "functional_coverage",
     "edge_case_coverage",
+    "baseline_comparison"
 ]
 
 STRATEGY_LABELS = {
