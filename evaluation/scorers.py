@@ -265,7 +265,7 @@ def score_baseline_comparison(
     base_embeddings = model.encode(base_texts)
 
     sim_matrix = cosine_similarity(gen_embeddings, base_embeddings)
-    base_coverage = sim_matrix.max(axis=0)  # recall: for each baseline case, best generated match
+    base_coverage = sim_matrix.max(axis=1) 
     score = round(float(base_coverage.mean()) * 100, 2)
 
     return {
