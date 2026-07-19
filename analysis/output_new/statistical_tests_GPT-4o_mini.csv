@@ -1,0 +1,7 @@
+Dimension,H-statistic,p-value,Significant
+Format Compliance,,,NO
+Redundancy,2.601,0.4574,NO
+Functional Coverage,3.675,0.2987,NO
+Edge Case Coverage,5.766,0.1235,NO
+Baseline Comparison,6.855,0.0767,NO
+Overall,4.629,0.2011,NO

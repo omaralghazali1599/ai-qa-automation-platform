@@ -1,0 +1,5 @@
+,Auth App,Booking API,Task App
+Chain-of-Thought,75.55,71.13,73.56
+Few-Shot,72.52,71.22,71.26
+Role + CoT,74.28,71.1,75.45
+Zero-Shot,77.74,72.75,72.92

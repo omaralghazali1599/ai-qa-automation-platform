@@ -1,0 +1,5 @@
+,Format Compliance,Redundancy,Functional Coverage,Edge Case Coverage,Baseline Comparison,Overall
+Zero-Shot,100.0,66.63,99.44,30.83,75.43,74.47
+Role + CoT,100.0,67.64,99.44,23.61,77.37,73.61
+Chain-of-Thought,100.0,66.93,100.0,23.33,76.81,73.41
+Few-Shot,100.0,61.93,100.0,22.22,74.17,71.66
