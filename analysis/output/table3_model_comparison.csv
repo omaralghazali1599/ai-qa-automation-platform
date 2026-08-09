@@ -1,6 +1,13 @@
 ,GPT-4o-mini,GPT-4o,Difference
+
 Format Compliance,100.0,100.0,0.0
+
 Redundancy,65.78,66.96,1.18
+
 Functional Coverage,99.72,99.93,0.21
+
 Edge Case Coverage,25.0,24.03,-0.97
+
+Baseline Comparison,75.95,76.56,0.61
+
 Overall,73.29,73.5,0.21

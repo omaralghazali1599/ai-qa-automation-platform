@@ -1,0 +1,6 @@
+Dimension,N,k,alpha,Target_Power,Min_Detectable_W,Min_Detectable_dz,Min_Detectable_Points
+Redundancy,60,4,0.05,0.8,0.0606,0.3677,9.031
+User-Story Relevance,60,4,0.05,0.8,0.0606,0.3677,0.198
+Edge Case Coverage,60,4,0.05,0.8,0.0606,0.3677,7.057
+Baseline Comparison,60,4,0.05,0.8,0.0606,0.3677,2.745
+Overall,60,4,0.05,0.8,0.0606,0.3677,2.262

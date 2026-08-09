@@ -3,7 +3,7 @@ import json
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from scipy.stats import kruskal
+from statistical_tests import statistical_tests   
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -161,51 +161,6 @@ def table_strategy_x_app(df: pd.DataFrame, model_label: str):
     pivot.to_csv(f"{OUTPUT_DIR}/{fname}")
     print(f"Saved: {fname}")
     return pivot
-
-
-# -------------------------------------------------------
-# STATISTICAL TESTS
-# -------------------------------------------------------
-
-def statistical_tests(df: pd.DataFrame, model_label: str):
-    print(f"\n=== STATISTICAL TESTS [{model_label}] (Kruskal-Wallis) ===")
-    print("H0: No significant difference between prompt strategies")
-    print("Significance level: p < 0.05\n")
-
-    strategies = df["strategy"].unique()
-    cols = DIMENSIONS + ["overall"]
-    results = []
-
-    for col in cols:
-        groups = [
-            df[df["strategy"] == s][col].dropna().values
-            for s in strategies
-        ]
-        groups = [g for g in groups if len(g) > 0]
-        if len(groups) < 2:
-            continue
-
-        try:
-            h_stat, p_val = kruskal(*groups)
-            significant = "YES ***" if p_val < 0.05 else "NO"
-        except Exception:
-            h_stat, p_val, significant = float("nan"), float("nan"), "N/A"
-
-        results.append({
-            "Dimension":   col.replace("_", " ").title(),
-            "H-statistic": round(h_stat, 3),
-            "p-value":     round(p_val, 4),
-            "Significant": significant
-        })
-        print(f"{col:30s} H={h_stat:.3f}  p={p_val:.4f}  "
-              f"Significant: {significant}")
-
-    stats_df = pd.DataFrame(results)
-    fname = f"statistical_tests_{model_label.replace(' ', '_')}.csv"
-    stats_df.to_csv(f"{OUTPUT_DIR}/{fname}", index=False)
-    print(f"\nSaved: {fname}")
-    return stats_df
-
 
 # -------------------------------------------------------
 # CHART 1 — Overall score comparison: mini vs 4o

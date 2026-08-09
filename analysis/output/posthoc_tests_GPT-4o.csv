@@ -1,0 +1,7 @@
+Dimension,Comparison,p_raw,p_holm,Significant
+Baseline Comparison,chain_of_thought vs few_shot,0.0,0.0001,YES
+Baseline Comparison,chain_of_thought vs role_cot,0.7995,0.7995,NO
+Baseline Comparison,chain_of_thought vs zero_shot,0.1177,0.2863,NO
+Baseline Comparison,few_shot vs role_cot,0.0,0.0001,YES
+Baseline Comparison,few_shot vs zero_shot,0.008,0.0322,YES
+Baseline Comparison,role_cot vs zero_shot,0.0954,0.2863,NO

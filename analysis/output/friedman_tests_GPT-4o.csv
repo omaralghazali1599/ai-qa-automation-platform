@@ -1,0 +1,7 @@
+Dimension,N,k,chi2_F,df,p-value,Kendalls_W,Significant,Note
+Format Compliance,60,4,,3,,,N/A,no variance; test not computable
+Redundancy,60,4,4.08,3,0.2529,0.0227,NO,
+User-Story Relevance,60,4,3.0,3,0.3916,0.0167,NO,
+Edge Case Coverage,60,4,6.916,3,0.0746,0.0384,NO,
+Baseline Comparison,60,4,19.44,3,0.0002,0.108,YES ***,
+Overall,60,4,5.5,3,0.1386,0.0306,NO,

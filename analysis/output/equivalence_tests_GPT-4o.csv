@@ -1,0 +1,31 @@
+Dimension,Comparison,N,Mean_Diff,CI_low,CI_high,Cohens_dz,TOST_p,Equivalent
+Redundancy,chain_of_thought vs few_shot,60,3.335,-4.173,10.842,0.115,0.3294,NO
+Redundancy,chain_of_thought vs role_cot,60,0.056,-6.247,6.359,0.002,0.0609,NO
+Redundancy,chain_of_thought vs zero_shot,60,4.115,-2.856,11.085,0.152,0.4001,NO
+Redundancy,few_shot vs role_cot,60,-3.279,-10.285,3.727,-0.121,0.3124,NO
+Redundancy,few_shot vs zero_shot,60,0.78,-7.002,8.562,0.026,0.1411,NO
+Redundancy,role_cot vs zero_shot,60,4.059,-3.024,11.142,0.148,0.3956,NO
+User-Story Relevance,chain_of_thought vs few_shot,60,0.0,0.0,0.0,,,N/A (no variance)
+User-Story Relevance,chain_of_thought vs role_cot,60,0.0,0.0,0.0,,,N/A (no variance)
+User-Story Relevance,chain_of_thought vs zero_shot,60,0.278,-0.278,0.834,0.129,0.0,YES
+User-Story Relevance,few_shot vs role_cot,60,0.0,0.0,0.0,,,N/A (no variance)
+User-Story Relevance,few_shot vs zero_shot,60,0.278,-0.278,0.834,0.129,0.0,YES
+User-Story Relevance,role_cot vs zero_shot,60,0.278,-0.278,0.834,0.129,0.0,YES
+Edge Case Coverage,chain_of_thought vs few_shot,60,-3.611,-9.165,1.943,-0.168,0.3094,NO
+Edge Case Coverage,chain_of_thought vs role_cot,60,-2.499,-7.041,2.042,-0.142,0.1375,NO
+Edge Case Coverage,chain_of_thought vs zero_shot,60,-7.778,-13.787,-1.769,-0.334,0.8206,NO
+Edge Case Coverage,few_shot vs role_cot,60,1.112,-4.078,6.302,0.055,0.0696,NO
+Edge Case Coverage,few_shot vs zero_shot,60,-4.166,-10.236,1.903,-0.177,0.3922,NO
+Edge Case Coverage,role_cot vs zero_shot,60,-5.278,-10.741,0.184,-0.25,0.5404,NO
+Baseline Comparison,chain_of_thought vs few_shot,60,3.204,1.883,4.526,0.626,0.0043,YES
+Baseline Comparison,chain_of_thought vs role_cot,60,0.237,-0.924,1.398,0.053,0.0,YES
+Baseline Comparison,chain_of_thought vs zero_shot,60,1.225,-0.098,2.549,0.239,0.0,YES
+Baseline Comparison,few_shot vs role_cot,60,-2.968,-4.289,-1.647,-0.58,0.0016,YES
+Baseline Comparison,few_shot vs zero_shot,60,-1.979,-3.481,-0.478,-0.341,0.0001,YES
+Baseline Comparison,role_cot vs zero_shot,60,0.989,-0.01,1.987,0.256,0.0,YES
+Overall,chain_of_thought vs few_shot,60,0.586,-1.298,2.469,0.08,0.0,YES
+Overall,chain_of_thought vs role_cot,60,-0.441,-1.994,1.112,-0.073,0.0,YES
+Overall,chain_of_thought vs zero_shot,60,-0.432,-2.286,1.421,-0.06,0.0,YES
+Overall,few_shot vs role_cot,60,-1.027,-2.585,0.531,-0.17,0.0,YES
+Overall,few_shot vs zero_shot,60,-1.018,-2.955,0.919,-0.136,0.0001,YES
+Overall,role_cot vs zero_shot,60,0.009,-1.824,1.842,0.001,0.0,YES
